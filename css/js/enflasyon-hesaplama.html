@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enflasyon Hesaplama — Paranızın Gelecekteki Alım Gücü | ParaHesap</title>
+<meta name="description" content="Bugünkü tutarınızın, belirlediğiniz yıllık enflasyon oranına göre yıllar sonra ne kadar alım gücü kaybedeceğini hesaplayın.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="mark"></span> ParaHesap</a>
+    <ul>
+      <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
+      <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
+      <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+      <li><a href="blog/index.html">Rehberler</a></li>
+      <li><a href="hakkimizda.html">Hakkımızda</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap page-content">
+  <span class="eyebrow">Araç 03</span>
+  <h1>Enflasyon Hesaplama</h1>
+  <p>Enflasyon, paranızın satın alma gücünü zamanla azaltır. Bu araç, bugünkü bir tutarın belirlediğiniz enflasyon oranıyla gelecekte nominal olarak ne kadara denk geleceğini ve alım gücünüzün yüzde kaçını koruduğunuzu hesaplar.</p>
+
+  <div class="calc">
+    <h2>Bilgilerinizi girin</h2>
+    <div class="sub">Oranı yıllık ortalama enflasyon beklentiniz olarak girin.</div>
+
+    <div class="calc-grid">
+      <div class="field">
+        <label for="enfTutar">Bugünkü Tutar (₺)</label>
+        <input type="number" id="enfTutar" placeholder="örn. 10000">
+      </div>
+      <div class="field">
+        <label for="enfOran">Yıllık Ortalama Enflasyon (%)</label>
+        <input type="number" step="0.01" id="enfOran" placeholder="örn. 35">
+      </div>
+      <div class="field">
+        <label for="enfYil">Süre (Yıl)</label>
+        <input type="number" id="enfYil" placeholder="örn. 3">
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="hesaplaEnflasyon()">Hesapla</button>
+
+    <div class="receipt" id="enfReceipt">
+      <div class="receipt-row"><span>Aynı Alım Gücü İçin Gereken Tutar</span><span class="val" id="enf-gelecek">—</span></div>
+      <div class="receipt-row"><span>Kaybedilen Değer</span><span id="enf-kayip">—</span></div>
+      <div class="receipt-row"><span>Korunan Alım Gücü Oranı</span><span id="enf-guc">—</span></div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Reklam Alanı</div>
+
+  <h2>Enflasyon hesaplaması ne işe yarar?</h2>
+  <p>Yastık altında ya da faizsiz bir hesapta duran paranın "sayı" olarak aynı kalması, "değer" olarak aynı kaldığı anlamına gelmez. Bu araç, o farkı somut bir şekilde görmenizi sağlar; böylece paranızı nakit tutmak ile bir yatırım aracında değerlendirmek arasındaki farkı daha net kıyaslayabilirsiniz.</p>
+  <p>Gerçek enflasyon oranları yıldan yıla değişir; burada girdiğiniz oran bir varsayımdır, resmi TÜİK verileriyle karıştırılmamalıdır.</p>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 ParaHesap. Tüm hesaplamalar bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.</div>
+    <div>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
+      <a href="kullanim-sartlari.html">Kullanım Şartları</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/calculators.js"></script>
+</body>
+</html>
