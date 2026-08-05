@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google Analytics (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-GKXWCDPHMF');
   </script>
 
@@ -20,7 +19,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ParaHesap – Finans ve Hesaplama Araçları</title>
-  <meta name="description" content="Kredi taksiti, bileşik faiz ve enflasyon kayıplarını saniyeler içinde hesaplayın. Ücretsiz ve kayıtsız finans araçları.">
+  <meta name="description" content="Kredi taksiti, bileşik faiz, kira artış oranı ve enflasyon kayıplarını saniyeler içinde hesaplayın. Ücretsiz ve kayıtsız finans araçları.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -30,9 +29,10 @@
       <a href="index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
       <nav>
         <ul>
-          <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
-          <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
-          <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+          <li><a href="kredi-hesaplama.html">Kredi</a></li>
+          <li><a href="kira-artis-orani.html">Kira Artışı</a></li>
+          <li><a href="faiz-hesaplama.html">Faiz</a></li>
+          <li><a href="enflasyon-hesaplama.html">Enflasyon</a></li>
           <li><a href="blog/index.html">Rehberler</a></li>
         </ul>
       </nav>
@@ -47,44 +47,43 @@
       <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
       <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
       <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
-      <!-- Sonsuz döngü için tekrar -->
+      <!-- Tekrar döngüsü -->
       <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
       <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
       <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
-      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
     </div>
   </div>
 
   <main class="wrap container">
-    <div class="hero-card">
-      <h1 class="hero-title">Paranızın Gerçek Değerini Hesaplayın</h1>
-      <p class="hero-desc">Kredi taksitlerinizi, bileşik faiz getirilerinizi ve enflasyon karşısındaki alım gücü kayıplarınızı saniyeler içinde hesaplayın.</p>
-      
-      <div class="tools-grid">
-        <a href="kredi-hesaplama.html" class="tool-card">
-          <div>
-            <h3>Kredi Hesaplama ➔</h3>
-            <p>Aylık taksit tutarlarınızı ve toplam geri ödeme planınızı detaylıca çıkarın.</p>
-          </div>
-          <span class="btn-action">Hesapla</span>
-        </a>
+    <div class="calc-header">
+      <h1>Paranızın Gerçek Değerini Hesaplayın</h1>
+      <p>Kredi taksitlerinizi, kira zammınızı, bileşik faiz getirilerinizi ve enflasyon kayıplarınızı saniyeler içinde hesaplayın.</p>
+    </div>
 
-        <a href="faiz-hesaplama.html" class="tool-card">
-          <div>
-            <h3>Bileşik Faiz ➔</h3>
-            <p>Yatırımlarınızın zaman içinde katlanarak nasıl büyüyeceğini grafiklerle görün.</p>
-          </div>
-          <span class="btn-action">Hesapla</span>
-        </a>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <a href="kredi-hesaplama.html" class="input-card" style="text-decoration:none;">
+        <label>01. HESAPLAMA ARACI</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Kredi Hesaplama ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Aylık taksit tutarlarınızı ve toplam geri ödeme planınızı çıkarın.</p>
+      </a>
 
-        <a href="enflasyon-hesaplama.html" class="tool-card">
-          <div>
-            <h3>Enflasyon Kaybı ➔</h3>
-            <p>Mevcut paranızın gelecek yıllardaki gerçek satın alma gücünü öğrenin.</p>
-          </div>
-          <span class="btn-action">Hesapla</span>
-        </a>
-      </div>
+      <a href="kira-artis-orani.html" class="input-card" style="text-decoration:none;">
+        <label>02. HESAPLAMA ARACI</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Kira Artış Oranı Hesaplama ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Mevcut kiranıza uygulanacak resmi zam oranını ve yeni kiranızı görün.</p>
+      </a>
+
+      <a href="faiz-hesaplama.html" class="input-card" style="text-decoration:none;">
+        <label>03. HESAPLAMA ARACI</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Bileşik Faiz Hesaplama ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Birikimlerinizin zaman içinde katlanarak büyümesini inceleyin.</p>
+      </a>
+
+      <a href="enflasyon-hesaplama.html" class="input-card" style="text-decoration:none;">
+        <label>04. HESAPLAMA ARACI</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Enflasyon Kaybı Hesaplama ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Mevcut paranızın gelecek yıllardaki gerçek satın alma gücünü öğrenin.</p>
+      </a>
     </div>
   </main>
 
