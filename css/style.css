@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;700&display=swap');
 
+:root {
+  --primary-color: #0d3b66; /* Koyu Kurumsal Mavi */
+  --accent-color: #0056b3;  /* Canlı Mavi (Butonlar/Linkler için) */
+  --paper: #f4f6f9;
+  --paper-raised: #ffffff;
+  --ink: #1f2e27;
+  --ink-soft: #4a584f;
+  --line: #c9cdbf;
+}
+
+/* Logo ve Mark Vurgusu */
+.mark {
+  background-color: #0d3b66 !important;
+  color: #ffffff !important;
+}
+
+/* Butonlar ve Vurgulu Alanlar */
+.btn-primary, button {
+  background-color: #0d3b66 !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+.btn-primary:hover, button:hover {
+  background-color: #0056b3 !important;
+}
+
+/* Link Renkleri */
+a {
+  color: #0d3b66;
+}
+
+a:hover {
+  color: #0056b3;
+}
 /* Genel Arka Plan */
 body {
   background-color: #f4f6f9;
