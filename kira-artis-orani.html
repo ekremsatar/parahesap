@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GKXWCDPHMF');
+  </script>
+
+  <!-- Google Search Console Doğrulaması -->
+  <meta name="google-site-verification" content="1WuINEQp6A1O018k7L1N5Y9G89n-b4yL9">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kira Artış Oranı Hesaplama – ParaHesap</title>
+  <meta name="description" content="TÜFE 12 aylık ortalamalara göre yeni dönem zamlı kira tutarınızı saniyeler içinde hesaplayın.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
+      <nav>
+        <ul>
+          <li><a href="kredi-hesaplama.html">Kredi</a></li>
+          <li><a href="kira-artis-orani.html" class="active">Kira Artışı</a></li>
+          <li><a href="faiz-hesaplama.html">Faiz</a></li>
+          <li><a href="enflasyon-hesaplama.html">Enflasyon</a></li>
+          <li><a href="blog/index.html">Rehberler</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
+      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
+      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
+      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
+      <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
+    </div>
+  </div>
+
+  <main class="wrap container">
+    <div class="calc-header">
+      <h1>Kira Artış Oranı Hesaplama</h1>
+      <p>Mevcut kiranızı ve TÜFE zam oranını girerek yeni dönem kiranızı hesaplayın.</p>
+    </div>
+
+    <form class="calc-form" onsubmit="return false;">
+      <div class="input-card">
+        <label>Mevcut Kira Tutarı (TL)</label>
+        <input type="number" id="mevcutKira" placeholder="15.000" value="15000">
+      </div>
+
+      <div class="input-card">
+        <label>Artış / Zam Oranı (%)</label>
+        <input type="number" step="0.01" id="artisOrani" placeholder="65.00" value="65.00">
+      </div>
+
+      <button type="button" class="btn-calc" onclick="hesaplaKira()">Hesapla</button>
+    </form>
+
+    <div class="result-card">
+      <div class="result-item">
+        <span>Kira Zam Tutarı</span>
+        <strong id="resZamTutari">0,00 TL</strong>
+      </div>
+      <div class="result-item">
+        <span>Yeni Zamlı Kira Tutarı</span>
+        <strong id="resYeniKira">0,00 TL</strong>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function hesaplaKira() {
+      let kira = parseFloat(document.getElementById('mevcutKira').value) || 0;
+      let oran = (parseFloat(document.getElementById('artisOrani').value) || 0) / 100;
+
+      if(kira > 0 && oran >= 0) {
+        let zamTutari = kira * oran;
+        let yeniKira = kira + zamTutari;
+
+        document.getElementById('resZamTutari').innerText = zamTutari.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
+        document.getElementById('resYeniKira').innerText = yeniKira.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
+      }
+    }
+    hesaplaKira();
+  </script>
+
+</body>
+</html>
