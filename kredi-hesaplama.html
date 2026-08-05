@@ -9,13 +9,17 @@
     gtag('js', new Date());
     gtag('config', 'G-GKXWCDPHMF');
   </script>
-  <!-- Search Console & AdSense -->
+
+  <!-- Google Search Console Doğrulaması -->
   <meta name="google-site-verification" content="1WuINEQp6A1O018k7L1N5Y9G89n-b4yL9">
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kredi Hesaplama – ParaHesap</title>
+  <meta name="description" content="Çekmek istediğiniz kredi tutarını, faiz oranını ve vadeyi girerek aylık taksitlerinizi detaylıca hesaplayın.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,9 +29,10 @@
       <a href="index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
       <nav>
         <ul>
-          <li><a href="kredi-hesaplama.html" class="active">Kredi Hesaplama</a></li>
-          <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
-          <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+          <li><a href="kredi-hesaplama.html" class="active">Kredi</a></li>
+          <li><a href="kira-artis-orani.html">Kira Artışı</a></li>
+          <li><a href="faiz-hesaplama.html">Faiz</a></li>
+          <li><a href="enflasyon-hesaplama.html">Enflasyon</a></li>
           <li><a href="blog/index.html">Rehberler</a></li>
         </ul>
       </nav>
@@ -47,7 +52,7 @@
   <main class="wrap container">
     <div class="calc-header">
       <h1>Kredi Hesaplama</h1>
-      <p>Aylık taksit, faiz ve toplam ödeme tutarınızı görmek için bilgileri girin.</p>
+      <p>Aylık taksit, faiz maliyeti ve toplam ödeme tutarınızı hesaplayın.</p>
     </div>
 
     <form class="calc-form" onsubmit="return false;">
@@ -66,7 +71,7 @@
         <input type="number" id="vade" placeholder="36" value="36">
       </div>
 
-      <button type="button" class="btn-calc" onclick="hesapla()">Hesapla</button>
+      <button type="button" class="btn-calc" onclick="hesaplaKredi()">Hesapla</button>
     </form>
 
     <div class="result-card">
@@ -86,7 +91,7 @@
   </main>
 
   <script>
-    function hesapla() {
+    function hesaplaKredi() {
       let tutar = parseFloat(document.getElementById('tutar').value) || 0;
       let oran = (parseFloat(document.getElementById('faiz').value) || 0) / 100;
       let vade = parseInt(document.getElementById('vade').value) || 0;
@@ -101,8 +106,7 @@
         document.getElementById('resToplam').innerText = toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
       }
     }
-    // Sayfa açıldığında otomatik 1 kere hesapla
-    hesapla();
+    hesaplaKredi();
   </script>
 
 </body>
