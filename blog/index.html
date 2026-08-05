@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google Analytics (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-GKXWCDPHMF');
   </script>
 
@@ -20,7 +19,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finans Rehberleri – ParaHesap</title>
-  <meta name="description" content="Kredi, birikim, bütçe ve enflasyon konularında hazırladığımız rehberler.">
+  <meta name="description" content="Kredi, birikim, bütçe ve enflasyon konularında hazırladığımız detaylı finans rehberleri.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -30,16 +29,16 @@
       <a href="../index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
       <nav>
         <ul>
-          <li><a href="../kredi-hesaplama.html">Kredi Hesaplama</a></li>
-          <li><a href="../faiz-hesaplama.html">Faiz Hesaplama</a></li>
-          <li><a href="../enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+          <li><a href="../kredi-hesaplama.html">Kredi</a></li>
+          <li><a href="../kira-artis-orani.html">Kira Artışı</a></li>
+          <li><a href="../faiz-hesaplama.html">Faiz</a></li>
+          <li><a href="../enflasyon-hesaplama.html">Enflasyon</a></li>
           <li><a href="index.html" class="active">Rehberler</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- AKAN CANLI KUR BANDI -->
   <div class="ticker-bar">
     <div class="ticker-track">
       <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
@@ -47,44 +46,33 @@
       <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
       <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
       <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
-      <!-- Sonsuz döngü için tekrar -->
-      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
-      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
-      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
-      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
     </div>
   </div>
 
   <main class="wrap container">
-    <div class="hero-card">
-      <h1 class="hero-title">Finans Rehberleri</h1>
-      <p class="hero-desc">Kredi, birikim, bütçe ve enflasyon konularında hazırladığımız rehberler ile finansal kararlarınızı daha bilinçli alın.</p>
+    <div class="calc-header">
+      <h1>Finans Rehberleri</h1>
+      <p>Bilinçli finansal kararlar almak için hazırladığımız rehber makaleler.</p>
+    </div>
 
-      <div class="tools-grid">
-        <a href="kredi-notu-nedir.html" class="tool-card">
-          <div>
-            <h3>Kredi Notu Nedir? ➔</h3>
-            <p>Kredi notunu etkileyen faktörler ve yükseltme yolları.</p>
-          </div>
-          <span class="btn-action">Oku</span>
-        </a>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <a href="kredi-notu-nedir.html" class="input-card" style="text-decoration:none;">
+        <label>REHBER 01</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Kredi Notu Nedir ve Nasıl Yükseltilir? ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Kredi notunu etkileyen faktörler ve puanınızı yükseltme adımları.</p>
+      </a>
 
-        <a href="en-dusuk-faizli-kredi.html" class="tool-card">
-          <div>
-            <h3>En Düşük Faizli Kredi ➔</h3>
-            <p>Faiz oranlarını karşılaştırırken dikkat edilmesi gerekenler.</p>
-          </div>
-          <span class="btn-action">Oku</span>
-        </a>
+      <a href="en-dusuk-faizli-kredi.html" class="input-card" style="text-decoration:none;">
+        <label>REHBER 02</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">En Düşük Faizli Kredi Bulma Rehberi ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Bankaların kredi faizlerini ve toplam maliyet oranlarını doğru karşılaştırma.</p>
+      </a>
 
-        <a href="bilesik-faiz-farki.html" class="tool-card">
-          <div>
-            <h3>Bileşik / Basit Faiz ➔</h3>
-            <p>İki faiz türü arasındaki matematiksel fark ve birikime etkisi.</p>
-          </div>
-          <span class="btn-action">Oku</span>
-        </a>
-      </div>
+      <a href="bilesik-faiz-farki.html" class="input-card" style="text-decoration:none;">
+        <label>REHBER 03</label>
+        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Bileşik ve Basit Faiz Arasındaki Fark ➔</span>
+        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Uzun vadeli birikimlerde katlanarak büyüyen bileşik faiz etkisi.</p>
+      </a>
     </div>
   </main>
 
