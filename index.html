@@ -56,6 +56,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .brand {
@@ -65,7 +67,7 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .mark {
@@ -76,44 +78,131 @@
       border-radius: 50%;
     }
 
-    ul {
+    nav ul {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
-    a {
+    nav a {
       text-decoration: none;
-      color: #0d3b66;
+      color: var(--ink);
       font-weight: 600;
     }
 
-    a:hover {
-      color: #0056b3;
+    nav a:hover {
+      color: var(--accent-color);
     }
 
+    /* Piyasa Bandı */
+    .ticker-container {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .ticker-wrapper {
+      display: flex;
+      gap: 25px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Hero / Ana Kart */
     main, .hero {
       background: var(--paper-raised);
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       padding: 40px;
-      margin-top: 20px;
+      margin-top: 25px;
       margin-bottom: 30px;
     }
 
-    .btn-primary, button {
-      background-color: #0d3b66 !important;
-      color: #ffffff !important;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
     }
 
-    .btn-primary:hover, button:hover {
-      background-color: #0056b3 !important;
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      color: var(--primary-color);
+      margin: 15px 0;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: var(--ink-soft);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Araç Kutu Izgarası */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 25px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    }
+
+    .tool-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .tool-card h3 {
+      margin: 10px 0;
+    }
+
+    .tool-card h3 a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .tool-card p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .ad-placeholder {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f0f2f5;
+      border: 1px dashed var(--line);
+      border-radius: 6px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
     }
   </style>
 </head>
@@ -122,15 +211,61 @@
   <header class="site">
     <div class="wrap nav">
       <a href="index.html" class="brand"><span class="mark"></span>ParaHesap</a>
-      <ul>
-        <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
-        <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
-        <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
-        <li><a href="blog/index.html">Rehberler</a></li>
-        <li><a href="hakkimizda.html">Hakkımızda</a></li>
-      </ul>
+      <nav>
+        <ul>
+          <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
+          <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
+          <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+          <li><a href="blog/index.html">Rehberler</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
+
+  <!-- Canlı Piyasa Bandı -->
+  <div class="ticker-container">
+    <div class="wrap">
+      <div class="ticker-wrapper" id="ticker">
+        <div class="ticker-item"><span>USD/TRY:</span> <strong>47,57</strong></div>
+        <div class="ticker-item"><span>EUR/TRY:</span> <strong>54,96</strong></div>
+        <div class="ticker-item"><span>ONS ALTIN:</span> <strong>4.197</strong></div>
+        <div class="ticker-item"><span>BIST 100:</span> <strong>10.450</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="hero-label">DEFTER NO. 001 — KIŞISEL FINANS</div>
+      <h1>Paranızın gerçek değerini hesaplayın.</h1>
+      <p>Kredi taksitinizi, birikiminizin bileşik faizle nereye varacağını ya da enflasyonun cebinizden ne kadar çaldığını üç araçla saniyeler içinde görün. Kayıt yok, ücret yok.</p>
+
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-num">01</div>
+          <h3><a href="kredi-hesaplama.html">Kredi Hesaplama</a></h3>
+          <p>Tutar, faiz oranı ve vadeye göre aylık taksitinizi ve toplam ödemenizi hesaplayın.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-num">02</div>
+          <h3><a href="faiz-hesaplama.html">Bileşik Faiz Hesaplama</a></h3>
+          <p>Birikiminiz yıllar içinde bileşik faizle ne kadar büyür? Aylık ek katkıyla birlikte hesaplayın.</p>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-num">03</div>
+          <h3><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></h3>
+          <p>Bugünkü paranız, belirlediğiniz enflasyon oranıyla yıllar sonra ne kadar alım gücüne sahip olur?</p>
+        </div>
+      </div>
+
+      <div class="ad-placeholder">
+        Reklam Alanı — AdSense onayından sonra buraya reklam birimi eklenecek
+      </div>
+    </div>
+  </main>
 
 </body>
 </html>
