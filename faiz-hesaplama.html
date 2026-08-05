@@ -1,94 +1,105 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2WR1DB5QYD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GKXWCDPHMF');
+  </script>
 
-  gtag('config', 'G-2WR1DB5QYD');
-</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bileşik Faiz Hesaplama — Birikiminiz Ne Kadar Büyür? | ParaHesap</title>
-<meta name="description" content="Anapara, yıllık faiz oranı, süre ve aylık ek katkıyı girin; birikiminizin bileşik faizle yıllar içinde ne kadar büyüyeceğini hesaplayın.">
-<link rel="stylesheet" href="css/style.css">
+  <!-- Google Search Console Doğrulaması -->
+  <meta name="google-site-verification" content="1WuINEQp6A1O018k7L1N5Y9G89n-b4yL9">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bileşik Faiz Hesaplama – ParaHesap</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap nav">
-    <a href="index.html" class="brand"><span class="mark"></span> ParaHesap</a>
-    <ul>
-      <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
-      <li><a href="faiz-hesaplama.html">Faiz Hesaplama</a></li>
-      <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
-      <li><a href="blog/index.html">Rehberler</a></li>
-      <li><a href="hakkimizda.html">Hakkımızda</a></li>
-    </ul>
-  </div>
-</header>
-
-<div class="wrap page-content">
-  <span class="eyebrow">Araç 02</span>
-  <h1>Bileşik Faiz Hesaplama</h1>
-  <p>Birikiminizin veya yatırımınızın bileşik faiz etkisiyle zaman içinde nasıl büyüdüğünü görün. Düzenli aylık katkı ekleyerek daha gerçekçi bir projeksiyon oluşturabilirsiniz.</p>
-
-  <div class="calc">
-    <h2>Bilgilerinizi girin</h2>
-    <div class="sub">Faiz oranını yıllık olarak girin.</div>
-
-    <div class="calc-grid">
-      <div class="field">
-        <label for="faizAnapara">Başlangıç Tutarı (₺)</label>
-        <input type="number" id="faizAnapara" placeholder="örn. 50000">
-      </div>
-      <div class="field">
-        <label for="faizOran">Yıllık Faiz Oranı (%)</label>
-        <input type="number" step="0.01" id="faizOran" placeholder="örn. 45">
-      </div>
-      <div class="field">
-        <label for="faizYil">Süre (Yıl)</label>
-        <input type="number" id="faizYil" placeholder="örn. 5">
-      </div>
-      <div class="field">
-        <label for="faizAylik">Aylık Ek Katkı (₺, opsiyonel)</label>
-        <input type="number" id="faizAylik" placeholder="örn. 1000">
-      </div>
+  <header class="site">
+    <div class="wrap nav-wrap">
+      <a href="index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
+      <nav>
+        <ul>
+          <li><a href="kredi-hesaplama.html">Kredi Hesaplama</a></li>
+          <li><a href="faiz-hesaplama.html" class="active">Faiz Hesaplama</a></li>
+          <li><a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a></li>
+          <li><a href="blog/index.html">Rehberler</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <button class="calc-btn" onclick="hesaplaFaiz()">Hesapla</button>
-
-    <div class="receipt" id="faizReceipt">
-      <div class="receipt-row"><span>Toplam Yatırılan Tutar</span><span id="faiz-katki">—</span></div>
-      <div class="receipt-row"><span>Faiz Kazancı</span><span class="val" id="faiz-kazanc">—</span></div>
-      <div class="receipt-row"><span>Vade Sonu Toplam Bakiye</span><span id="faiz-son">—</span></div>
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
+      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
+      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
+      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
+      <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
     </div>
   </div>
 
-  <div class="ad-slot">Reklam Alanı</div>
-
-  <h2>Bileşik faiz neden önemlidir?</h2>
-  <p>Bileşik faizde, kazandığınız faiz de bir sonraki dönemde anaparaya eklenerek tekrar faiz getirir. Bu yüzden süre uzadıkça büyüme hızı belirgin şekilde artar. Aynı oranla bile, 5 yıl yerine 15 yıl beklemek nihai bakiyede kat kat fark yaratabilir.</p>
-  <p>Bu araç bilgilendirme amaçlıdır; gerçek yatırım araçlarında vergi kesintisi, komisyon ve enflasyon gibi etkenler net getiriyi değiştirir.</p>
-</div>
-
-<footer class="site">
-  <div class="wrap">
-    <div>© 2026 ParaHesap. Tüm hesaplamalar bilgilendirme amaçlıdır, yatırım tavsiyesi değildir.</div>
-    <div>
-      <a href="hakkimizda.html">Hakkımızda</a>
-      <a href="iletisim.html">İletişim</a>
-      <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
-      <a href="kullanim-sartlari.html">Kullanım Şartları</a>
+  <main class="wrap container">
+    <div class="calc-header">
+      <h1>Bileşik Faiz Hesaplama</h1>
+      <p>Birikiminizin zaman içindeki bileşik getirisini ve büyümesini hesaplayın.</p>
     </div>
-  </div>
-</footer>
 
-<script src="js/calculators.js"></script>
+    <form class="calc-form" onsubmit="return false;">
+      <div class="input-card">
+        <label>Başlangıç Anaparası (TL)</label>
+        <input type="number" id="anapara" placeholder="50.000" value="50000">
+      </div>
+
+      <div class="input-card">
+        <label>Yıllık Faiz Oranı (%)</label>
+        <input type="number" step="0.1" id="yillikFaiz" placeholder="45" value="45">
+      </div>
+
+      <div class="input-card">
+        <label>Vade Süresi (Yıl)</label>
+        <input type="number" id="yil" placeholder="3" value="3">
+      </div>
+
+      <button type="button" class="btn-calc" onclick="hesaplaFaiz()">Hesapla</button>
+    </form>
+
+    <div class="result-card">
+      <div class="result-item">
+        <span>Toplam Faiz Getirisi</span>
+        <strong id="resFaizGetiri">0,00 TL</strong>
+      </div>
+      <div class="result-item">
+        <span>Vade Sonu Toplam Para</span>
+        <strong id="resSonToplam">0,00 TL</strong>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function hesaplaFaiz() {
+      let anapara = parseFloat(document.getElementById('anapara').value) || 0;
+      let oran = (parseFloat(document.getElementById('yillikFaiz').value) || 0) / 100;
+      let yil = parseInt(document.getElementById('yil').value) || 0;
+
+      if(anapara > 0 && oran > 0 && yil > 0) {
+        let toplam = anapara * Math.pow((1 + oran), yil);
+        let getirilenFaiz = toplam - anapara;
+
+        document.getElementById('resFaizGetiri').innerText = getirilenFaiz.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
+        document.getElementById('resSonToplam').innerText = toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
+      }
+    }
+    hesaplaFaiz();
+  </script>
+
 </body>
 </html>
