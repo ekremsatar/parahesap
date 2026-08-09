@@ -82,7 +82,6 @@
             padding: 0 15px;
         }
 
-        /* Akan Bant / Ticker Alanları */
         .ticker-wrapper {
             margin-bottom: 15px;
             border-radius: 8px;
@@ -100,7 +99,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Mobil Kaydırılabilir Sekme Tasarımı */
         .tabs {
             display: flex;
             gap: 8px;
@@ -354,17 +352,18 @@
 
     <div class="container">
 
-        <!-- 1. CANLI AKAN KUR BANTI (Döviz & Altın) -->
+        <!-- 1. DÖVİZ VE TL BAZLI CANLI FİYAT BANTI -->
         <div class="ticker-wrapper">
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
               {
               "symbols": [
-                { "proName": "FX_IDC:USDTRY", "title": "USD/TRY" },
-                { "proName": "FX_IDC:EURTRY", "title": "EUR/TRY" },
-                { "proName": "OANDA:XAUUSD", "title": "ALTIN ONS ($)" },
-                { "proName": "OANDA:XAGUSD", "title": "GÜMÜŞ ONS ($)" }
+                { "proName": "FX_IDC:USDTRY", "title": "DOLAR (TL)" },
+                { "proName": "FX_IDC:EURTRY", "title": "EURO (TL)" },
+                { "proName": "FX_IDC:GBPTRY", "title": "STERLİN (TL)" },
+                { "proName": "OANDA:XAUUSD", "title": "ONS ALTIN ($)" },
+                { "proName": "OANDA:XAGUSD", "title": "ONS GÜMÜŞ ($)" }
               ],
               "showSymbolLogo": true,
               "isTransparent": false,
@@ -425,7 +424,7 @@
                 </div>
             </div>
 
-            <!-- CANLI KRİPTO & BORSA AKAN BANTLARI -->
+            <!-- CANLI KRİPTO BANTI -->
             <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10)</div>
             <div class="ticker-wrapper">
                 <div class="tradingview-widget-container">
@@ -454,6 +453,7 @@
                 </div>
             </div>
 
+            <!-- DÜZELTİLMİŞ BORSA İSTANBUL BANTI -->
             <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST)</div>
             <div class="ticker-wrapper">
                 <div class="tradingview-widget-container">
@@ -461,12 +461,12 @@
                   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
                   {
                   "symbols": [
-                    { "proName": "BIST:XU100", "title": "BIST 100" },
                     { "proName": "BIST:THYAO", "title": "THY" },
                     { "proName": "BIST:GARAN", "title": "GARANTİ" },
                     { "proName": "BIST:EREGL", "title": "EREĞLİ" },
                     { "proName": "BIST:ASELS", "title": "ASELSAN" },
                     { "proName": "BIST:BIMAS", "title": "BİM" },
+                    { "proName": "BIST:ISCTR", "title": "İŞ BANKASI" },
                     { "proName": "BIST:AKBNK", "title": "AKBANK" }
                   ],
                   "showSymbolLogo": true,
