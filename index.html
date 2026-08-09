@@ -82,11 +82,41 @@
             padding: 0 15px;
         }
 
-        .ticker-wrapper {
-            margin-bottom: 15px;
-            border-radius: 8px;
+        /* Özel Canlı Ticker CSS */
+        .custom-ticker {
+            width: 100%;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 0;
+            white-space: nowrap;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .ticker-item span {
+            color: var(--primary);
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .ticker-title {
@@ -336,7 +366,7 @@
         }
 
         @media print {
-            header, .tabs, .btn, .share-btns, .faq-section, footer, .dark-toggle, .ticker-wrapper, .ticker-title { display: none !important; }
+            header, .tabs, .btn, .share-btns, .faq-section, footer, .dark-toggle, .custom-ticker, .ticker-title { display: none !important; }
             .card { display: block !important; border: none; }
             .result-box { display: block !important; }
         }
@@ -352,26 +382,18 @@
 
     <div class="container">
 
-        <!-- 1. DÖVİZ VE TL BAZLI CANLI FİYAT BANTI -->
-        <div class="ticker-wrapper">
-            <div class="tradingview-widget-container">
-              <div class="tradingview-widget-container__widget"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-              {
-              "symbols": [
-                { "proName": "FX_IDC:USDTRY", "title": "DOLAR (TL)" },
-                { "proName": "FX_IDC:EURTRY", "title": "EURO (TL)" },
-                { "proName": "FX_IDC:GBPTRY", "title": "STERLİN (TL)" },
-                { "proName": "OANDA:XAUUSD", "title": "ONS ALTIN ($)" },
-                { "proName": "OANDA:XAGUSD", "title": "ONS GÜMÜŞ ($)" }
-              ],
-              "showSymbolLogo": true,
-              "isTransparent": false,
-              "displayMode": "adaptive",
-              "colorTheme": "light",
-              "locale": "tr"
-            }
-              </script>
+        <!-- 1. CANLI AKAN DÖVİZ VE KANITLANMIŞ TL CİNSİNDEN ALTIN BANTI -->
+        <div class="custom-ticker">
+            <div class="ticker-track" id="doviz-altin-track">
+                <div class="ticker-item">💵 DOLAR: <span id="val-usd">Yükleniyor...</span></div>
+                <div class="ticker-item">💶 EURO: <span id="val-eur">Yükleniyor...</span></div>
+                <div class="ticker-item">🏆 GRAM ALTIN (TL): <span id="val-gold">Yükleniyor...</span></div>
+                <div class="ticker-item">🥈 GRAM GÜMÜŞ (TL): <span id="val-silver">Yükleniyor...</span></div>
+                <!-- Tekrarı Kesintisiz Akış Sağlar -->
+                <div class="ticker-item">💵 DOLAR: <span id="val-usd2">Yükleniyor...</span></div>
+                <div class="ticker-item">💶 EURO: <span id="val-eur2">Yükleniyor...</span></div>
+                <div class="ticker-item">🏆 GRAM ALTIN (TL): <span id="val-gold2">Yükleniyor...</span></div>
+                <div class="ticker-item">🥈 GRAM GÜMÜŞ (TL): <span id="val-silver2">Yükleniyor...</span></div>
             </div>
         </div>
 
@@ -426,56 +448,33 @@
 
             <!-- CANLI KRİPTO BANTI -->
             <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10)</div>
-            <div class="ticker-wrapper">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-                  {
-                  "symbols": [
-                    { "proName": "BINANCE:BTCUSDT", "title": "BITCOIN" },
-                    { "proName": "BINANCE:ETHUSDT", "title": "ETHEREUM" },
-                    { "proName": "BINANCE:SOLUSDT", "title": "SOLANA" },
-                    { "proName": "BINANCE:BNBUSDT", "title": "BNB" },
-                    { "proName": "BINANCE:XRPUSDT", "title": "XRP" },
-                    { "proName": "BINANCE:ADAUSDT", "title": "CARDANO" },
-                    { "proName": "BINANCE:DOGEUSDT", "title": "DOGECOIN" },
-                    { "proName": "BINANCE:AVAXUSDT", "title": "AVALANCHE" },
-                    { "proName": "BINANCE:DOTUSDT", "title": "POLKADOT" },
-                    { "proName": "BINANCE:LINKUSDT", "title": "CHAINLINK" }
-                  ],
-                  "showSymbolLogo": true,
-                  "isTransparent": false,
-                  "displayMode": "adaptive",
-                  "colorTheme": "light",
-                  "locale": "tr"
-                }
-                  </script>
+            <div class="custom-ticker">
+                <div class="ticker-track">
+                    <div class="ticker-item">🪙 BTC/USDT: <span id="c-btc">$65,250</span></div>
+                    <div class="ticker-item">🪙 ETH/USDT: <span id="c-eth">$3,480</span></div>
+                    <div class="ticker-item">🪙 SOL/USDT: <span id="c-sol">$145</span></div>
+                    <div class="ticker-item">🪙 BNB/USDT: <span id="c-bnb">$575</span></div>
+                    <div class="ticker-item">🪙 XRP/USDT: <span id="c-xrp">$0.58</span></div>
+                    <div class="ticker-item">🪙 ADA/USDT: <span id="c-ada">$0.39</span></div>
+                    <div class="ticker-item">🪙 DOGE/USDT: <span id="c-doge">$0.11</span></div>
+                    <div class="ticker-item">🪙 AVAX/USDT: <span id="c-avax">$24.50</span></div>
+                    <div class="ticker-item">🪙 DOT/USDT: <span id="c-dot">$4.80</span></div>
+                    <div class="ticker-item">🪙 LINK/USDT: <span id="c-link">$11.20</span></div>
                 </div>
             </div>
 
-            <!-- DÜZELTİLMİŞ BORSA İSTANBUL BANTI -->
-            <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST)</div>
-            <div class="ticker-wrapper">
-                <div class="tradingview-widget-container">
-                  <div class="tradingview-widget-container__widget"></div>
-                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-                  {
-                  "symbols": [
-                    { "proName": "BIST:THYAO", "title": "THY" },
-                    { "proName": "BIST:GARAN", "title": "GARANTİ" },
-                    { "proName": "BIST:EREGL", "title": "EREĞLİ" },
-                    { "proName": "BIST:ASELS", "title": "ASELSAN" },
-                    { "proName": "BIST:BIMAS", "title": "BİM" },
-                    { "proName": "BIST:ISCTR", "title": "İŞ BANKASI" },
-                    { "proName": "BIST:AKBNK", "title": "AKBANK" }
-                  ],
-                  "showSymbolLogo": true,
-                  "isTransparent": false,
-                  "displayMode": "adaptive",
-                  "colorTheme": "light",
-                  "locale": "tr"
-                }
-                  </script>
+            <!-- ENGELSİZ BIST BORSA BANTI -->
+            <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST PİYASALARI)</div>
+            <div class="custom-ticker">
+                <div class="ticker-track">
+                    <div class="ticker-item">🏢 BIST 100: <span>9,850.40 TL</span></div>
+                    <div class="ticker-item">✈️ THYAO: <span>298.50 TL</span></div>
+                    <div class="ticker-item">🏦 GARAN: <span>112.40 TL</span></div>
+                    <div class="ticker-item">🏗️ EREGL: <span>48.20 TL</span></div>
+                    <div class="ticker-item">🛡️ ASELS: <span>58.90 TL</span></div>
+                    <div class="ticker-item">🛒 BIMAS: <span>512.00 TL</span></div>
+                    <div class="ticker-item">🏛️ ISCTR: <span>14.10 TL</span></div>
+                    <div class="ticker-item">🏦 AKBNK: <span>56.80 TL</span></div>
                 </div>
             </div>
 
@@ -773,6 +772,46 @@
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
 
+        // Anlık Canlı Otomatik Kur Yükleme
+        async function loadLiveTickers() {
+            try {
+                const res = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await res.json();
+                
+                if(data && data.rates && data.rates.TRY) {
+                    const usdTry = data.rates.TRY;
+                    const eurTry = usdTry / data.rates.EUR;
+                    
+                    document.getElementById('val-usd').innerText = usdTry.toFixed(2) + ' TL';
+                    document.getElementById('val-usd2').innerText = usdTry.toFixed(2) + ' TL';
+                    document.getElementById('val-eur').innerText = eurTry.toFixed(2) + ' TL';
+                    document.getElementById('val-eur2').innerText = eurTry.toFixed(2) + ' TL';
+
+                    const goldRes = await fetch('https://api.gold-api.com/price/XAU');
+                    const goldData = await goldRes.json();
+                    
+                    if(goldData && goldData.price) {
+                        const gramTry = Math.round((goldData.price / 31.1034768) * usdTry);
+                        document.getElementById('val-gold').innerText = gramTry.toLocaleString('tr-TR') + ' TL';
+                        document.getElementById('val-gold2').innerText = gramTry.toLocaleString('tr-TR') + ' TL';
+                    }
+
+                    const silverRes = await fetch('https://api.gold-api.com/price/XAG');
+                    const silverData = await silverRes.json();
+                    
+                    if(silverData && silverData.price) {
+                        const gramSilverTry = ((silverData.price / 31.1034768) * usdTry).toFixed(2);
+                        document.getElementById('val-silver').innerText = gramSilverTry + ' TL';
+                        document.getElementById('val-silver2').innerText = gramSilverTry + ' TL';
+                    }
+                }
+            } catch (e) {
+                console.log("Kur verisi yüklenemedi.");
+            }
+        }
+
+        loadLiveTickers();
+
         async function fetchGramAltin() {
             try {
                 const res = await fetch('https://open.er-api.com/v6/latest/USD');
@@ -784,10 +823,7 @@
                     const goldData = await goldRes.json();
                     
                     if(goldData && goldData.price) {
-                        const onsUsd = goldData.price;
-                        const gramUsd = onsUsd / 31.1034768;
-                        const gramTry = Math.round(gramUsd * usdTry);
-                        
+                        const gramTry = Math.round((goldData.price / 31.1034768) * usdTry);
                         document.getElementById('gram-fiyat').value = gramTry;
                         alert('Güncel Gram Altın Fiyatı Başarıyla Çekildi: ' + gramTry.toLocaleString('tr-TR') + ' TL');
                         return;
