@@ -82,6 +82,24 @@
             padding: 0 15px;
         }
 
+        /* Akan Bant / Ticker Alanları */
+        .ticker-wrapper {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .ticker-title {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 15px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* Mobil Kaydırılabilir Sekme Tasarımı */
         .tabs {
             display: flex;
@@ -280,7 +298,6 @@
             opacity: 0.8;
         }
 
-        /* Sözlük Alanı Stilleri */
         .dict-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -321,7 +338,7 @@
         }
 
         @media print {
-            header, .tabs, .btn, .share-btns, .faq-section, footer, .dark-toggle { display: none !important; }
+            header, .tabs, .btn, .share-btns, .faq-section, footer, .dark-toggle, .ticker-wrapper, .ticker-title { display: none !important; }
             .card { display: block !important; border: none; }
             .result-box { display: block !important; }
         }
@@ -336,7 +353,30 @@
     </header>
 
     <div class="container">
-        <!-- Kaydırılabilir Sekme Butonları (7 Modül) -->
+
+        <!-- 1. CANLI AKAN KUR BANTI (Döviz & Altın) -->
+        <div class="ticker-wrapper">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+              {
+              "symbols": [
+                { "proName": "FX_IDC:USDTRY", "title": "USD/TRY" },
+                { "proName": "FX_IDC:EURTRY", "title": "EUR/TRY" },
+                { "proName": "OANDA:XAUUSD", "title": "ALTIN ONS ($)" },
+                { "proName": "OANDA:XAGUSD", "title": "GÜMÜŞ ONS ($)" }
+              ],
+              "showSymbolLogo": true,
+              "isTransparent": false,
+              "displayMode": "adaptive",
+              "colorTheme": "light",
+              "locale": "tr"
+            }
+              </script>
+            </div>
+        </div>
+
+        <!-- Kaydırılabilir Sekme Butonları -->
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('nisap', event)">Fitre / Nisap</button>
@@ -382,6 +422,60 @@
                 <div class="share-btns">
                     <button class="share-btn btn-wp" onclick="shareWhatsApp('Zekat Hesaplama Sonucum')">WhatsApp ile Paylaş</button>
                     <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
+                </div>
+            </div>
+
+            <!-- CANLI KRİPTO & BORSA AKAN BANTLARI -->
+            <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10)</div>
+            <div class="ticker-wrapper">
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                  {
+                  "symbols": [
+                    { "proName": "BINANCE:BTCUSDT", "title": "BITCOIN" },
+                    { "proName": "BINANCE:ETHUSDT", "title": "ETHEREUM" },
+                    { "proName": "BINANCE:SOLUSDT", "title": "SOLANA" },
+                    { "proName": "BINANCE:BNBUSDT", "title": "BNB" },
+                    { "proName": "BINANCE:XRPUSDT", "title": "XRP" },
+                    { "proName": "BINANCE:ADAUSDT", "title": "CARDANO" },
+                    { "proName": "BINANCE:DOGEUSDT", "title": "DOGECOIN" },
+                    { "proName": "BINANCE:AVAXUSDT", "title": "AVALANCHE" },
+                    { "proName": "BINANCE:DOTUSDT", "title": "POLKADOT" },
+                    { "proName": "BINANCE:LINKUSDT", "title": "CHAINLINK" }
+                  ],
+                  "showSymbolLogo": true,
+                  "isTransparent": false,
+                  "displayMode": "adaptive",
+                  "colorTheme": "light",
+                  "locale": "tr"
+                }
+                  </script>
+                </div>
+            </div>
+
+            <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST)</div>
+            <div class="ticker-wrapper">
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                  {
+                  "symbols": [
+                    { "proName": "BIST:XU100", "title": "BIST 100" },
+                    { "proName": "BIST:THYAO", "title": "THY" },
+                    { "proName": "BIST:GARAN", "title": "GARANTİ" },
+                    { "proName": "BIST:EREGL", "title": "EREĞLİ" },
+                    { "proName": "BIST:ASELS", "title": "ASELSAN" },
+                    { "proName": "BIST:BIMAS", "title": "BİM" },
+                    { "proName": "BIST:AKBNK", "title": "AKBANK" }
+                  ],
+                  "showSymbolLogo": true,
+                  "isTransparent": false,
+                  "displayMode": "adaptive",
+                  "colorTheme": "light",
+                  "locale": "tr"
+                }
+                  </script>
                 </div>
             </div>
 
@@ -681,13 +775,11 @@
 
         async function fetchGramAltin() {
             try {
-                // CORS Engeli Bulunmayan Global Güvenli Kur Servisi
                 const res = await fetch('https://open.er-api.com/v6/latest/USD');
                 const data = await res.json();
                 
                 if(data && data.rates && data.rates.TRY) {
                     const usdTry = data.rates.TRY;
-                    // Ons Altın Fiyatını çekip Gram Altın/TL değerini hesaplıyoruz
                     const goldRes = await fetch('https://api.gold-api.com/price/XAU');
                     const goldData = await goldRes.json();
                     
