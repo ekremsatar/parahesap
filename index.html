@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelalHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
     <meta name="description" content="HelalHesap ile Zekat, Katılma Hesabı Kâr Payı, Murabaha Finansman, Fitre, Altın Birikim ve Miras hesaplamalarınızı faizsiz finans esaslarına göre yapın.">
+    <meta name="theme-color" content="#0f766e">
     
+    <!-- PWA MANIFEST (MOBİL UYGULAMA DESTEĞİ) -->
+    <link rel="manifest" href="data:application/manifest+json;utf8,{%22name%22:%22HelalHesap%20Faizsiz%20Finans%22,%22short_name%22:%22HelalHesap%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22#f8fafc%22,%22theme_color%22:%22#0f766e%22}">
+
     <!-- GOOGLE ARAMA SONUÇLARI SİTE LOGOSU (FAVICON) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f766e%22/><text y=%22.9em%22 font-size=%2290%22>₺</text></svg>">
     
@@ -294,22 +298,24 @@
 
         .share-btns {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .share-btn {
-            flex: 1;
+            flex: 1 1 30%;
             padding: 8px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-align: center;
         }
 
         .btn-wp { background: #22c55e; color: white; }
+        .btn-tg { background: #0088cc; color: white; }
         .btn-print { background: #64748b; color: white; }
 
         .faq-section {
@@ -361,6 +367,26 @@
         .dict-card p {
             font-size: 0.88rem;
             line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        .blog-article {
+            background: var(--info-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .blog-article h3 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .blog-article p {
+            font-size: 0.9rem;
+            line-height: 1.5;
             opacity: 0.9;
         }
 
@@ -416,6 +442,7 @@
             <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
             <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
             <button class="tab-btn" onclick="switchTab('miras', event)">Miras Paylaşımı</button>
+            <button class="tab-btn" onclick="switchTab('rehber', event)">Rehber & Blog</button>
             <button class="tab-btn" onclick="switchTab('sozluk', event)">Finans Sözlüğü</button>
         </div>
 
@@ -442,7 +469,7 @@
             <button class="btn" onclick="hesaplaZekat()">Zekat Miktarını Hesapla</button>
 
             <div id="zekat-sonuc" class="result-box">
-                <h3>Zekat Hesaplama Sonucu</h3>
+                <h3>Zekat Hesaplama Dökümü</h3>
                 <div class="result-row">
                     <span>Net Varlık Toplamı:</span>
                     <strong id="res-net">0 TL</strong>
@@ -452,8 +479,9 @@
                     <strong id="res-zekat" style="font-size: 1.2rem;">0 TL</strong>
                 </div>
                 <div class="share-btns">
-                    <button class="share-btn btn-wp" onclick="shareWhatsApp('Zekat Hesaplama Sonucum')">WhatsApp ile Paylaş</button>
-                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
+                    <button class="share-btn btn-wp" onclick="shareWhatsApp('Zekat Hesaplama Sonucum')">WhatsApp</button>
+                    <button class="share-btn btn-tg" onclick="shareTelegram('Zekat Hesaplama Sonucum')">Telegram</button>
+                    <button class="share-btn btn-print" onclick="window.print()">PDF / Yazdır</button>
                 </div>
             </div>
 
@@ -541,6 +569,9 @@
                     <span>Toplam Oruç Fidyesi Tutarı:</span>
                     <strong id="res-toplam-fidye">0 TL</strong>
                 </div>
+                <div class="share-btns">
+                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
+                </div>
             </div>
 
             <div class="faq-section">
@@ -627,6 +658,9 @@
                 <div class="result-row">
                     <span>Toplam Geri Ödeme:</span>
                     <strong id="res-toplam-odeme">0 TL</strong>
+                </div>
+                <div class="share-btns">
+                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
                 </div>
             </div>
 
@@ -721,7 +755,24 @@
             </div>
         </div>
 
-        <!-- 7. İSLAMİ FİNANS SÖZLÜĞÜ -->
+        <!-- 7. REHBER & BLOG (SEO ORGANİK ZİYARETÇİ ÇEKİMİ) -->
+        <div id="rehber" class="card">
+            <h2>Faizsiz Finans ve Helal Yatırım Rehberi</h2>
+            <div class="blog-article">
+                <h3>Katılım Bankacılığı ve Mevduat Bankacılığı Arasındaki 3 Temel Fark</h3>
+                <p>Katılım bankaları faizsizlik prensibiyle çalışır. Mevduat bankalarındaki sabit faiz getirisinin aksine, katılım bankalarında kâr ve zarar ortaklığı esastır. Toplanan fonlar yalnızca helal ve reel ticari alanlarda değerlendirilir.</p>
+            </div>
+            <div class="blog-article">
+                <h3>Zekat Hesaplarken Ticari Borçlar Nasıl Düşülür?</h3>
+                <p>Zekat verirken eldeki nakit, ziynet ve alacaklardan vadesi gelmiş borçlar düşülür. Gelecek yıllara sari uzun vadeli konut veya araç kredisi borçlarının ise sadece içinde bulunulan yılın taksit tutarı düşülmelidir.</p>
+            </div>
+            <div class="blog-article">
+                <h3>Murabaha (Finansman) İşlemi Caiz midir?</h3>
+                <p>Murabaha, bankanın bir malı nakit alıp müşterisine peşin fiyatın üzerine kâr ekleyerek taksitle satmasıdır. Mülkiyet devri gerçek bir alım-satıma dayandığı için İslam fıkhında caiz görülmüştür.</p>
+            </div>
+        </div>
+
+        <!-- 8. İSLAMİ FİNANS SÖZLÜĞÜ -->
         <div id="sozluk" class="card">
             <h2>İslami Finans ve Katılım Bankacılığı Sözlüğü</h2>
             <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.9;">Faizsiz finans dünyasında en çok kullanılan temel kavramlar ve dini terimler rehberi:</p>
@@ -779,8 +830,13 @@
         }
 
         function shareWhatsApp(title) {
-            const text = encodeURIComponent(title + " - HelalHesap üzerinden hesapladım.");
+            const text = encodeURIComponent(title + " - HelalHesap üzerinden hesapladım: https://parahesap.site/");
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        function shareTelegram(title) {
+            const text = encodeURIComponent(title + " - HelalHesap üzerinden hesapladım.");
+            window.open(`https://t.me/share/url?url=https://parahesap.site/&text=${text}`, '_blank');
         }
 
         async function loadLiveTickers() {
