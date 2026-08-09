@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParaHesap - Faizsiz Finans ve Hesaplama Portalı</title>
-    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu ve helal birikim hesaplayıcıları.">
+    <title>ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
+    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim hedefleme ve helal finansman hesaplayıcıları.">
     
-    <!-- ================= GOOGLE ADSENSE KODU ================= -->
+    <!-- GOOGLE ADSENSE KODU -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
-    <!-- ================= GOOGLE SEARCH CONSOLE DOĞRULAMA ================= -->
-    <!-- Search Console doğrulama kodunuz varsa aşağıdaki KOD_BURAYA alanına yazabilirsiniz -->
+    <!-- GOOGLE SEARCH CONSOLE DOĞRULAMA (İleride gerekirse buraya eklersiniz) -->
     <!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_KODU_BURAYA" /> -->
 
-    <!-- ================= GOOGLE ANALYTICS (GA4) ================= -->
-    <!-- Analytics ölçüm kimliğinizi (G-XXXXXXXXXX) aldığınızda alt satırları aktif edebilirsiniz -->
+    <!-- GOOGLE ANALYTICS (GA4) (İleride gerekirse buraya eklersiniz) -->
     <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ÖLÇÜM_KİMLİĞİ"></script>
     <script>
@@ -75,22 +73,24 @@
 
         .tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
             flex: 1;
-            min-width: 140px;
-            padding: 12px;
+            min-width: 120px;
+            padding: 10px 8px;
             background: #e2e8f0;
             border: none;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 0.88rem;
             cursor: pointer;
             color: var(--text);
             transition: all 0.2s;
+            text-align: center;
         }
 
         .tab-btn.active {
@@ -114,7 +114,7 @@
         .card h2 {
             color: var(--primary);
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             border-bottom: 2px solid var(--border);
             padding-bottom: 8px;
         }
@@ -198,6 +198,12 @@
             font-size: 0.85rem;
             color: #64748b;
         }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 8px;
+        }
     </style>
 </head>
 <body>
@@ -208,10 +214,12 @@
     </header>
 
     <div class="container">
-        <!-- Sekme Butonları -->
+        <!-- Sekme Butonları (4 Araç) -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('zekat')">Zekat Hesapla</button>
-            <button class="tab-btn" onclick="switchTab('katilma')">Kâr Payı Hesapla</button>
+            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
+            <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı Hesapla</button>
+            <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
+            <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
         </div>
 
         <!-- 1. ZEKAT HESAPLAYICI -->
@@ -296,18 +304,85 @@
                 <strong>Açıklama:</strong> Katılım bankalarında faizsiz kâr-zarar ortaklığı esastır. Verilen oranlar geçmiş dönem getirilerine dayalı tahmini oranlardır, garanti edilen bir getiri değildir.
             </div>
         </div>
+
+        <!-- 3. KATILIM FİNANSMANI HESAPLAYICI -->
+        <div id="finansman" class="card">
+            <h2>Katılım Finansmanı Taksit Hesaplayıcı (Murabaha)</h2>
+            <div class="form-group">
+                <label for="finansman-tutar">Finansman Tutarı (TL):</label>
+                <input type="number" id="finansman-tutar" placeholder="Örn: 500000">
+            </div>
+            <div class="form-group">
+                <label for="finansman-vade">Vade (Ay):</label>
+                <input type="number" id="finansman-vade" placeholder="Örn: 12, 24, 36" value="12">
+            </div>
+            <div class="form-group">
+                <label for="kar-orani">Aylık Kâr Payı Oranı (%):</label>
+                <input type="number" id="kar-orani" step="0.01" placeholder="Örn: 2.89" value="2.89">
+            </div>
+
+            <button class="btn" onclick="hesaplaFinansman()">Aylık Taksiti Hesapla</button>
+
+            <div id="finansman-sonuc" class="result-box">
+                <h3>Finansman Ödeme Detayları</h3>
+                <div class="result-row">
+                    <span>Aylık Taksit Miktarı:</span>
+                    <strong id="res-taksit" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Toplam Geri Ödeme:</span>
+                    <strong id="res-toplam-odeme">0 TL</strong>
+                </div>
+            </div>
+
+            <div class="info-text">
+                <strong>Murabaha Mantığı:</strong> Katılım finans sisteminde banka malı peşin satın alır, üzerine kâr marjını ekleyerek müşteriye vadeli (taksitle) satar.
+            </div>
+        </div>
+
+        <!-- 4. ALTIN BİRİKİM HEDEFLEME -->
+        <div id="birikim" class="card">
+            <h2>Altın / Gümüş Birikim Hedefleme</h2>
+            <div class="form-group">
+                <label for="hedef-gram">Hedeflenen Altın Miktarı (Gram):</label>
+                <input type="number" id="hedef-gram" placeholder="Örn: 100">
+            </div>
+            <div class="form-group">
+                <label for="hedef-sure">Hedeflenen Süre (Ay):</label>
+                <input type="number" id="hedef-sure" placeholder="Örn: 12" value="12">
+            </div>
+
+            <button class="btn" onclick="hesaplaBirikim()">Aylık Hedefi Hesapla</button>
+
+            <div id="birikim-sonuc" class="result-box">
+                <h3>Birikim Planı</h3>
+                <div class="result-row">
+                    <span>Aylık Alınması Gereken Altın:</span>
+                    <strong id="res-aylik-gram" style="color: #166534; font-size: 1.2rem;">0 Gram</strong>
+                </div>
+            </div>
+
+            <div class="info-text">
+                <strong>Tavsiye:</strong> Paranın enflasyon karşısında alım gücünü korumanın en güvenli faizsiz yollarından biri düzenli fiziki veya hesaben kıymetli maden birikimi yapmaktır.
+            </div>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2026 parahesap.site - Tüm Hakları Saklıdır. | Faizsiz Finans Portalı</p>
+        <p style="margin-top: 5px;">
+            <a href="#">Gizlilik Politikası</a> | <a href="#">İletişim</a>
+        </p>
     </footer>
 
     <script>
-        function switchTab(tabId) {
+        function switchTab(tabId, evt) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
             
-            event.target.classList.add('active');
+            if(evt && evt.target) {
+                evt.target.classList.add('active');
+            }
             document.getElementById(tabId).classList.add('active');
         }
 
@@ -320,7 +395,7 @@
             const netVarlik = (nakit + altin + ticari) - borc;
 
             if (netVarlik <= 0) {
-                alert('Zekat yükümlülüğü oluşması için net varlığınızın pozitif ve nisap miktarının üzerinde olması gerekir.');
+                alert('Zekat yükümlülüğü oluşması için net varlığınızın pozitif olması gerekir.');
                 document.getElementById('zekat-sonuc').style.display = 'none';
                 return;
             }
@@ -344,13 +419,46 @@
 
             const gunSayisi = vadeAy * 30;
             const brutGetiri = (anapara * oran * gunSayisi) / 36500;
-            const stopaj = brutGetiri * 0.15; // Standart stopaj simülasyonu
+            const stopaj = brutGetiri * 0.15;
             const netGetiri = brutGetiri - stopaj;
 
             document.getElementById('res-brut').innerText = brutGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-stopaj').innerText = stopaj.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-net-kar').innerText = netGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('kar-sonuc').style.display = 'block';
+        }
+
+        function hesaplaFinansman() {
+            const tutar = parseFloat(document.getElementById('finansman-tutar').value);
+            const vade = parseInt(document.getElementById('finansman-vade').value);
+            const oran = parseFloat(document.getElementById('kar-orani').value) / 100;
+
+            if (!tutar || tutar <= 0 || !vade || vade <= 0) {
+                alert('Lütfen tutar ve vade bilgilerini eksiksiz girin.');
+                return;
+            }
+
+            const taksit = (tutar * oran * Math.pow(1 + oran, vade)) / (Math.pow(1 + oran, vade) - 1);
+            const toplam = taksit * vade;
+
+            document.getElementById('res-taksit').innerText = taksit.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-toplam-odeme').innerText = toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('finansman-sonuc').style.display = 'block';
+        }
+
+        function hesaplaBirikim() {
+            const gram = parseFloat(document.getElementById('hedef-gram').value);
+            const sure = parseInt(document.getElementById('hedef-sure').value);
+
+            if (!gram || gram <= 0 || !sure || sure <= 0) {
+                alert('Lütfen hedef gram ve süre bilgilerini girin.');
+                return;
+            }
+
+            const aylikGram = gram / sure;
+
+            document.getElementById('res-aylik-gram').innerText = aylikGram.toFixed(2) + ' Gram / Ay';
+            document.getElementById('birikim-sonuc').style.display = 'block';
         }
     </script>
 </body>
