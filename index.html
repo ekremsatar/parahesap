@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
-    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim hedefleme ve helal finansman hesaplayıcıları.">
+    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim, Fitre/Fidye, Miras paylaşımı ve helal finansman hesaplayıcıları.">
     
     <!-- GOOGLE ADSENSE KODU -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
@@ -17,6 +17,15 @@
             --card-bg: #ffffff;
             --text: #1e293b;
             --border: #e2e8f0;
+            --info-bg: #f8fafc;
+        }
+
+        body.dark-mode {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --border: #334155;
+            --info-bg: #334155;
         }
 
         * {
@@ -31,6 +40,7 @@
             color: var(--text);
             line-height: 1.6;
             padding-bottom: 40px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
@@ -39,6 +49,7 @@
             padding: 1.5rem 1rem;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         header h1 {
@@ -51,6 +62,20 @@
             opacity: 0.9;
         }
 
+        .dark-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         .container {
             max-width: 900px;
             margin: 20px auto;
@@ -59,29 +84,34 @@
 
         .tabs {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .tab-btn {
             flex: 1;
-            min-width: 120px;
-            padding: 10px 8px;
+            min-width: 100px;
+            padding: 10px 4px;
             background: #e2e8f0;
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            color: var(--text);
+            color: #1e293b;
             transition: all 0.2s;
             text-align: center;
         }
 
+        body.dark-mode .tab-btn {
+            background: #334155;
+            color: #f8fafc;
+        }
+
         .tab-btn.active {
-            background: var(--primary);
-            color: white;
+            background: var(--primary) !important;
+            color: white !important;
         }
 
         .card {
@@ -122,6 +152,8 @@
             border: 1px solid var(--border);
             border-radius: 6px;
             font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text);
         }
 
         input:focus, select:focus {
@@ -153,10 +185,16 @@
             border: 1px solid #bbf7d0;
             border-radius: 8px;
             display: none;
+            color: #166534;
+        }
+
+        body.dark-mode .result-box {
+            background: #064e3b;
+            border-color: #047857;
+            color: #ecfdf5;
         }
 
         .result-box h3 {
-            color: #166534;
             font-size: 1.1rem;
             margin-bottom: 8px;
         }
@@ -168,15 +206,25 @@
             font-size: 0.95rem;
         }
 
-        .info-text {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: #64748b;
-            line-height: 1.5;
-            background: #f8fafc;
-            padding: 12px;
-            border-radius: 6px;
+        .share-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
+
+        .share-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .btn-wp { background: #22c55e; color: white; }
+        .btn-print { background: #64748b; color: white; }
 
         .faq-section {
             margin-top: 30px;
@@ -196,13 +244,12 @@
 
         .faq-item h4 {
             font-size: 0.95rem;
-            color: #334155;
             margin-bottom: 4px;
         }
 
         .faq-item p {
             font-size: 0.88rem;
-            color: #64748b;
+            opacity: 0.8;
         }
 
         footer {
@@ -217,22 +264,31 @@
             text-decoration: none;
             margin: 0 8px;
         }
+
+        @media print {
+            header, .tabs, .btn, .share-btns, .faq-section, footer, .dark-toggle { display: none !important; }
+            .card { display: block !important; border: none; }
+            .result-box { display: block !important; }
+        }
     </style>
 </head>
 <body>
 
     <header>
+        <button class="dark-toggle" onclick="toggleDarkMode()">Gece / Gündüz</button>
         <h1>parahesap.site</h1>
         <p>Faizsiz Finans ve Helal Hesaplama Portalı</p>
     </header>
 
     <div class="container">
-        <!-- Sekme Butonları -->
+        <!-- Sekme Butonları (6 Modül) -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
-            <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı Hesapla</button>
-            <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
+            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat</button>
+            <button class="tab-btn" onclick="switchTab('nisap', event)">Fitre / Nisap</button>
+            <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı</button>
+            <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman</button>
             <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
+            <button class="tab-btn" onclick="switchTab('miras', event)">Miras Paylaşımı</button>
         </div>
 
         <!-- 1. ZEKAT HESAPLAYICI -->
@@ -265,7 +321,11 @@
                 </div>
                 <div class="result-row">
                     <span>Verilmesi Gereken Zekat (%2.5):</span>
-                    <strong id="res-zekat" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                    <strong id="res-zekat" style="font-size: 1.2rem;">0 TL</strong>
+                </div>
+                <div class="share-btns">
+                    <button class="share-btn btn-wp" onclick="shareWhatsApp('Zekat Hesaplama Sonucum')">WhatsApp ile Paylaş</button>
+                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
                 </div>
             </div>
 
@@ -282,7 +342,54 @@
             </div>
         </div>
 
-        <!-- 2. KATILMA HESABI KÂR PAYI HESAPLAYICI -->
+        <!-- 2. NISAP / FITRE / FIDYE HESAPLAYICI -->
+        <div id="nisap" class="card">
+            <h2>Nisap Miktarı, Fitre ve Oruç Fidyesi Hesaplayıcı</h2>
+            <div class="form-group">
+                <label for="gram-fiyat">Güncel Gram Altın Fiyatı (TL):</label>
+                <input type="number" id="gram-fiyat" placeholder="Örn: 2500" value="2500">
+            </div>
+            <div class="form-group">
+                <label for="kisi-sayisi">Hane / Aile Birey Sayısı (Fitre İçin):</label>
+                <input type="number" id="kisi-sayisi" placeholder="Örn: 4" value="1">
+            </div>
+            <div class="form-group">
+                <label for="fidye-gun">Tutulamayan Oruç Gün Sayısı (Fidye İçin):</label>
+                <input type="number" id="fidye-gun" placeholder="Örn: 30" value="0">
+            </div>
+            <div class="form-group">
+                <label for="gunluk-fitre">Diyanet Günlük Fitre/Fidye Tutarı (TL):</label>
+                <input type="number" id="gunluk-fitre" placeholder="Örn: 130" value="130">
+            </div>
+
+            <button class="btn" onclick="hesaplaNisapFitre()">Nisap ve Fitre Miktarını Hesapla</button>
+
+            <div id="nisap-sonuc" class="result-box">
+                <h3>Dini Yükümlülük Detayları</h3>
+                <div class="result-row">
+                    <span>Zekat Nisap Eşiği (80.18 gr Altın):</span>
+                    <strong id="res-nisap-esik">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Aileniz İçin Toplam Fitre Tutarı:</span>
+                    <strong id="res-toplam-fitre">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Toplam Oruç Fidyesi Tutarı:</span>
+                    <strong id="res-toplam-fidye">0 TL</strong>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>Nisap Miktarı Nedir?</h4>
+                    <p>Zekat ve kurban gibi ibadetlerin farz/vacip olması için temel ihtiyaçlar ve borçlar çıktıktan sonra sahip olunması gereken asgari zenginlik ölçüsüdür (80.18 gram altın).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. KATILMA HESABI KÂR PAYI HESAPLAYICI -->
         <div id="katilma" class="card">
             <h2>Katılma Hesabı Kâr Payı Simülasyonu</h2>
             <div class="form-group">
@@ -317,7 +424,7 @@
                 </div>
                 <div class="result-row">
                     <span>Vade Sonu Net Getiri:</span>
-                    <strong id="res-net-kar" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                    <strong id="res-net-kar" style="font-size: 1.2rem;">0 TL</strong>
                 </div>
             </div>
 
@@ -330,7 +437,7 @@
             </div>
         </div>
 
-        <!-- 3. KATILIM FİNANSMANI HESAPLAYICI -->
+        <!-- 4. KATILIM FİNANSMANI HESAPLAYICI -->
         <div id="finansman" class="card">
             <h2>Katılım Finansmanı Taksit Hesaplayıcı (Murabaha)</h2>
             <div class="form-group">
@@ -352,7 +459,7 @@
                 <h3>Finansman Ödeme Detayları</h3>
                 <div class="result-row">
                     <span>Aylık Taksit Miktarı:</span>
-                    <strong id="res-taksit" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                    <strong id="res-taksit" style="font-size: 1.2rem;">0 TL</strong>
                 </div>
                 <div class="result-row">
                     <span>Toplam Geri Ödeme:</span>
@@ -369,7 +476,7 @@
             </div>
         </div>
 
-        <!-- 4. ALTIN BİRİKİM HEDEFLEME -->
+        <!-- 5. ALTIN BİRİKİM HEDEFLEME -->
         <div id="birikim" class="card">
             <h2>Altın / Gümüş Birikim Hedefleme</h2>
             <div class="form-group">
@@ -387,7 +494,7 @@
                 <h3>Birikim Planı</h3>
                 <div class="result-row">
                     <span>Aylık Alınması Gereken Altın:</span>
-                    <strong id="res-aylik-gram" style="color: #166534; font-size: 1.2rem;">0 Gram</strong>
+                    <strong id="res-aylik-gram" style="font-size: 1.2rem;">0 Gram</strong>
                 </div>
             </div>
 
@@ -399,9 +506,64 @@
                 </div>
             </div>
         </div>
+
+        <!-- 6. İSLAMİ MİRAS (FERÂİZ) PAYLAŞIMI -->
+        <div id="miras" class="card">
+            <h2>İslami Miras (Ferâiz) Paylaşım Simülatörü</h2>
+            <div class="form-group">
+                <label for="miras-tereke">Bırakılan Toplam Miras / Tereke Tutarı (TL):</label>
+                <input type="number" id="miras-tereke" placeholder="Örn: 1000000">
+            </div>
+            <div class="form-group">
+                <label for="miras-es">Eş Durumu:</label>
+                <select id="miras-es">
+                    <option value="yok">Eş Yok</option>
+                    <option value="karisi">Sağ Kalan Eş (Hanım)</option>
+                    <option value="kocasi">Sağ Kalan Eş (Koca)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="miras-erkek-cocuk">Erkek Çocuk Sayısı:</label>
+                <input type="number" id="miras-erkek-cocuk" value="0">
+            </div>
+            <div class="form-group">
+                <label for="miras-kiz-cocuk">Kız Çocuk Sayısı:</label>
+                <input type="number" id="miras-kiz-cocuk" value="0">
+            </div>
+
+            <button class="btn" onclick="hesaplaMiras()">Miras Paylarını Hesapla</button>
+
+            <div id="miras-sonuc" class="result-box">
+                <h3>Tahmini Miras Dağılımı</h3>
+                <div class="result-row">
+                    <span>Sağ Kalan Eş Payı:</span>
+                    <strong id="res-es-payi">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Erkek Çocuk Başına Düşen Pay:</span>
+                    <strong id="res-erkek-payi">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Kız Çocuk Başına Düşen Pay:</span>
+                    <strong id="res-kiz-payi">0 TL</strong>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>İslami Hukukta Miras Esası Nedir?</h4>
+                    <p>Çocuklar bulunduğunda erkek çocuğa, kız çocuğun iki katı pay verilir (Nisâ Suresi 11. Ayet). Eşin payı ise çocuk olup olmamasına göre 1/4 veya 1/8 olarak değişir.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
         function switchTab(tabId, evt) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
@@ -410,6 +572,11 @@
                 evt.target.classList.add('active');
             }
             document.getElementById(tabId).classList.add('active');
+        }
+
+        function shareWhatsApp(title) {
+            const text = encodeURIComponent(title + " - parahesap.site üzerinden hesapladım.");
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
 
         function hesaplaZekat() {
@@ -431,6 +598,22 @@
             document.getElementById('res-net').innerText = netVarlik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-zekat').innerText = zekat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('zekat-sonuc').style.display = 'block';
+        }
+
+        function hesaplaNisapFitre() {
+            const gramFiyat = parseFloat(document.getElementById('gram-fiyat').value) || 0;
+            const kisiSayisi = parseInt(document.getElementById('kisi-sayisi').value) || 0;
+            const fidyeGun = parseInt(document.getElementById('fidye-gun').value) || 0;
+            const gunlukFitre = parseFloat(document.getElementById('gunluk-fitre').value) || 0;
+
+            const nisapEsik = gramFiyat * 80.18;
+            const toplamFitre = kisiSayisi * gunlukFitre;
+            const toplamFidye = fidyeGun * gunlukFitre;
+
+            document.getElementById('res-nisap-esik').innerText = nisapEsik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-toplam-fitre').innerText = toplamFitre.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-toplam-fidye').innerText = toplamFidye.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('nisap-sonuc').style.display = 'block';
         }
 
         function hesaplaKarPayi() {
@@ -485,6 +668,47 @@
 
             document.getElementById('res-aylik-gram').innerText = aylikGram.toFixed(2) + ' Gram / Ay';
             document.getElementById('birikim-sonuc').style.display = 'block';
+        }
+
+        function hesaplaMiras() {
+            const tereke = parseFloat(document.getElementById('miras-tereke').value);
+            const es = document.getElementById('miras-es').value;
+            const erkek = parseInt(document.getElementById('miras-erkek-cocuk').value) || 0;
+            const kiz = parseInt(document.getElementById('miras-kiz-cocuk').value) || 0;
+
+            if (!tereke || tereke <= 0) {
+                alert('Lütfen geçerli bir miras tutarı girin.');
+                return;
+            }
+
+            let esPayi = 0;
+            let kalan = tereke;
+
+            // Eş Payı Hesaplama
+            if (es === 'karisi') {
+                esPayi = (erkek > 0 || kiz > 0) ? tereke * (1/8) : tereke * (1/4);
+            } else if (es === 'kocasi') {
+                esPayi = (erkek > 0 || kiz > 0) ? tereke * (1/4) : tereke * (1/2);
+            }
+
+            kalan -= esPayi;
+
+            // Çocuklar Arası Paylaşım (Erkek 2, Kız 1 hisse)
+            let erkekTekPay = 0;
+            let kizTekPay = 0;
+
+            const toplamHisse = (erkek * 2) + kiz;
+
+            if (toplamHisse > 0) {
+                const birHisse = kalan / toplamHisse;
+                erkekTekPay = birHisse * 2;
+                kizTekPay = birHisse;
+            }
+
+            document.getElementById('res-es-payi').innerText = esPayi.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-erkek-payi').innerText = (erkek > 0 ? erkekTekPay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
+            document.getElementById('res-kiz-payi').innerText = (kiz > 0 ? kizTekPay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
+            document.getElementById('miras-sonuc').style.display = 'block';
         }
     </script>
 
