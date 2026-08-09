@@ -5,19 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - parahesap.site</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; color: #1e293b; }
-        h1 { color: #0f766e; }
-        a { color: #0f766e; }
-        .box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f8fafc; color: #1e293b; padding: 20px; line-height: 1.6; }
+        .box { max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        h1 { color: #0f766e; margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 6px; }
+        button { background: #0f766e; color: white; padding: 12px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; }
+        a { color: #0f766e; text-decoration: none; }
     </style>
 </head>
 <body>
-    <h1>İletişim</h1>
-    <p>Sitemiz, hesaplama araçlarımız veya iş birliği talepleriniz için bizimle iletişime geçebilirsiniz.</p>
     <div class="box">
-        <strong>E-Posta:</strong> info@parahesap.site
+        <h1>İletişim</h1>
+        <p>Soru, öneri ve işbirliği talepleriniz için aşağıdaki formu kullanabilir veya e-posta gönderebilirsiniz.</p>
+        <p><strong>E-posta:</strong> iletisim@parahesap.site</p>
+        
+        <form action="https://formspree.io/f/xbjnqweo" method="POST" style="margin-top: 20px;">
+            <input type="text" name="name" placeholder="Adınız Soyadınız" required>
+            <input type="email" name="email" placeholder="E-Posta Adresiniz" required>
+            <textarea name="message" rows="5" placeholder="Mesajınız..." required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+        <br>
+        <p><a href="index.html">&larr; Ana Sayfaya Dön</a></p>
     </div>
-    <br>
-    <p><a href="index.html">&larr; Ana Sayfaya Dön</a></p>
 </body>
 </html>
