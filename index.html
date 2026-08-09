@@ -46,7 +46,7 @@
         header {
             background-color: var(--primary);
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 1.8rem 1rem 1.2rem 1rem;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: relative;
@@ -64,15 +64,15 @@
 
         .dark-toggle {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: rgba(255, 255, 255, 0.2);
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
         }
 
@@ -82,26 +82,33 @@
             padding: 0 15px;
         }
 
+        /* Mobil Kaydırılabilir Sekme Tasarımı */
         .tabs {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .tab-btn {
-            flex: 1;
-            min-width: 100px;
-            padding: 10px 4px;
+            flex: 0 0 auto;
+            padding: 10px 16px;
             background: #e2e8f0;
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
             color: #1e293b;
             transition: all 0.2s;
-            text-align: center;
+            white-space: nowrap;
         }
 
         body.dark-mode .tab-btn {
@@ -146,6 +153,11 @@
             font-size: 0.9rem;
         }
 
+        .input-group {
+            display: flex;
+            gap: 8px;
+        }
+
         input, select {
             width: 100%;
             padding: 10px 12px;
@@ -159,6 +171,22 @@
         input:focus, select:focus {
             outline: none;
             border-color: var(--primary);
+        }
+
+        .btn-api {
+            background: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-api:hover {
+            background: #0369a1;
         }
 
         .btn {
@@ -281,12 +309,12 @@
     </header>
 
     <div class="container">
-        <!-- Sekme Butonları (6 Modül) -->
+        <!-- Kaydırılabilir Sekme Butonları -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat</button>
+            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('nisap', event)">Fitre / Nisap</button>
             <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı</button>
-            <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman</button>
+            <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
             <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
             <button class="tab-btn" onclick="switchTab('miras', event)">Miras Paylaşımı</button>
         </div>
@@ -347,7 +375,10 @@
             <h2>Nisap Miktarı, Fitre ve Oruç Fidyesi Hesaplayıcı</h2>
             <div class="form-group">
                 <label for="gram-fiyat">Güncel Gram Altın Fiyatı (TL):</label>
-                <input type="number" id="gram-fiyat" placeholder="Örn: 2500" value="2500">
+                <div class="input-group">
+                    <input type="number" id="gram-fiyat" placeholder="Örn: 2500" value="2500">
+                    <button class="btn-api" onclick="fetchGramAltin()">Canlı Fiyat Getir</button>
+                </div>
             </div>
             <div class="form-group">
                 <label for="kisi-sayisi">Hane / Aile Birey Sayısı (Fitre İçin):</label>
@@ -579,6 +610,22 @@
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
 
+        async function fetchGramAltin() {
+            try {
+                const res = await fetch('https://api.truncgil.com/today.json');
+                const data = await res.json();
+                if(data && data["Gram Altın"] && data["Gram Altın"].Satış) {
+                    const price = parseFloat(data["Gram Altın"].Satış.replace('.', '').replace(',', '.'));
+                    document.getElementById('gram-fiyat').value = Math.round(price);
+                    alert('Güncel Gram Altın Fiyatı Çekildi: ' + Math.round(price) + ' TL');
+                } else {
+                    alert('Kur verisi çekilemedi, lütfen manuel girin.');
+                }
+            } catch (e) {
+                alert('Canlı kur servisine ulaşılamadı. Lütfen fiyatı manuel yazın.');
+            }
+        }
+
         function hesaplaZekat() {
             const nakit = parseFloat(document.getElementById('nakit').value) || 0;
             const altin = parseFloat(document.getElementById('altin').value) || 0;
@@ -684,7 +731,6 @@
             let esPayi = 0;
             let kalan = tereke;
 
-            // Eş Payı Hesaplama
             if (es === 'karisi') {
                 esPayi = (erkek > 0 || kiz > 0) ? tereke * (1/8) : tereke * (1/4);
             } else if (es === 'kocasi') {
@@ -693,7 +739,6 @@
 
             kalan -= esPayi;
 
-            // Çocuklar Arası Paylaşım (Erkek 2, Kız 1 hisse)
             let erkekTekPay = 0;
             let kizTekPay = 0;
 
