@@ -6,6 +6,15 @@
     <title>ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
     <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim, Fitre/Fidye, Miras paylaşımı ve İslami finans sözlüğü.">
     
+    <!-- SOSYAL MEDYA (OPEN GRAPH & TWITTER) PAYLAŞIM ETİKETLERİ -->
+    <meta property="og:title" content="ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı">
+    <meta property="og:description" content="Zekat, Kâr Payı, Murabaha Finansman, Altın Birikim ve Miras Hesaplayıcıları.">
+    <meta property="og:url" content="https://parahesap.site/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ParaHesap - Faizsiz Finans Portalı">
+    <meta name="twitter:description" content="Helal ve faizsiz finansal hesaplama araçları tek çatı altında.">
+
     <!-- GOOGLE ADSENSE KODU -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
@@ -82,7 +91,6 @@
             padding: 0 15px;
         }
 
-        /* Özel Canlı Ticker CSS */
         .custom-ticker {
             width: 100%;
             overflow: hidden;
@@ -382,14 +390,13 @@
 
     <div class="container">
 
-        <!-- 1. CANLI AKAN DÖVİZ VE KANITLANMIŞ TL CİNSİNDEN ALTIN BANTI -->
+        <!-- CANLI DÖVİZ VE ALTIN BANTI -->
         <div class="custom-ticker">
             <div class="ticker-track" id="doviz-altin-track">
                 <div class="ticker-item">💵 DOLAR: <span id="val-usd">Yükleniyor...</span></div>
                 <div class="ticker-item">💶 EURO: <span id="val-eur">Yükleniyor...</span></div>
                 <div class="ticker-item">🏆 GRAM ALTIN (TL): <span id="val-gold">Yükleniyor...</span></div>
                 <div class="ticker-item">🥈 GRAM GÜMÜŞ (TL): <span id="val-silver">Yükleniyor...</span></div>
-                <!-- Tekrarı Kesintisiz Akış Sağlar -->
                 <div class="ticker-item">💵 DOLAR: <span id="val-usd2">Yükleniyor...</span></div>
                 <div class="ticker-item">💶 EURO: <span id="val-eur2">Yükleniyor...</span></div>
                 <div class="ticker-item">🏆 GRAM ALTIN (TL): <span id="val-gold2">Yükleniyor...</span></div>
@@ -463,7 +470,7 @@
                 </div>
             </div>
 
-            <!-- ENGELSİZ BIST BORSA BANTI -->
+            <!-- BIST BORSA BANTI -->
             <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST PİYASALARI)</div>
             <div class="custom-ticker">
                 <div class="ticker-track">
@@ -772,7 +779,6 @@
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
         }
 
-        // Anlık Canlı Otomatik Kur Yükleme
         async function loadLiveTickers() {
             try {
                 const res = await fetch('https://open.er-api.com/v6/latest/USD');
