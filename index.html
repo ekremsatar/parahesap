@@ -9,20 +9,6 @@
     <!-- GOOGLE ADSENSE KODU -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
-    <!-- GOOGLE SEARCH CONSOLE DOĞRULAMA (İleride gerekirse buraya eklersiniz) -->
-    <!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_KODU_BURAYA" /> -->
-
-    <!-- GOOGLE ANALYTICS (GA4) (İleride gerekirse buraya eklersiniz) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ÖLÇÜM_KİMLİĞİ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ÖLÇÜM_KİMLİĞİ');
-    </script>
-    -->
-
     <style>
         :root {
             --primary: #0f766e;
@@ -192,6 +178,33 @@
             border-radius: 6px;
         }
 
+        .faq-section {
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .faq-section h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+        }
+
+        .faq-item h4 {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 4px;
+        }
+
+        .faq-item p {
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -210,11 +223,11 @@
 
     <header>
         <h1>parahesap.site</h1>
-        <p>Faizsiz Finans ve Helal Hesaplama Araçları</p>
+        <p>Faizsiz Finans ve Helal Hesaplama Portalı</p>
     </header>
 
     <div class="container">
-        <!-- Sekme Butonları (4 Araç) -->
+        <!-- Sekme Butonları -->
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı Hesapla</button>
@@ -256,8 +269,16 @@
                 </div>
             </div>
 
-            <div class="info-text">
-                <strong>Bilgi:</strong> Dinimize göre zekat; nisap miktarına (yaklaşık 80.18 gram altın değerine) ulaşan ve üzerinden 1 kameri yıl geçen nisap miktarındaki varlığın %2,5'i (1/40) oranında verilir.
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>Zekat kimlere farzdır?</h4>
+                    <p>Müslüman, hür, akıl sağlığı yerinde ve ergenlik çağına ermiş, nisap miktarı kadar (80.18 gr altın değerinde) asli ihtiyaçları dışında mala sahip olan her bireye farzdır.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Zekat oranı ne kadardır?</h4>
+                    <p>Nakit para, altın, gümüş, döviz ve ticari mallarda zekat oranı kırkta bir, yani %2,5'tir.</p>
+                </div>
             </div>
         </div>
 
@@ -300,8 +321,12 @@
                 </div>
             </div>
 
-            <div class="info-text">
-                <strong>Açıklama:</strong> Katılım bankalarında faizsiz kâr-zarar ortaklığı esastır. Verilen oranlar geçmiş dönem getirilerine dayalı tahmini oranlardır, garanti edilen bir getiri değildir.
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>Katılma hesabı kâr payı faizden nasıl ayrılır?</h4>
+                    <p>Faizde sabit getiri garantisi vardır. Katılma hesaplarında ise banka parayı reel ticarette işletir, oluşan kâr veya zararı önceden belirlenen oranlar çerçevesinde müşteriyle paylaşır.</p>
+                </div>
             </div>
         </div>
 
@@ -335,8 +360,12 @@
                 </div>
             </div>
 
-            <div class="info-text">
-                <strong>Murabaha Mantığı:</strong> Katılım finans sisteminde banka malı peşin satın alır, üzerine kâr marjını ekleyerek müşteriye vadeli (taksitle) satar.
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>Murabaha sistemi nasıl çalışır?</h4>
+                    <p>Katılım bankası almak istediğiniz evi veya arabayı satıcıdan peşin satın alır. Ardından üzerine anlaşılan kâr oranını ekleyerek size taksitle satar.</p>
+                </div>
             </div>
         </div>
 
@@ -362,8 +391,12 @@
                 </div>
             </div>
 
-            <div class="info-text">
-                <strong>Tavsiye:</strong> Paranın enflasyon karşısında alım gücünü korumanın en güvenli faizsiz yollarından biri düzenli fiziki veya hesaben kıymetli maden birikimi yapmaktır.
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <div class="faq-item">
+                    <h4>Neden kıymetli maden birikimi?</h4>
+                    <p>Fiziki veya hesaben yapılan altın ve gümüş birikimleri, enflasyonist ortamlarda paranın alım gücünü korumanın en güvenli helal yollarından biridir.</p>
+                </div>
             </div>
         </div>
     </div>
