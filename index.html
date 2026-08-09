@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
-    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim, Fitre/Fidye, Miras paylaşımı ve helal finansman hesaplayıcıları.">
+    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu, Altın birikim, Fitre/Fidye, Miras paylaşımı ve İslami finans sözlüğü.">
     
     <!-- GOOGLE ADSENSE KODU -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
@@ -280,6 +280,33 @@
             opacity: 0.8;
         }
 
+        /* Sözlük Alanı Stilleri */
+        .dict-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .dict-card {
+            background: var(--info-bg);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .dict-card h4 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .dict-card p {
+            font-size: 0.88rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -309,7 +336,7 @@
     </header>
 
     <div class="container">
-        <!-- Kaydırılabilir Sekme Butonları -->
+        <!-- Kaydırılabilir Sekme Butonları (7 Modül) -->
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('nisap', event)">Fitre / Nisap</button>
@@ -317,6 +344,7 @@
             <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
             <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
             <button class="tab-btn" onclick="switchTab('miras', event)">Miras Paylaşımı</button>
+            <button class="tab-btn" onclick="switchTab('sozluk', event)">Finans Sözlüğü</button>
         </div>
 
         <!-- 1. ZEKAT HESAPLAYICI -->
@@ -585,6 +613,47 @@
                 <div class="faq-item">
                     <h4>İslami Hukukta Miras Esası Nedir?</h4>
                     <p>Çocuklar bulunduğunda erkek çocuğa, kız çocuğun iki katı pay verilir (Nisâ Suresi 11. Ayet). Eşin payı ise çocuk olup olmamasına göre 1/4 veya 1/8 olarak değişir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. İSLAMİ FİNANS SÖZLÜĞÜ (YENİ EKLEME) -->
+        <div id="sozluk" class="card">
+            <h2>İslami Finans ve Katılım Bankacılığı Sözlüğü</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.9;">Faizsiz finans dünyasında en çok kullanılan temel kavramlar ve dini terimler rehberi:</p>
+            
+            <div class="dict-grid">
+                <div class="dict-card">
+                    <h4>Murabaha</h4>
+                    <p>Bankanın bir malı peşin satın alıp, üzerine kâr marjı ekleyerek müşteriye vadeli/taksitli satması esasına dayanan finansman yöntemidir.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Mudaraba</h4>
+                    <p>Bir tarafın sermaye koyduğu, diğer tarafın ise emeğini ve uzmanlığını kattığı kâr-zarar ortaklığı modelidir.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Müşareke</h4>
+                    <p>Tarafların hem sermaye hem de yönetim aşamasında ortak hareket ettiği, oluşan kâr ve zararın paylaşıldığı tam ticari ortaklıktır.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Sukuk (Kira Sertifikası)</h4>
+                    <p>Faizsiz sermaye piyasası aracıdır. Bir varlığa veya projeye sahiplik payını temsil eden helal sertifikalardır.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Nisap</h4>
+                    <p>Dinen zenginlik sınırı demektir. Borç ve asli ihtiyaçlar dışında 80.18 gram altın değerinde varlığa sahip olanlar dinen zengin sayılır.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Riba (Faiz)</h4>
+                    <p>Borç verme işlemlerinde veya takaslarda karşılıksız olarak talep edilen her türlü haksız fazlalıktır; İslam fıkhında haram kılınmıştır.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>Teverruk</h4>
+                    <p>Nakit ihtiyacını karşılamak amacıyla vadeli satın alınan bir emtianın, peşin fiyatla üçüncü bir şahsa satılarak nakde çevrilmesidir.</p>
+                </div>
+                <div class="dict-card">
+                    <h4>İnfak</h4>
+                    <p>Allah'ın rızasını kazanmak amacıyla kişinin kendi malından muhtaçlara harcama yapması, yardım etmesidir.</p>
                 </div>
             </div>
         </div>
