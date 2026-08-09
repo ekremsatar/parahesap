@@ -1,91 +1,357 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GKXWCDPHMF');
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParaHesap - Faizsiz Finans ve Hesaplama Portalı</title>
+    <meta name="description" content="Faizsiz finans araçları, Zekat hesaplama, Katılma hesabı kâr payı simülasyonu ve helal birikim hesaplayıcıları.">
+    
+    <!-- ================= GOOGLE ADSENSE KODU ================= -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
-  <!-- Google Search Console Doğrulaması -->
-  <meta name="google-site-verification" content="1WuINEQp6A1O018k7L1N5Y9G89n-b4yL9">
+    <!-- ================= GOOGLE SEARCH CONSOLE DOĞRULAMA ================= -->
+    <!-- Search Console doğrulama kodunuz varsa aşağıdaki KOD_BURAYA alanına yazabilirsiniz -->
+    <!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_KODU_BURAYA" /> -->
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <!-- ================= GOOGLE ANALYTICS (GA4) ================= -->
+    <!-- Analytics ölçüm kimliğinizi (G-XXXXXXXXXX) aldığınızda alt satırları aktif edebilirsiniz -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ÖLÇÜM_KİMLİĞİ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ÖLÇÜM_KİMLİĞİ');
+    </script>
+    -->
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ParaHesap – Finans ve Hesaplama Araçları</title>
-  <meta name="description" content="Kredi taksiti, bileşik faiz, kira artış oranı ve enflasyon kayıplarını saniyeler içinde hesaplayın. Ücretsiz ve kayıtsız finans araçları.">
-  <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #0d9488;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result-box h3 {
+            color: #166534;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .info-text {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site">
-    <div class="wrap nav-wrap">
-      <a href="index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
-      <nav>
-        <ul>
-          <li><a href="kredi-hesaplama.html">Kredi</a></li>
-          <li><a href="kira-artis-orani.html">Kira Artışı</a></li>
-          <li><a href="faiz-hesaplama.html">Faiz</a></li>
-          <li><a href="enflasyon-hesaplama.html">Enflasyon</a></li>
-          <li><a href="blog/index.html">Rehberler</a></li>
-        </ul>
-      </nav>
+    <header>
+        <h1>parahesap.site</h1>
+        <p>Faizsiz Finans ve Helal Hesaplama Araçları</p>
+    </header>
+
+    <div class="container">
+        <!-- Sekme Butonları -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('zekat')">Zekat Hesapla</button>
+            <button class="tab-btn" onclick="switchTab('katilma')">Kâr Payı Hesapla</button>
+        </div>
+
+        <!-- 1. ZEKAT HESAPLAYICI -->
+        <div id="zekat" class="card active">
+            <h2>Gelişmiş Zekat Hesaplama</h2>
+            <div class="form-group">
+                <label for="nakit">Nakit Para ve Banka Hesabı (TL / Döviz Karşılığı):</label>
+                <input type="number" id="nakit" placeholder="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="altin">Altın ve Ziynet Değeri (TL Karşılığı):</label>
+                <input type="number" id="altin" placeholder="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="ticari">Ticari Mal / Alacaklar (TL):</label>
+                <input type="number" id="ticari" placeholder="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="borc">Düşülecek Borçlar (TL):</label>
+                <input type="number" id="borc" placeholder="0" value="0">
+            </div>
+
+            <button class="btn" onclick="hesaplaZekat()">Zekat Miktarını Hesapla</button>
+
+            <div id="zekat-sonuc" class="result-box">
+                <h3>Zekat Hesaplama Sonucu</h3>
+                <div class="result-row">
+                    <span>Net Varlık Toplamı:</span>
+                    <strong id="res-net">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Verilmesi Gereken Zekat (%2.5):</span>
+                    <strong id="res-zekat" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                </div>
+            </div>
+
+            <div class="info-text">
+                <strong>Bilgi:</strong> Dinimize göre zekat; nisap miktarına (yaklaşık 80.18 gram altın değerine) ulaşan ve üzerinden 1 kameri yıl geçen nisap miktarındaki varlığın %2,5'i (1/40) oranında verilir.
+            </div>
+        </div>
+
+        <!-- 2. KATILMA HESABI KÂR PAYI HESAPLAYICI -->
+        <div id="katilma" class="card">
+            <h2>Katılma Hesabı Kâr Payı Simülasyonu</h2>
+            <div class="form-group">
+                <label for="anapara">Yatırılacak Anapara (TL):</label>
+                <input type="number" id="anapara" placeholder="Örn: 100000">
+            </div>
+            <div class="form-group">
+                <label for="vade">Vade Süresi:</label>
+                <select id="vade">
+                    <option value="1">1 Ay (30 Gün)</option>
+                    <option value="3">3 Ay (90 Gün)</option>
+                    <option value="6">6 Ay (180 Gün)</option>
+                    <option value="12">1 Yıl (365 Gün)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="oran">Tahmini Yıllık Kâr Payı Oranı (%):</label>
+                <input type="number" id="oran" placeholder="Örn: 35" value="35">
+            </div>
+
+            <button class="btn" onclick="hesaplaKarPayi()">Tahmini Kâr Payı Hesapla</button>
+
+            <div id="kar-sonuc" class="result-box">
+                <h3>Tahmini Getiri Detayları</h3>
+                <div class="result-row">
+                    <span>Vade Sonu Brüt Getiri:</span>
+                    <strong id="res-brut">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Tahmini Stopaj / Kesinti (%15):</span>
+                    <strong id="res-stopaj">0 TL</strong>
+                </div>
+                <div class="result-row">
+                    <span>Vade Sonu Net Getiri:</span>
+                    <strong id="res-net-kar" style="color: #166534; font-size: 1.2rem;">0 TL</strong>
+                </div>
+            </div>
+
+            <div class="info-text">
+                <strong>Açıklama:</strong> Katılım bankalarında faizsiz kâr-zarar ortaklığı esastır. Verilen oranlar geçmiş dönem getirilerine dayalı tahmini oranlardır, garanti edilen bir getiri değildir.
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- AKAN CANLI KUR BANDI -->
-  <div class="ticker-bar">
-    <div class="ticker-track">
-      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
-      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
-      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
-      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
-      <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
-      <!-- Tekrar döngüsü -->
-      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
-      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
-      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
-    </div>
-  </div>
+    <footer>
+        <p>&copy; 2026 parahesap.site - Tüm Hakları Saklıdır. | Faizsiz Finans Portalı</p>
+    </footer>
 
-  <main class="wrap container">
-    <div class="calc-header">
-      <h1>Paranızın Gerçek Değerini Hesaplayın</h1>
-      <p>Kredi taksitlerinizi, kira zammınızı, bileşik faiz getirilerinizi ve enflasyon kayıplarınızı saniyeler içinde hesaplayın.</p>
-    </div>
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
 
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <a href="kredi-hesaplama.html" class="input-card" style="text-decoration:none;">
-        <label>01. HESAPLAMA ARACI</label>
-        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Kredi Hesaplama ➔</span>
-        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Aylık taksit tutarlarınızı ve toplam geri ödeme planınızı çıkarın.</p>
-      </a>
+        function hesaplaZekat() {
+            const nakit = parseFloat(document.getElementById('nakit').value) || 0;
+            const altin = parseFloat(document.getElementById('altin').value) || 0;
+            const ticari = parseFloat(document.getElementById('ticari').value) || 0;
+            const borc = parseFloat(document.getElementById('borc').value) || 0;
 
-      <a href="kira-artis-orani.html" class="input-card" style="text-decoration:none;">
-        <label>02. HESAPLAMA ARACI</label>
-        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Kira Artış Oranı Hesaplama ➔</span>
-        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Mevcut kiranıza uygulanacak resmi zam oranını ve yeni kiranızı görün.</p>
-      </a>
+            const netVarlik = (nakit + altin + ticari) - borc;
 
-      <a href="faiz-hesaplama.html" class="input-card" style="text-decoration:none;">
-        <label>03. HESAPLAMA ARACI</label>
-        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Bileşik Faiz Hesaplama ➔</span>
-        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Birikimlerinizin zaman içinde katlanarak büyümesini inceleyin.</p>
-      </a>
+            if (netVarlik <= 0) {
+                alert('Zekat yükümlülüğü oluşması için net varlığınızın pozitif ve nisap miktarının üzerinde olması gerekir.');
+                document.getElementById('zekat-sonuc').style.display = 'none';
+                return;
+            }
 
-      <a href="enflasyon-hesaplama.html" class="input-card" style="text-decoration:none;">
-        <label>04. HESAPLAMA ARACI</label>
-        <span style="font-size: 22px; font-weight: 800; color: var(--primary-dark);">Enflasyon Kaybı Hesaplama ➔</span>
-        <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Mevcut paranızın gelecek yıllardaki gerçek satın alma gücünü öğrenin.</p>
-      </a>
-    </div>
-  </main>
+            const zekat = netVarlik * 0.025;
 
+            document.getElementById('res-net').innerText = netVarlik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-zekat').innerText = zekat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('zekat-sonuc').style.display = 'block';
+        }
+
+        function hesaplaKarPayi() {
+            const anapara = parseFloat(document.getElementById('anapara').value);
+            const vadeAy = parseInt(document.getElementById('vade').value);
+            const oran = parseFloat(document.getElementById('oran').value);
+
+            if (!anapara || anapara <= 0) {
+                alert('Lütfen geçerli bir anapara miktarı girin.');
+                return;
+            }
+
+            const gunSayisi = vadeAy * 30;
+            const brutGetiri = (anapara * oran * gunSayisi) / 36500;
+            const stopaj = brutGetiri * 0.15; // Standart stopaj simülasyonu
+            const netGetiri = brutGetiri - stopaj;
+
+            document.getElementById('res-brut').innerText = brutGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-stopaj').innerText = stopaj.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-net-kar').innerText = netGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('kar-sonuc').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
