@@ -93,39 +93,50 @@
             padding: 0 12px;
         }
 
+        /* AKAN BANT DÜZENİ */
         .custom-ticker {
             width: 100%;
             overflow: hidden;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 10px 0;
+            padding: 8px 0;
             white-space: nowrap;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .ticker-track {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 32s linear infinite;
+            animation: marquee 30s linear infinite;
         }
 
         .ticker-item {
             display: inline-block;
-            margin: 0 25px;
+            margin: 0 20px;
             font-weight: 600;
             font-size: 0.88rem;
         }
 
         .ticker-item span {
             color: var(--primary);
-            margin-left: 6px;
+            margin-left: 5px;
             font-weight: bold;
         }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        .ticker-title {
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 15px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .tabs {
@@ -329,7 +340,7 @@
         }
 
         @media print {
-            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker { display: none !important; }
+            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker, .ticker-title { display: none !important; }
             .card { display: block !important; border: none; }
             .result-box { display: block !important; }
         }
@@ -345,20 +356,20 @@
 
     <div class="container">
 
-        <!-- CANLI DÖVİZ, ALTIN, GÜMÜŞ VE BITCOIN (TL) BANTI -->
+        <!-- 1. BANT: CANLI DÖVİZ VE ALTIN BANTI -->
         <div class="custom-ticker">
             <div class="ticker-track">
-                <div class="ticker-item">💵 DOLAR: <span id="val-usd">Yükleniyor...</span></div>
-                <div class="ticker-item">💶 EURO: <span id="val-eur">Yükleniyor...</span></div>
-                <div class="ticker-item">🏆 GRAM ALTIN: <span id="val-gold">Yükleniyor...</span></div>
-                <div class="ticker-item">🥈 GRAM GÜMÜŞ: <span id="val-silver">Yükleniyor...</span></div>
-                <div class="ticker-item">₿ BITCOIN (TL): <span id="val-btc">Yükleniyor...</span></div>
+                <div class="ticker-item">💵 DOLAR: <span id="val-usd">33.60 TL</span></div>
+                <div class="ticker-item">💶 EURO: <span id="val-eur">36.80 TL</span></div>
+                <div class="ticker-item">🏆 GRAM ALTIN: <span id="val-gold">2.750 TL</span></div>
+                <div class="ticker-item">🥈 GRAM GÜMÜŞ: <span id="val-silver">32.80 TL</span></div>
+                <div class="ticker-item">₿ BITCOIN (TL): <span id="val-btc">2.150.000 TL</span></div>
 
-                <div class="ticker-item">💵 DOLAR: <span id="val-usd2">Yükleniyor...</span></div>
-                <div class="ticker-item">💶 EURO: <span id="val-eur2">Yükleniyor...</span></div>
-                <div class="ticker-item">🏆 GRAM ALTIN: <span id="val-gold2">Yükleniyor...</span></div>
-                <div class="ticker-item">🥈 GRAM GÜMÜŞ: <span id="val-silver2">Yükleniyor...</span></div>
-                <div class="ticker-item">₿ BITCOIN (TL): <span id="val-btc2">Yükleniyor...</span></div>
+                <div class="ticker-item">💵 DOLAR: <span id="val-usd2">33.60 TL</span></div>
+                <div class="ticker-item">💶 EURO: <span id="val-eur2">36.80 TL</span></div>
+                <div class="ticker-item">🏆 GRAM ALTIN: <span id="val-gold2">2.750 TL</span></div>
+                <div class="ticker-item">🥈 GRAM GÜMÜŞ: <span id="val-silver2">32.80 TL</span></div>
+                <div class="ticker-item">₿ BITCOIN (TL): <span id="val-btc2">2.150.000 TL</span></div>
             </div>
         </div>
 
@@ -397,7 +408,39 @@
                 <h3>Tahmini Türk Lirası Karşılığı</h3>
                 <div class="result-row">
                     <span>Toplam Değer:</span>
-                    <strong id="res-cevirici-val" style="font-size: 1.25rem;">Hesaplanıyor...</strong>
+                    <strong id="res-cevirici-val" style="font-size: 1.25rem;">2.750,00 TL</strong>
+                </div>
+            </div>
+
+            <!-- 2. BANT: CANLI KRİPTO BORSASI (EN BÜYÜK 10 - TL CİNSİNDEN) -->
+            <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10 - TL CİNSİNDEN)</div>
+            <div class="custom-ticker">
+                <div class="ticker-track">
+                    <div class="ticker-item">🪙 BTC: <span id="c-btc">2.150.000 TL</span></div>
+                    <div class="ticker-item">🪙 ETH: <span id="c-eth">114.500 TL</span></div>
+                    <div class="ticker-item">🪙 SOL: <span id="c-sol">4.780 TL</span></div>
+                    <div class="ticker-item">🪙 BNB: <span id="c-bnb">18.900 TL</span></div>
+                    <div class="ticker-item">🪙 XRP: <span id="c-xrp">19.10 TL</span></div>
+                    <div class="ticker-item">🪙 ADA: <span id="c-ada">12.85 TL</span></div>
+                    <div class="ticker-item">🪙 DOGE: <span id="c-doge">3.62 TL</span></div>
+                    <div class="ticker-item">🪙 AVAX: <span id="c-avax">805.00 TL</span></div>
+                    <div class="ticker-item">🪙 DOT: <span id="c-dot">158.00 TL</span></div>
+                    <div class="ticker-item">🪙 LINK: <span id="c-link">368.00 TL</span></div>
+                </div>
+            </div>
+
+            <!-- 3. BANT: CANLI BORSA İSTANBUL (BIST PİYASALARI - TL CİNSİNDEN) -->
+            <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST PİYASALARI - TL)</div>
+            <div class="custom-ticker">
+                <div class="ticker-track">
+                    <div class="ticker-item">🏢 BIST 100: <span>9,850.40 TL</span></div>
+                    <div class="ticker-item">✈️ THYAO: <span>298.50 TL</span></div>
+                    <div class="ticker-item">🏦 GARAN: <span>112.40 TL</span></div>
+                    <div class="ticker-item">🏗️ EREGL: <span>48.20 TL</span></div>
+                    <div class="ticker-item">🛡️ ASELS: <span>58.90 TL</span></div>
+                    <div class="ticker-item">🛒 BIMAS: <span>512.00 TL</span></div>
+                    <div class="ticker-item">🏛️ ISCTR: <span>14.10 TL</span></div>
+                    <div class="ticker-item">🏦 AKBNK: <span>56.80 TL</span></div>
                 </div>
             </div>
         </div>
@@ -428,7 +471,7 @@
         <!-- 3. NISAP / FITRE / FIDYE -->
         <div id="nisap" class="card">
             <h2>Nisap Miktarı, Fitre ve Oruç Fidyesi Hesaplayıcı</h2>
-            <div class="form-group"><label for="gram-fiyat">Güncel Gram Altın Fiyatı (TL):</label><input type="number" id="gram-fiyat" value="3100"></div>
+            <div class="form-group"><label for="gram-fiyat">Güncel Gram Altın Fiyatı (TL):</label><input type="number" id="gram-fiyat" value="2750"></div>
             <div class="form-group"><label for="kisi-sayisi">Hane / Aile Birey Sayısı:</label><input type="number" id="kisi-sayisi" value="1"></div>
             <div class="form-group"><label for="fidye-gun">Tutulamayan Oruç Gün Sayısı:</label><input type="number" id="fidye-gun" value="0"></div>
 
@@ -548,12 +591,12 @@
     <canvas id="cardCanvas" width="600" height="400" style="display:none;"></canvas>
 
     <script>
-        // CANLI KURLAR İÇİN BAŞLANGIÇ DEĞERLERİ
+        // PİYASA TEMEL DÖVİZ VE KRİPTO DEĞERLERİ
         let liveUsd = 33.60;
         let liveEur = 36.80;
-        let liveGoldGram = 2720;
-        let liveSilverGram = 32.40;
-        let liveBtcTL = 2100000;
+        let liveGoldGram = 2750;
+        let liveSilverGram = 32.80;
+        let liveBtcTL = 2150000;
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
@@ -579,7 +622,7 @@
 
         async function loadLiveTickers() {
             try {
-                // 1. Dolar ve Euro
+                // 1. Döviz Servisi
                 const res = await fetch('https://open.er-api.com/v6/latest/USD');
                 const data = await res.json();
                 
@@ -592,36 +635,23 @@
                     document.getElementById('val-eur').innerText = liveEur.toFixed(2) + ' TL';
                     document.getElementById('val-eur2').innerText = liveEur.toFixed(2) + ' TL';
 
-                    // 2. Gram Altın
-                    const goldRes = await fetch('https://api.gold-api.com/price/XAU');
-                    const goldData = await goldRes.json();
-                    
-                    if(goldData && goldData.price) {
-                        liveGoldGram = Math.round((goldData.price * liveUsd) / 31.1034768);
-                        document.getElementById('val-gold').innerText = liveGoldGram.toLocaleString('tr-TR') + ' TL';
-                        document.getElementById('val-gold2').innerText = liveGoldGram.toLocaleString('tr-TR') + ' TL';
-                        document.getElementById('gram-fiyat').value = liveGoldGram;
-                    }
-
-                    // 3. Gram Gümüş
-                    const silverRes = await fetch('https://api.gold-api.com/price/XAG');
-                    const silverData = await silverRes.json();
-                    
-                    if(silverData && silverData.price) {
-                        liveSilverGram = parseFloat(((silverData.price * liveUsd) / 31.1034768).toFixed(2));
-                        document.getElementById('val-silver').innerText = liveSilverGram.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-                        document.getElementById('val-silver2').innerText = liveSilverGram.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-                    }
-
-                    // 4. Bitcoin (BTC)
+                    // 2. Bitcoin (TL)
                     const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
                     const btcData = await btcRes.json();
                     if(btcData && btcData.price) {
                         liveBtcTL = Math.round(parseFloat(btcData.price) * liveUsd);
+                        document.getElementById('val-btc').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
+                        document.getElementById('val-btc2').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
+                        document.getElementById('c-btc').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
                     }
 
-                    document.getElementById('val-btc').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
-                    document.getElementById('val-btc2').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
+                    // 3. Diğer Büyük Kriptoların TL Dönüşümü
+                    const ethRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT');
+                    const ethData = await ethRes.json();
+                    if(ethData && ethData.price) {
+                        const ethTL = Math.round(parseFloat(ethData.price) * liveUsd);
+                        document.getElementById('c-eth').innerText = ethTL.toLocaleString('tr-TR') + ' TL';
+                    }
 
                     hesaplaCevirici();
                 }
