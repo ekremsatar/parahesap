@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelalHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
-    <meta name="description" content="HelalHesap ile Zekat, Katılma Hesabı Kâr Payı, Murabaha Finansman, Fitre, Altın Birikim ve Miras hesaplamalarınızı faizsiz finans esaslarına göre yapın.">
+    <meta name="description" content="HelalHesap ile Zekat, Katılma Hesabı Kâr Payı, Murabaha Finansman, Fitre, Altın Birikim, Döviz Çevirici ve Miras hesaplamalarınızı faizsiz finans esaslarına göre yapın.">
     <meta name="theme-color" content="#0f766e">
     
-    <!-- PWA MANIFEST (MOBİL UYGULAMA DESTEĞİ) -->
+    <!-- PWA MANIFEST -->
     <link rel="manifest" href="data:application/manifest+json;utf8,{%22name%22:%22HelalHesap%20Faizsiz%20Finans%22,%22short_name%22:%22HelalHesap%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22#f8fafc%22,%22theme_color%22:%22#0f766e%22}">
 
-    <!-- GOOGLE ARAMA SONUÇLARI SİTE LOGOSU (FAVICON) -->
+    <!-- FAVICON -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f766e%22/><text y=%22.9em%22 font-size=%2290%22>₺</text></svg>">
     
-    <!-- GOOGLE MARKA TANIMLAMA (HELALHESAP) & SOSYAL MEDYA ETİKETLERİ -->
+    <!-- OPEN GRAPH & META -->
     <meta property="og:title" content="HelalHesap - Faizsiz Finans ve Helal Hesaplama Portalı">
     <meta property="og:site_name" content="HelalHesap">
     <meta property="og:description" content="Zekat, Katılma Hesabı Kâr Payı, Murabaha Finansman, Altın Birikim ve Miras Hesaplayıcıları.">
     <meta property="og:url" content="https://parahesap.site/">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HelalHesap - Faizsiz Finans Portalı">
-    <meta name="twitter:description" content="Helal ve faizsiz finansal hesaplama araçları tek çatı altında.">
 
-    <!-- GOOGLE ADSENSE KODU -->
+    <!-- GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
     <style>
@@ -235,22 +232,6 @@
             border-color: var(--primary);
         }
 
-        .btn-api {
-            background: #0284c7;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 0 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .btn-api:hover {
-            background: #0369a1;
-        }
-
         .btn {
             width: 100%;
             background: var(--primary);
@@ -284,11 +265,6 @@
             color: #ecfdf5;
         }
 
-        .result-box h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
         .result-row {
             display: flex;
             justify-content: space-between;
@@ -304,7 +280,7 @@
         }
 
         .share-btn {
-            flex: 1 1 30%;
+            flex: 1 1 22%;
             padding: 8px;
             border: none;
             border-radius: 5px;
@@ -316,32 +292,26 @@
 
         .btn-wp { background: #22c55e; color: white; }
         .btn-tg { background: #0088cc; color: white; }
+        .btn-card { background: #8b5cf6; color: white; }
         .btn-print { background: #64748b; color: white; }
 
-        .faq-section {
-            margin-top: 30px;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
+        /* TABLO VE BİLGİ KUTULARI */
+        .bank-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
         }
 
-        .faq-section h3 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 12px;
+        .bank-table th, .bank-table td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: left;
+            font-size: 0.9rem;
         }
 
-        .faq-item {
-            margin-bottom: 12px;
-        }
-
-        .faq-item h4 {
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        .faq-item p {
-            font-size: 0.88rem;
-            opacity: 0.8;
+        .bank-table th {
+            background: var(--primary);
+            color: white;
         }
 
         .dict-grid {
@@ -362,32 +332,6 @@
             color: var(--primary);
             font-size: 1.05rem;
             margin-bottom: 6px;
-        }
-
-        .dict-card p {
-            font-size: 0.88rem;
-            line-height: 1.4;
-            opacity: 0.9;
-        }
-
-        .blog-article {
-            background: var(--info-bg);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .blog-article h3 {
-            color: var(--primary);
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-        }
-
-        .blog-article p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            opacity: 0.9;
         }
 
         footer {
@@ -422,7 +366,7 @@
 
         <!-- CANLI DÖVİZ VE ALTIN BANTI -->
         <div class="custom-ticker">
-            <div class="ticker-track" id="doviz-altin-track">
+            <div class="ticker-track">
                 <div class="ticker-item">💵 DOLAR: <span id="val-usd">Yükleniyor...</span></div>
                 <div class="ticker-item">💶 EURO: <span id="val-eur">Yükleniyor...</span></div>
                 <div class="ticker-item">🏆 GRAM ALTIN (TL): <span id="val-gold">Yükleniyor...</span></div>
@@ -436,34 +380,61 @@
 
         <!-- Kaydırılabilir Sekme Butonları -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
+            <button class="tab-btn active" onclick="switchTab('cevirici', event)">Hızlı Çevirici</button>
+            <button class="tab-btn" onclick="switchTab('zekat', event)">Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('nisap', event)">Fitre / Nisap</button>
-            <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı</button>
+            <button class="tab-btn" onclick="switchTab('katilma', event)">Kâr Payı & Karşılaştırma</button>
             <button class="tab-btn" onclick="switchTab('finansman', event)">Finansman Taksit</button>
-            <button class="tab-btn" onclick="switchTab('birikim', event)">Altın Birikim</button>
+            <button class="tab-btn" onclick="switchTab('katilim-endeks', event)">BIST Katılım Endeksi</button>
             <button class="tab-btn" onclick="switchTab('miras', event)">Miras Paylaşımı</button>
-            <button class="tab-btn" onclick="switchTab('rehber', event)">Rehber & Blog</button>
             <button class="tab-btn" onclick="switchTab('sozluk', event)">Finans Sözlüğü</button>
         </div>
 
-        <!-- 1. ZEKAT HESAPLAYICI -->
-        <div id="zekat" class="card active">
+        <!-- YENİ 1: HIZLI DÖVİZ & ALTIN ÇEVİRİCİ -->
+        <div id="cevirici" class="card active">
+            <h2>Canlı Altın & Döviz - TL Dönüştürücü</h2>
+            <div class="form-group">
+                <label for="cev-miktar">Miktar Girin:</label>
+                <input type="number" id="cev-miktar" value="1" placeholder="Örn: 10">
+            </div>
+            <div class="form-group">
+                <label for="cev-tur">Dönüştürülecek Varlık Türü:</label>
+                <select id="cev-tur" onchange="hesaplaCevirici()">
+                    <option value="ALTIN">Gram Altın (TL)</option>
+                    <option value="GUMUS">Gram Gümüş (TL)</option>
+                    <option value="USD">Amerikan Doları (USD)</option>
+                    <option value="EUR">Euro (EUR)</option>
+                </select>
+            </div>
+            <button class="btn" onclick="hesaplaCevirici()">Dönüştür ve Hesapla</button>
+
+            <div id="cevirici-sonuc" class="result-box" style="display:block;">
+                <h3>Tahmini Türk Lirası Karşılığı</h3>
+                <div class="result-row">
+                    <span>Toplam Değer:</span>
+                    <strong id="res-cevirici-val" style="font-size: 1.3rem;">Canlı veri bekleniyor...</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. ZEKAT HESAPLAYICI (RESİMLİ KART İNDİRME EKLENDİ) -->
+        <div id="zekat" class="card">
             <h2>Gelişmiş Zekat Hesaplama</h2>
             <div class="form-group">
                 <label for="nakit">Nakit Para ve Banka Hesabı (TL / Döviz Karşılığı):</label>
-                <input type="number" id="nakit" placeholder="0" value="0">
+                <input type="number" id="nakit" value="0">
             </div>
             <div class="form-group">
                 <label for="altin">Altın ve Ziynet Değeri (TL Karşılığı):</label>
-                <input type="number" id="altin" placeholder="0" value="0">
+                <input type="number" id="altin" value="0">
             </div>
             <div class="form-group">
                 <label for="ticari">Ticari Mal / Alacaklar (TL):</label>
-                <input type="number" id="ticari" placeholder="0" value="0">
+                <input type="number" id="ticari" value="0">
             </div>
             <div class="form-group">
                 <label for="borc">Düşülecek Borçlar (TL):</label>
-                <input type="number" id="borc" placeholder="0" value="0">
+                <input type="number" id="borc" value="0">
             </div>
 
             <button class="btn" onclick="hesaplaZekat()">Zekat Miktarını Hesapla</button>
@@ -481,111 +452,40 @@
                 <div class="share-btns">
                     <button class="share-btn btn-wp" onclick="shareWhatsApp('Zekat Hesaplama Sonucum')">WhatsApp</button>
                     <button class="share-btn btn-tg" onclick="shareTelegram('Zekat Hesaplama Sonucum')">Telegram</button>
-                    <button class="share-btn btn-print" onclick="window.print()">PDF / Yazdır</button>
-                </div>
-            </div>
-
-            <!-- CANLI KRİPTO BANTI -->
-            <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10)</div>
-            <div class="custom-ticker">
-                <div class="ticker-track">
-                    <div class="ticker-item">🪙 BTC/USDT: <span id="c-btc">$65,250</span></div>
-                    <div class="ticker-item">🪙 ETH/USDT: <span id="c-eth">$3,480</span></div>
-                    <div class="ticker-item">🪙 SOL/USDT: <span id="c-sol">$145</span></div>
-                    <div class="ticker-item">🪙 BNB/USDT: <span id="c-bnb">$575</span></div>
-                    <div class="ticker-item">🪙 XRP/USDT: <span id="c-xrp">$0.58</span></div>
-                    <div class="ticker-item">🪙 ADA/USDT: <span id="c-ada">$0.39</span></div>
-                    <div class="ticker-item">🪙 DOGE/USDT: <span id="c-doge">$0.11</span></div>
-                    <div class="ticker-item">🪙 AVAX/USDT: <span id="c-avax">$24.50</span></div>
-                    <div class="ticker-item">🪙 DOT/USDT: <span id="c-dot">$4.80</span></div>
-                    <div class="ticker-item">🪙 LINK/USDT: <span id="c-link">$11.20</span></div>
-                </div>
-            </div>
-
-            <!-- BIST BORSA BANTI -->
-            <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST PİYASALARI)</div>
-            <div class="custom-ticker">
-                <div class="ticker-track">
-                    <div class="ticker-item">🏢 BIST 100: <span>9,850.40 TL</span></div>
-                    <div class="ticker-item">✈️ THYAO: <span>298.50 TL</span></div>
-                    <div class="ticker-item">🏦 GARAN: <span>112.40 TL</span></div>
-                    <div class="ticker-item">🏗️ EREGL: <span>48.20 TL</span></div>
-                    <div class="ticker-item">🛡️ ASELS: <span>58.90 TL</span></div>
-                    <div class="ticker-item">🛒 BIMAS: <span>512.00 TL</span></div>
-                    <div class="ticker-item">🏛️ ISCTR: <span>14.10 TL</span></div>
-                    <div class="ticker-item">🏦 AKBNK: <span>56.80 TL</span></div>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>Zekat kimlere farzdır?</h4>
-                    <p>Müslüman, hür, akıl sağlığı yerinde ve ergenlik çağına ermiş, nisap miktarı kadar (80.18 gr altın değerinde) asli ihtiyaçları dışında mala sahip olan her bireye farzdır.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Zekat oranı ne kadardır?</h4>
-                    <p>Nakit para, altın, gümüş, döviz ve ticari mallarda zekat oranı kırkta bir, yani %2,5'tir.</p>
+                    <button class="share-btn btn-card" onclick="indirGorselKart()">Görsel Kart İndir</button>
+                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
                 </div>
             </div>
         </div>
 
-        <!-- 2. NISAP / FITRE / FIDYE HESAPLAYICI -->
+        <!-- 3. NISAP / FITRE / FIDYE -->
         <div id="nisap" class="card">
             <h2>Nisap Miktarı, Fitre ve Oruç Fidyesi Hesaplayıcı</h2>
             <div class="form-group">
                 <label for="gram-fiyat">Güncel Gram Altın Fiyatı (TL):</label>
-                <div class="input-group">
-                    <input type="number" id="gram-fiyat" placeholder="Örn: 3000" value="3000">
-                    <button class="btn-api" onclick="fetchGramAltin()">Canlı Fiyat Getir</button>
-                </div>
+                <input type="number" id="gram-fiyat" value="3000">
             </div>
             <div class="form-group">
-                <label for="kisi-sayisi">Hane / Aile Birey Sayısı (Fitre İçin):</label>
-                <input type="number" id="kisi-sayisi" placeholder="Örn: 4" value="1">
+                <label for="kisi-sayisi">Hane / Aile Birey Sayısı:</label>
+                <input type="number" id="kisi-sayisi" value="1">
             </div>
             <div class="form-group">
-                <label for="fidye-gun">Tutulamayan Oruç Gün Sayısı (Fidye İçin):</label>
-                <input type="number" id="fidye-gun" placeholder="Örn: 30" value="0">
-            </div>
-            <div class="form-group">
-                <label for="gunluk-fitre">Diyanet Günlük Fitre/Fidye Tutarı (TL):</label>
-                <input type="number" id="gunluk-fitre" placeholder="Örn: 180" value="180">
+                <label for="fidye-gun">Tutulamayan Oruç Gün Sayısı:</label>
+                <input type="number" id="fidye-gun" value="0">
             </div>
 
             <button class="btn" onclick="hesaplaNisapFitre()">Nisap ve Fitre Miktarını Hesapla</button>
 
             <div id="nisap-sonuc" class="result-box">
-                <h3>Dini Yükümlülük Detayları</h3>
-                <div class="result-row">
-                    <span>Zekat Nisap Eşiği (80.18 gr Altın):</span>
-                    <strong id="res-nisap-esik">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Aileniz İçin Toplam Fitre Tutarı:</span>
-                    <strong id="res-toplam-fitre">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Toplam Oruç Fidyesi Tutarı:</span>
-                    <strong id="res-toplam-fidye">0 TL</strong>
-                </div>
-                <div class="share-btns">
-                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>Nisap Miktarı Nedir?</h4>
-                    <p>Zekat ve kurban gibi ibadetlerin farz/vacip olması için temel ihtiyaçlar ve borçlar çıktıktan sonra sahip olunması gereken asgari zenginlik ölçüsüdür (80.18 gram altın).</p>
-                </div>
+                <div class="result-row"><span>Zekat Nisap Eşiği (80.18 gr Altın):</span><strong id="res-nisap-esik">0 TL</strong></div>
+                <div class="result-row"><span>Toplam Fitre Tutarı:</span><strong id="res-toplam-fitre">0 TL</strong></div>
+                <div class="result-row"><span>Toplam Oruç Fidyesi Tutarı:</span><strong id="res-toplam-fidye">0 TL</strong></div>
             </div>
         </div>
 
-        <!-- 3. KATILMA HESABI KÂR PAYI HESAPLAYICI -->
+        <!-- YENİ 2: KÂR PAYI & KATILIM BANKALARI TABLOSU -->
         <div id="katilma" class="card">
-            <h2>Katılma Hesabı Kâr Payı Simülasyonu</h2>
+            <h2>Katılma Hesabı Kâr Payı Simülasyonu & Banka Karşılaştırması</h2>
             <div class="form-group">
                 <label for="anapara">Yatırılacak Anapara (TL):</label>
                 <input type="number" id="anapara" placeholder="Örn: 100000">
@@ -601,37 +501,37 @@
             </div>
             <div class="form-group">
                 <label for="oran">Tahmini Yıllık Kâr Payı Oranı (%):</label>
-                <input type="number" id="oran" placeholder="Örn: 35" value="35">
+                <input type="number" id="oran" value="35">
             </div>
 
             <button class="btn" onclick="hesaplaKarPayi()">Tahmini Kâr Payı Hesapla</button>
 
             <div id="kar-sonuc" class="result-box">
-                <h3>Tahmini Getiri Detayları</h3>
-                <div class="result-row">
-                    <span>Vade Sonu Brüt Getiri:</span>
-                    <strong id="res-brut">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Tahmini Stopaj / Kesinti (%15):</span>
-                    <strong id="res-stopaj">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Vade Sonu Net Getiri:</span>
-                    <strong id="res-net-kar" style="font-size: 1.2rem;">0 TL</strong>
-                </div>
+                <div class="result-row"><span>Vade Sonu Brüt Getiri:</span><strong id="res-brut">0 TL</strong></div>
+                <div class="result-row"><span>Tahmini Stopaj (%15):</span><strong id="res-stopaj">0 TL</strong></div>
+                <div class="result-row"><span>Vade Sonu Net Getiri:</span><strong id="res-net-kar" style="font-size: 1.2rem;">0 TL</strong></div>
             </div>
 
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>Katılma hesabı kâr payı faizden nasıl ayrılır?</h4>
-                    <p>Faizde sabit getiri garantisi vardır. Katılma hesaplarında ise banka parayı reel ticarette işletir, oluşan kâr veya zararı önceden belirlenen oranlar çerçevesinde müşteriyle paylaşır.</p>
-                </div>
-            </div>
+            <h3 style="margin-top: 25px; color: var(--primary); font-size: 1.1rem;">Türkiye Katılım Bankaları Ortalama Paylaşım Oranları</h3>
+            <table class="bank-table">
+                <thead>
+                    <tr>
+                        <th>Katılım Bankası</th>
+                        <th>Kâr/Zarar Katılma Oranı</th>
+                        <th>Hava Hesabı Vade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Kuveyttürk Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                    <tr><td>Türkiye Finans Katılım</td><td>85 / 15 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                    <tr><td>Ziraat Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                    <tr><td>Vakıf Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                    <tr><td>Emlak Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- 4. KATILIM FİNANSMANI HESAPLAYICI -->
+        <!-- 5. KATILIM FİNANSMANI HESAPLAYICI -->
         <div id="finansman" class="card">
             <h2>Katılım Finansmanı Taksit Hesaplayıcı (Murabaha)</h2>
             <div class="form-group">
@@ -640,71 +540,37 @@
             </div>
             <div class="form-group">
                 <label for="finansman-vade">Vade (Ay):</label>
-                <input type="number" id="finansman-vade" placeholder="Örn: 12, 24, 36" value="12">
+                <input type="number" id="finansman-vade" value="12">
             </div>
             <div class="form-group">
                 <label for="kar-orani">Aylık Kâr Payı Oranı (%):</label>
-                <input type="number" id="kar-orani" step="0.01" placeholder="Örn: 2.89" value="2.89">
+                <input type="number" id="kar-orani" step="0.01" value="2.89">
             </div>
 
             <button class="btn" onclick="hesaplaFinansman()">Aylık Taksiti Hesapla</button>
 
             <div id="finansman-sonuc" class="result-box">
-                <h3>Finansman Ödeme Detayları</h3>
-                <div class="result-row">
-                    <span>Aylık Taksit Miktarı:</span>
-                    <strong id="res-taksit" style="font-size: 1.2rem;">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Toplam Geri Ödeme:</span>
-                    <strong id="res-toplam-odeme">0 TL</strong>
-                </div>
-                <div class="share-btns">
-                    <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>Murabaha sistemi nasıl çalışır?</h4>
-                    <p>Katılım bankası almak istediğiniz evi veya arabayı satıcıdan peşin satın alır. Ardından üzerine anlaşılan kâr oranını ekleyerek size taksitle satar.</p>
-                </div>
+                <div class="result-row"><span>Aylık Taksit Miktarı:</span><strong id="res-taksit" style="font-size: 1.2rem;">0 TL</strong></div>
+                <div class="result-row"><span>Toplam Geri Ödeme:</span><strong id="res-toplam-odeme">0 TL</strong></div>
             </div>
         </div>
 
-        <!-- 5. ALTIN BİRİKİM HEDEFLEME -->
-        <div id="birikim" class="card">
-            <h2>Altın / Gümüş Birikim Hedefleme</h2>
-            <div class="form-group">
-                <label for="hedef-gram">Hedeflenen Altın Miktarı (Gram):</label>
-                <input type="number" id="hedef-gram" placeholder="Örn: 100">
-            </div>
-            <div class="form-group">
-                <label for="hedef-sure">Hedeflenen Süre (Ay):</label>
-                <input type="number" id="hedef-sure" placeholder="Örn: 12" value="12">
-            </div>
+        <!-- YENİ 3: BIST KATILIM ENDEKSİ HİSSE LİSTESİ -->
+        <div id="katilim-endeks" class="card">
+            <h2>Borsa İstanbul (BIST) Katılım Endeksi Şirketleri</h2>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.9;">Faizsiz finans ve Helal/Hassas yatırım kriterlerine (BIST Katılım Endeksi) uygun öne çıkan Borsa İstanbul şirketleri:</p>
 
-            <button class="btn" onclick="hesaplaBirikim()">Aylık Hedefi Hesapla</button>
-
-            <div id="birikim-sonuc" class="result-box">
-                <h3>Birikim Planı</h3>
-                <div class="result-row">
-                    <span>Aylık Alınması Gereken Altın:</span>
-                    <strong id="res-aylik-gram" style="font-size: 1.2rem;">0 Gram</strong>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>Neden kıymetli maden birikimi?</h4>
-                    <p>Fiziki veya hesaben yapılan altın ve gümüş birikimleri, enflasyonist ortamlarda paranın alım gücünü korumanın en güvenli helal yollarından biridir.</p>
-                </div>
+            <div class="dict-grid">
+                <div class="dict-card"><h4>THYAO - Türk Hava Yolları</h4><p>Sektör: Ulaştırma / Lojistik<br>Faizsiz Finans Kriteri: Tam Uyumlu</p></div>
+                <div class="dict-card"><h4>ASELS - Aselsan Elektronik</h4><p>Sektör: Savunma Sanayii / Teknoloji<br>Faizsiz Finans Kriteri: Tam Uyumlu</p></div>
+                <div class="dict-card"><h4>EREGL - Ereğli Demir Çelik</h4><p>Sektör: Sanayi / Madencilik<br>Faizsiz Finans Kriteri: Uyumlu</p></div>
+                <div class="dict-card"><h4>BIMAS - BİM Birleşik Mağazalar</h4><p>Sektör: Perakende Gıda<br>Faizsiz Finans Kriteri: Tam Uyumlu</p></div>
+                <div class="dict-card"><h4>SISE - Türkiye Şişe Cam</h4><p>Sektör: İmalat / Cam Sanayii<br>Faizsiz Finans Kriteri: Uyumlu</p></div>
+                <div class="dict-card"><h4>KONTR - Kontrolmatik Teknoloji</h4><p>Sektör: Enerji & Mühendislik<br>Faizsiz Finans Kriteri: Uyumlu</p></div>
             </div>
         </div>
 
-        <!-- 6. İSLAMİ MİRAS (FERÂİZ) PAYLAŞIMI -->
+        <!-- 7. MİRAS PAYLAŞIMI -->
         <div id="miras" class="card">
             <h2>İslami Miras (Ferâiz) Paylaşım Simülatörü</h2>
             <div class="form-group">
@@ -719,102 +585,37 @@
                     <option value="kocasi">Sağ Kalan Eş (Koca)</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="miras-erkek-cocuk">Erkek Çocuk Sayısı:</label>
-                <input type="number" id="miras-erkek-cocuk" value="0">
-            </div>
-            <div class="form-group">
-                <label for="miras-kiz-cocuk">Kız Çocuk Sayısı:</label>
-                <input type="number" id="miras-kiz-cocuk" value="0">
-            </div>
+            <div class="form-group"><label for="miras-erkek-cocuk">Erkek Çocuk Sayısı:</label><input type="number" id="miras-erkek-cocuk" value="0"></div>
+            <div class="form-group"><label for="miras-kiz-cocuk">Kız Çocuk Sayısı:</label><input type="number" id="miras-kiz-cocuk" value="0"></div>
 
             <button class="btn" onclick="hesaplaMiras()">Miras Paylarını Hesapla</button>
 
             <div id="miras-sonuc" class="result-box">
-                <h3>Tahmini Miras Dağılımı</h3>
-                <div class="result-row">
-                    <span>Sağ Kalan Eş Payı:</span>
-                    <strong id="res-es-payi">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Erkek Çocuk Başına Düşen Pay:</span>
-                    <strong id="res-erkek-payi">0 TL</strong>
-                </div>
-                <div class="result-row">
-                    <span>Kız Çocuk Başına Düşen Pay:</span>
-                    <strong id="res-kiz-payi">0 TL</strong>
-                </div>
-            </div>
-
-            <div class="faq-section">
-                <h3>Sıkça Sorulan Sorular</h3>
-                <div class="faq-item">
-                    <h4>İslami Hukukta Miras Esası Nedir?</h4>
-                    <p>Çocuklar bulunduğunda erkek çocuğa, kız çocuğun iki katı pay verilir (Nisâ Suresi 11. Ayet). Eşin payı ise çocuk olup olmamasına göre 1/4 veya 1/8 olarak değişir.</p>
-                </div>
+                <div class="result-row"><span>Sağ Kalan Eş Payı:</span><strong id="res-es-payi">0 TL</strong></div>
+                <div class="result-row"><span>Erkek Çocuk Başına Düşen Pay:</span><strong id="res-erkek-payi">0 TL</strong></div>
+                <div class="result-row"><span>Kız Çocuk Başına Düşen Pay:</span><strong id="res-kiz-payi">0 TL</strong></div>
             </div>
         </div>
 
-        <!-- 7. REHBER & BLOG (SEO ORGANİK ZİYARETÇİ ÇEKİMİ) -->
-        <div id="rehber" class="card">
-            <h2>Faizsiz Finans ve Helal Yatırım Rehberi</h2>
-            <div class="blog-article">
-                <h3>Katılım Bankacılığı ve Mevduat Bankacılığı Arasındaki 3 Temel Fark</h3>
-                <p>Katılım bankaları faizsizlik prensibiyle çalışır. Mevduat bankalarındaki sabit faiz getirisinin aksine, katılım bankalarında kâr ve zarar ortaklığı esastır. Toplanan fonlar yalnızca helal ve reel ticari alanlarda değerlendirilir.</p>
-            </div>
-            <div class="blog-article">
-                <h3>Zekat Hesaplarken Ticari Borçlar Nasıl Düşülür?</h3>
-                <p>Zekat verirken eldeki nakit, ziynet ve alacaklardan vadesi gelmiş borçlar düşülür. Gelecek yıllara sari uzun vadeli konut veya araç kredisi borçlarının ise sadece içinde bulunulan yılın taksit tutarı düşülmelidir.</p>
-            </div>
-            <div class="blog-article">
-                <h3>Murabaha (Finansman) İşlemi Caiz midir?</h3>
-                <p>Murabaha, bankanın bir malı nakit alıp müşterisine peşin fiyatın üzerine kâr ekleyerek taksitle satmasıdır. Mülkiyet devri gerçek bir alım-satıma dayandığı için İslam fıkhında caiz görülmüştür.</p>
-            </div>
-        </div>
-
-        <!-- 8. İSLAMİ FİNANS SÖZLÜĞÜ -->
+        <!-- 8. FİNANS SÖZLÜĞÜ -->
         <div id="sozluk" class="card">
             <h2>İslami Finans ve Katılım Bankacılığı Sözlüğü</h2>
-            <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.9;">Faizsiz finans dünyasında en çok kullanılan temel kavramlar ve dini terimler rehberi:</p>
-            
             <div class="dict-grid">
-                <div class="dict-card">
-                    <h4>Murabaha</h4>
-                    <p>Bankanın bir malı peşin satın alıp, üzerine kâr marjı ekleyerek müşteriye vadeli/taksitli satması esasına dayanan finansman yöntemidir.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Mudaraba</h4>
-                    <p>Bir tarafın sermaye koyduğu, diğer tarafın ise emeğini ve uzmanlığını kattığı kâr-zarar ortaklığı modelidir.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Müşareke</h4>
-                    <p>Tarafların hem sermaye hem de yönetim aşamasında ortak hareket ettiği, oluşan kâr ve zararın paylaşıldığı tam ticari ortaklıktır.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Sukuk (Kira Sertifikası)</h4>
-                    <p>Faizsiz sermaye piyasası aracıdır. Bir varlığa veya projeye sahiplik payını temsil eden helal sertifikalardır.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Nisap</h4>
-                    <p>Dinen zenginlik sınırı demektir. Borç ve asli ihtiyaçlar dışında 80.18 gram altın değerinde varlığa sahip olanlar dinen zengin sayılır.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Riba (Faiz)</h4>
-                    <p>Borç verme işlemlerinde veya takaslarda karşılıksız olarak talep edilen her türlü haksız fazlalıktır; İslam fıkhında haram kılınmıştır.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>Teverruk</h4>
-                    <p>Nakit ihtiyacını karşılamak amacıyla vadeli satın alınan bir emtianın, peşin fiyatla üçüncü bir şahsa satılarak nakde çevrilmesidir.</p>
-                </div>
-                <div class="dict-card">
-                    <h4>İnfak</h4>
-                    <p>Allah'ın rızasını kazanmak amacıyla kişinin kendi malından muhtaçlara harcama yapması, yardım etmesidir.</p>
-                </div>
+                <div class="dict-card"><h4>Murabaha</h4><p>Maliyet üzeri kâr marjı ile peşin alıp vadeli satma yöntemidir.</p></div>
+                <div class="dict-card"><h4>Mudaraba</h4><p>Sermaye sahibi ile işletmecinin yaptığı kâr-zarar ortaklığıdır.</p></div>
+                <div class="dict-card"><h4>Müşareke</h4><p>Sermaye ve yönetimin ortak olduğu tam ticari ortaklık modelidir.</p></div>
+                <div class="dict-card"><h4>Sukuk</h4><p>Faizsiz sermaye piyasasında bir varlığın mülkiyet payını temsil eden helal sertifikadır.</p></div>
             </div>
         </div>
+
     </div>
 
+    <!-- GÖRSEL KART OLUŞTURMA İÇİN CANVAS GİZLİ ELEMANI -->
+    <canvas id="cardCanvas" width="600" height="400" style="display:none;"></canvas>
+
     <script>
+        let liveUsd = 0, liveGoldGram = 0, liveSilverGram = 0, liveEur = 0;
+
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
@@ -823,9 +624,7 @@
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
             
-            if(evt && evt.target) {
-                evt.target.classList.add('active');
-            }
+            if(evt && evt.target) { evt.target.classList.add('active'); }
             document.getElementById(tabId).classList.add('active');
         }
 
@@ -845,60 +644,53 @@
                 const data = await res.json();
                 
                 if(data && data.rates && data.rates.TRY) {
-                    const usdTry = data.rates.TRY;
-                    const eurTry = usdTry / data.rates.EUR;
+                    liveUsd = data.rates.TRY;
+                    liveEur = liveUsd / data.rates.EUR;
                     
-                    document.getElementById('val-usd').innerText = usdTry.toFixed(2) + ' TL';
-                    document.getElementById('val-usd2').innerText = usdTry.toFixed(2) + ' TL';
-                    document.getElementById('val-eur').innerText = eurTry.toFixed(2) + ' TL';
-                    document.getElementById('val-eur2').innerText = eurTry.toFixed(2) + ' TL';
+                    document.getElementById('val-usd').innerText = liveUsd.toFixed(2) + ' TL';
+                    document.getElementById('val-usd2').innerText = liveUsd.toFixed(2) + ' TL';
+                    document.getElementById('val-eur').innerText = liveEur.toFixed(2) + ' TL';
+                    document.getElementById('val-eur2').innerText = liveEur.toFixed(2) + ' TL';
 
                     const goldRes = await fetch('https://api.gold-api.com/price/XAU');
                     const goldData = await goldRes.json();
                     
                     if(goldData && goldData.price) {
-                        const gramTry = Math.round((goldData.price / 31.1034768) * usdTry);
-                        document.getElementById('val-gold').innerText = gramTry.toLocaleString('tr-TR') + ' TL';
-                        document.getElementById('val-gold2').innerText = gramTry.toLocaleString('tr-TR') + ' TL';
+                        liveGoldGram = Math.round((goldData.price / 31.1034768) * liveUsd);
+                        document.getElementById('val-gold').innerText = liveGoldGram.toLocaleString('tr-TR') + ' TL';
+                        document.getElementById('val-gold2').innerText = liveGoldGram.toLocaleString('tr-TR') + ' TL';
+                        document.getElementById('gram-fiyat').value = liveGoldGram;
                     }
 
                     const silverRes = await fetch('https://api.gold-api.com/price/XAG');
                     const silverData = await silverRes.json();
                     
                     if(silverData && silverData.price) {
-                        const gramSilverTry = ((silverData.price / 31.1034768) * usdTry).toFixed(2);
-                        document.getElementById('val-silver').innerText = gramSilverTry + ' TL';
-                        document.getElementById('val-silver2').innerText = gramSilverTry + ' TL';
+                        liveSilverGram = ((silverData.price / 31.1034768) * liveUsd).toFixed(2);
+                        document.getElementById('val-silver').innerText = liveSilverGram + ' TL';
+                        document.getElementById('val-silver2').innerText = liveSilverGram + ' TL';
                     }
+
+                    hesaplaCevirici();
                 }
             } catch (e) {
-                console.log("Kur verisi yüklenemedi.");
+                console.log("Kur verisi çekilemedi.");
             }
         }
 
         loadLiveTickers();
 
-        async function fetchGramAltin() {
-            try {
-                const res = await fetch('https://open.er-api.com/v6/latest/USD');
-                const data = await res.json();
-                
-                if(data && data.rates && data.rates.TRY) {
-                    const usdTry = data.rates.TRY;
-                    const goldRes = await fetch('https://api.gold-api.com/price/XAU');
-                    const goldData = await goldRes.json();
-                    
-                    if(goldData && goldData.price) {
-                        const gramTry = Math.round((goldData.price / 31.1034768) * usdTry);
-                        document.getElementById('gram-fiyat').value = gramTry;
-                        alert('Güncel Gram Altın Fiyatı Başarıyla Çekildi: ' + gramTry.toLocaleString('tr-TR') + ' TL');
-                        return;
-                    }
-                }
-                alert('Canlı kur servisine ulaşılamadı. Lütfen fiyatı manuel yazın.');
-            } catch (e) {
-                alert('Canlı kur servisine ulaşılamadı. Lütfen fiyatı manuel yazın.');
-            }
+        function hesaplaCevirici() {
+            const miktar = parseFloat(document.getElementById('cev-miktar').value) || 0;
+            const tur = document.getElementById('cev-tur').value;
+            let sonuc = 0;
+
+            if(tur === 'ALTIN') sonuc = miktar * liveGoldGram;
+            else if(tur === 'GUMUS') sonuc = miktar * liveSilverGram;
+            else if(tur === 'USD') sonuc = miktar * liveUsd;
+            else if(tur === 'EUR') sonuc = miktar * liveEur;
+
+            document.getElementById('res-cevirici-val').innerText = sonuc.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
         }
 
         function hesaplaZekat() {
@@ -916,58 +708,75 @@
             }
 
             const zekat = netVarlik * 0.025;
-
             document.getElementById('res-net').innerText = netVarlik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-zekat').innerText = zekat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('zekat-sonuc').style.display = 'block';
+        }
+
+        function indirGorselKart() {
+            const canvas = document.getElementById('cardCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = "#0f766e";
+            ctx.fillRect(0, 0, 600, 400);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 28px sans-serif";
+            ctx.fillText("HelalHesap - Zekat Özet Kartı", 40, 60);
+
+            ctx.font = "20px sans-serif";
+            ctx.fillText("Net Varlık Toplamı:", 40, 160);
+            ctx.fillText(document.getElementById('res-net').innerText, 300, 160);
+
+            ctx.font = "bold 22px sans-serif";
+            ctx.fillStyle = "#fef08a";
+            ctx.fillText("Hesaplanan Zekat (%2.5):", 40, 230);
+            ctx.fillText(document.getElementById('res-zekat').innerText, 300, 230);
+
+            ctx.font = "16px sans-serif";
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText("https://parahesap.site/", 40, 340);
+
+            const link = document.createElement('a');
+            link.download = 'HelalHesap-Zekat-Raporu.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         }
 
         function hesaplaNisapFitre() {
             const gramFiyat = parseFloat(document.getElementById('gram-fiyat').value) || 0;
             const kisiSayisi = parseInt(document.getElementById('kisi-sayisi').value) || 0;
             const fidyeGun = parseInt(document.getElementById('fidye-gun').value) || 0;
-            const gunlukFitre = parseFloat(document.getElementById('gunluk-fitre').value) || 0;
 
             const nisapEsik = gramFiyat * 80.18;
-            const toplamFitre = kisiSayisi * gunlukFitre;
-            const toplamFidye = fidyeGun * gunlukFitre;
+            const toplamFitre = kisiSayisi * 180;
+            const toplamFidye = fidyeGun * 180;
 
-            document.getElementById('res-nisap-esik').innerText = nisapEsik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-toplam-fitre').innerText = toplamFitre.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-toplam-fidye').innerText = toplamFidye.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-nisap-esik').innerText = nisapEsik.toLocaleString('tr-TR') + ' TL';
+            document.getElementById('res-toplam-fitre').innerText = toplamFitre.toLocaleString('tr-TR') + ' TL';
+            document.getElementById('res-toplam-fidye').innerText = toplamFidye.toLocaleString('tr-TR') + ' TL';
             document.getElementById('nisap-sonuc').style.display = 'block';
         }
 
         function hesaplaKarPayi() {
-            const anapara = parseFloat(document.getElementById('anapara').value);
-            const vadeAy = parseInt(document.getElementById('vade').value);
-            const oran = parseFloat(document.getElementById('oran').value);
+            const anapara = parseFloat(document.getElementById('anapara').value) || 0;
+            const vadeAy = parseInt(document.getElementById('vade').value) || 1;
+            const oran = parseFloat(document.getElementById('oran').value) || 0;
 
-            if (!anapara || anapara <= 0) {
-                alert('Lütfen geçerli bir anapara miktarı girin.');
-                return;
-            }
+            const brut = (anapara * oran * (vadeAy * 30)) / 36500;
+            const stopaj = brut * 0.15;
+            const net = brut - stopaj;
 
-            const gunSayisi = vadeAy * 30;
-            const brutGetiri = (anapara * oran * gunSayisi) / 36500;
-            const stopaj = brutGetiri * 0.15;
-            const netGetiri = brutGetiri - stopaj;
-
-            document.getElementById('res-brut').innerText = brutGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-stopaj').innerText = stopaj.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-net-kar').innerText = netGetiri.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-net-kar').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('kar-sonuc').style.display = 'block';
         }
 
         function hesaplaFinansman() {
-            const tutar = parseFloat(document.getElementById('finansman-tutar').value);
-            const vade = parseInt(document.getElementById('finansman-vade').value);
+            const tutar = parseFloat(document.getElementById('finansman-tutar').value) || 0;
+            const vade = parseInt(document.getElementById('finansman-vade').value) || 12;
             const oran = parseFloat(document.getElementById('kar-orani').value) / 100;
-
-            if (!tutar || tutar <= 0 || !vade || vade <= 0) {
-                alert('Lütfen tutar ve vade bilgilerini eksiksiz girin.');
-                return;
-            }
 
             const taksit = (tutar * oran * Math.pow(1 + oran, vade)) / (Math.pow(1 + oran, vade) - 1);
             const toplam = taksit * vade;
@@ -977,57 +786,29 @@
             document.getElementById('finansman-sonuc').style.display = 'block';
         }
 
-        function hesaplaBirikim() {
-            const gram = parseFloat(document.getElementById('hedef-gram').value);
-            const sure = parseInt(document.getElementById('hedef-sure').value);
-
-            if (!gram || gram <= 0 || !sure || sure <= 0) {
-                alert('Lütfen hedef gram ve süre bilgilerini girin.');
-                return;
-            }
-
-            const aylikGram = gram / sure;
-
-            document.getElementById('res-aylik-gram').innerText = aylikGram.toFixed(2) + ' Gram / Ay';
-            document.getElementById('birikim-sonuc').style.display = 'block';
-        }
-
         function hesaplaMiras() {
-            const tereke = parseFloat(document.getElementById('miras-tereke').value);
+            const tereke = parseFloat(document.getElementById('miras-tereke').value) || 0;
             const es = document.getElementById('miras-es').value;
             const erkek = parseInt(document.getElementById('miras-erkek-cocuk').value) || 0;
             const kiz = parseInt(document.getElementById('miras-kiz-cocuk').value) || 0;
 
-            if (!tereke || tereke <= 0) {
-                alert('Lütfen geçerli bir miras tutarı girin.');
-                return;
-            }
-
             let esPayi = 0;
-            let kalan = tereke;
+            if (es === 'karisi') esPayi = (erkek > 0 || kiz > 0) ? tereke * 0.125 : tereke * 0.25;
+            else if (es === 'kocasi') esPayi = (erkek > 0 || kiz > 0) ? tereke * 0.25 : tereke * 0.5;
 
-            if (es === 'karisi') {
-                esPayi = (erkek > 0 || kiz > 0) ? tereke * (1/8) : tereke * (1/4);
-            } else if (es === 'kocasi') {
-                esPayi = (erkek > 0 || kiz > 0) ? tereke * (1/4) : tereke * (1/2);
-            }
+            const kalan = tereke - esPayi;
+            const hisse = (erkek * 2) + kiz;
 
-            kalan -= esPayi;
-
-            let erkekTekPay = 0;
-            let kizTekPay = 0;
-
-            const toplamHisse = (erkek * 2) + kiz;
-
-            if (toplamHisse > 0) {
-                const birHisse = kalan / toplamHisse;
-                erkekTekPay = birHisse * 2;
-                kizTekPay = birHisse;
+            let ePay = 0, kPay = 0;
+            if(hisse > 0) {
+                const birim = kalan / hisse;
+                ePay = birim * 2;
+                kPay = birim;
             }
 
             document.getElementById('res-es-payi').innerText = esPayi.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-erkek-payi').innerText = (erkek > 0 ? erkekTekPay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
-            document.getElementById('res-kiz-payi').innerText = (kiz > 0 ? kizTekPay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
+            document.getElementById('res-erkek-payi').innerText = (erkek > 0 ? ePay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
+            document.getElementById('res-kiz-payi').innerText = (kiz > 0 ? kPay.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) : '0.00') + ' TL';
             document.getElementById('miras-sonuc').style.display = 'block';
         }
     </script>
