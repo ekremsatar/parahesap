@@ -6,12 +6,9 @@
     <title>HelalHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
     <meta name="description" content="HelalHesap ile Zekat, Katılma Hesabı Kâr Payı, Murabaha Finansman, Fitre, Altın Birikim, Döviz Çevirici ve Miras hesaplamalarınızı faizsiz finans esaslarına göre yapın.">
     <meta name="theme-color" content="#0f766e">
-    
-    <!-- PWA MANIFEST -->
-    <link rel="manifest" href="data:application/manifest+json;utf8,{%22name%22:%22HelalHesap%20Faizsiz%20Finans%22,%22short_name%22:%22HelalHesap%22,%22start_url%22:%22/%22,%22display%22:%22standalone%22,%22background_color%22:%22#f8fafc%22,%22theme_color%22:%22#0f766e%22}">
 
     <!-- FAVICON -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f766e%22/><text y=%22.9em%22 font-size=%2290%22>₺</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f766e'/><text y='.9em' font-size='90'>₺</text></svg>">
     
     <!-- OPEN GRAPH & META -->
     <meta property="og:title" content="HelalHesap - Faizsiz Finans ve Helal Hesaplama Portalı">
@@ -96,7 +93,6 @@
             padding: 0 12px;
         }
 
-        /* AKAN CANLI KUR BANTI (BTC TL DAHİL) */
         .custom-ticker {
             width: 100%;
             overflow: hidden;
@@ -596,7 +592,7 @@
                     document.getElementById('val-eur').innerText = liveEur.toFixed(2) + ' TL';
                     document.getElementById('val-eur2').innerText = liveEur.toFixed(2) + ' TL';
 
-                    // 2. Gram Altın (ONS / 31.1034768 * USD)
+                    // 2. Gram Altın
                     const goldRes = await fetch('https://api.gold-api.com/price/XAU');
                     const goldData = await goldRes.json();
                     
@@ -617,19 +613,11 @@
                         document.getElementById('val-silver2').innerText = liveSilverGram.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
                     }
 
-                    // 4. Bitcoin (BTC) TL Karşılığı
-                    const btcRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try');
+                    // 4. Bitcoin (BTC)
+                    const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
                     const btcData = await btcRes.json();
-                    
-                    if(btcData && btcData.bitcoin && btcData.bitcoin.try) {
-                        liveBtcTL = btcData.bitcoin.try;
-                    } else {
-                        // Yedek API: Binance BTC/USDT * USD/TRY
-                        const binanceRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
-                        const binanceData = await binanceRes.json();
-                        if(binanceData && binanceData.price) {
-                            liveBtcTL = Math.round(parseFloat(binanceData.price) * liveUsd);
-                        }
+                    if(btcData && btcData.price) {
+                        liveBtcTL = Math.round(parseFloat(btcData.price) * liveUsd);
                     }
 
                     document.getElementById('val-btc').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
