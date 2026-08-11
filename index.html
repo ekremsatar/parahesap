@@ -326,6 +326,40 @@
             margin-bottom: 4px;
         }
 
+        /* SEO & SSS AKORDİYON ALANI */
+        .faq-section {
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+        }
+
+        .faq-section h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        details {
+            background: var(--info-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            padding: 10px 12px;
+            font-size: 0.88rem;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        details p {
+            margin-top: 8px;
+            font-size: 0.84rem;
+            opacity: 0.9;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -340,7 +374,7 @@
         }
 
         @media print {
-            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker, .ticker-title { display: none !important; }
+            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker, .ticker-title, .faq-section { display: none !important; }
             .card { display: block !important; border: none; }
             .result-box { display: block !important; }
         }
@@ -385,7 +419,7 @@
             <button class="tab-btn" onclick="switchTab('sozluk', event)">Finans Sözlüğü</button>
         </div>
 
-        <!-- 1. HIZLI DÖVİZ, ALTIN & BITCOIN ÇEVİRİCİ -->
+        <!-- 1. HIZLI DÖVİZ, ALTIN (TÜM ÇEŞİTLERİ) & BITCOIN ÇEVİRİCİ -->
         <div id="cevirici" class="card active">
             <h2>Canlı Altın, Döviz & Kripto - TL Dönüştürücü</h2>
             <div class="form-group">
@@ -395,7 +429,12 @@
             <div class="form-group">
                 <label for="cev-tur">Dönüştürülecek Varlık Türü:</label>
                 <select id="cev-tur" onchange="hesaplaCevirici()">
-                    <option value="ALTIN">Gram Altın (TL)</option>
+                    <option value="ALTIN">Gram Altın (24 Ayar)</option>
+                    <option value="CEYREK">Çeyrek Altın (1.75 gr - 22 Ayar)</option>
+                    <option value="YARIM">Yarım Altın (3.50 gr - 22 Ayar)</option>
+                    <option value="TAM">Tam Altın (6.50 gr - 22 Ayar)</option>
+                    <option value="ATA">Ata Altın (7.20 gr - 24 Ayar)</option>
+                    <option value="BILEZIK22">22 Ayar Bilezik (Gram)</option>
                     <option value="GUMUS">Gram Gümüş (TL)</option>
                     <option value="USD">Amerikan Doları (USD)</option>
                     <option value="EUR">Euro (EUR)</option>
@@ -412,7 +451,7 @@
                 </div>
             </div>
 
-            <!-- 2. BANT: CANLI KRİPTO BORSASI (EN BÜYÜK 10 - TL CİNSİNDEN) -->
+            <!-- 2. BANT: CANLI KRİPTO BORSASI -->
             <div class="ticker-title">📈 CANLI KRİPTO BORSASI (EN BÜYÜK 10 - TL CİNSİNDEN)</div>
             <div class="custom-ticker">
                 <div class="ticker-track">
@@ -429,7 +468,7 @@
                 </div>
             </div>
 
-            <!-- 3. BANT: CANLI BORSA İSTANBUL (BIST PİYASALARI - TL CİNSİNDEN) -->
+            <!-- 3. BANT: CANLI BORSA İSTANBUL -->
             <div class="ticker-title">📊 CANLI BORSA İSTANBUL (BIST PİYASALARI - TL)</div>
             <div class="custom-ticker">
                 <div class="ticker-track">
@@ -443,9 +482,18 @@
                     <div class="ticker-item">🏦 AKBNK: <span>56.80 TL</span></div>
                 </div>
             </div>
+
+            <!-- SEO SSS ALANI -->
+            <div class="faq-section">
+                <h3>Sıkça Sorulan Sorular</h3>
+                <details>
+                    <summary>Ziynet Altın Hesaplaması Nasıl Yapılır?</summary>
+                    <p>Ziynet altınlar (Çeyrek, Yarım, Tam, Ata) içerdiği saf gram altın ağırlığına ve ayar oranına göre canlı gram altın fiyatı üzerinden otomatik hesaplanmaktadır.</p>
+                </details>
+            </div>
         </div>
 
-        <!-- 2. ZEKAT HESAPLAYICI -->
+        <!-- 2. ZEKAT HESAPLAYICI & TAKVİM HATIRLATICI -->
         <div id="zekat" class="card">
             <h2>Gelişmiş Zekat Hesaplama</h2>
             <div class="form-group"><label for="nakit">Nakit Para ve Banka Hesabı (TL / Döviz):</label><input type="number" id="nakit" value="0"></div>
@@ -465,6 +513,16 @@
                     <button class="share-btn btn-card" onclick="indirGorselKart()">Görsel Kart İndir</button>
                     <button class="share-btn btn-print" onclick="window.print()">Yazdır / PDF</button>
                 </div>
+            </div>
+
+            <!-- ZEKAT HATIRLATICI PANELİ -->
+            <div class="faq-section" style="margin-top: 15px;">
+                <h3>🗓️ Yıllık Zekat Günü Hatırlatıcı</h3>
+                <div class="form-group">
+                    <label for="zekat-tarih">Her Yıl Zekat Verdiğiniz Tarih:</label>
+                    <input type="date" id="zekat-tarih" onchange="kaydetZekatTarihi()">
+                </div>
+                <p id="zekat-hatirlatma-msg" style="font-size: 0.82rem; color: var(--primary); font-weight: bold;"></p>
             </div>
         </div>
 
@@ -645,7 +703,7 @@
                         document.getElementById('c-btc').innerText = liveBtcTL.toLocaleString('tr-TR') + ' TL';
                     }
 
-                    // 3. Solana (SOL) Canlı TL Dönüşümü
+                    // 3. Solana (SOL)
                     const solRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT');
                     const solData = await solRes.json();
                     if(solData && solData.price) {
@@ -653,7 +711,7 @@
                         document.getElementById('c-sol').innerText = solTL.toLocaleString('tr-TR') + ' TL';
                     }
 
-                    // 4. Ethereum (ETH) Canlı TL Dönüşümü
+                    // 4. Ethereum (ETH)
                     const ethRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT');
                     const ethData = await ethRes.json();
                     if(ethData && ethData.price) {
@@ -676,12 +734,34 @@
             let sonuc = 0;
 
             if(tur === 'ALTIN') sonuc = miktar * liveGoldGram;
+            else if(tur === 'CEYREK') sonuc = miktar * (liveGoldGram * 1.63);
+            else if(tur === 'YARIM') sonuc = miktar * (liveGoldGram * 3.26);
+            else if(tur === 'TAM') sonuc = miktar * (liveGoldGram * 6.52);
+            else if(tur === 'ATA') sonuc = miktar * (liveGoldGram * 7.20);
+            else if(tur === 'BILEZIK22') sonuc = miktar * (liveGoldGram * 0.916);
             else if(tur === 'GUMUS') sonuc = miktar * liveSilverGram;
             else if(tur === 'USD') sonuc = miktar * liveUsd;
             else if(tur === 'EUR') sonuc = miktar * liveEur;
             else if(tur === 'BTC') sonuc = miktar * liveBtcTL;
 
             document.getElementById('res-cevirici-val').innerText = sonuc.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+        }
+
+        function kaydetZekatTarihi() {
+            const dateVal = document.getElementById('zekat-tarih').value;
+            if(dateVal) {
+                localStorage.setItem('zekatTarihi', dateVal);
+                document.getElementById('zekat-hatirlatma-msg').innerText = "Tarih kaydedildi! Yıllık Zekat döneminiz hafızaya alındı.";
+            }
+        }
+
+        // Zekat Hatırlatma Yükleme
+        if(localStorage.getItem('zekatTarihi')) {
+            const savedDate = localStorage.getItem('zekatTarihi');
+            const elem = document.getElementById('zekat-tarih');
+            if(elem) elem.value = savedDate;
+            const msgElem = document.getElementById('zekat-hatirlatma-msg');
+            if(msgElem) msgElem.innerText = "Kayıtlı Zekat Gününüz Sistemde Aktif.";
         }
 
         function hesaplaZekat() {
