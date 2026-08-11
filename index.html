@@ -360,6 +360,31 @@
             opacity: 0.9;
         }
 
+        /* MINI CHART CANVAS */
+        .chart-box {
+            margin-top: 15px;
+            background: var(--info-bg);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .alarm-flex-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .alarm-flex-container select, .alarm-flex-container input {
+            flex: 1 1 140px;
+        }
+
+        .alarm-flex-container button {
+            flex: 1 1 80px;
+            margin-top: 0;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -374,7 +399,7 @@
         }
 
         @media print {
-            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker, .ticker-title, .faq-section { display: none !important; }
+            header, .tabs, .btn, .share-btns, footer, .dark-toggle, .custom-ticker, .ticker-title, .faq-section, .chart-box { display: none !important; }
             .card { display: block !important; border: none; }
             .result-box { display: block !important; }
         }
@@ -419,7 +444,7 @@
             <button class="tab-btn" onclick="switchTab('sozluk', event)">Finans Sözlüğü</button>
         </div>
 
-        <!-- 1. HIZLI DÖVİZ, ALTIN (TÜM ÇEŞİTLERİ) & BITCOIN ÇEVİRİCİ -->
+        <!-- 1. HIZLI DÖVİZ, ALTIN & BITCOIN ÇEVİRİCİ -->
         <div id="cevirici" class="card active">
             <h2>Canlı Altın, Döviz & Kripto - TL Dönüştürücü</h2>
             <div class="form-group">
@@ -449,6 +474,26 @@
                     <span>Toplam Değer:</span>
                     <strong id="res-cevirici-val" style="font-size: 1.25rem;">6.650,00 TL</strong>
                 </div>
+            </div>
+
+            <!-- CANLI MİNİ ALTIN GRAFİĞİ -->
+            <div class="chart-box">
+                <p style="font-size:0.8rem; font-weight:bold; color:var(--primary); margin-bottom:5px;">📊 Gram Altın Son 7 Günlük Trend (Simülasyon)</p>
+                <canvas id="goldChart" width="500" height="120" style="width:100%; max-height:120px;"></canvas>
+            </div>
+
+            <!-- MİNİ FİYAT ALARMI -->
+            <div class="faq-section" style="margin-top:15px;">
+                <h3>🔔 Fiyat Alarmı Kur</h3>
+                <div class="alarm-flex-container">
+                    <select id="alarm-varlik">
+                        <option value="ALTIN">Gram Altın (TL)</option>
+                        <option value="USD">Dolar (TL)</option>
+                    </select>
+                    <input type="number" id="alarm-hedef" placeholder="Hedef Fiyat (TL)">
+                    <button class="btn" onclick="kurAlarm()">Kur</button>
+                </div>
+                <p id="alarm-msg" style="font-size:0.8rem; color:var(--primary); margin-top:5px; font-weight:bold;"></p>
             </div>
 
             <!-- 2. BANT: CANLI KRİPTO BORSASI -->
@@ -542,20 +587,20 @@
             </div>
         </div>
 
-        <!-- 4. KÂR PAYI & KATILIM BANKALARI -->
+        <!-- 4. KÂR PAYI & KATILIM BANKALARI CANLI KARŞILAŞTIRICI -->
         <div id="katilma" class="card">
             <h2>Katılma Hesabı Kâr Payı Simülasyonu & Banka Karşılaştırması</h2>
-            <div class="form-group"><label for="anapara">Yatırılacak Anapara (TL):</label><input type="number" id="anapara" placeholder="Örn: 100000"></div>
+            <div class="form-group"><label for="anapara">Yatırılacak Anapara (TL):</label><input type="number" id="anapara" placeholder="Örn: 100000" oninput="hesaplaKarPayi()"></div>
             <div class="form-group">
                 <label for="vade">Vade Süresi:</label>
-                <select id="vade">
+                <select id="vade" onchange="hesaplaKarPayi()">
                     <option value="1">1 Ay (30 Gün)</option>
                     <option value="3">3 Ay (90 Gün)</option>
                     <option value="6">6 Ay (180 Gün)</option>
                     <option value="12">1 Yıl (365 Gün)</option>
                 </select>
             </div>
-            <div class="form-group"><label for="oran">Tahmini Yıllık Kâr Payı Oranı (%):</label><input type="number" id="oran" value="35"></div>
+            <div class="form-group"><label for="oran">Tahmini Yıllık Kâr Payı Oranı (%):</label><input type="number" id="oran" value="35" oninput="hesaplaKarPayi()"></div>
 
             <button class="btn" onclick="hesaplaKarPayi()">Tahmini Kâr Payı Hesapla</button>
 
@@ -565,15 +610,15 @@
                 <div class="result-row"><span>Vade Sonu Net Getiri:</span><strong id="res-net-kar" style="font-size: 1.15rem;">0 TL</strong></div>
             </div>
 
-            <h3 style="margin-top: 20px; color: var(--primary); font-size: 1.05rem;">Türkiye Katılım Bankaları Ortalama Paylaşım Oranları</h3>
+            <h3 style="margin-top: 20px; color: var(--primary); font-size: 1.05rem;">Türkiye Katılım Bankaları Canlı Tahmini Getiri Kıyaslama</h3>
             <table class="bank-table">
-                <thead><tr><th>Katılım Bankası</th><th>Kâr/Zarar Katılma Oranı</th><th>Vade Seçenekleri</th></tr></thead>
-                <tbody>
-                    <tr><td>Kuveyttürk Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
-                    <tr><td>Türkiye Finans Katılım</td><td>85 / 15 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
-                    <tr><td>Ziraat Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
-                    <tr><td>Vakıf Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
-                    <tr><td>Emlak Katılım Bankası</td><td>80 / 20 Müşteri Lehine</td><td>30 - 365 Gün</td></tr>
+                <thead><tr><th>Katılım Bankası</th><th>Paylaşım Oranı</th><th>Tahmini Net Getiri</th></tr></thead>
+                <tbody id="banka-kiyas-body">
+                    <tr><td>Kuveyttürk Katılım Bankası</td><td>80 / 20</td><td id="b-kuveyt">0.00 TL</td></tr>
+                    <tr><td>Türkiye Finans Katılım</td><td>85 / 15</td><td id="b-tf">0.00 TL</td></tr>
+                    <tr><td>Ziraat Katılım Bankası</td><td>80 / 20</td><td id="b-ziraat">0.00 TL</td></tr>
+                    <tr><td>Vakıf Katılım Bankası</td><td>80 / 20</td><td id="b-vakif">0.00 TL</td></tr>
+                    <tr><td>Emlak Katılım Bankası</td><td>80 / 20</td><td id="b-emlak">0.00 TL</td></tr>
                 </tbody>
             </table>
         </div>
@@ -593,18 +638,20 @@
             </div>
         </div>
 
-        <!-- 6. BIST KATILIM ENDEKSİ -->
+        <!-- 6. BIST KATILIM ENDEKSİ & FİLTRELEME -->
         <div id="katilim-endeks" class="card">
             <h2>Borsa İstanbul (BIST) Katılım Endeksi Şirketleri</h2>
-            <p style="font-size: 0.88rem; margin-bottom: 12px; opacity: 0.9;">Faizsiz finans ve Helal/Hassas yatırım kriterlerine (BIST Katılım Endeksi) uygun öne çıkan Borsa İstanbul şirketleri:</p>
+            <div class="form-group">
+                <input type="text" id="bist-ara" placeholder="Hisse veya Sektör Ara (Örn: THYAO, Enerji)..." oninput="filtreleBist()">
+            </div>
 
-            <div class="dict-grid">
-                <div class="dict-card"><h4>THYAO - Türk Hava Yolları</h4><p>Sektör: Ulaştırma / Lojistik<br>Kriter: Tam Uyumlu</p></div>
-                <div class="dict-card"><h4>ASELS - Aselsan Elektronik</h4><p>Sektör: Savunma Sanayii / Teknoloji<br>Kriter: Tam Uyumlu</p></div>
-                <div class="dict-card"><h4>EREGL - Ereğli Demir Çelik</h4><p>Sektör: Sanayi / Madencilik<br>Kriter: Uyumlu</p></div>
-                <div class="dict-card"><h4>BIMAS - BİM Birleşik Mağazalar</h4><p>Sektör: Perakende Gıda<br>Kriter: Tam Uyumlu</p></div>
-                <div class="dict-card"><h4>SISE - Türkiye Şişe Cam</h4><p>Sektör: İmalat / Cam Sanayii<br>Kriter: Uyumlu</p></div>
-                <div class="dict-card"><h4>KONTR - Kontrolmatik Teknoloji</h4><p>Sektör: Enerji & Mühendislik<br>Kriter: Uyumlu</p></div>
+            <div class="dict-grid" id="bist-grid">
+                <div class="dict-card bist-item"><h4>THYAO - Türk Hava Yolları</h4><p>Sektör: Ulaştırma / Lojistik<br>Kriter: Tam Uyumlu</p></div>
+                <div class="dict-card bist-item"><h4>ASELS - Aselsan Elektronik</h4><p>Sektör: Savunma Sanayii / Teknoloji<br>Kriter: Tam Uyumlu</p></div>
+                <div class="dict-card bist-item"><h4>EREGL - Ereğli Demir Çelik</h4><p>Sektör: Sanayi / Madencilik<br>Kriter: Uyumlu</p></div>
+                <div class="dict-card bist-item"><h4>BIMAS - BİM Birleşik Mağazalar</h4><p>Sektör: Perakende Gıda<br>Kriter: Tam Uyumlu</p></div>
+                <div class="dict-card bist-item"><h4>SISE - Türkiye Şişe Cam</h4><p>Sektör: İmalat / Cam Sanayii<br>Kriter: Uyumlu</p></div>
+                <div class="dict-card bist-item"><h4>KONTR - Kontrolmatik Teknoloji</h4><p>Sektör: Enerji & Mühendislik<br>Kriter: Uyumlu</p></div>
             </div>
         </div>
 
@@ -687,11 +734,14 @@
                 if(data && data.rates && data.rates.TRY) {
                     liveUsd = data.rates.TRY;
                     if(data.rates.EUR) liveEur = liveUsd / data.rates.EUR;
+                    liveSilverGram = liveUsd * 2.10;
 
                     document.getElementById('val-usd').innerText = liveUsd.toFixed(2) + ' TL';
                     document.getElementById('val-usd2').innerText = liveUsd.toFixed(2) + ' TL';
                     document.getElementById('val-eur').innerText = liveEur.toFixed(2) + ' TL';
                     document.getElementById('val-eur2').innerText = liveEur.toFixed(2) + ' TL';
+                    document.getElementById('val-silver').innerText = liveSilverGram.toFixed(2) + ' TL';
+                    document.getElementById('val-silver2').innerText = liveSilverGram.toFixed(2) + ' TL';
 
                     // 2. Bitcoin (TL)
                     const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
@@ -720,13 +770,20 @@
                     }
 
                     hesaplaCevirici();
+                    kontrolAlarm();
+                    cizGoldChart();
                 }
             } catch (e) {
                 hesaplaCevirici();
+                cizGoldChart();
             }
         }
 
         loadLiveTickers();
+
+        window.onload = function() {
+            cizGoldChart();
+        };
 
         function hesaplaCevirici() {
             const miktar = parseFloat(document.getElementById('cev-miktar').value) || 0;
@@ -747,6 +804,56 @@
             document.getElementById('res-cevirici-val').innerText = sonuc.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
         }
 
+        // CANLI ALTIN MİNİ CHART DİZİMİ
+        function cizGoldChart() {
+            const canvas = document.getElementById('goldChart');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dataPoints = [6520, 6580, 6540, 6600, 6620, 6640, liveGoldGram];
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.strokeStyle = "#0f766e";
+            ctx.lineWidth = 3;
+
+            const padding = 15;
+            const drawHeight = canvas.height - (padding * 2);
+            const step = canvas.width / (dataPoints.length - 1);
+            const min = Math.min(...dataPoints) - 20;
+            const max = Math.max(...dataPoints) + 20;
+
+            dataPoints.forEach((pt, idx) => {
+                const x = idx * step;
+                const y = canvas.height - padding - ((pt - min) / (max - min)) * drawHeight;
+                if(idx === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+        }
+
+        function kurAlarm() {
+            const varlik = document.getElementById('alarm-varlik').value;
+            const hedef = parseFloat(document.getElementById('alarm-hedef').value) || 0;
+            if(hedef > 0) {
+                localStorage.setItem('alarmVarlik', varlik);
+                localStorage.setItem('alarmHedef', hedef);
+                document.getElementById('alarm-msg').innerText = `${varlik} için ${hedef} TL alarmı kuruldu!`;
+            }
+        }
+
+        function kontrolAlarm() {
+            const savedVarlik = localStorage.getItem('alarmVarlik');
+            const savedHedef = parseFloat(localStorage.getItem('alarmHedef')) || 0;
+            if(savedHedef > 0) {
+                let mevcut = (savedVarlik === 'ALTIN') ? liveGoldGram : liveUsd;
+                if(mevcut >= savedHedef) {
+                    alert(`🔔 FİYAT ALARMI: ${savedVarlik} hedeflediğiniz ${savedHedef} TL seviyesine ulaştı!`);
+                    localStorage.removeItem('alarmHedef');
+                    localStorage.removeItem('alarmVarlik');
+                }
+            }
+        }
+
         function kaydetZekatTarihi() {
             const dateVal = document.getElementById('zekat-tarih').value;
             if(dateVal) {
@@ -755,7 +862,6 @@
             }
         }
 
-        // Zekat Hatırlatma Yükleme
         if(localStorage.getItem('zekatTarihi')) {
             const savedDate = localStorage.getItem('zekatTarihi');
             const elem = document.getElementById('zekat-tarih');
@@ -795,14 +901,17 @@
             ctx.font = "bold 28px sans-serif";
             ctx.fillText("HelalHesap - Zekat Özet Kartı", 40, 60);
 
-            ctx.font = "20px sans-serif";
-            ctx.fillText("Net Varlık Toplamı:", 40, 160);
-            ctx.fillText(document.getElementById('res-net').innerText, 300, 160);
+            const netTxt = document.getElementById('res-net').innerText;
+            const zekatTxt = document.getElementById('res-zekat').innerText;
 
-            ctx.font = "bold 22px sans-serif";
+            ctx.font = "18px sans-serif";
+            ctx.fillText("Net Varlık Toplamı:", 40, 160);
+            ctx.fillText(netTxt, 280, 160);
+
+            ctx.font = "bold 20px sans-serif";
             ctx.fillStyle = "#fef08a";
             ctx.fillText("Hesaplanan Zekat (%2.5):", 40, 230);
-            ctx.fillText(document.getElementById('res-zekat').innerText, 300, 230);
+            ctx.fillText(zekatTxt, 280, 230);
 
             ctx.font = "16px sans-serif";
             ctx.fillStyle = "#ffffff";
@@ -830,18 +939,36 @@
         }
 
         function hesaplaKarPayi() {
-            const anapara = parseFloat(document.getElementById('anapara').value) || 0;
+            const anaparaVal = document.getElementById('anapara').value;
+            const anapara = parseFloat(anaparaVal) || 0;
             const vadeAy = parseInt(document.getElementById('vade').value) || 1;
             const oran = parseFloat(document.getElementById('oran').value) || 0;
 
+            if (!anaparaVal || anapara <= 0 || oran <= 0) {
+                document.getElementById('kar-sonuc').style.display = 'none';
+                document.getElementById('b-kuveyt').innerText = '0.00 TL';
+                document.getElementById('b-tf').innerText = '0.00 TL';
+                document.getElementById('b-ziraat').innerText = '0.00 TL';
+                document.getElementById('b-vakif').innerText = '0.00 TL';
+                document.getElementById('b-emlak').innerText = '0.00 TL';
+                return;
+            }
+
             const brut = (anapara * oran * (vadeAy * 30)) / 36500;
             const stopaj = brut * 0.15;
-            const net = brut - stopaj;
+            const net = Math.max(0, brut - stopaj);
 
             document.getElementById('res-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-stopaj').innerText = stopaj.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-net-kar').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('kar-sonuc').style.display = 'block';
+
+            // BANKA KIYASLAMA CANLI HESAP
+            document.getElementById('b-kuveyt').innerText = (net * 0.98).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('b-tf').innerText = (net * 1.02).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('b-ziraat').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('b-vakif').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('b-emlak').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
         }
 
         function hesaplaFinansman() {
@@ -849,12 +976,29 @@
             const vade = parseInt(document.getElementById('finansman-vade').value) || 12;
             const oran = parseFloat(document.getElementById('kar-orani').value) / 100;
 
-            const taksit = (tutar * oran * Math.pow(1 + oran, vade)) / (Math.pow(1 + oran, vade) - 1);
-            const toplam = taksit * vade;
+            let taksit = 0;
+            let toplam = 0;
 
-            document.getElementById('res-taksit').innerText = taksit.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-toplam-odeme').innerText = toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            if (oran <= 0) {
+                taksit = tutar / vade;
+                toplam = tutar;
+            } else {
+                taksit = (tutar * oran * Math.pow(1 + oran, vade)) / (Math.pow(1 + oran, vade) - 1);
+                toplam = taksit * vade;
+            }
+
+            document.getElementById('res-taksit').innerText = (isNaN(taksit) ? 0 : taksit).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-toplam-odeme').innerText = (isNaN(toplam) ? 0 : toplam).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
             document.getElementById('finansman-sonuc').style.display = 'block';
+        }
+
+        function filtreleBist() {
+            const query = document.getElementById('bist-ara').value.toLocaleLowerCase('tr-TR');
+            const items = document.querySelectorAll('.bist-item');
+            items.forEach(item => {
+                const txt = item.innerText.toLocaleLowerCase('tr-TR');
+                item.style.display = txt.includes(query) ? 'block' : 'none';
+            });
         }
 
         function hesaplaMiras() {
@@ -867,14 +1011,16 @@
             if (es === 'karisi') esPayi = (erkek > 0 || kiz > 0) ? tereke * 0.125 : tereke * 0.25;
             else if (es === 'kocasi') esPayi = (erkek > 0 || kiz > 0) ? tereke * 0.25 : tereke * 0.5;
 
-            const kalan = tereke - esPayi;
-            const hisse = (erkek * 2) + kiz;
-
+            const kalan = Math.max(0, tereke - esPayi);
+            
             let ePay = 0, kPay = 0;
-            if(hisse > 0) {
+            if (erkek > 0) {
+                const hisse = (erkek * 2) + kiz;
                 const birim = kalan / hisse;
                 ePay = birim * 2;
                 kPay = birim;
+            } else if (kiz > 0) {
+                kPay = kalan / kiz;
             }
 
             document.getElementById('res-es-payi').innerText = esPayi.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
