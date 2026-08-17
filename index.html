@@ -5,27 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParaHesap | Helal Hesaplama ve Finans Portalı</title>
 
-    <!-- GOOGLE SEARCH CONSOLE -->
-    <!-- <meta name="google-site-verification" content="SEARCH_CONSOLE_KODUNUZ" /> -->
-
-    <!-- GOOGLE ANALYTICS (gtag.js) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    -->
-
-    <!-- GOOGLE ADSENSE -->
-    <!--
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-         crossorigin="anonymous"></script>
-    -->
-
+    <!-- Tailwind CSS & Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         body { background-color: #f3f7f5; color: #1e293b; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         .bg-custom-teal { background-color: #0b7361 !important; }
@@ -204,18 +187,51 @@
                 </div>
             </div>
 
-            <!-- MODÜL 4: KÂR PAYI -->
+            <!-- MODÜL 4: KÂR PAYI & KATILIM BANKALARI KARŞILAŞTIRMA -->
             <div id="modul-karpayi" class="tab-content hidden space-y-4">
-                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Katılım Bankası Kâr Payı Hesaplama</h2>
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Katılım Bankası Kâr Payı Karşılaştırma</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <input id="kp-anapara" type="number" placeholder="Anapara (TL)" class="border rounded p-2 text-xs border-gray-300">
-                    <input id="kp-vade" type="number" placeholder="Vade (Ay)" class="border rounded p-2 text-xs border-gray-300">
-                    <input id="kp-oran" type="number" placeholder="Yıllık Tahmini Kâr Oranı (%)" class="border rounded p-2 text-xs border-gray-300">
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Anapara (TL)</label>
+                        <input id="kp-anapara" type="number" value="100000" placeholder="Anapara (TL)" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Vade (Gün)</label>
+                        <input id="kp-vade" type="number" value="32" placeholder="Vade (Gün)" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Ort. Yıllık Kâr Oranı (%)</label>
+                        <input id="kp-oran" type="number" value="42" placeholder="Ort. Yıllık Oran (%)" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
                 </div>
-                <button onclick="hesaplaKarPayi()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs">Kâr Payı Hesapla</button>
-                <div id="kp-sonuc" class="hidden bg-emerald-50 p-3 rounded border text-xs space-y-1">
-                    <p>Tahmini Brüt Kazanç: <strong id="res-kp-brut">0,00 TL</strong></p>
-                    <p>Net Getiri (Stopaj Sonrası): <strong id="res-kp-net" class="text-custom-teal text-sm">0,00 TL</strong></p>
+                <button onclick="hesaplaKarPayi()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition">Kâr Paylarını Karşılaştır</button>
+                
+                <div id="kp-sonuc" class="space-y-3">
+                    <div class="bg-emerald-50 p-3 rounded border text-xs flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-600 block">Seçilen Orana Göre Tahmini Net Getiri:</span>
+                            <span id="res-kp-net" class="text-base font-bold text-custom-teal">0,00 TL</span>
+                        </div>
+                        <div class="text-right text-[11px] text-gray-500">
+                            Brüt Getiri: <span id="res-kp-brut">0,00 TL</span>
+                        </div>
+                    </div>
+
+                    <!-- BANKALAR KARŞILAŞTIRMA TABLOSU -->
+                    <div class="border rounded-lg overflow-hidden text-xs">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-100 border-b text-[11px] text-gray-700">
+                                    <th class="p-2">Katılım Bankası</th>
+                                    <th class="p-2">Tahmini Yıllık Oran</th>
+                                    <th class="p-2 text-right">Net Getiri (TL)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="banka-karsilastirma-body" class="divide-y divide-gray-100">
+                                <!-- JS Tarafından Doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -223,9 +239,18 @@
             <div id="modul-finansman" class="tab-content hidden space-y-4">
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Finansman Taksit Hesaplama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <input id="fin-tutar" type="number" placeholder="Finansman Tutarı (TL)" class="border rounded p-2 text-xs border-gray-300">
-                    <input id="fin-taksit" type="number" placeholder="Taksit Sayısı (Ay)" class="border rounded p-2 text-xs border-gray-300">
-                    <input id="fin-oran" type="number" step="0.01" placeholder="Aylık Kâr Oranı (%)" class="border rounded p-2 text-xs border-gray-300">
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Finansman Tutarı (TL)</label>
+                        <input id="fin-tutar" type="number" placeholder="Örn: 100000" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Taksit Sayısı (Ay)</label>
+                        <input id="fin-taksit" type="number" placeholder="Örn: 12" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-gray-500 mb-0.5">Aylık Kâr Oranı (%)</label>
+                        <input id="fin-oran" type="number" step="0.01" placeholder="Örn: 2.99" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
                 </div>
                 <button onclick="hesaplaFinansman()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs">Taksit Hesapla</button>
                 <div id="fin-sonuc" class="hidden bg-emerald-50 p-3 rounded border text-xs space-y-1">
@@ -269,38 +294,23 @@
                 </div>
             </div>
 
-            <!-- MODÜL 8: ADSENSE İÇİN BLOG / FİNANS REHBERİ -->
+            <!-- MODÜL 8: BLOG / REHBER -->
             <div id="modul-blog" class="tab-content hidden space-y-6 text-xs text-gray-700 leading-relaxed">
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans Rehberi & Makaleler</h2>
-                
                 <article class="p-4 border rounded-lg bg-gray-50/50 space-y-2">
                     <h3 class="text-sm font-bold text-custom-teal">1. Faizsiz Finansman (Murabaha) Nedir?</h3>
-                    <p>Günümüzde "faizsiz finansman" kavramı, özellikle ev veya araç alımlarında faizli kredi kullanmak istemeyenler için önemli bir alternatif oluşturmaktadır. Bu sistemlerin temelinde genellikle "Murabaha" yöntemi yatar.</p>
-                    <p><strong>Murabaha Nedir?</strong> Murabaha, finansal kurumun alacağınız ürünü (ev, araç, makine) satın alıp, üzerine belirli bir kâr payı ekleyerek size vadeli olarak satması işlemidir. Bu bir borç para verme işlemi değil, bir <strong>ticari alım-satım</strong> işlemidir.</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li><strong>Ticari İşlem:</strong> Banka size para değil, doğrudan ürün satar.</li>
-                        <li><strong>Sabit Kâr:</strong> Sözleşme anında belirlenen kâr payı sabittir, sonradan artış göstermez.</li>
-                        <li><strong>Varlık Temelli:</strong> İşlem somut bir varlığın el değiştirmesine dayanır.</li>
-                    </ul>
-                </article>
-
-                <article class="p-4 border rounded-lg bg-gray-50/50 space-y-2">
-                    <h3 class="text-sm font-bold text-custom-teal">2. Zekat Nisap Miktarı Nasıl Hesaplanır?</h3>
-                    <p>Zekat, dinen zengin sayılan Müslümanların yılda bir kez mal varlıklarının %2,5'ini ihtiyaç sahiplerine vermesidir. Bir kişinin zekat vermekle yükümlü olması için temel ihtiyaçları dışında nisap miktarı mala sahip olması gerekir.</p>
-                    <p><strong>Nisap Miktarı Nedir?</strong> Nisap miktarı, 80.18 gram altın veya bu değerdeki para/ticari mal varlığıdır. Güncel altın fiyatları üzerinden hesaplanan bu sınır aşıldığında zekat yükümlülüğü başlar.</p>
+                    <p>Günümüzde "faizsiz finansman" kavramı, özellikle ev veya araç alımlarında faizli kredi kullanmak istemeyenler için önemli bir alternatif oluşturmaktadır.</p>
                 </article>
             </div>
 
-            <!-- GRAFİK ALANI -->
-            <div class="border rounded-lg p-3 bg-gray-50/50 text-center">
-                <div class="flex items-center justify-center space-x-1 text-[11px] text-custom-teal font-medium mb-2">
-                    <span>📊</span>
-                    <span>Gram Altın Son 7 Günlük Trend (Simülasyon)</span>
+            <!-- İNTERAKTİF CANLI BORSA GRAFİK ALANI (CHART.JS) -->
+            <div class="border rounded-lg p-3 bg-white text-center shadow-sm">
+                <div class="flex items-center justify-between text-[11px] text-custom-teal font-medium mb-2 px-1">
+                    <span class="font-bold">📊 Gram Altın Son 7 Günlük Trend</span>
+                    <span class="text-gray-400 text-[10px]">Anlık Simülasyon</span>
                 </div>
-                <div class="w-full h-24 flex items-center justify-center">
-                    <svg class="w-full h-full" viewBox="0 0 500 100" preserveAspectRatio="none">
-                        <path d="M 0,80 Q 70,40 130,65 T 260,75 T 390,35 T 500,25" fill="none" stroke="#0b7361" stroke-width="3" stroke-linecap="round" />
-                    </svg>
+                <div class="relative w-full h-48">
+                    <canvas id="altinChart"></canvas>
                 </div>
             </div>
 
@@ -349,16 +359,6 @@
                     <summary class="font-semibold text-gray-800">► Ziynet Altın Hesaplaması Nasıl Yapılır?</summary>
                     <p class="mt-1.5 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Ziynet altınlar işçilik ve ayar farkları gözetilerek has altın değerine çevrilir. Sitemiz üzerindeki canlı veriler üzerinden anlık olarak hesaplanır.</p>
                 </details>
-                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 cursor-pointer">
-                    <summary class="font-semibold text-gray-800">► Çeyrek ve Yarım altın zekata nasıl dahil edilir?</summary>
-                    <p class="mt-1.5 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Elinizdeki çeyrek ve yarım altınların toplam gramajı hesaplanır. Toplam değer nisap miktarını (80.18 gram) aşıyorsa %2.5 oranında zekatı verilir.</p>
-                </details>
-            </div>
-
-            <!-- SEO BİLGİLENDİRME METNİ -->
-            <div class="pt-4 border-t text-[11px] text-gray-500 space-y-2">
-                <h3 class="text-xs font-bold text-gray-700">HelalHesap Finansal Bilgilendirme Portalı</h3>
-                <p class="leading-relaxed">HelalHesap, kullanıcıların faizsiz finans ilkelerine uygun olarak birikimlerini ve yatırımlarını planlamalarına yardımcı olmak amacıyla geliştirilmiş bağımsız bir hesaplama aracıdır.</p>
             </div>
 
         </div>
@@ -367,12 +367,22 @@
     <!-- FOOTER -->
     <footer class="text-center py-4 text-[10px] text-gray-500 border-t bg-white mt-auto">
         <p>© 2026 ParaHesap / HelalHesap - Tüm Hakları Saklıdır | Faizsiz Finans Portalı</p>
-        <p class="mt-0.5"><a href="gizlilik-politikasi.html" class="underline hover:text-custom-teal">Gizlilik Politikası</a> | <a href="iletisim.html" class="underline hover:text-custom-teal">İletişim</a> (destek@parahesap.site)</p>
+        <p class="mt-0.5"><a href="iletisim.html" class="underline hover:text-custom-teal">İletişim</a> (destek@parahesap.site)</p>
     </footer>
 
-    <!-- JAVASCRIPT HESAPLAMA SİSTEMİ -->
+    <!-- JAVASCRIPT -->
     <script>
         const KURLAR = { altin: 6650, gumus: 100.56 };
+        let myChartInstance = null;
+
+        const BANKALARI_LISTELE = [
+            { ad: 'Kuveyt Türk', fark: +1.5 },
+            { ad: 'Türkiye Finans', fark: 0.0 },
+            { ad: 'Albaraka Türk', fark: -0.5 },
+            { ad: 'Ziraat Katılım', fark: -2.0 },
+            { ad: 'Vakıf Katılım', fark: -1.5 },
+            { ad: 'Emlak Katılım', fark: -2.5 }
+        ];
 
         function tabAc(modulAdi, btnElement) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -384,6 +394,10 @@
             document.getElementById('modul-' + modulAdi).classList.remove('hidden');
             btnElement.classList.remove('inactive-tab');
             btnElement.classList.add('active-tab');
+
+            if (myChartInstance) {
+                setTimeout(() => myChartInstance.resize(), 50);
+            }
         }
 
         function dondurveHesapla() {
@@ -434,27 +448,50 @@
 
         function hesaplaKarPayi() {
             const anapara = parseFloat(document.getElementById('kp-anapara').value) || 0;
-            const vade = parseInt(document.getElementById('kp-vade').value) || 1;
+            const vade = parseInt(document.getElementById('kp-vade').value) || 32;
             const oran = parseFloat(document.getElementById('kp-oran').value) || 0;
 
-            const brut = (anapara * oran * (vade * 30)) / 36500;
-            const net = brut * 0.85;
+            const brut = (anapara * oran * vade) / 36500;
+            const net = brut * 0.85; // %15 Stopaj Kesintisi
 
-            document.getElementById('res-kp-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-kp-net').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('kp-sonuc').classList.remove('hidden');
+            document.getElementById('res-kp-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-kp-net').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+
+            const tbody = document.getElementById('banka-karsilastirma-body');
+            tbody.innerHTML = '';
+
+            BANKALARI_LISTELE.forEach(b => {
+                const bOran = Math.max(0, oran + b.fark);
+                const bBrut = (anapara * bOran * vade) / 36500;
+                const bNet = bBrut * 0.85;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="p-2 font-semibold text-gray-800">${b.ad}</td>
+                    <td class="p-2 text-gray-600">%${bOran.toFixed(1)}</td>
+                    <td class="p-2 text-right font-bold text-custom-teal">${bNet.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} TL</td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
 
         function hesaplaFinansman() {
             const tutar = parseFloat(document.getElementById('fin-tutar').value) || 0;
             const taksit = parseInt(document.getElementById('fin-taksit').value) || 1;
-            const oran = parseFloat(document.getElementById('fin-oran').value) / 100 || 0;
+            const oranInput = parseFloat(document.getElementById('fin-oran').value) || 0;
+            const oran = oranInput / 100;
 
-            const aylikTaksit = (tutar * (oran * Math.pow(1 + oran, taksit))) / (Math.pow(1 + oran, taksit) - 1) || (tutar / taksit);
+            let aylikTaksit = 0;
+            if (oran === 0) {
+                aylikTaksit = tutar / taksit;
+            } else {
+                aylikTaksit = (tutar * (oran * Math.pow(1 + oran, taksit))) / (Math.pow(1 + oran, taksit) - 1);
+            }
+
             const toplam = aylikTaksit * taksit;
 
-            document.getElementById('res-fin-taksit').innerText = aylikTaksit.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-fin-toplam').innerText = toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-fin-taksit').innerText = aylikTaksit.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-fin-toplam').innerText = toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
             document.getElementById('fin-sonuc').classList.remove('hidden');
         }
 
@@ -479,11 +516,48 @@
             const hisse = (erkek * 2) + kiz;
             const birim = hisse > 0 ? kalan / hisse : 0;
 
-            document.getElementById('res-m-es').innerText = esPayi.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-m-erkek').innerText = (birim * 2).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-m-kiz').innerText = birim.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-m-es').innerText = esPayi.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-m-erkek').innerText = (birim * 2).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-m-kiz').innerText = birim.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
             document.getElementById('miras-sonuc').classList.remove('hidden');
         }
+
+        // İLK YÜKLEMEDE GRAFİK VE TABLO TAZELENMESİ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Katılım Bankaları Tablosunu Sayfa Açılışında Otomatik Doldur
+            hesaplaKarPayi();
+
+            // Chart.js Çizimi
+            const ctx = document.getElementById('altinChart').getContext('2d');
+            myChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'],
+                    datasets: [{
+                        label: 'Gram Altın (TL)',
+                        data: [6520, 6550, 6580, 6560, 6610, 6630, 6650],
+                        borderColor: '#0b7361',
+                        backgroundColor: 'rgba(11, 115, 97, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: '#0b7361',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+                        y: { ticks: { font: { size: 10 } } }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
