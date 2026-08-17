@@ -16,7 +16,7 @@
         .text-custom-teal { color: #0b7361; }
         .border-custom-teal { border-color: #0b7361; }
 
-        /* CANLI AKAN BANT ANİMASYONLARI (PÜRÜZSÜZ KESİNTİSİZ DÖNGÜ) */
+        /* CANLI AKAN BANT ANİMASYONLARI */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
@@ -58,7 +58,7 @@
             border: 1px solid #d1d5db;
         }
 
-        /* DETAILS SUMMARY OK GİZLEME / ÖZELLEŞTİRME */
+        /* DETAILS SUMMARY OK GİZLEME */
         details summary::-webkit-details-marker { display: none; }
         details summary { list-style: none; }
     </style>
@@ -402,13 +402,13 @@
                 </div>
             </div>
 
-            <!-- SSS ACCORDION -->
+            <!-- SSS ACCORDION (GENİŞLETİLMİŞ SSS İNDEKSİ) -->
             <div class="pt-3 border-t space-y-2">
                 <h3 class="text-xs font-bold text-custom-teal mb-2">Sıkça Sorulan Sorular (SSS)</h3>
                 
                 <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
                     <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
-                        <span>► Ziynet Altın Hesaplaması Nasıl Yapılır?</span>
+                        <span>► 1. Ziynet Altın Hesaplaması Nasıl Yapılır?</span>
                         <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
                     </summary>
                     <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Ziynet altınlar barındırdıkları işçilik ve ayar derecelerine göre 24 ayar has altın cinsine dönüştürülerek hesaplanır.</p>
@@ -416,7 +416,7 @@
 
                 <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
                     <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
-                        <span>► Ticari Malların Zekatı Nasıl Verilir?</span>
+                        <span>► 2. Ticari Malların Zekatı Nasıl Verilir?</span>
                         <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
                     </summary>
                     <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Ticaret amacıyla elde tutulan mallar, zekat tarihindeki piyasa değeri üzerinden hesaplanarak %2.5 oranında zekatı ödenir.</p>
@@ -424,10 +424,50 @@
 
                 <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
                     <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
-                        <span>► Katılım Bankaları Devlet Güvencesinde midir?</span>
+                        <span>► 3. Katılım Bankaları Devlet Güvencesinde midir?</span>
                         <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
                     </summary>
                     <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Evet, katılım fonları TMSF kapsamında yasal sınırlar dahilinde devlet güvencesi altındadır.</p>
+                </details>
+
+                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
+                    <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
+                        <span>► 4. Murabaha Finansmanında Kâr Payı Oranı Sonradan Değişir mi?</span>
+                        <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Hayır. Murabaha bir peşin alım ve vadeli satış sözleşmesidir. Satış akdi kurulduğu anda kâr tutarı sabitlenir ve vade boyunca oran değiştirilemez.</p>
+                </details>
+
+                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
+                    <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
+                        <span>► 5. BIST Katılım Endeksi Şirketleri Ne Sıklıkla Güncellenir?</span>
+                        <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Borsa İstanbul tarafından dönemsel finansal tablolar açıklandıkça (genellikle yılda 4 defa) şirketlerin mali yapıları ve borç oranları yeniden süzgeçten geçirilerek liste güncellenir.</p>
+                </details>
+
+                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
+                    <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
+                        <span>► 6. Kripto Paraların Zekatında Hangi Günün Kuru Esas Alınır?</span>
+                        <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Zekat hesaplama günü geldiğinde, kripto varlığın o günkü spot piyasa TL karşılığı üzerinden toplam değer hesaplanır ve %2.5 matrah uygulanır.</p>
+                </details>
+
+                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
+                    <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
+                        <span>► 7. Sukuk (Kira Sertifikası) Yatırımı İstendiği Zaman Nakde Çevrilebilir mi?</span>
+                        <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">Evet, Borsa İstanbul Borçlanma Araçları Piyasası'nda işlem gören Sukuk ihraçları vadesinden önce ikincil piyasada satılarak nakde dönüştürülebilir.</p>
+                </details>
+
+                <details class="bg-gray-50/60 border rounded p-2.5 text-[11px] text-gray-700 group transition">
+                    <summary class="font-semibold text-gray-800 cursor-pointer select-none flex justify-between items-center">
+                        <span>► 8. Mudaraba (Emek-Sermaye) Ortaklığında Zarar Edilirse Ne Olur?</span>
+                        <span class="text-xs text-gray-400 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <p class="mt-2 text-gray-600 leading-relaxed pl-3 border-l-2 border-custom-teal">İhmal veya kasıt olmaması kaydıyla, ortaya çıkan maddi zarar yalnızca sermaye sahibi tarafından karşılanır; işletici (mudarib) ise emeğini ve zamanını kaybetmiş olur.</p>
                 </details>
             </div>
 
