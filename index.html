@@ -6,44 +6,85 @@
     <title>HelalHesap | Faizsiz Finans ve Helal Hesaplama Portalı</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-100">
 
-    <!-- BURAYA MEVCUT HESAPLAMA ARAÇLARININ OLDUĞU HTML KISMINI EKLEYECEKSİN -->
-    <!-- (Önceki dosyandaki <div class="hesaplama-alanı"> gibi kısımlar buraya gelecek) -->
-
-    <!-- AD SENSE İÇİN SEO VE İÇERİK BÖLÜMÜ (Yeni Eklenenler) -->
-    <div class="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-sm border border-gray-200 text-gray-700">
-        
-        <section id="hakkimizda" class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">HelalHesap: Neden Buradayız?</h2>
-            <p class="leading-relaxed">
-                HelalHesap projesini başlatırken aslında kendimize basit bir soru sorduk: <em>"Günümüz ekonomisinde, dini hassasiyetlerimizi koruyarak nasıl daha hızlı ve doğru finansal planlama yapabiliriz?"</em> Biz finans uzmanı değiliz, ama sizin gibi teknolojiyle geleneksel değerleri birleştirmek isteyen, faizden uzak durmayı düstur edinmiş bireyleriz. 
-            </p>
-            <p class="mt-4 leading-relaxed">
-                Bu portalı tamamen şeffaf, hızlı ve güvenilir bir "dijital yardımcı" olarak tasarladık. Amacımız, karmaşık faizsiz finansman hesaplarını veya zekat miktarlarını saniyeler içinde hesaplayıp, sizi kafa karışıklığından kurtarmak. Sizin huzurunuz, bizim önceliğimiz.
-            </p>
-        </section>
-
-        <section id="blog" class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Finansal Rehber</h2>
-            <div class="space-y-8">
-                <article>
-                    <h3 class="text-xl font-semibold text-teal-700 mb-2">Zekatın Bereketini Hesaplamak</h3>
-                    <p class="leading-relaxed">
-                        Zekat, sadece eldeki maldan bir kısmını vermek değil, aslında malı temizleme ve bereketlendirme sürecidir. Çoğu zaman "Zekatımı doğru hesapladım mı?" korkusuyla karşı karşıya kalıyoruz. Nisap miktarı olan 80.18 gram altını baz alarak yaptığımız hesaplamalar, sizin üzerinizdeki bu yükü hafifletmek için var. Unutmayın, zekat bir borç değil, bir paylaşım sevincidir. Biz sadece matematiği kolaylaştırıyoruz.
-                    </p>
-                </article>
-                <article>
-                    <h3 class="text-xl font-semibold text-teal-700 mb-2">Faizsiz Finansman (Murabaha) Nedir?</h3>
-                    <p class="leading-relaxed">
-                        Ev sahibi olmak ya da bir araç almak istiyorsunuz ama "faiz sarmalına" girmekten çekiniyorsunuz. Murabaha sistemi tam burada devreye giriyor. Bankanın parayı değil, malı alıp size satması üzerine kurulu bu sistem, aslında ticaretin en saf hali. Biz HelalHesap olarak, bu süreçte ödeyeceğiniz kâr paylarını net görmenizi istiyoruz ki, ay sonunda "sürprizlerle" karşılaşmayın.
-                    </p>
-                </article>
-            </div>
-        </section>
+    <!-- ÜST AKIŞ (Ticker Bar) -->
+    <div class="bg-gray-900 text-white p-2 text-center text-sm overflow-hidden">
+        <marquee>ALTIN: 6.650 TL | EURO: 55.41 TL | BTC: 3.0M TL | BORSA İSTANBUL CANLI VERİLERİ TAKİPTE...</marquee>
     </div>
 
-    <!-- SCRIPTS (Senin Fonksiyonların) -->
+    <div class="max-w-6xl mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center my-6">HelalHesap - Finansal Asistanınız</h1>
+
+        <!-- HESAPLAMA ARAÇLARI GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- NİSAP VE ZEKAT -->
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold mb-2">Zekat ve Fitre</h2>
+                <input id="gram-fiyat" type="number" placeholder="Gram Fiyatı" class="w-full border p-2 mb-2">
+                <input id="kisi-sayisi" type="number" placeholder="Kişi Sayısı" class="w-full border p-2 mb-2">
+                <input id="fidye-gun" type="number" placeholder="Fidye Günü" class="w-full border p-2 mb-2">
+                <button onclick="hesaplaNisapFitre()" class="w-full bg-teal-700 text-white p-2 rounded">Hesapla</button>
+                <div id="nisap-sonuc" class="hidden mt-2 p-2 bg-gray-100">
+                    <p>Eşik: <span id="res-nisap-esik"></span></p>
+                    <p>Fitre: <span id="res-toplam-fitre"></span></p>
+                    <p>Fidye: <span id="res-toplam-fidye"></span></p>
+                </div>
+            </div>
+
+            <!-- KAR PAYI HESAPLA -->
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold mb-2">Kar Payı Hesapla</h2>
+                <input id="anapara" type="number" placeholder="Anapara" class="w-full border p-2 mb-2">
+                <input id="vade" type="number" placeholder="Vade (Ay)" class="w-full border p-2 mb-2">
+                <input id="oran" type="number" placeholder="Oran (%)" class="w-full border p-2 mb-2">
+                <button onclick="hesaplaKarPayi()" class="w-full bg-teal-700 text-white p-2 rounded">Hesapla</button>
+                <div id="kar-sonuc" class="hidden mt-2 p-2 bg-gray-100">
+                    <p>Brüt: <span id="res-brut"></span></p>
+                    <p>Net Kar: <span id="res-net-kar"></span></p>
+                </div>
+            </div>
+
+            <!-- MİRAS HESAPLAMA -->
+            <div class="bg-white p-4 rounded shadow">
+                <h2 class="font-bold mb-2">Miras Hesapla</h2>
+                <input id="miras-tereke" type="number" placeholder="Toplam Tereke" class="w-full border p-2 mb-2">
+                <select id="miras-es" class="w-full border p-2 mb-2">
+                    <option value="karisi">Eşi (Kadın)</option>
+                    <option value="kocasi">Eşi (Erkek)</option>
+                </select>
+                <input id="miras-erkek-cocuk" type="number" placeholder="Erkek Çocuk" class="w-full border p-2 mb-2">
+                <input id="miras-kiz-cocuk" type="number" placeholder="Kız Çocuk" class="w-full border p-2 mb-2">
+                <button onclick="hesaplaMiras()" class="w-full bg-teal-700 text-white p-2 rounded">Hesapla</button>
+                <div id="miras-sonuc" class="hidden mt-2 p-2 bg-gray-100">
+                    <p>Eş Payı: <span id="res-es-payi"></span></p>
+                    <p>Erkek Payı: <span id="res-erkek-payi"></span></p>
+                    <p>Kız Payı: <span id="res-kiz-payi"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIST ARAMA -->
+        <div class="my-8 bg-white p-6 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Borsa İstanbul (BIST)</h2>
+            <input type="text" id="bist-ara" onkeyup="filtreleBist()" placeholder="Hisse ara..." class="w-full border p-2 mb-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bist-item p-2 border bg-gray-50">ASELS</div>
+                <div class="bist-item p-2 border bg-gray-50">THYAO</div>
+                <div class="bist-item p-2 border bg-gray-50">KCHOL</div>
+                <div class="bist-item p-2 border bg-gray-50">GARAN</div>
+            </div>
+        </div>
+
+        <!-- YENİ EKLENEN SEO İÇERİĞİ -->
+        <div class="mt-10 p-6 bg-white rounded shadow text-gray-700">
+            <h2 class="text-2xl font-bold mb-4">HelalHesap Hakkında</h2>
+            <p>HelalHesap, modern finansal ihtiyaçlar ile İslami hassasiyetleri bir araya getiren bir portal. Faizden uzak durarak finansal planlama yapmanın karmaşıklığını biliyoruz. Amacımız, bu süreci şeffaf ve anlaşılır kılmaktır.</p>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
     <script>
         function hesaplaNisapFitre() {
             const gramFiyat = parseFloat(document.getElementById('gram-fiyat').value) || 0;
@@ -59,43 +100,37 @@
         }
 
         function hesaplaKarPayi() {
-            const anaparaVal = document.getElementById('anapara').value;
-            const anapara = parseFloat(anaparaVal) || 0;
+            const anapara = parseFloat(document.getElementById('anapara').value) || 0;
             const vadeAy = parseInt(document.getElementById('vade').value) || 1;
             const oran = parseFloat(document.getElementById('oran').value) || 0;
-            if (!anaparaVal || anapara <= 0 || oran <= 0) {
-                document.getElementById('kar-sonuc').style.display = 'none';
-                return;
-            }
             const brut = (anapara * oran * (vadeAy * 30)) / 36500;
-            const stopaj = brut * 0.15;
-            const net = Math.max(0, brut - stopaj);
-            document.getElementById('res-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-stopaj').innerText = stopaj.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-net-kar').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            const net = brut * 0.85; // Basitleştirilmiş stopaj
+            document.getElementById('res-brut').innerText = brut.toLocaleString('tr-TR') + ' TL';
+            document.getElementById('res-net-kar').innerText = net.toLocaleString('tr-TR') + ' TL';
             document.getElementById('kar-sonuc').style.display = 'block';
         }
 
-        function hesaplaFinansman() {
-            const tutar = parseFloat(document.getElementById('finansman-tutar').value) || 0;
-            const vade = parseInt(document.getElementById('finansman-vade').value) || 12;
-            const oran = parseFloat(document.getElementById('kar-orani').value) / 100;
-            let taksit = (oran <= 0) ? (tutar / vade) : (tutar * oran * Math.pow(1 + oran, vade)) / (Math.pow(1 + oran, vade) - 1);
-            let toplam = taksit * vade;
-            document.getElementById('res-taksit').innerText = (isNaN(taksit) ? 0 : taksit).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-toplam-odeme').innerText = (isNaN(toplam) ? 0 : toplam).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
-            document.getElementById('finansman-sonuc').style.display = 'block';
+        function hesaplaMiras() {
+            const tereke = parseFloat(document.getElementById('miras-tereke').value) || 0;
+            const es = document.getElementById('miras-es').value;
+            const erkek = parseInt(document.getElementById('miras-erkek-cocuk').value) || 0;
+            const kiz = parseInt(document.getElementById('miras-kiz-cocuk').value) || 0;
+            let esPayi = (es === 'karisi') ? (erkek > 0 || kiz > 0 ? tereke * 0.125 : tereke * 0.25) : (erkek > 0 || kiz > 0 ? tereke * 0.25 : tereke * 0.5);
+            const kalan = tereke - esPayi;
+            const hisse = (erkek * 2) + kiz;
+            const birim = kalan / (hisse || 1);
+            document.getElementById('res-es-payi').innerText = esPayi.toLocaleString('tr-TR') + ' TL';
+            document.getElementById('res-erkek-payi').innerText = (erkek > 0 ? (birim * 2).toLocaleString('tr-TR') : '0') + ' TL';
+            document.getElementById('res-kiz-payi').innerText = (kiz > 0 ? birim.toLocaleString('tr-TR') : '0') + ' TL';
+            document.getElementById('miras-sonuc').style.display = 'block';
+        }
+
+        function filtreleBist() {
+            const query = document.getElementById('bist-ara').value.toLocaleLowerCase('tr-TR');
+            document.querySelectorAll('.bist-item').forEach(item => {
+                item.style.display = item.innerText.toLocaleLowerCase('tr-TR').includes(query) ? 'block' : 'none';
+            });
         }
     </script>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-800 text-white p-8 mt-10 text-center">
-        <p>&copy; 2026 HelalHesap - Tüm Hakları Saklıdır. | Faizsiz Finans Portalı</p>
-        <p style="margin-top: 10px;">
-            <a href="gizlilik-politikasi.html" class="underline">Gizlilik Politikası</a> | 
-            <a href="iletisim.html" class="underline">İletişim</a>
-        </p>
-    </footer>
-
 </body>
 </html>
