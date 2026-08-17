@@ -28,11 +28,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #f3f7f5; color: #1e293b; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .bg-custom-teal { background-color: #0b7361; }
+        .bg-custom-teal { background-color: #0b7361 !important; }
         .text-custom-teal { color: #0b7361; }
         .border-custom-teal { border-color: #0b7361; }
 
-        /* CANLI AKAN BANT ANİMASYONU */
+        /* CANLI AKAN BANT ANİMASYONLARI */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
@@ -42,15 +42,34 @@
             white-space: nowrap;
             background-color: #ffffff;
             border-bottom: 1px solid #e2e8f0;
+            width: 100%;
         }
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
-            padding-right: 100%;
-            animation: ticker 25s linear infinite;
+            animation: ticker 30s linear infinite;
         }
-        .ticker-move:hover {
+        .ticker-move-fast {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 20s linear infinite;
+        }
+        .ticker-wrap:hover .ticker-move,
+        .ticker-wrap:hover .ticker-move-fast {
             animation-play-state: paused;
+        }
+
+        /* AKTİF SEKMELERİN GÖRÜNÜRLÜĞÜ */
+        .tab-btn.active-tab {
+            background-color: #0b7361 !important;
+            color: #ffffff !important;
+            border-color: #0b7361 !important;
+            font-weight: 700;
+        }
+        .tab-btn.inactive-tab {
+            background-color: #ffffff !important;
+            color: #374151 !important;
+            border: 1px solid #d1d5db;
         }
     </style>
 </head>
@@ -60,10 +79,9 @@
     <header class="bg-custom-teal text-white py-5 px-4 shadow-sm text-center relative">
         <h1 class="text-2xl md:text-3xl font-bold tracking-tight">HelalHesap</h1>
         <p class="text-xs md:text-sm text-teal-100 mt-1">Faizsiz Finans ve Helal Hesaplama Portalı</p>
-        <button class="absolute top-3 right-3 text-[10px] bg-teal-900/50 hover:bg-teal-900/70 px-2.5 py-1 rounded-full border border-teal-300/30 text-teal-100">Gece / Gündüz</button>
     </header>
 
-    <!-- CANLI AKAN BANT (TICKER) -->
+    <!-- ÜST CANLI AKAN BANT -->
     <div class="ticker-wrap text-[11px] py-2 shadow-sm">
         <div class="ticker-move text-gray-700 font-medium">
             <span class="mx-4">💵 DOLAR: <strong class="text-teal-600">47.88 TL</strong></span>
@@ -72,7 +90,7 @@
             <span class="mx-4">🏺 GRAM GÜMÜŞ: <strong>100.56 TL</strong></span>
             <span class="mx-4">₿ BITCOIN: <strong>3.085.112 TL</strong></span>
             <span class="mx-4">📊 BIST 100: <strong class="text-teal-600">9.850,40 TL</strong></span>
-            <!-- BANT DÖNGÜSÜ İÇİN TEKRAR -->
+            <!-- DÖNGÜ İÇİN TEKRAR -->
             <span class="mx-4">💵 DOLAR: <strong class="text-teal-600">47.88 TL</strong></span>
             <span class="mx-4">💶 EURO: <strong>55.41 TL</strong></span>
             <span class="mx-4">🏆 GRAM ALTIN: <strong class="text-teal-600">6.650 TL</strong></span>
@@ -85,13 +103,14 @@
     <!-- SEKMELER (NAV) -->
     <div class="max-w-4xl mx-auto w-full px-3 mt-3">
         <div class="flex overflow-x-auto space-x-1.5 pb-2 text-[11px] font-semibold whitespace-nowrap">
-            <button onclick="tabAc('cevirici')" class="tab-btn bg-custom-teal text-white px-3 py-1.5 rounded shadow-sm">Hızlı Çevirici</button>
-            <button onclick="tabAc('zekat')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">Zekat Hesapla</button>
-            <button onclick="tabAc('fitre')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">Fitre / Nisap</button>
-            <button onclick="tabAc('karpayi')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">Kâr Payı & Karşılaştırma</button>
-            <button onclick="tabAc('finansman')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">Finansman Taksit</button>
-            <button onclick="tabAc('bist')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">BIST Katılım Endeksi</button>
-            <button onclick="tabAc('miras')" class="tab-btn bg-white text-gray-700 border hover:bg-gray-50 px-3 py-1.5 rounded">Miras</button>
+            <button onclick="tabAc('cevirici', this)" class="tab-btn active-tab px-3 py-1.5 rounded shadow-sm">Hızlı Çevirici</button>
+            <button onclick="tabAc('zekat', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">Zekat Hesapla</button>
+            <button onclick="tabAc('fitre', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">Fitre / Nisap</button>
+            <button onclick="tabAc('karpayi', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">Kâr Payı & Karşılaştırma</button>
+            <button onclick="tabAc('finansman', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">Finansman Taksit</button>
+            <button onclick="tabAc('bist', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">BIST Katılım Endeksi</button>
+            <button onclick="tabAc('miras', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">Miras</button>
+            <button onclick="tabAc('blog', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded">📖 Finans Rehberi / Blog</button>
         </div>
     </div>
 
@@ -128,16 +147,39 @@
                 </div>
             </div>
 
-            <!-- MODÜL 2: ZEKAT HESAPLA -->
+            <!-- MODÜL 2: GELİŞMİŞ ZEKAT HESAPLA -->
             <div id="modul-zekat" class="tab-content hidden space-y-4">
-                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Zekat Hesaplama</h2>
-                <div>
-                    <label class="block text-[11px] text-gray-600 mb-1">Toplam Birikim / Mal Varlığı (TL):</label>
-                    <input id="zekat-varlik" type="number" placeholder="Örn: 600000" class="w-full border rounded p-2 text-xs border-gray-300">
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Gelişmiş Zekat Hesaplama</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-gray-600 mb-1">Nakit / Banka Hesabı (TL):</label>
+                        <input id="z-nakit" type="number" placeholder="Örn: 50000" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-600 mb-1">Mevcut Altın Miktarı (Gram):</label>
+                        <input id="z-altin" type="number" placeholder="Örn: 100" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-600 mb-1">Mevcut Gümüş Miktarı (Gram):</label>
+                        <input id="z-gumus" type="number" placeholder="Örn: 500" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-600 mb-1">Döviz, Ticari Mal veya Hisse (TL):</label>
+                        <input id="z-diger" type="number" placeholder="Örn: 150000" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
                 </div>
-                <button onclick="hesaplaZekat()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs">Zekat Miktarını Hesapla</button>
-                <div id="zekat-sonuc" class="hidden bg-emerald-50 p-3 rounded border text-xs text-emerald-900">
-                    Ödenmesi Gereken Zekat Tutarı: <strong id="res-zekat" class="text-custom-teal text-sm">0,00 TL</strong> (%2.5)
+                <div>
+                    <label class="block text-[11px] text-red-600 mb-1 font-semibold">Düşülecek Borçlar & Yakın İhtiyaçlar (TL):</label>
+                    <input id="z-borc" type="number" placeholder="Örn: 20000" class="w-full border border-red-200 rounded p-2 text-xs bg-red-50/30">
+                </div>
+                <button onclick="hesaplaDetayliZekat()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs">Zekat Miktarını Hesapla</button>
+                
+                <div id="zekat-sonuc" class="hidden bg-emerald-50 p-3.5 rounded border border-emerald-100 text-xs space-y-1.5">
+                    <p class="text-gray-700">Toplam Varlık Değeri: <strong id="res-z-toplam">0,00 TL</strong></p>
+                    <p class="text-gray-700">Net Zekat Matrahı: <strong id="res-z-matrah">0,00 TL</strong></p>
+                    <hr class="border-emerald-200 my-1">
+                    <p class="text-sm font-bold text-custom-teal">Ödenmesi Gereken Zekat Tutarı (%2.5): <span id="res-z-tutar" class="text-base">0,00 TL</span></p>
+                    <p id="zekat-nisap-uyari" class="text-[10px] text-amber-700 hidden mt-1">⚠️ Toplam net varlığınız Nisap miktarının (533.197 TL) altında kaldığı için zekat mükellefiyeti bulunmamaktadır.</p>
                 </div>
             </div>
 
@@ -227,6 +269,28 @@
                 </div>
             </div>
 
+            <!-- MODÜL 8: ADSENSE İÇİN BLOG / FİNANS REHBERİ -->
+            <div id="modul-blog" class="tab-content hidden space-y-6 text-xs text-gray-700 leading-relaxed">
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans Rehberi & Makaleler</h2>
+                
+                <article class="p-4 border rounded-lg bg-gray-50/50 space-y-2">
+                    <h3 class="text-sm font-bold text-custom-teal">1. Faizsiz Finansman (Murabaha) Nedir?</h3>
+                    <p>Günümüzde "faizsiz finansman" kavramı, özellikle ev veya araç alımlarında faizli kredi kullanmak istemeyenler için önemli bir alternatif oluşturmaktadır. Bu sistemlerin temelinde genellikle "Murabaha" yöntemi yatar.</p>
+                    <p><strong>Murabaha Nedir?</strong> Murabaha, finansal kurumun alacağınız ürünü (ev, araç, makine) satın alıp, üzerine belirli bir kâr payı ekleyerek size vadeli olarak satması işlemidir. Bu bir borç para verme işlemi değil, bir <strong>ticari alım-satım</strong> işlemidir.</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong>Ticari İşlem:</strong> Banka size para değil, doğrudan ürün satar.</li>
+                        <li><strong>Sabit Kâr:</strong> Sözleşme anında belirlenen kâr payı sabittir, sonradan artış göstermez.</li>
+                        <li><strong>Varlık Temelli:</strong> İşlem somut bir varlığın el değiştirmesine dayanır.</li>
+                    </ul>
+                </article>
+
+                <article class="p-4 border rounded-lg bg-gray-50/50 space-y-2">
+                    <h3 class="text-sm font-bold text-custom-teal">2. Zekat Nisap Miktarı Nasıl Hesaplanır?</h3>
+                    <p>Zekat, dinen zengin sayılan Müslümanların yılda bir kez mal varlıklarının %2,5'ini ihtiyaç sahiplerine vermesidir. Bir kişinin zekat vermekle yükümlü olması için temel ihtiyaçları dışında nisap miktarı mala sahip olması gerekir.</p>
+                    <p><strong>Nisap Miktarı Nedir?</strong> Nisap miktarı, 80.18 gram altın veya bu değerdeki para/ticari mal varlığıdır. Güncel altın fiyatları üzerinden hesaplanan bu sınır aşıldığında zekat yükümlülüğü başlar.</p>
+                </article>
+            </div>
+
             <!-- GRAFİK ALANI -->
             <div class="border rounded-lg p-3 bg-gray-50/50 text-center">
                 <div class="flex items-center justify-center space-x-1 text-[11px] text-custom-teal font-medium mb-2">
@@ -240,31 +304,41 @@
                 </div>
             </div>
 
-            <!-- FİYAT ALARMI -->
-            <div class="pt-1">
-                <span class="text-[11px] font-bold text-custom-teal block mb-1.5">🔔 Fiyat Alarmı Kur</span>
-                <div class="flex flex-col md:flex-row gap-2">
-                    <select class="border rounded p-1.5 text-xs border-gray-300 bg-white md:w-1/3"><option>Gram Altın (TL)</option></select>
-                    <input type="number" placeholder="Hedef Fiyat (TL)" class="border rounded p-1.5 text-xs border-gray-300 md:w-2/3">
-                    <button class="bg-custom-teal text-white px-5 py-1.5 rounded text-xs font-bold">Kur</button>
-                </div>
-            </div>
-
-            <!-- CANLI KRİPTO & BİST ŞERİTLERİ -->
+            <!-- CANLI AKAN KRİPTO & BİST ŞERİTLERİ -->
             <div class="pt-1 space-y-2 text-[11px]">
-                <div class="p-2 bg-gray-50/80 border rounded text-gray-600 flex overflow-x-auto space-x-3 whitespace-nowrap items-center">
-                    <span class="text-pink-600 font-bold">📈 CANLI KRİPTO BORSASI (TL CİNSİNDEN)</span>
-                    <span>BTC: <strong>3.085.112 TL</strong></span>
-                    <span>ETH: <strong>91.420 TL</strong></span>
-                    <span>SOL: <strong>3.635 TL</strong></span>
-                    <span>BNB: <strong>27.420 TL</strong></span>
+                <div class="ticker-wrap p-2 bg-gray-50/80 border rounded">
+                    <div class="ticker-move text-gray-600">
+                        <span class="text-pink-600 font-bold mr-3">📈 CANLI KRİPTO BORSASI (TL CİNSİNDEN)</span>
+                        <span class="mx-3">BTC: <strong>3.085.112 TL</strong></span>
+                        <span class="mx-3">ETH: <strong>91.420 TL</strong></span>
+                        <span class="mx-3">SOL: <strong>3.635 TL</strong></span>
+                        <span class="mx-3">BNB: <strong>27.420 TL</strong></span>
+                        <span class="mx-3">XRP: <strong>27.60 TL</strong></span>
+                        <!-- DÖNGÜ İÇİN TEKRAR -->
+                        <span class="text-pink-600 font-bold ml-6 mr-3">📈 CANLI KRİPTO BORSASI (TL CİNSİNDEN)</span>
+                        <span class="mx-3">BTC: <strong>3.085.112 TL</strong></span>
+                        <span class="mx-3">ETH: <strong>91.420 TL</strong></span>
+                        <span class="mx-3">SOL: <strong>3.635 TL</strong></span>
+                        <span class="mx-3">BNB: <strong>27.420 TL</strong></span>
+                        <span class="mx-3">XRP: <strong>27.60 TL</strong></span>
+                    </div>
                 </div>
-                <div class="p-2 bg-gray-50/80 border rounded text-gray-600 flex overflow-x-auto space-x-3 whitespace-nowrap items-center">
-                    <span class="text-teal-700 font-bold">📊 CANLI BORSA İSTANBUL (BIST)</span>
-                    <span>BIST 100: <strong class="text-teal-700">9.850,40 TL</strong></span>
-                    <span>THYAO: <strong>298.50 TL</strong></span>
-                    <span>GARAN: <strong>112.40 TL</strong></span>
-                    <span>EREGL: <strong>48.20 TL</strong></span>
+                <div class="ticker-wrap p-2 bg-gray-50/80 border rounded">
+                    <div class="ticker-move-fast text-gray-600">
+                        <span class="text-teal-700 font-bold mr-3">📊 CANLI BORSA İSTANBUL (BIST)</span>
+                        <span class="mx-3">BIST 100: <strong class="text-teal-700">9.850,40 TL</strong></span>
+                        <span class="mx-3">THYAO: <strong>298.50 TL</strong></span>
+                        <span class="mx-3">GARAN: <strong>112.40 TL</strong></span>
+                        <span class="mx-3">EREGL: <strong>48.20 TL</strong></span>
+                        <span class="mx-3">ASELS: <strong>58.90 TL</strong></span>
+                        <!-- DÖNGÜ İÇİN TEKRAR -->
+                        <span class="text-teal-700 font-bold ml-6 mr-3">📊 CANLI BORSA İSTANBUL (BIST)</span>
+                        <span class="mx-3">BIST 100: <strong class="text-teal-700">9.850,40 TL</strong></span>
+                        <span class="mx-3">THYAO: <strong>298.50 TL</strong></span>
+                        <span class="mx-3">GARAN: <strong>112.40 TL</strong></span>
+                        <span class="mx-3">EREGL: <strong>48.20 TL</strong></span>
+                        <span class="mx-3">ASELS: <strong>58.90 TL</strong></span>
+                    </div>
                 </div>
             </div>
 
@@ -293,25 +367,25 @@
     <!-- FOOTER -->
     <footer class="text-center py-4 text-[10px] text-gray-500 border-t bg-white mt-auto">
         <p>© 2026 ParaHesap / HelalHesap - Tüm Hakları Saklıdır | Faizsiz Finans Portalı</p>
-        <p class="mt-0.5"><a href="gizlilik-politikasi.html" class="underline hover:text-custom-teal">Gizlilik Politikası</a> | <a href="iletisim.html" class="underline hover:text-custom-teal">İletişim</a></p>
+        <p class="mt-0.5"><a href="gizlilik-politikasi.html" class="underline hover:text-custom-teal">Gizlilik Politikası</a> | <a href="iletisim.html" class="underline hover:text-custom-teal">İletişim</a> (destek@parahesap.site)</p>
     </footer>
 
-    <!-- JAVASCRIPT / HESAPLAMA MANTIĞI -->
+    <!-- JAVASCRIPT HESAPLAMA SİSTEMİ -->
     <script>
-        // SEKMELER ARASI GEÇİŞ
-        function tabAc(modulAdi) {
+        const KURLAR = { altin: 6650, gumus: 100.56 };
+
+        function tabAc(modulAdi, btnElement) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-custom-teal', 'text-white');
-                el.classList.add('bg-white', 'text-gray-700');
+                el.classList.remove('active-tab');
+                el.classList.add('inactive-tab');
             });
 
             document.getElementById('modul-' + modulAdi).classList.remove('hidden');
-            event.currentTarget.classList.remove('bg-white', 'text-gray-700');
-            event.currentTarget.classList.add('bg-custom-teal', 'text-white');
+            btnElement.classList.remove('inactive-tab');
+            btnElement.classList.add('active-tab');
         }
 
-        // 1. DÖNÜŞTÜRÜCÜ HESAPLA
         function dondurveHesapla() {
             const miktar = parseFloat(document.getElementById('input-miktar').value) || 0;
             const birimFiyat = parseFloat(document.getElementById('select-tur').value) || 0;
@@ -319,40 +393,58 @@
             document.getElementById('sonuc-deger').innerText = toplam.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
         }
 
-        // 2. ZEKAT HESAPLA
-        function hesaplaZekat() {
-            const varlik = parseFloat(document.getElementById('zekat-varlik').value) || 0;
-            const zekat = varlik * 0.025;
-            document.getElementById('res-zekat').innerText = zekat.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+        function hesaplaDetayliZekat() {
+            const nakit = parseFloat(document.getElementById('z-nakit').value) || 0;
+            const altinGram = parseFloat(document.getElementById('z-altin').value) || 0;
+            const gumusGram = parseFloat(document.getElementById('z-gumus').value) || 0;
+            const diger = parseFloat(document.getElementById('z-diger').value) || 0;
+            const borc = parseFloat(document.getElementById('z-borc').value) || 0;
+
+            const altinTL = altinGram * KURLAR.altin;
+            const gumusTL = gumusGram * KURLAR.gumus;
+
+            const toplamVarlik = nakit + altinTL + gumusTL + diger;
+            const netMatrah = Math.max(0, toplamVarlik - borc);
+            const zekatTutari = netMatrah * 0.025;
+            const nisapEsigi = 80.18 * KURLAR.altin;
+
+            document.getElementById('res-z-toplam').innerText = toplamVarlik.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-z-matrah').innerText = netMatrah.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+            document.getElementById('res-z-tutar').innerText = zekatTutari.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
+
+            const uyariEl = document.getElementById('zekat-nisap-uyari');
+            if (netMatrah < nisapEsigi && netMatrah > 0) {
+                uyariEl.classList.remove('hidden');
+            } else {
+                uyariEl.classList.add('hidden');
+            }
+
             document.getElementById('zekat-sonuc').classList.remove('hidden');
         }
 
-        // 3. FİTRE HESAPLA
         function hesaplaFitre() {
             const kisi = parseInt(document.getElementById('fitre-kisi').value) || 0;
             const fidye = parseInt(document.getElementById('fidye-gun').value) || 0;
-            const birimFitre = 180; // 2026 Varsayılan
+            const birimFitre = 180;
             
             document.getElementById('res-fitre').innerText = (kisi * birimFitre).toLocaleString('tr-TR') + ' TL';
             document.getElementById('res-fidye').innerText = (fidye * birimFitre).toLocaleString('tr-TR') + ' TL';
             document.getElementById('fitre-sonuc').classList.remove('hidden');
         }
 
-        // 4. KÂR PAYI HESAPLA
         function hesaplaKarPayi() {
             const anapara = parseFloat(document.getElementById('kp-anapara').value) || 0;
             const vade = parseInt(document.getElementById('kp-vade').value) || 1;
             const oran = parseFloat(document.getElementById('kp-oran').value) || 0;
 
             const brut = (anapara * oran * (vade * 30)) / 36500;
-            const net = brut * 0.85; // %15 Stopaj varsayımı
+            const net = brut * 0.85;
 
             document.getElementById('res-kp-brut').innerText = brut.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-kp-net').innerText = net.toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('kp-sonuc').classList.remove('hidden');
         }
 
-        // 5. FİNANSMAN TAKSİT HESAPLA
         function hesaplaFinansman() {
             const tutar = parseFloat(document.getElementById('fin-tutar').value) || 0;
             const taksit = parseInt(document.getElementById('fin-taksit').value) || 1;
@@ -366,7 +458,6 @@
             document.getElementById('fin-sonuc').classList.remove('hidden');
         }
 
-        // 6. BIST FİLTRELEME
         function filtreleBist() {
             const q = document.getElementById('bist-ara').value.toLowerCase();
             document.querySelectorAll('.bist-item').forEach(item => {
@@ -374,7 +465,6 @@
             });
         }
 
-        // 7. MİRAS HESAPLA
         function hesaplaMiras() {
             const tereke = parseFloat(document.getElementById('miras-tereke').value) || 0;
             const es = document.getElementById('miras-es').value;
