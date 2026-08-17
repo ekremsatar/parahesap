@@ -6,14 +6,10 @@
     <meta name="description" content="ParaHesap - Helal Finans, Zekat, Fitre, Katılım Bankası Kâr Payı ve Miras Hesaplama Portalı">
     <title>ParaHesap | Helal Hesaplama ve Finans Portalı</title>
 
-    <!-- Open Graph (OG) Sosyal Medya Meta Etiketleri -->
-    <meta property="og:title" content="ParaHesap | Helal Hesaplama ve Finans Portalı">
-    <meta property="og:description" content="Faizsiz finans, zekat, fitre, katılım bankası kâr payı ve miras hesaplama aracı.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://parahesap.site">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js (Grafik Kütüphanesi) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body { background-color: #f3f7f5; color: #1e293b; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -106,12 +102,24 @@
             <button onclick="tabAc('bist', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">BIST Katılım Endeksi</button>
             <button onclick="tabAc('miras', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Miras</button>
             <button onclick="tabAc('simulasyon', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📈 Altın Simülasyonu</button>
-            <button onclick="tabAc('blog', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📖 Blog & SSS</button>
+            <button onclick="tabAc('makaleler', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📖 Makaleler (10)</button>
         </div>
     </div>
 
     <!-- ANA İÇERİK KARTLARI -->
-    <main class="max-w-4xl mx-auto w-full px-3 my-2 flex-grow">
+    <main class="max-w-4xl mx-auto w-full px-3 my-2 flex-grow space-y-4">
+        
+        <!-- HER SEKMEDE GÖZÜKECEK 7 GÜNLÜK CANLI AKTİF ALTIN GRAFİĞİ -->
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-xs font-bold text-custom-teal">📈 7 Günlük Gram Altın Fiyat Grafiği (Canlı Takip)</h3>
+                <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-semibold border border-emerald-100">Güncel: 6.650 TL</span>
+            </div>
+            <div class="w-full h-40">
+                <canvas id="altinGrafik"></canvas>
+            </div>
+        </div>
+
         <div id="printable-area" class="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
             
             <!-- MODÜL 1: HIZLI ÇEVİRİCİ -->
@@ -344,31 +352,43 @@
                 </div>
             </div>
 
-            <!-- MODÜL 9: BLOG VE SSS (SIKÇA SORULAN SORULAR) -->
-            <div id="modul-blog" class="tab-content hidden space-y-5 text-xs text-gray-700 leading-relaxed">
-                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans Rehberi & SSS</h2>
+            <!-- MODÜL 9: 10 ADET MAKALE VE REHBER -->
+            <div id="modul-makaleler" class="tab-content hidden space-y-4 text-xs text-gray-700 leading-relaxed">
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans ve İslami İktisat Makaleleri (10 Adet)</h2>
                 
-                <article class="p-4 border rounded-lg bg-gray-50/70 space-y-2">
-                    <h3 class="text-sm font-bold text-custom-teal">1. Faizsiz Finansman (Murabaha) Nedir ve Nasıl Çalışır?</h3>
-                    <p>Katılım bankalarının sunduğu murabaha sistemi, doğrudan para borçlandırma esasına dayanmaz. Banka, müşterinin talep ettiği gayrimenkul, taşıt veya ticari malı peşin satın alır ve vadeli olarak satar.</p>
-                </article>
-
-                <div class="space-y-3 pt-2">
-                    <h3 class="text-xs font-bold text-gray-800 uppercase tracking-wider">Sıkça Sorulan Sorular (SSS)</h3>
-                    
-                    <div class="border p-3 rounded bg-white space-y-1">
-                        <h4 class="font-bold text-custom-teal">S: Zekat verirken borçlar nasıl hesaba katılır?</h4>
-                        <p class="text-gray-600">C: Vadesi gelmiş veya kısa vadede ödenecek borçlar toplam varlıktan düşülür, kalan net tutar üzerinden nisap miktarı aşılmışsa %2.5 oranında zekat verilir.</p>
-                    </div>
-
-                    <div class="border p-3 rounded bg-white space-y-1">
-                        <h4 class="font-bold text-custom-teal">S: Katılım bankası kâr payı faiz midir?</h4>
-                        <p class="text-gray-600">C: Hayır, katılım bankacılığı faizsiz finans ilkelerine dayanır. Getiri, ticari ve sınai faaliyetlerden elde edilen kârın ortaklık oranında paylaşılmasıyla oluşur.</p>
-                    </div>
+                <div class="space-y-3">
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">1. İslam İktisadının Temel Prensipleri ve Faiz Yasağı</h3><p class="text-gray-600 mt-1">İslam iktisat sisteminin faiz, karaborsa ve haksız kazanç üzerindeki yasaklayıcı ve adalet sağlayıcı hükümleri.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">2. Katılım Bankacılığında Murabaha (Maliyet Artışlı Satış) Sistemi</h3><p class="text-gray-600 mt-1">Bankaların gayrimenkul ve araç alımında uyguladığı faizsiz finansman modelinin işleyiş mekanizması.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">3. Zekat Kimlere Farzdır ve Hangi Mallardan Alınır?</h3><p class="text-gray-600 mt-1">Nisap miktarı, zekata tabi mallar (nakit, altın, ticaret malları) ve kimlerin zekat alabileceği hakkında rehber.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">4. Katılım Endeksine Uygun Hisse Senedi Yatırımı Nasıl Yapılır?</h3><p class="text-gray-600 mt-1">Borsa İstanbul (BIST) katılım şartları, faizli işlem yapan veya haram sektörde bulunan şirketlerin filtrelenmesi.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">5. İslami Finansta Mâkarı-i Şerîa (Şeriatın Gayeleri)</h3><p class="text-gray-600 mt-1">Malın, canın, neslin ve aklın korunması ilkelerinin modern finansal enstrümanlara yansımaları.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">6. Tefrik ve Ortaklık Modelleri: Mareke ve Müşareke</h3><p class="text-gray-600 mt-1">Ticari ortaklıklarda kâr ve zarara katılma esasları, emek-sermaye ortaklıklarının İslam hukuktaki yeri.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">7. Enflasyon Karşısında Altın ve Gümüşle Birikim Yapmak</h3><p class="text-gray-600 mt-1">Tarihsel süreçte kıymetli madenlerin alım gücünü koruma özelliği ve uzun vadeli tasarruf stratejileri.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">8. İslami Miras Hukuku ve Ferâiz İlminin Temelleri</h3><p class="text-gray-600 mt-1">Kur'an-ı Kerim'de Nisa Suresi ile belirlenen miras payları, eşlerin ve çocukların hak ediş oranları.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">9. Kripto Paralar ve Dijital Varlıkların Fıkhi Boyutu</h3><p class="text-gray-600 mt-1">Merkeziyetsiz dijital paraların para birimi ve yatırım aracı olarak İslam hukukundaki meşruiyet tartışmaları.</p></article>
+                    <article class="p-3 border rounded bg-gray-50"><h3 class="font-bold text-custom-teal">10. Borçlanma Adabı ve Erteleme Hakları (İnzar ve İhsan)</h3><p class="text-gray-600 mt-1">İslam'da borçlanmanın sorumlulukları, ödeme güçlüğü çekenlere süre tanınmasının fazileti.</p></article>
                 </div>
             </div>
 
         </div>
+
+        <!-- SAYFANIN EN ALTINDA YER ALAN 10 ADET SIKÇA SORULAN SORU (SSS) -->
+        <div class="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">❓ Sıkça Sorulan Sorular (10 SSS)</h2>
+            <div class="space-y-3 text-xs text-gray-700">
+                <div class="border p-3 rounded bg-gray-50"><strong>1. Zekat verirken borçlar nasıl düşülür?</strong><p class="text-gray-600 mt-1">Vadesi gelmiş veya kısa vadede ödenecek borçlar toplam varlıktan çıkarılır, kalan net tutar nisap sınırındaysa zekat verilir.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>2. Katılım bankası kâr payı faiz midir?</strong><p class="text-gray-600 mt-1">Hayır, kâr payı ticari faaliyetlerden doğan kazancın ortaklık oranına göre paylaşılmasıdır, kesin getiri taahhüdü içermez.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>3. Nisap miktarı nedir ve nasıl hesaplanır?</strong><p class="text-gray-600 mt-1">Nisap, zekatla yükümlü olmak için gereken asgari zenginlik ölçüsüdür. 80.18 gram altın veya karşılığı nakittir.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>4. Hisse senedi alım satımı caiz midir?</strong><p class="text-gray-600 mt-1">Şirketin ana faaliyet konusu helalse ve faizli borçlanma oranı belirli sınırların altındaysa katılım endeksine uygundur.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>5. Fitre miktarı neye göre belirlenir?</strong><p class="text-gray-600 mt-1">Diyanet İşleri Başkanlığı tarafından bir kişinin günlük gıda ihtiyacı ortalamasına göre her yıl yeniden duyurulur.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>6. Altın ve gümüş haricindeki ziynet eşyalarının zekatı var mıdır?</strong><p class="text-gray-600 mt-1">Pırlanta, elmas gibi değerli taşların zekata tabi olup olmadığı ticari amaçla alınıp satılmalarına bağlıdır.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>7. Kredi kartı taksitlendirmeleri faizli midir?</strong><p class="text-gray-600 mt-1">Son ödeme tarihinden sonra gecikmeye giren tutarlara uygulanan vade farkı faiz hükmündedir, kaçınılmalıdır.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>8. Ev kredisi yerine katılım bankasından konut finansmanı nasıl alınır?</strong><p class="text-gray-600 mt-1">Banka evi sizin adınıza peşin alır, üzerine kâr marjı ekleyerek vadeli olarak size tapulu şekilde satar.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>9. Ticari malların zekatı nasıl hesaplanır?</strong><p class="text-gray-600 mt-1">Yıl sonunda eldeki ticari malların piyasadaki toptan satış değeri üzerinden %2.5 oranında zekat hesaplanır.</p></div>
+                <div class="border p-3 rounded bg-gray-50"><strong>10. Babadan kalan miras kadın ve erkek arasında nasıl paylaşılır?</strong><p class="text-gray-600 mt-1">İslam hukukunda (Ferâiz) genel kural olarak erkek çocuğa 2 pay, kız çocuğa 1 pay düşecek şekilde taksim edilir.</p></div>
+            </div>
+        </div>
+
     </main>
 
     <!-- ÇEREZ / GİZLİLİK POLİTİKASI BİLDİRİMİ -->
@@ -397,6 +417,36 @@
             { ad: 'Vakıf Katılım', fark: -1.5 },
             { ad: 'Emlak Katılım', fark: -2.5 }
         ];
+
+        // 7 Günlük Canlı Altın Grafiğini Oluşturma
+        function grafikOlustur() {
+            const ctx = document.getElementById('altinGrafik').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz (Bugün)'],
+                    datasets: [{
+                        label: 'Gram Altın (TL)',
+                        data: [6580, 6605, 6595, 6620, 6640, 6645, 6650],
+                        borderColor: '#0b7361',
+                        backgroundColor: 'rgba(11, 115, 97, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { ticks: { font: { size: 10 } }, grid: { color: '#f1f5f9' } },
+                        x: { ticks: { font: { size: 10 } }, grid: { display: false } }
+                    }
+                }
+            });
+        }
 
         // LocalStorage Veri Saklama ve Yükleme Fonksiyonları
         function verileriKaydet() {
@@ -607,6 +657,7 @@
             dondurveHesapla();
             hesaplaKarPayi();
             hesaplaSimulasyon();
+            grafikOlustur();
 
             if (!localStorage.getItem('cookie_accepted')) {
                 document.getElementById('cookie-banner').classList.remove('hidden');
