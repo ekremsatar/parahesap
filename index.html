@@ -105,7 +105,8 @@
             <button onclick="tabAc('finansman', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Finansman Taksit</button>
             <button onclick="tabAc('bist', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">BIST Katılım Endeksi</button>
             <button onclick="tabAc('miras', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Miras</button>
-            <button onclick="tabAc('blog', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📖 Finans Rehberi / Blog</button>
+            <button onclick="tabAc('simulasyon', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📈 Altın Simülasyonu</button>
+            <button onclick="tabAc('blog', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📖 Blog & SSS</button>
         </div>
     </div>
 
@@ -322,13 +323,49 @@
                 </div>
             </div>
 
-            <!-- MODÜL 8: BLOG / REHBER -->
+            <!-- MODÜL 8: HAFTALIK ALTIN BİRİKTİRME SİMÜLASYONU -->
+            <div id="modul-simulasyon" class="tab-content hidden space-y-4">
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Haftalık Altın Biriktirme Simülasyonu</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label for="sim-gram" class="block text-[11px] text-gray-600 mb-1">Her Hafta Alınacak Gram Altın:</label>
+                        <input id="sim-gram" type="number" min="0.1" step="0.1" value="1" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                    <div>
+                        <label for="sim-sure" class="block text-[11px] text-gray-600 mb-1">Biriktirme Süresi (Ay):</label>
+                        <input id="sim-sure" type="number" min="1" value="12" class="w-full border rounded p-2 text-xs border-gray-300">
+                    </div>
+                </div>
+                <button onclick="hesaplaSimulasyon()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Simülasyonu Çalıştır</button>
+                <div id="sim-sonuc" class="hidden bg-emerald-50 p-3.5 rounded border border-emerald-100 text-xs space-y-1.5">
+                    <p>Toplam Biriken Süre: <strong id="res-sim-hafta">0 Hafta</strong></p>
+                    <p>Toplam Altın Miktarı: <strong id="res-sim-toplam-gram" class="text-custom-teal">0.00 Gram</strong></p>
+                    <p>Güncel Değer Üzerinden Toplam Tutar: <strong id="res-sim-tutar" class="text-base text-custom-teal">0,00 TL</strong></p>
+                </div>
+            </div>
+
+            <!-- MODÜL 9: BLOG VE SSS (SIKÇA SORULAN SORULAR) -->
             <div id="modul-blog" class="tab-content hidden space-y-5 text-xs text-gray-700 leading-relaxed">
-                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans Rehberi & Makaleler</h2>
+                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Faizsiz Finans Rehberi & SSS</h2>
+                
                 <article class="p-4 border rounded-lg bg-gray-50/70 space-y-2">
                     <h3 class="text-sm font-bold text-custom-teal">1. Faizsiz Finansman (Murabaha) Nedir ve Nasıl Çalışır?</h3>
                     <p>Katılım bankalarının sunduğu murabaha sistemi, doğrudan para borçlandırma esasına dayanmaz. Banka, müşterinin talep ettiği gayrimenkul, taşıt veya ticari malı peşin satın alır ve vadeli olarak satar.</p>
                 </article>
+
+                <div class="space-y-3 pt-2">
+                    <h3 class="text-xs font-bold text-gray-800 uppercase tracking-wider">Sıkça Sorulan Sorular (SSS)</h3>
+                    
+                    <div class="border p-3 rounded bg-white space-y-1">
+                        <h4 class="font-bold text-custom-teal">S: Zekat verirken borçlar nasıl hesaba katılır?</h4>
+                        <p class="text-gray-600">C: Vadesi gelmiş veya kısa vadede ödenecek borçlar toplam varlıktan düşülür, kalan net tutar üzerinden nisap miktarı aşılmışsa %2.5 oranında zekat verilir.</p>
+                    </div>
+
+                    <div class="border p-3 rounded bg-white space-y-1">
+                        <h4 class="font-bold text-custom-teal">S: Katılım bankası kâr payı faiz midir?</h4>
+                        <p class="text-gray-600">C: Hayır, katılım bankacılığı faizsiz finans ilkelerine dayanır. Getiri, ticari ve sınai faaliyetlerden elde edilen kârın ortaklık oranında paylaşılmasıyla oluşur.</p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -382,7 +419,9 @@
                 'miras-tereke': document.getElementById('miras-tereke').value,
                 'miras-es': document.getElementById('miras-es').value,
                 'miras-erkek': document.getElementById('miras-erkek').value,
-                'miras-kiz': document.getElementById('miras-kiz').value
+                'miras-kiz': document.getElementById('miras-kiz').value,
+                'sim-gram': document.getElementById('sim-gram').value,
+                'sim-sure': document.getElementById('sim-sure').value
             };
             localStorage.setItem('parahesap_veriler', JSON.stringify(veriler));
         }
@@ -543,6 +582,21 @@
             document.getElementById('miras-sonuc').classList.remove('hidden');
         }
 
+        function hesaplaSimulasyon() {
+            verileriKaydet();
+            const haftalikGram = Math.max(0, parseFloat(document.getElementById('sim-gram').value) || 0);
+            const sureAy = Math.max(1, parseInt(document.getElementById('sim-sure').value) || 1);
+            
+            const toplamHafta = Math.round(sureAy * 4.33);
+            const toplamGram = haftalikGram * toplamHafta;
+            const toplamTutar = toplamGram * KURLAR.altin;
+
+            document.getElementById('res-sim-hafta').innerText = toplamHafta + ' Hafta (' + sureAy + ' Ay)';
+            document.getElementById('res-sim-toplam-gram').innerText = toplamGram.toFixed(2) + ' Gram';
+            document.getElementById('res-sim-tutar').innerText = toplamTutar.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+            document.getElementById('sim-sonuc').classList.remove('hidden');
+        }
+
         function gizlilikKabul() {
             localStorage.setItem('cookie_accepted', 'true');
             document.getElementById('cookie-banner').classList.add('hidden');
@@ -552,6 +606,7 @@
             verileriYukle();
             dondurveHesapla();
             hesaplaKarPayi();
+            hesaplaSimulasyon();
 
             if (!localStorage.getItem('cookie_accepted')) {
                 document.getElementById('cookie-banner').classList.remove('hidden');
