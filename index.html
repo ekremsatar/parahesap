@@ -17,6 +17,16 @@
         .text-custom-teal { color: #0b7361; }
         .border-custom-teal { border-color: #0b7361; }
 
+        /* ÖZEL FORM ELEMANI STİLLERİ (KALIN SİYAH ÇERÇEVE VE YEŞİL KALIN ETİKETLER) */
+        input, select {
+            border: 2px solid #000000 !important;
+            border-radius: 6px !important;
+        }
+        label, .form-label {
+            font-weight: 700 !important;
+            color: #0b7361 !important;
+        }
+
         /* CANLI AKAN BANT ANİMASYONLARI */
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
@@ -27,6 +37,7 @@
             white-space: nowrap;
             background-color: #ffffff;
             border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid #e2e8f0;
             width: 100%;
         }
         .ticker-move {
@@ -69,7 +80,7 @@
         <p class="text-xs md:text-sm text-teal-100 mt-1">Faizsiz Finans ve Helal Hesaplama Portalı</p>
     </header>
 
-    <!-- ÜST CANLI AKAN BANT (DÜZELTİLDİ VE GERİ EKLENDİ) -->
+    <!-- ÜST CANLI AKAN BANT -->
     <div class="ticker-wrap text-[11px] py-2 shadow-sm">
         <div class="ticker-move text-gray-700 font-medium">
             <div class="flex items-center">
@@ -127,16 +138,17 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Canlı Altın, Döviz & Kripto - TL Dönüştürücü</h2>
                 <div class="space-y-3">
                     <div>
-                        <label for="input-miktar" class="block text-[11px] text-gray-600 mb-1">Miktar Girin:</label>
-                        <input id="input-miktar" type="number" value="1" min="0" step="any" oninput="dondurveHesapla()" class="w-full border rounded p-2 text-xs focus:outline-none border-gray-300">
+                        <label for="input-miktar" class="block text-[11px] mb-1">Miktar Girin:</label>
+                        <input id="input-miktar" type="number" value="1" min="0" step="any" oninput="dondurveHesapla()" class="w-full rounded p-2 text-xs focus:outline-none">
                     </div>
                     <div>
-                        <label for="select-tur" class="block text-[11px] text-gray-600 mb-1">Dönüştürülecek Varlık Türü:</label>
-                        <select id="select-tur" onchange="dondurveHesapla()" class="w-full border rounded p-2 text-xs focus:outline-none border-gray-300 bg-white">
+                        <label for="select-tur" class="block text-[11px] mb-1">Dönüştürülecek Varlık Türü:</label>
+                        <select id="select-tur" onchange="dondurveHesapla()" class="w-full rounded p-2 text-xs focus:outline-none bg-white">
                             <option value="6650">Gram Altın (24 Ayar)</option>
                             <option value="10880">Çeyrek Altın</option>
                             <option value="47.88">Dolar (USD)</option>
                             <option value="55.41">Euro (EUR)</option>
+                            <option value="3085112">Bitcoin (BTC)</option>
                         </select>
                     </div>
                     <button onclick="dondurveHesapla()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Dönüştür ve Hesapla</button>
@@ -156,25 +168,25 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Gelişmiş Zekat Hesaplama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label for="z-nakit" class="block text-[11px] text-gray-600 mb-1">Nakit / Banka Hesabı (TL):</label>
-                        <input id="z-nakit" type="number" min="0" placeholder="Örn: 50000" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="z-nakit" class="block text-[11px] mb-1">Nakit / Banka Hesabı (TL):</label>
+                        <input id="z-nakit" type="number" min="0" placeholder="Örn: 50000" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="z-altin" class="block text-[11px] text-gray-600 mb-1">Mevcut Altın Miktarı (Gram):</label>
-                        <input id="z-altin" type="number" min="0" placeholder="Örn: 100" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="z-altin" class="block text-[11px] mb-1">Mevcut Altın Miktarı (Gram):</label>
+                        <input id="z-altin" type="number" min="0" placeholder="Örn: 100" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="z-gumus" class="block text-[11px] text-gray-600 mb-1">Mevcut Gümüş Miktarı (Gram):</label>
-                        <input id="z-gumus" type="number" min="0" placeholder="Örn: 500" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="z-gumus" class="block text-[11px] mb-1">Mevcut Gümüş Miktarı (Gram):</label>
+                        <input id="z-gumus" type="number" min="0" placeholder="Örn: 500" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="z-diger" class="block text-[11px] text-gray-600 mb-1">Döviz, Ticari Mal veya Hisse Değeri (TL):</label>
-                        <input id="z-diger" type="number" min="0" placeholder="Örn: 150000" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="z-diger" class="block text-[11px] mb-1">Döviz, Ticari Mal veya Hisse Değeri (TL):</label>
+                        <input id="z-diger" type="number" min="0" placeholder="Örn: 150000" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <div>
-                    <label for="z-borc" class="block text-[11px] text-red-600 mb-1 font-semibold">Düşülecek Borçlar & Yakın İhtiyaçlar (TL):</label>
-                    <input id="z-borc" type="number" min="0" placeholder="Örn: 20000" class="w-full border border-red-200 rounded p-2 text-xs bg-red-50/30">
+                    <label for="z-borc" class="block text-[11px] mb-1">Düşülecek Borçlar & Yakın İhtiyaçlar (TL):</label>
+                    <input id="z-borc" type="number" min="0" placeholder="Örn: 20000" class="w-full rounded p-2 text-xs bg-red-50/30">
                 </div>
                 <button onclick="hesaplaDetayliZekat()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Zekat Miktarını Hesapla</button>
                 
@@ -195,12 +207,12 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Nisap, Fitre ve Fidye Hesaplama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label for="fitre-kisi" class="block text-[11px] text-gray-600 mb-1">Kişi Sayısı (Fitre):</label>
-                        <input id="fitre-kisi" type="number" min="0" value="1" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="fitre-kisi" class="block text-[11px] mb-1">Kişi Sayısı (Fitre):</label>
+                        <input id="fitre-kisi" type="number" min="0" value="1" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="fidye-gun" class="block text-[11px] text-gray-600 mb-1">Kaçırılan Gün (Fidye):</label>
-                        <input id="fidye-gun" type="number" min="0" value="0" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="fidye-gun" class="block text-[11px] mb-1">Kaçırılan Gün (Fidye):</label>
+                        <input id="fidye-gun" type="number" min="0" value="0" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <button onclick="hesaplaFitre()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Tutar Hesapla</button>
@@ -216,16 +228,16 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Katılım Bankası Kâr Payı Karşılaştırma</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                        <label for="kp-anapara" class="block text-[10px] text-gray-500 mb-0.5">Anapara (TL)</label>
-                        <input id="kp-anapara" type="number" min="0" value="100000" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="kp-anapara" class="block text-[10px] mb-0.5">Anapara (TL)</label>
+                        <input id="kp-anapara" type="number" min="0" value="100000" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="kp-vade" class="block text-[10px] text-gray-500 mb-0.5">Vade (Gün)</label>
-                        <input id="kp-vade" type="number" min="1" value="32" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="kp-vade" class="block text-[10px] mb-0.5">Vade (Gün)</label>
+                        <input id="kp-vade" type="number" min="1" value="32" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="kp-oran" class="block text-[10px] text-gray-500 mb-0.5">Ort. Yıllık Kâr Oranı (%)</label>
-                        <input id="kp-oran" type="number" min="0" step="0.1" value="42" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="kp-oran" class="block text-[10px] mb-0.5">Ort. Yıllık Kâr Oranı (%)</label>
+                        <input id="kp-oran" type="number" min="0" step="0.1" value="42" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <button onclick="hesaplaKarPayi()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Kâr Paylarını Karşılaştır</button>
@@ -262,16 +274,16 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Finansman Taksit Hesaplama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
-                        <label for="fin-tutar" class="block text-[10px] text-gray-500 mb-0.5">Finansman Tutarı (TL)</label>
-                        <input id="fin-tutar" type="number" min="0" placeholder="Örn: 100000" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="fin-tutar" class="block text-[10px] mb-0.5">Finansman Tutarı (TL)</label>
+                        <input id="fin-tutar" type="number" min="0" placeholder="Örn: 100000" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="fin-taksit" class="block text-[10px] text-gray-500 mb-0.5">Taksit Sayısı (Ay)</label>
-                        <input id="fin-taksit" type="number" min="1" placeholder="Örn: 12" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="fin-taksit" class="block text-[10px] mb-0.5">Taksit Sayısı (Ay)</label>
+                        <input id="fin-taksit" type="number" min="1" placeholder="Örn: 12" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="fin-oran" class="block text-[10px] text-gray-500 mb-0.5">Aylık Kâr Oranı (%)</label>
-                        <input id="fin-oran" type="number" min="0" step="0.01" placeholder="Örn: 2.99" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="fin-oran" class="block text-[10px] mb-0.5">Aylık Kâr Oranı (%)</label>
+                        <input id="fin-oran" type="number" min="0" step="0.01" placeholder="Örn: 2.99" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <button onclick="hesaplaFinansman()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Taksit Hesapla</button>
@@ -284,7 +296,10 @@
             <!-- MODÜL 6: BIST KATILIM -->
             <div id="modul-bist" class="tab-content hidden space-y-4">
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">BIST Katılım Endeksi Hisseleri</h2>
-                <input id="bist-ara" onkeyup="filtreleBist()" type="text" placeholder="Hisse kodu veya adı ara (Örn: ASELS)..." class="w-full border rounded p-2 text-xs border-gray-300">
+                <div>
+                    <label for="bist-ara" class="block text-[11px] mb-1">Hisse Arama:</label>
+                    <input id="bist-ara" onkeyup="filtreleBist()" type="text" placeholder="Hisse kodu veya adı ara (Örn: ASELS)..." class="w-full rounded p-2 text-xs">
+                </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
                     <div class="bist-item p-2 border rounded bg-gray-50 font-medium">THYAO - Türk Hava Yolları</div>
                     <div class="bist-item p-2 border rounded bg-gray-50 font-medium">ASELS - Aselsan</div>
@@ -300,24 +315,24 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Miras Paylaşımı Hesaplama</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label for="miras-tereke" class="block text-[11px] text-gray-600 mb-1">Toplam Tereke / Mal Varlığı (TL):</label>
-                        <input id="miras-tereke" type="number" min="0" placeholder="Örn: 1000000" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="miras-tereke" class="block text-[11px] mb-1">Toplam Tereke / Mal Varlığı (TL):</label>
+                        <input id="miras-tereke" type="number" min="0" placeholder="Örn: 1000000" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="miras-es" class="block text-[11px] text-gray-600 mb-1">Eş Durumu:</label>
-                        <select id="miras-es" class="w-full border rounded p-2 text-xs border-gray-300 bg-white">
+                        <label for="miras-es" class="block text-[11px] mb-1">Eş Durumu:</label>
+                        <select id="miras-es" class="w-full rounded p-2 text-xs bg-white">
                             <option value="karisi">Eşi Var (Kadın)</option>
                             <option value="kocasi">Eşi Var (Erkek)</option>
                             <option value="yok">Eşi Yok</option>
                         </select>
                     </div>
                     <div>
-                        <label for="miras-erkek" class="block text-[11px] text-gray-600 mb-1">Erkek Çocuk Sayısı:</label>
-                        <input id="miras-erkek" type="number" min="0" value="0" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="miras-erkek" class="block text-[11px] mb-1">Erkek Çocuk Sayısı:</label>
+                        <input id="miras-erkek" type="number" min="0" value="0" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="miras-kiz" class="block text-[11px] text-gray-600 mb-1">Kız Çocuk Sayısı:</label>
-                        <input id="miras-kiz" type="number" min="0" value="0" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="miras-kiz" class="block text-[11px] mb-1">Kız Çocuk Sayısı:</label>
+                        <input id="miras-kiz" type="number" min="0" value="0" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <button onclick="hesaplaMiras()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Miras Dağılımını Hesapla</button>
@@ -336,12 +351,12 @@
                 <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Haftalık Altın Biriktirme Simülasyonu</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label for="sim-gram" class="block text-[11px] text-gray-600 mb-1">Her Hafta Alınacak Gram Altın:</label>
-                        <input id="sim-gram" type="number" min="0.1" step="0.1" value="1" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="sim-gram" class="block text-[11px] mb-1">Her Hafta Alınacak Gram Altın:</label>
+                        <input id="sim-gram" type="number" min="0.1" step="0.1" value="1" class="w-full rounded p-2 text-xs">
                     </div>
                     <div>
-                        <label for="sim-sure" class="block text-[11px] text-gray-600 mb-1">Biriktirme Süresi (Ay):</label>
-                        <input id="sim-sure" type="number" min="1" value="12" class="w-full border rounded p-2 text-xs border-gray-300">
+                        <label for="sim-sure" class="block text-[11px] mb-1">Biriktirme Süresi (Ay):</label>
+                        <input id="sim-sure" type="number" min="1" value="12" class="w-full rounded p-2 text-xs">
                     </div>
                 </div>
                 <button onclick="hesaplaSimulasyon()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Simülasyonu Çalıştır</button>
@@ -372,7 +387,29 @@
 
         </div>
 
-        <!-- SAYFANIN EN ALTINDA YER ALAN 10 ADET SIKÇA SORULAN SORU (SSS) -->
+        <!-- İKİNCİ KAYAN CANLI BORSA ŞERİDİ -->
+        <div class="ticker-wrap text-[11px] py-2 rounded-xl shadow-sm border border-gray-200">
+            <div class="ticker-move text-gray-700 font-medium">
+                <div class="flex items-center">
+                    <span class="mx-4">💵 DOLAR: <strong class="text-teal-600">47.88 TL</strong></span>
+                    <span class="mx-4">💶 EURO: <strong>55.41 TL</strong></span>
+                    <span class="mx-4">🏆 GRAM ALTIN: <strong class="text-teal-600">6.650 TL</strong></span>
+                    <span class="mx-4">🏺 GRAM GÜMÜŞ: <strong>100.56 TL</strong></span>
+                    <span class="mx-4">₿ BITCOIN: <strong>3.085.112 TL</strong></span>
+                    <span class="mx-4">📊 BIST 100: <strong class="text-teal-600">9.850,40 TL</strong></span>
+                </div>
+                <div class="flex items-center">
+                    <span class="mx-4">💵 DOLAR: <strong class="text-teal-600">47.88 TL</strong></span>
+                    <span class="mx-4">💶 EURO: <strong>55.41 TL</strong></span>
+                    <span class="mx-4">🏆 GRAM ALTIN: <strong class="text-teal-600">6.650 TL</strong></span>
+                    <span class="mx-4">🏺 GRAM GÜMÜŞ: <strong>100.56 TL</strong></span>
+                    <span class="mx-4">₿ BITCOIN: <strong>3.085.112 TL</strong></span>
+                    <span class="mx-4">📊 BIST 100: <strong class="text-teal-600">9.850,40 TL</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIKÇA SORULAN SORULAR (SSS) -->
         <div class="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
             <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">❓ Sıkça Sorulan Sorular (10 SSS)</h2>
             <div class="space-y-3 text-xs text-gray-700">
@@ -418,7 +455,6 @@
             { ad: 'Emlak Katılım', fark: -2.5 }
         ];
 
-        // 7 Günlük Canlı Altın Grafiğini Oluşturma
         function grafikOlustur() {
             const ctx = document.getElementById('altinGrafik').getContext('2d');
             new Chart(ctx, {
@@ -448,7 +484,6 @@
             });
         }
 
-        // LocalStorage Veri Saklama ve Yükleme Fonksiyonları
         function verileriKaydet() {
             const veriler = {
                 'input-miktar': document.getElementById('input-miktar').value,
