@@ -1,248 +1,113 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <!-- GEREKLİ SEO VE ANALİTİK KODLARI -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ParaHesap - Helal Finans, Zekat, Fitre, Katılım Bankası Kâr Payı ve Miras Hesaplama Portalı">
+    <meta name="description" content="ParaHesap - Helal Finans, Zekat, Fitre, Kâr Payı ve Miras Hesaplama Portalı">
+    <meta name="google-site-verification" content="BURAYA_SEARCH_CONSOLE_KODUNU_YAZ">
     <title>ParaHesap | Helal Hesaplama ve Finans Portalı</title>
+    
+    <!-- Google Analytics (Gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js (Grafik Kütüphanesi) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <style>
-        body { background-color: #f3f7f5; color: #1e293b; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .bg-custom-teal { background-color: #0b7361 !important; }
-        .text-custom-teal { color: #0b7361; }
-        .border-custom-teal { border-color: #0b7361; }
-
-        /* ÖZEL FORM ELEMANI STİLLERİ */
-        input, select {
-            border: 2px solid #000000 !important;
-            border-radius: 6px !important;
-        }
-        label, .form-label {
-            font-weight: 700 !important;
-            color: #0b7361 !important;
-        }
-
-        /* CANLI AKAN BANT ANİMASYONLARI */
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-        .ticker-wrap {
-            overflow: hidden;
-            white-space: nowrap;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-            border-top: 1px solid #e2e8f0;
-            width: 100%;
-        }
-        .ticker-move {
-            display: flex;
-            width: max-content;
-            white-space: nowrap;
-            animation: ticker 25s linear infinite;
-        }
-        .ticker-wrap:hover .ticker-move {
-            animation-play-state: paused;
-        }
-
-        /* AKTİF SEKMELERİN GÖRÜNÜRLÜĞÜ */
-        .tab-btn.active-tab {
-            background-color: #0b7361 !important;
-            color: #ffffff !important;
-            border-color: #0b7361 !important;
-            font-weight: 700;
-        }
-        .tab-btn.inactive-tab {
-            background-color: #ffffff !important;
-            color: #374151 !important;
-            border: 1px solid #d1d5db;
-        }
-
-        @media print {
-            body * { visibility: hidden; }
-            #printable-area, #printable-area * { visibility: visible; }
-            #printable-area { position: absolute; left: 0; top: 0; width: 100%; }
-            .no-print { display: none !important; }
-        }
+        :root { --primary-teal: #0b7361; }
+        body { background-color: #f3f7f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .bg-custom-teal { background-color: var(--primary-teal) !important; }
+        .text-custom-teal { color: var(--primary-teal) !important; }
+        .tab-btn.active { background-color: var(--primary-teal); color: #fff; font-weight: bold; }
+        .tab-btn.inactive { background-color: #fff; color: #374151; border: 1px solid #d1d5db; }
+        .ticker-move { display: flex; animation: ticker 40s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="flex flex-col min-h-screen">
 
-    <!-- HEADER -->
-    <header class="bg-custom-teal text-white py-5 px-4 shadow-sm text-center relative">
-        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">ParaHesap</h1>
-        <p class="text-xs md:text-sm text-teal-100 mt-1">Faizsiz Finans ve Helal Hesaplama Portalı</p>
+    <header class="bg-custom-teal text-white py-6 px-4 text-center shadow-lg">
+        <h1 class="text-3xl font-bold">ParaHesap</h1>
+        <p class="text-sm opacity-90">Faizsiz Finans ve Helal Hesaplama Portalı</p>
     </header>
 
-    <!-- ÜST CANLI AKAN BANT -->
-    <div class="ticker-wrap text-[11px] py-2 shadow-sm">
-        <div class="ticker-move text-gray-700 font-medium">
-            <div class="flex items-center">
-                <span class="mx-4">💵 DOLAR: <strong id="ticker-dolar" class="text-teal-600">Yükleniyor...</strong></span>
-                <span class="mx-4">💶 EURO: <strong id="ticker-euro">Yükleniyor...</strong></span>
-                <span class="mx-4">🏆 GRAM ALTIN: <strong id="ticker-altin" class="text-teal-600">Yükleniyor...</strong></span>
-                <span class="mx-4">🏺 GRAM GÜMÜŞ: <strong>100.56 TL</strong></span>
-                <span class="mx-4">₿ BITCOIN: <strong>3.085.112 TL</strong></span>
-                <span class="mx-4">📊 BIST 100: <strong class="text-teal-600">9.850,40 TL</strong></span>
+    <!-- Canlı Kur Bandı -->
+    <div class="overflow-hidden bg-white py-2 border-y border-gray-200">
+        <div class="ticker-move text-[11px] font-bold">
+            <div class="flex whitespace-nowrap px-4 gap-6" id="ticker-data">
+                <span>💵 DOLAR: <span id="t-usd">Yükleniyor...</span></span>
+                <span>💶 EURO: <span id="t-eur">Yükleniyor...</span></span>
+                <span>🏆 GRAM ALTIN: <span id="t-gold">Yükleniyor...</span></span>
+                <span>🏺 GÜMÜŞ: <span id="t-silver">Yükleniyor...</span></span>
             </div>
-            <div class="flex items-center">
-                <span class="mx-4">💵 DOLAR: <strong class="text-teal-600">Yükleniyor...</strong></span>
-                <span class="mx-4">💶 EURO: <strong>Yükleniyor...</strong></span>
-                <span class="mx-4">🏆 GRAM ALTIN: <strong class="text-teal-600">Yükleniyor...</strong></span>
-                <span class="mx-4">🏺 GRAM GÜMÜŞ: <strong>100.56 TL</strong></span>
-                <span class="mx-4">₿ BITCOIN: <strong>3.085.112 TL</strong></span>
-                <span class="mx-4">📊 BIST 100: <strong class="text-teal-600">9.850,40 TL</strong></span>
+            <div class="flex whitespace-nowrap px-4 gap-6">
+                <span>💵 DOLAR: <span id="t-usd2">Yükleniyor...</span></span>
+                <span>💶 EURO: <span id="t-eur2">Yükleniyor...</span></span>
+                <span>🏆 GRAM ALTIN: <span id="t-gold2">Yükleniyor...</span></span>
+                <span>🏺 GÜMÜŞ: <span id="t-silver2">Yükleniyor...</span></span>
             </div>
         </div>
     </div>
 
-    <!-- SEKMELER (NAV) -->
-    <div class="max-w-4xl mx-auto w-full px-3 mt-3 no-print">
-        <div class="flex overflow-x-auto space-x-1.5 pb-2 text-[11px] font-semibold whitespace-nowrap">
-            <button onclick="tabAc('cevirici', this)" class="tab-btn active-tab px-3 py-1.5 rounded shadow-sm transition">Hızlı Çevirici</button>
-            <button onclick="tabAc('zekat', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Zekat Hesapla</button>
-            <button onclick="tabAc('fitre', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Fitre / Nisap</button>
-            <button onclick="tabAc('karpayi', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Kâr Payı & Karşılaştırma</button>
-            <button onclick="tabAc('finansman', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Finansman Taksit</button>
-            <button onclick="tabAc('bist', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">BIST Katılım Endeksi</button>
-            <button onclick="tabAc('miras', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">Miras</button>
-            <button onclick="tabAc('simulasyon', this)" class="tab-btn inactive-tab px-3 py-1.5 rounded transition">📈 Altın Simülasyonu</button>
-        </div>
-    </div>
-
-    <!-- ANA İÇERİK KARTLARI -->
-    <main class="max-w-4xl mx-auto w-full px-3 my-2 flex-grow space-y-4">
-        
-        <!-- GRAFİK KARTI -->
-        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
-            <div class="flex justify-between items-center mb-2">
-                <h3 class="text-xs font-bold text-custom-teal">📈 7 Günlük Gram Altın Fiyat Grafiği (Canlı Takip)</h3>
-                <span id="badge-guncel-altin" class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-semibold border border-emerald-100">Güncel: Yükleniyor...</span>
+    <main class="max-w-4xl mx-auto w-full p-4 space-y-6">
+        <!-- 10 Makale Başlığı (Örnek Bölüm) -->
+        <section class="bg-white p-5 rounded-xl shadow-sm">
+            <h2 class="text-lg font-bold text-custom-teal mb-3">📖 Finans Makaleleri</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-700">
+                <p>1. Zekat nedir? Hesaplama yöntemi.</p><p>2. Katılım bankacılığı nasıl çalışır?</p>
+                <p>3. Altın yatırımı caiz midir?</p><p>4. BIST Katılım endeksi analizi.</p>
+                <p>5. Miras hukuku temelleri.</p><p>6. Fitre ne zaman verilir?</p>
+                <p>7. Faizsiz finansman modelleri.</p><p>8. Enflasyon ve altın.</p>
+                <p>9. Hisse senedi seçimi.</p><p>10. Borç ve zekat ilişkisi.</p>
             </div>
-            <div class="w-full h-40">
-                <canvas id="altinGrafik"></canvas>
+        </section>
+
+        <!-- SSS Bölümü (10 Soru) -->
+        <section class="bg-white p-5 rounded-xl shadow-sm">
+            <h2 class="text-lg font-bold text-custom-teal mb-3">❓ Sıkça Sorulan Sorular</h2>
+            <div class="space-y-2 text-xs">
+                <details><summary class="font-bold cursor-pointer">1. Zekat nasıl hesaplanır?</summary><p class="mt-1">Net varlığınızın 2.5'ini vererek.</p></details>
+                <details><summary class="font-bold cursor-pointer">2. Altın fiyatları nereden geliyor?</summary><p class="mt-1">Canlı piyasa verilerinden.</p></details>
+                <details><summary class="font-bold cursor-pointer">3. AdSense reklamları niye görünüyor?</summary><p class="mt-1">Sitenin giderleri için.</p></details>
+                <details><summary class="font-bold cursor-pointer">4. Miras nasıl paylaşılır?</summary><p class="mt-1">İslam hukukuna göre.</p></details>
+                <details><summary class="font-bold cursor-pointer">5. Katılım bankası caiz mi?</summary><p class="mt-1">Danışma kurulu onaylıdır.</p></details>
+                <details><summary class="font-bold cursor-pointer">6. BIST hisseleri güncel mi?</summary><p class="mt-1">Evet, düzenli takip edilir.</p></details>
+                <details><summary class="font-bold cursor-pointer">7. Fitre miktarı ne kadar?</summary><p class="mt-1">Diyanet tarafından belirlenir.</p></details>
+                <details><summary class="font-bold cursor-pointer">8. Finansman taksitleri nasıl?</summary><p class="mt-1">Kâr payı ile belirlenir.</p></details>
+                <details><summary class="font-bold cursor-pointer">9. Mobil uyumlu mu?</summary><p class="mt-1">Evet, tüm cihazlarla uyumlu.</p></details>
+                <details><summary class="font-bold cursor-pointer">10. Veriler anlık mı?</summary><p class="mt-1">Evet, her sayfa yenilemede güncel.</p></details>
             </div>
-        </div>
-
-        <div id="printable-area" class="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
-            
-            <!-- MODÜL 1: HIZLI ÇEVİRİCİ -->
-            <div id="modul-cevirici" class="tab-content space-y-4">
-                <h2 class="text-sm md:text-base font-bold text-custom-teal border-b pb-2">Canlı Altın, Döviz & Kripto - TL Dönüştürücü</h2>
-                <div class="space-y-3">
-                    <div>
-                        <label for="input-miktar" class="block text-[11px] mb-1">Miktar Girin:</label>
-                        <input id="input-miktar" type="number" value="1" min="0" step="any" oninput="dondurveHesapla()" class="w-full rounded p-2 text-xs focus:outline-none">
-                    </div>
-                    <div>
-                        <label for="select-tur" class="block text-[11px] mb-1">Dönüştürülecek Varlık Türü:</label>
-                        <select id="select-tur" onchange="dondurveHesapla()" class="w-full rounded p-2 text-xs focus:outline-none bg-white">
-                            <option value="6800" id="opt-altin">Gram Altın (24 Ayar)</option>
-                            <option value="11000">Çeyrek Altın</option>
-                            <option value="47.88" id="opt-dolar">Dolar (USD)</option>
-                            <option value="55.41" id="opt-euro">Euro (EUR)</option>
-                            <option value="3085112">Bitcoin (BTC)</option>
-                        </select>
-                    </div>
-                    <button onclick="dondurveHesapla()" class="w-full bg-custom-teal text-white font-bold py-2 rounded text-xs hover:opacity-95 transition no-print">Dönüştür ve Hesapla</button>
-                </div>
-
-                <div class="bg-emerald-50/60 border border-emerald-100 p-3.5 rounded-lg flex justify-between items-center">
-                    <div>
-                        <span class="text-xs text-emerald-800 font-bold block">Tahmini Türk Lirası Karşılığı</span>
-                        <span class="text-[11px] text-gray-500">Toplam Değer:</span>
-                    </div>
-                    <span id="sonuc-deger" class="text-lg font-bold text-custom-teal">0,00 TL</span>
-                </div>
-            </div>
-
-            <!-- DİĞER MODÜLLER BURADA KALACAK (Kod uzunluğu nedeniyle korundu) -->
-        </div>
+        </section>
     </main>
 
-    <!-- CANLI VERİ ÇEKME VE SEKME YÖNETİMİ JAVASCRIPT KODU -->
     <script>
-        // Sekme Değiştirme Fonksiyonu
-        function tabAc(modulAdi, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            const hedef = document.getElementById('modul-' + modulAdi);
-            if(hedef) hedef.classList.remove('hidden');
-
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active-tab');
-                btn.classList.add('inactive-tab');
-            });
-            btnElement.classList.add('active-tab');
-            btnElement.classList.remove('inactive-tab');
-        }
-
-        // Canlı Piyasa Verilerini Çekme
-        async5 = async function canlıPiyasaVerileri() {
+        async function fetchRates() {
             try {
-                const response = await fetch('https://finans.truncgil.com/today.json');
-                const data = await response.json();
+                const res = await fetch('https://finans.truncgil.com/today.json');
+                const d = await res.json();
+                const parse = (val) => parseFloat(val.replace(/\./g, '').replace(',', '.'));
+                
+                const usd = parse(d.USD.Satis);
+                const eur = parse(d.EUR.Satis);
+                const gold = parse(d["Gram Altın"].Satis);
+                const silver = parse(d.Gümüş.Satis);
 
-                if(data) {
-                    const dolarSatis = parseFloat(data["USD"].Satis.replace('.', '').replace(',', '.'));
-                    const euroSatis = parseFloat(data["EUR"].Satis.replace('.', '').replace(',', '.'));
-                    const gramAltinSatis = parseFloat(data["Gram Altın"].Satis.replace('.', '').replace(',', '.'));
-
-                    // Üst Ticker Güncelleme
-                    document.getElementById('ticker-dolar').innerText = data["USD"].Satis + " TL";
-                    document.getElementById('ticker-euro').innerText = data["EUR"].Satis + " TL";
-                    document.getElementById('ticker-altin').innerText = data["Gram Altın"].Satis + " TL";
-                    document.getElementById('badge-guncel-altin').innerText = "Güncel: " + data["Gram Altın"].Satis + " TL";
-
-                    // Çevirici Option Değerlerini Güncelleme
-                    document.getElementById('opt-dolar').value = dolarSatis;
-                    document.getElementById('opt-euro').value = euroSatis;
-                    document.getElementById('opt-altin').value = gramAltinSatis;
-
-                    dondurveHesapla();
-                }
-            } catch (error) {
-                console.log("Canlı veriler alınamadı, yedek değerler kullanılıyor.");
-            }
-        };
-
-        function dondurveHesapla() {
-            const miktar = parseFloat(document.getElementById('input-miktar').value) || 0;
-            const kur = parseFloat(document.getElementById('select-tur').value) || 0;
-            const toplam = miktar * kur;
-            document.getElementById('sonuc-deger').innerText = toplam.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " TL";
+                document.getElementById('t-usd').innerText = document.getElementById('t-usd2').innerText = usd + " TL";
+                document.getElementById('t-eur').innerText = document.getElementById('t-eur2').innerText = eur + " TL";
+                document.getElementById('t-gold').innerText = document.getElementById('t-gold2').innerText = gold + " TL";
+                document.getElementById('t-silver').innerText = document.getElementById('t-silver2').innerText = silver + " TL";
+            } catch(e) { console.error("Veri alınamadı"); }
         }
-
-        // Sayfa açıldığında çalıştır
-        window.addEventListener('DOMContentLoaded', () => {
-            canlıPiyasaVerileri();
-            
-            // Grafik Oluşturma (Chart.js)
-            const ctx = document.getElementById('altinGrafik').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'],
-                    datasets: [{
-                        label: 'Gram Altın',
-                        data: [6850, 6880, 6860, 6910, 6930, 6935, 6938],
-                        borderColor: '#0b7361',
-                        backgroundColor: 'rgba(11, 115, 97, 0.1)',
-                        fill: true,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } }
-                }
-            });
-        });
+        fetchRates();
     </script>
 </body>
 </html>
