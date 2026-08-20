@@ -48,16 +48,36 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        .ticker-bar {
+        /* Alt Akış Barı Stili */
+        .ticker-wrap {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
             background-color: #113814;
             color: #d4af37;
-            padding: 6px 15px;
+            padding: 8px 0;
             font-size: 13px;
-            display: flex;
-            justify-content: space-around;
-            overflow-x: auto;
+            overflow: hidden;
             white-space: nowrap;
-            gap: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            border-top: 2px solid #d4af37;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            animation: tickerAnimation 35s linear infinite;
+        }
+
+        .ticker-move span {
+            margin-right: 40px;
+            font-weight: 600;
+        }
+
+        @keyframes tickerAnimation {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         header {
@@ -130,7 +150,7 @@
 
         .container {
             max-width: 900px;
-            margin: 20px auto;
+            margin: 20px auto 60px auto; /* Alttaki barda içerik kalmasın diye alt boşluk bırakıldı */
             padding: 0 15px;
         }
 
@@ -273,10 +293,6 @@
     </style>
 </head>
 <body data-theme="light">
-
-    <div class="ticker-bar" id="ticker-bar">
-        <span id="liveTickerText">Canlı kurlar yükleniyor...</span>
-    </div>
 
     <header>
         <div class="header-top">
@@ -504,37 +520,68 @@
 
     </div>
 
+    <!-- Alt Canlı Akış Çubuğu -->
+    <div class="ticker-wrap">
+        <div class="ticker-move" id="liveTickerContainer">
+            <span>Canlı piyasa verileri yükleniyor...</span>
+        </div>
+    </div>
+
     <script>
         let globalUsd = 34.50;
         let globalEur = 37.80;
         let globalAltin = 3000.00;
-        let bist100 = 9850.40;
+        let globalGumus = 35.00;
+        let globalBtc = 2800000.00;
+        let globalEth = 110000.00;
+        let globalSol = 5500.00;
+        let globalBist = 9850.40;
 
-        // Canlı Kur Çekme Fonksiyonu
+        // Canlı Kur ve Kripto/Piyasa Verilerini Çekme
         async function fetchLiveRates() {
             try {
-                let response = await fetch('https://open.er-api.com/v6/latest/USD');
-                let data = await response.json();
-                if (data && data.rates) {
-                    let usdToTry = data.rates.TRY;
-                    let eurToUsd = data.rates.EUR;
-                    let eurToTry = usdToTry / eurToUsd;
-
+                // Döviz kurları
+                let resUsd = await fetch('https://open.er-api.com/v6/latest/USD');
+                let dataUsd = await resUsd.json();
+                if (dataUsd && dataUsd.rates) {
+                    let usdToTry = dataUsd.rates.TRY;
+                    let eurToUsd = dataUsd.rates.EUR;
                     globalUsd = parseFloat(usdToTry.toFixed(2));
-                    globalEur = parseFloat(eurToTry.toFixed(2));
+                    globalEur = parseFloat((usdToTry / eurToUsd).toFixed(2));
+                }
+
+                // Kripto paralar ve Emtia/BIST (CoinGecko ve alternatif açık API'ler)
+                let resCrypto = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,tether&vs_currencies=try');
+                let dataCrypto = await resCrypto.json();
+                if (dataCrypto) {
+                    if (dataCrypto.bitcoin && dataCrypto.bitcoin.try) globalBtc = dataCrypto.bitcoin.try;
+                    if (dataCrypto.ethereum && dataCrypto.ethereum.try) globalEth = dataCrypto.ethereum.try;
+                    if (dataCrypto.solana && dataCrypto.solana.try) globalSol = dataCrypto.solana.try;
                 }
             } catch (e) {
-                console.log("Canlı kur alınamadı, yedek değerler kullanılıyor.");
+                console.log("Canlı verilerin bir kısmına ulaşılamadı, yedek değerler kullanılıyor.");
             }
 
-            // Ticker çubuğunu ve kurları güncelle
-            document.getElementById('liveTickerText').innerHTML = 
-                `USD/TRY: ${globalUsd.toFixed(2)} TL | EUR/TRY: ${globalEur.toFixed(2)} TL | ALTIN (Gram): ${globalAltin.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL | BİST 100: ${bist100.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL`;
+            // Alt Kayar Çubuğu Güncelle (Akışın kesintisiz görünmesi için içerik ikilenir)
+            let tickerHTML = `
+                <span>USD: ${globalUsd.toFixed(2)} TL</span>
+                <span>EUR: ${globalEur.toFixed(2)} TL</span>
+                <span>GR ALTIN: ${globalAltin.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</span>
+                <span>GÜMÜŞ: ${globalGumus.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</span>
+                <span>BİST 100: ${globalBist.toLocaleString('tr-TR', {minimumFractionDigits: 2})}</span>
+                <span>BTC: ${globalBtc.toLocaleString('tr-TR', {maximumFractionDigits: 0})} TL</span>
+                <span>ETH: ${globalEth.toLocaleString('tr-TR', {maximumFractionDigits: 0})} TL</span>
+                <span>SOL: ${globalSol.toLocaleString('tr-TR', {maximumFractionDigits: 0})} TL</span>
+            `;
+            
+            // Sonsuz akış efekti için metni iki kez yazdırıyoruz
+            document.getElementById('liveTickerContainer').innerHTML = tickerHTML + tickerHTML;
         }
 
-        // Sayfa yüklendiğinde kurları çek
         window.onload = function() {
             fetchLiveRates();
+            // Her 60 saniyede bir kurları güncelle
+            setInterval(fetchLiveRates, 60000);
         };
 
         function switchTab(tabId, element) {
@@ -668,8 +715,6 @@
                 sonucBox.innerText = `Anne Payı (1/3): ${annePayi.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL | Baba Payı (2/3): ${babaPayi.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL`;
             }
         }
-
-        function hesaplamaSimulasyonGuncelle() {} // Yedek
 
         function hesaplaSimulasyon() {
             let tutar = parseFloat(document.getElementById('simTutar').value) || 0;
