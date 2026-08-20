@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARAHESAP - Faizsiz Finans ve Helal Hesaplama Portalı</title>
+    
+    <!-- KRİTİK GOOGLE ENTEGRASYONLARI (ASLA SİLİNMEZ) -->
+    <!-- Google Search Console Doğrulama Meta Etiketi -->
+    <meta name="google-site-verification" content="BURAYA_SEARCH_CONSOLE_KODUNUZ_GELECEK">
+    
+    <!-- Google Analytics (GA4) Script -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
+    </script>
+
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <!-- Stil Tanımlamaları ve Profesyonel UI Düzenlemeleri -->
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --accent-green: #2d6a4f;
+            --light-bg: #f4f6f4;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --border-color: #d8d8d8;
+        }
+
+        body.dark-mode {
+            --primary-green: #081c15;
+            --accent-green: #1b4332;
+            --light-bg: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Header ve Üst Bilgi */
+        header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo-area h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .logo-area span {
+            font-size: 11px;
+            opacity: 0.85;
+            display: block;
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Akış Barı (Canlı Kur / Değerler) */
+        .ticker-bar {
+            background: #112a20;
+            color: #d8f3dc;
+            padding: 8px 15px;
+            font-size: 12px;
+            white-space: nowrap;
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .ticker-bar::-webkit-scrollbar {
+            height: 3px;
+        }
+        .ticker-bar::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+        }
+
+        /* Mobil Uyumlu Yatay Kaydırılabilir Sekme Menü (UX İyileştirmesi) */
+        .nav-container {
+            background-color: var(--primary-green);
+            padding: 8px 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: inset 0 -3px 5px rgba(0,0,0,0.15);
+        }
+
+        .nav-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        .nav-container::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.4);
+            border-radius: 2px;
+        }
+
+        .nav-menu {
+            display: inline-flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: white;
+            color: var(--primary-green);
+            border-color: white;
+        }
+
+        /* Ana İçerik Alanı ve Kart Yapısı */
+        .main-container {
+            max-width: 650px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .calculator-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 6px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .calc-btn {
+            width: 100%;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 5px;
+        }
+
+        .calc-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Stratejik Reklam Alanı (Gelir Artırıcı Optimizasyon) */
+        .ad-slot {
+            margin: 20px 0;
+            background: #e9ecef;
+            border: 2px dashed #ced4da;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        body.dark-mode .ad-slot {
+            background: #252525;
+            border-color: #404040;
+            color: #aaaaaa;
+        }
+
+        /* Güven ve Bilgilendirme Rozeti */
+        .trust-badge {
+            margin-top: 20px;
+            font-size: 11px;
+            text-align: center;
+            opacity: 0.7;
+            line-align: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Alanı -->
+    <header>
+        <div class="logo-area">
+            <h1>PARAHESAP</h1>
+            <span>FAİZSİZ FİNANS VE HELAL HESAPLAMA PORTALI</span>
+        </div>
+        <button class="theme-toggle-btn" onclick="toggleTheme()">KOYU MOD</button>
+    </header>
+
+    <!-- Canlı Kur / Veri Akış Barı -->
+    <div class="ticker-bar">
+        <span>GR ALTIN: 3.000,00 TL</span>
+        <span>GÜMÜŞ: 35,00 TL</span>
+        <span>BİST 100: 9.850,40</span>
+        <span>BTC: 3.473.409 TL</span>
+        <span>ETH: 111.172 TL</span>
+        <span>USD: 47,98 TL</span>
+    </div>
+
+    <!-- Mobil Uyumlu Gelişmiş Sekme Menüsü -->
+    <div class="nav-container">
+        <div class="nav-menu">
+            <button class="nav-btn active" onclick="switchTab('hizli')">HIZLI ÇEVİRİCİ</button>
+            <button class="nav-btn" onclick="switchTab('zekat')">ZEKAT HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('fitre')">FİTRE HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('karpayi')">KÂR PAYI HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('finansman')">FİNANSMAN HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('bist')">BİST KATILIM</button>
+            <button class="nav-btn" onclick="switchTab('miras')">MİRAS HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('altin')">ALTIN SİMÜLASYONU</button>
+            <button class="nav-btn" onclick="switchTab('makaleler')">MAKALELER</button>
+            <button class="nav-btn" onclick="switchTab('sss')">S.S.S.</button>
+        </div>
+    </div>
+
+    <!-- Ana İçerik ve Hesaplama Modülü -->
+    <div class="main-container">
+        <div class="calculator-card">
+            <div class="card-title" id="card-heading">HIZLI ÇEVİRİCİ</div>
+            
+            <div class="form-group">
+                <label>Tutar (TL)</label>
+                <input type="number" class="form-control" value="10000" id="input-tutar">
+            </div>
+
+            <div class="form-group">
+                <label>Hedef Birim</label>
+                <select class="form-control" id="select-birim">
+                    <option>Amerikan Doları (USD)</option>
+                    <option>Euro (EUR)</option>
+                    <option>Gram Altın</option>
+                </select>
+            </div>
+
+            <button class="calc-btn" onclick="hesaplaYap()">HESAPLA</button>
+        </div>
+
+        <!-- Yüksek Gelir Odaklı Stratejik Reklam Alanı (Sonucun Hemen Altı) -->
+        <div class="ad-slot">
+            <!-- Buraya Canlıya Geçince Gerçek AdSense Kodunuz Gelecek -->
+            [ Google Duyarlı Reklam Alanı - Yüksek TBM Optimizasyonu ]
+            <script>
+                 // (Buraya ileride gercek <ins class="adsbygoogle"> kodu eklenecek)
+            </script>
+        </div>
+
+        <div class="trust-badge">
+            Hesaplamalar katılım bankacılığı ve güncel finansal standartlara uygun olarak simüle edilmektedir. Tüm hakları saklıdır © 2026 parahesap.site
+        </div>
+    </div>
+
+    <script>
+        // Tema Değiştirme Fonksiyonu
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.theme-toggle-btn');
+            if(document.body.classList.contains('dark-mode')) {
+                btn.textContent = "AÇIK MOD";
+            } else {
+                btn.textContent = "KOYU MOD";
+            }
+        }
+
+        // Sekme Değiştirme Simülasyonu
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const titles = {
+                'hizli': 'HIZLI ÇEVİRİCİ',
+                'zekat': 'ZEKAT HESAPLAMA',
+                'fitre': 'FİTRE HESAPLAMA',
+                'karpayi': 'KÂR PAYI HESAPLAMA',
+                'finansman': 'FİNANSMAN HESAPLAMA',
+                'bist': 'BİST KATILIM ENDEKSİ',
+                'miras': 'MİRAS HESAPLAMA',
+                'altin': 'ALTIN SİMÜLASYONU',
+                'makaleler': 'FİNANSAL MAKALELER',
+                'sss': 'SIKÇA SORULAN SORULAR'
+            };
+            document.getElementById('card-heading').textContent = titles[tabName] || 'HESAPLAMA ARACI';
+        }
+
+        function hesaplaYap() {
+            alert('Hesaplama işlemi başarıyla gerçekleştirildi!');
+        }
+    </script>
+</body>
+</html>
