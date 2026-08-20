@@ -54,7 +54,7 @@
                 <h1 class="text-2xl md:text-3xl font-bold tracking-tight">ParaHesap</h1>
                 <p class="text-emerald-100 text-xs md:text-sm mt-0.5">Faizsiz Finans ve Helal Hesaplama Portalı</p>
             </div>
-            <button onclick="toggleDarkMode()" class="bg-emerald-800 dark:bg-emerald-900 hover:bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-medium flex items-center space-x-1.5 shadow transition active:scale-95">
+            <button onclick="toggleDarkMode()" class="bg-emerald-800 dark:bg-emerald-900 hover:bg-emerald-600 text-white px-3 py-2 rounded-xl text-xs font-medium flex items-center space-x-1.5 shadow-md hover:shadow-lg transition active:scale-95">
                 <span id="dark-icon">🌙</span>
                 <span id="dark-text" class="hidden sm:inline">Koyu Mod</span>
             </button>
@@ -64,7 +64,7 @@
     <!-- Sticky Sekme Menüsü -->
     <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 py-2 flex space-x-2 overflow-x-auto no-scrollbar">
-            <button onclick="tabAc('cevirici')" id="btn-cevirici" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-emerald-700 text-white shadow-sm transition-all">Hızlı Çevirici</button>
+            <button onclick="tabAc('cevirici')" id="btn-cevirici" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-emerald-700 text-white shadow-md transition-all">Hızlı Çevirici</button>
             <button onclick="tabAc('zekat')" id="btn-zekat" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">Zekat Hesapla</button>
             <button onclick="tabAc('fitre')" id="btn-fitre" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">Fitre / Nisap</button>
             <button onclick="tabAc('karpayi')" id="btn-karpayi" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">Kâr Payı & Bankalar</button>
@@ -72,6 +72,7 @@
             <button onclick="tabAc('bist')" id="btn-bist" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">BİST Katılım Endeksi</button>
             <button onclick="tabAc('miras')" id="btn-miras" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">Miras</button>
             <button onclick="tabAc('simulasyon')" id="btn-simulasyon" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">📈 Altın Simülasyonu</button>
+            <button onclick="tabAc('makaleler')" id="btn-makaleler" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 transition-all">📖 Makaleler</button>
         </div>
     </nav>
 
@@ -107,7 +108,7 @@
                     </select>
                 </div>
                 
-                <button onclick="hesaplaDonusturucu()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow transition active:scale-[0.98]">
+                <button onclick="hesaplaDonusturucu()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     Dönüştür ve Hesapla
                 </button>
 
@@ -146,6 +147,9 @@
                         <input type="number" id="z-borc" value="0" oninput="zekatHesapla()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm">
                     </div>
                 </div>
+                <button onclick="zekatHesapla()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
+                    Zekat Tutarını Hesapla
+                </button>
                 <div class="bg-emerald-50 dark:bg-emerald-950/40 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex justify-between items-center">
                     <span class="text-xs font-medium text-emerald-800 dark:text-emerald-400">Ödenmesi Gereken Zekat:</span>
                     <span id="zekatSonuc" class="text-lg font-bold text-emerald-700 dark:text-emerald-400">0,00 TL</span>
@@ -187,7 +191,7 @@
                         <input type="number" id="kp-vade" value="3" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm">
                     </div>
                 </div>
-                <button onclick="karPayiHesapla()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow transition active:scale-[0.98]">
+                <button onclick="karPayiHesapla()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     Kâr Payı Hesapla
                 </button>
                 <div id="kpSonucBox" class="hidden bg-emerald-50 dark:bg-emerald-950/40 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex justify-between items-center">
@@ -215,7 +219,7 @@
                         <input type="number" id="fin-oran" value="2.5" step="0.1" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm">
                     </div>
                 </div>
-                <button onclick="finansmanHesapla()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow transition active:scale-[0.98]">
+                <button onclick="finansmanHesapla()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     Taksitleri Hesapla
                 </button>
                 <div id="finSonucBox" class="hidden bg-emerald-50 dark:bg-emerald-950/40 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex justify-between items-center">
@@ -263,7 +267,7 @@
                     <label class="block text-xs font-semibold text-slate-500 mb-1">Yatırılacak Tutar (TL):</label>
                     <input type="number" id="sim-tutar" value="50000" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm">
                 </div>
-                <button onclick="simulasyonCalistir()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow transition active:scale-[0.98]">
+                <button onclick="simulasyonCalistir()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]">
                     1 Yıllık Getiriyi Simüle Et
                 </button>
                 <div id="simSonucBox" class="hidden bg-emerald-50 dark:bg-emerald-950/40 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex justify-between items-center">
@@ -273,9 +277,30 @@
             </div>
         </div>
 
+        <!-- 9. MAKALELER & BİLGİ BANKASI SEKMESİ -->
+        <div id="tab-makaleler" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 space-y-4">
+                <h2 class="text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1">📖 İslami Finans ve Bilgi Bankası</h2>
+                <div class="space-y-4 text-xs">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl space-y-2">
+                        <h3 class="font-bold text-emerald-700 dark:text-emerald-400 text-sm">Katılım Bankacılığı ve Kâr Payı Mantığı</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Katılım bankacılığı, faizsiz finans prensiplerine dayanır. Para, borç verme aracı olarak değil; reel sektörde ticaret veya ortaklık finansmanı olarak değerlendirilir. Elde edilen kazanç (kâr payı) önceden kesin olarak garanti edilmez, ticari faaliyetin sonucuna göre şekillenir.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl space-y-2">
+                        <h3 class="font-bold text-emerald-700 dark:text-emerald-400 text-sm">Zekat Kimlere Farzdır ve Nelerden Verilir?</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Asli ihtiyaçları dışında nisap miktarı (80.18 gram altın veya eşdeğeri) mala sahip olan ve üzerinden bir kameri yıl geçen Müslümanların zekat vermesi farzdır. Nakit para, altın, gümüş, ticari mallar ve yatırım amaçlı menkul kıymetler zekata tabidir.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl space-y-2">
+                        <h3 class="font-bold text-emerald-700 dark:text-emerald-400 text-sm">BİST Katılım Endeksi Kriterleri Nelerdir?</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Borsa İstanbul'da işlem gören şirketlerin İslam'ın temel ticari ilkelerine uygun faaliyet gösterip göstermediğini denetleyen endekstir. Faal olarak faizli işlemlerle uğraşan, alkol, tütün, şans oyunları veya domuz eti gibi haram kılınmış sektörlerde bulunan şirketler katılım endeksine dâhil edilmez.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Sıkça Sorulan Sorular (SSS) -->
         <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 space-y-4 transition-colors">
-            <h2 class="text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1">❓ Sıkça Sorulan Sorular (10 SSS)</h2>
+            <h2 class="text-sm font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1">❓ Sıkça Sorulan Sorular (SSS)</h2>
             <div class="space-y-3 text-xs">
                 <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
                     <p class="font-bold text-slate-700 dark:text-slate-200 mb-1">1. Zekat verirken borçlar nasıl düşülür?</p>
@@ -284,6 +309,10 @@
                 <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
                     <p class="font-bold text-slate-700 dark:text-slate-200 mb-1">2. Katılım bankası kâr payı faiz midir?</p>
                     <p class="text-slate-500 dark:text-slate-400">Kesinlikle faiz değildir; ticari ortaklığa ve reel sektör getiri paylaşımına dayanır.</p>
+                </div>
+                <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                    <p class="font-bold text-slate-700 dark:text-slate-200 mb-1">3. Nisap miktarı nedir ve nasıl hesaplanır?</p>
+                    <p class="text-slate-500 dark:text-slate-400">Nisap, zekatla yükümlü olmak için sahip olunması gereken asgari zenginlik ölçüsüdür. 80.18 gram altın veya bu değerde nakit/ticari mal olarak kabul edilir.</p>
                 </div>
             </div>
         </div>
@@ -328,7 +357,7 @@
         function tabAc(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm');
+                el.classList.remove('bg-emerald-700', 'text-white', 'shadow-md');
                 el.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
             });
             
@@ -336,7 +365,7 @@
             const aktifBtn = document.getElementById('btn-' + tabId);
             if(aktifBtn) {
                 aktifBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
-                aktifBtn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm');
+                aktifBtn.classList.add('bg-emerald-700', 'text-white', 'shadow-md');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -439,12 +468,14 @@
                     if(v.zAltin) document.getElementById('z-altin').value = v.zAltin;
                     if(v.zTicari) document.getElementById('z-ticari').value = v.zTicari;
                     if(v.zBorc) document.getElementById('z-borc').value = v.zBorc;
-                    hesaplaDonusturucu();
-                    zekatHesapla();
                 } catch(e) {
                     console.error("Veri yüklenirken hata oluştu", e);
                 }
             }
+            // Sayfa ilk açıldığında hesaplamaları tetikle
+            hesaplaDonusturucu();
+            zekatHesapla();
+
             if (localStorage.getItem('theme') === 'dark') {
                 document.documentElement.classList.add('dark');
                 document.getElementById('dark-icon').innerText = '☀️';
