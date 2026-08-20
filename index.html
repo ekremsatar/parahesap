@@ -27,7 +27,7 @@
             --bg-color: #f4f6f8;
             --card-bg: #ffffff;
             --text-color: #333333;
-            --border-color: #e0e0e0;
+            --border-color: #000000; /* İstediğiniz gibi kalın/koyu siyah sınır rengi */
         }
 
         [data-theme="dark"] {
@@ -36,7 +36,7 @@
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-color: #e0e0e0;
-            --border-color: #333333;
+            --border-color: #ffffff; /* Koyu modda belirgin görünmesi için beyaz/açık ton */
         }
 
         body {
@@ -81,7 +81,7 @@
         header {
             background-color: var(--primary-green);
             color: white;
-            padding: 15px 20px;
+            padding: 18px 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -94,16 +94,23 @@
             align-items: center;
         }
 
+        /* Modern ve Dikkat Çekici Başlık Stili (Büyük Harf) */
         .logo-area h1 {
             margin: 0;
-            font-size: 24px;
-            letter-spacing: 0.5px;
+            font-size: 26px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 800;
         }
 
         .logo-area p {
-            margin: 2px 0 0 0;
-            font-size: 12px;
-            opacity: 0.8;
+            margin: 4px 0 0 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            font-weight: 600;
+            color: #d4af37; /* Altın sarısı vurgu ile daha modern bir hava katıldı */
         }
 
         .theme-toggle {
@@ -185,14 +192,16 @@
             margin-bottom: 5px;
         }
 
+        /* Kalın siyah çizgili kutucuklar */
         .form-control {
             width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
+            padding: 11px;
+            border: 2px solid var(--border-color);
             border-radius: 6px;
             background: var(--card-bg);
             color: var(--text-color);
             font-size: 13px;
+            font-weight: 600;
             box-sizing: border-box;
         }
 
@@ -271,7 +280,7 @@
 
         .stock-table th, .stock-table td {
             padding: 10px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
             text-align: left;
         }
 
@@ -295,7 +304,7 @@
     <header>
         <div class="header-top">
             <div class="logo-area">
-                <h1>ParaHesap</h1>
+                <h1>PARAHESAP</h1>
                 <p>Faizsiz Finans ve Helal Hesaplama Portalı</p>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()">🌙 KOYU MOD</button>
@@ -315,7 +324,7 @@
         </div>
     </header>
 
-    <!-- Canlı Akış Çubuğu (Başlığın Hemen Altında, Menülerin Üstünde) -->
+    <!-- Canlı Akış Çubuğu -->
     <div class="ticker-wrap">
         <div class="ticker-move" id="liveTickerContainer">
             <span>Canlı piyasa verileri yükleniyor...</span>
@@ -433,7 +442,7 @@
         <!-- 6. BİST Katılım Endeksi -->
         <div id="bist" class="content-section">
             <h2>BİST Katılım Endeksi (Faizsiz Şirketler)</h2>
-            <input type="text" id="stockSearch" class="search-box" placeholder="Şirket veya Hisse Adı Ara..." onkeyup="filterStocks()" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid var(--border-color); border-radius:6px; background:var(--card-bg); color:var(--text-color);">
+            <input type="text" id="stockSearch" class="search-box form-control" placeholder="Şirket veya Hisse Adı Ara..." onkeyup="filterStocks()" style="margin-bottom:15px;">
             <table class="stock-table">
                 <thead>
                     <tr>
@@ -535,10 +544,8 @@
         let globalSol = 5500.00;
         let globalBist = 9850.40;
 
-        // Canlı Piyasa Verilerini Çekme (CORS destekli güvenli endpointler)
         async function fetchLiveRates() {
             try {
-                // Döviz kurları
                 let resUsd = await fetch('https://open.er-api.com/v6/latest/USD');
                 let dataUsd = await resUsd.json();
                 if (dataUsd && dataUsd.rates) {
@@ -548,7 +555,6 @@
                     globalEur = parseFloat((usdToTry / eurToUsd).toFixed(2));
                 }
 
-                // Kripto paralar (CoinGecko açık API)
                 let resCrypto = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=try');
                 let dataCrypto = await resCrypto.json();
                 if (dataCrypto) {
@@ -557,10 +563,9 @@
                     if (dataCrypto.solana && dataCrypto.solana.try) globalSol = dataCrypto.solana.try;
                 }
             } catch (e) {
-                console.log("Canlı veriler güncellenirken bir ağ kısıtlaması oluştu, mevcut veriler kullanılıyor.");
+                console.log("Veri çekme sırasında ağ kısıtlaması yaşandı.");
             }
 
-            // Ticker Alanını Güncelle
             let tickerHTML = `
                 <span>USD: ${globalUsd.toFixed(2)} TL</span>
                 <span>EUR: ${globalEur.toFixed(2)} TL</span>
@@ -572,13 +577,11 @@
                 <span>SOL: ${globalSol.toLocaleString('tr-TR', {maximumFractionDigits: 0})} TL</span>
             `;
             
-            // Sonsuz akış efekti için metni iki kez yazdırıyoruz
             document.getElementById('liveTickerContainer').innerHTML = tickerHTML + tickerHTML;
         }
 
         window.onload = function() {
             fetchLiveRates();
-            // Her 60 saniyede bir kurları güncelle
             setInterval(fetchLiveRates, 60000);
         };
 
@@ -688,7 +691,7 @@
             let tutar = parseFloat(document.getElementById('finTutar').value) || 0;
             let vade = parseFloat(document.getElementById('finVade').value) || 1;
             let oran = parseFloat(document.getElementById('finOran').value) || 0;
-            let toplamMaliyet = tutar + (tutor * (oran / 100) * vade);
+            let toplamMaliyet = tutar + (tutar * (oran / 100) * vade);
             let aylikTaksit = toplamMaliyet / vade;
             let sonucBox = document.getElementById('finSonuc');
             sonucBox.style.display = "block";
