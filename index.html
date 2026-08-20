@@ -48,10 +48,8 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Alt Akış Barı Stili */
+        /* Üst / Menü Arası Akış Barı Stili */
         .ticker-wrap {
-            position: fixed;
-            bottom: 0;
             width: 100%;
             background-color: #113814;
             color: #d4af37;
@@ -60,8 +58,8 @@
             overflow: hidden;
             white-space: nowrap;
             box-sizing: border-box;
-            z-index: 1000;
-            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .ticker-move {
@@ -150,7 +148,7 @@
 
         .container {
             max-width: 900px;
-            margin: 20px auto 60px auto; /* Alttaki barda içerik kalmasın diye alt boşluk bırakıldı */
+            margin: 20px auto;
             padding: 0 15px;
         }
 
@@ -316,6 +314,13 @@
             <button class="nav-btn" onclick="switchTab('sss', this)">S.S.S.</button>
         </div>
     </header>
+
+    <!-- Canlı Akış Çubuğu (Başlığın Hemen Altında, Menülerin Üstünde) -->
+    <div class="ticker-wrap">
+        <div class="ticker-move" id="liveTickerContainer">
+            <span>Canlı piyasa verileri yükleniyor...</span>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -520,13 +525,6 @@
 
     </div>
 
-    <!-- Alt Canlı Akış Çubuğu -->
-    <div class="ticker-wrap">
-        <div class="ticker-move" id="liveTickerContainer">
-            <span>Canlı piyasa verileri yükleniyor...</span>
-        </div>
-    </div>
-
     <script>
         let globalUsd = 34.50;
         let globalEur = 37.80;
@@ -537,7 +535,7 @@
         let globalSol = 5500.00;
         let globalBist = 9850.40;
 
-        // Canlı Kur ve Kripto/Piyasa Verilerini Çekme
+        // Canlı Piyasa Verilerini Çekme (CORS destekli güvenli endpointler)
         async function fetchLiveRates() {
             try {
                 // Döviz kurları
@@ -550,8 +548,8 @@
                     globalEur = parseFloat((usdToTry / eurToUsd).toFixed(2));
                 }
 
-                // Kripto paralar ve Emtia/BIST (CoinGecko ve alternatif açık API'ler)
-                let resCrypto = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,tether&vs_currencies=try');
+                // Kripto paralar (CoinGecko açık API)
+                let resCrypto = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=try');
                 let dataCrypto = await resCrypto.json();
                 if (dataCrypto) {
                     if (dataCrypto.bitcoin && dataCrypto.bitcoin.try) globalBtc = dataCrypto.bitcoin.try;
@@ -559,10 +557,10 @@
                     if (dataCrypto.solana && dataCrypto.solana.try) globalSol = dataCrypto.solana.try;
                 }
             } catch (e) {
-                console.log("Canlı verilerin bir kısmına ulaşılamadı, yedek değerler kullanılıyor.");
+                console.log("Canlı veriler güncellenirken bir ağ kısıtlaması oluştu, mevcut veriler kullanılıyor.");
             }
 
-            // Alt Kayar Çubuğu Güncelle (Akışın kesintisiz görünmesi için içerik ikilenir)
+            // Ticker Alanını Güncelle
             let tickerHTML = `
                 <span>USD: ${globalUsd.toFixed(2)} TL</span>
                 <span>EUR: ${globalEur.toFixed(2)} TL</span>
@@ -690,7 +688,7 @@
             let tutar = parseFloat(document.getElementById('finTutar').value) || 0;
             let vade = parseFloat(document.getElementById('finVade').value) || 1;
             let oran = parseFloat(document.getElementById('finOran').value) || 0;
-            let toplamMaliyet = tutar + (tutar * (oran / 100) * vade);
+            let toplamMaliyet = tutar + (tutor * (oran / 100) * vade);
             let aylikTaksit = toplamMaliyet / vade;
             let sonucBox = document.getElementById('finSonuc');
             sonucBox.style.display = "block";
