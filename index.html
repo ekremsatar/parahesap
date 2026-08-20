@@ -90,12 +90,13 @@
 
         .theme-toggle {
             background: rgba(255,255,255,0.15);
-            border: none;
+            border: 2px solid #ffffff;
             color: white;
             padding: 6px 12px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
+            font-weight: bold;
         }
 
         .nav-buttons {
@@ -105,14 +106,15 @@
         }
 
         .nav-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid #4caf50;
             color: white;
-            padding: 8px 5px;
+            padding: 9px 4px;
             border-radius: 6px;
             text-align: center;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
@@ -151,6 +153,7 @@
             margin-top: 0;
             border-bottom: 2px solid var(--border-color);
             padding-bottom: 8px;
+            text-transform: uppercase;
         }
 
         .form-group {
@@ -178,13 +181,14 @@
         .calc-btn {
             background-color: var(--light-green);
             color: white;
-            border: none;
-            padding: 10px 15px;
+            border: 2px solid #1b5e20;
+            padding: 12px 15px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
             width: 100%;
+            text-transform: uppercase;
         }
 
         .calc-btn:hover {
@@ -262,8 +266,8 @@
                 grid-template-columns: repeat(5, 1fr);
             }
             .nav-btn {
-                font-size: 10px;
-                padding: 6px 2px;
+                font-size: 9px;
+                padding: 7px 2px;
             }
         }
     </style>
@@ -271,7 +275,7 @@
 <body data-theme="light">
 
     <div class="ticker-bar" id="ticker-bar">
-        <span>USD/TRY: 34.50 TL | EUR/TRY: 37.80 TL | ALTIN (Gram): 3,000.00 TL | BİST 100: 9,850.40 TL</span>
+        <span id="liveTickerText">Canlı kurlar yükleniyor...</span>
     </div>
 
     <header>
@@ -280,19 +284,19 @@
                 <h1>ParaHesap</h1>
                 <p>Faizsiz Finans ve Helal Hesaplama Portalı</p>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙 Koyu Mod</button>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 KOYU MOD</button>
         </div>
 
         <div class="nav-buttons">
-            <button class="nav-btn active" onclick="switchTab('cevirici', this)">Hızlı Çevirici</button>
-            <button class="nav-btn" onclick="switchTab('zekat', this)">Zekat</button>
-            <button class="nav-btn" onclick="switchTab('fitre', this)">Fitre / Nisap</button>
-            <button class="nav-btn" onclick="switchTab('karpayi', this)">Kâr Payı</button>
-            <button class="nav-btn" onclick="switchTab('finansman', this)">Finansman</button>
-            <button class="nav-btn" onclick="switchTab('bist', this)">BİST Katılım</button>
-            <button class="nav-btn" onclick="switchTab('miras', this)">Miras</button>
-            <button class="nav-btn" onclick="switchTab('simulasyon', this)">Altın Simülasyonu</button>
-            <button class="nav-btn" onclick="switchTab('makaleler', this)">Makaleler</button>
+            <button class="nav-btn active" onclick="switchTab('cevirici', this)">HIZLI ÇEVİRİCİ</button>
+            <button class="nav-btn" onclick="switchTab('zekat', this)">ZEKAT HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('fitre', this)">FİTRE HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('karpayi', this)">KÂR PAYI HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('finansman', this)">FİNANSMAN HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('bist', this)">BİST KATILIM</button>
+            <button class="nav-btn" onclick="switchTab('miras', this)">MİRAS HESAPLAMA</button>
+            <button class="nav-btn" onclick="switchTab('simulasyon', this)">ALTIN SİMÜLASYONU</button>
+            <button class="nav-btn" onclick="switchTab('makaleler', this)">MAKALELER</button>
             <button class="nav-btn" onclick="switchTab('sss', this)">S.S.S.</button>
         </div>
     </header>
@@ -320,7 +324,7 @@
 
         <!-- 2. Zekat Hesapla -->
         <div id="zekat" class="content-section">
-            <h2>Zekat Hesaplama Modülü</h2>
+            <h2>Zekat Hesaplama</h2>
             <div class="form-group">
                 <label>Nakit Para ve Banka Bakiyesi (TL)</label>
                 <input type="number" id="zNakit" class="form-control" value="0">
@@ -343,7 +347,7 @@
 
         <!-- 3. Fitre ve Nisap -->
         <div id="fitre" class="content-section">
-            <h2>Fitre ve Nisap Miktarı Hesaplama</h2>
+            <h2>Fitre Hesaplama</h2>
             <div class="form-group">
                 <label>Kişi Sayısı</label>
                 <input type="number" id="fitreKisi" class="form-control" value="4">
@@ -359,6 +363,17 @@
         <!-- 4. Kâr Payı -->
         <div id="karpayi" class="content-section">
             <h2>Kâr Payı Hesaplama</h2>
+            <div class="form-group">
+                <label>Katılım Bankası Seçimi</label>
+                <select id="kpBanka" class="form-control">
+                    <option value="Kuveyt Türk">Kuveyt Türk Katılım Bankası</option>
+                    <option value="Albaraka Türk">Albaraka Türk Katılım Bankası</option>
+                    <option value="Türkiye Finans">Türkiye Finans Katılım Bankası</option>
+                    <option value="Ziraat Katılım">Ziraat Katılım Bankası</option>
+                    <option value="Vakıf Katılım">Vakıf Katılım Bankası</option>
+                    <option value="Emlak Katılım">Emlak Katılım Bankası</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label>Yatırılacak Anapara (TL)</label>
                 <input type="number" id="kpAnapara" class="form-control" value="50000">
@@ -396,7 +411,7 @@
 
         <!-- 6. BİST Katılım Endeksi -->
         <div id="bist" class="content-section">
-            <h2>BİST Katılım Endeksi ve Faizsiz Şirketler</h2>
+            <h2>BİST Katılım Endeksi (Faizsiz Şirketler)</h2>
             <input type="text" id="stockSearch" class="search-box" placeholder="Şirket veya Hisse Adı Ara..." onkeyup="filterStocks()" style="width:100%; padding:10px; margin-bottom:15px; border:1px solid var(--border-color); border-radius:6px; background:var(--card-bg); color:var(--text-color);">
             <table class="stock-table">
                 <thead>
@@ -412,6 +427,13 @@
                     <tr><td>EREGL</td><td>Ereğli Demir Çelik</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
                     <tr><td>SISE</td><td>Türkiye Şişe Cam</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
                     <tr><td>BIMAS</td><td>BİM Mağazalar</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>KCHOL</td><td>Koç Holding</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>TUPRS</td><td>Tüpraş</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>PETKM</td><td>Petkim Petrokimya</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>SASA</td><td>Sasa Polyester</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>HEKTS</td><td>Hektaş Ticaret</td><td><span style="color:#2e7d32; font-weight:600;">Katılım Uygun</span></td></tr>
+                    <tr><td>GARAN</td><td>Garanti BBVA (Katılım İncelemede)</td><td><span style="color:#d97706; font-weight:600;">Şartlı / Sınırlı</span></td></tr>
+                    <tr><td>AKBNK</td><td>Akbank (Katılım İncelemede)</td><td><span style="color:#d97706; font-weight:600;">Şartlı / Sınırlı</span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -462,7 +484,7 @@
             <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">7. Altın ve Gümüş Ticaretinde Temel Fıkhi Kurallar <span class="arrow">▼</span></button><div class="accordion-body">İslam fıkhında altın ve gümüş para/ölçü birimi kategorisinde değerlendirilir ve bu nedenle sıkı kurallara tabidir. Kendi cinsleriyle trampa veya mübadele edilirken kesinlikle peşin olma ve elden ele gerçekleşme şartı aranır. Vadeli altın ticareti veya faizli altın işlemleri caiz kabul edilmemektedir. Günümüz dijital altın hesaplarının da bu fıkhi kaidelere tam uygunluk sağlaması için arkasında fiziki karşılık bulundurması hayati önem taşır.</div></div>
             <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">8. Sukuk Nedir ve Nasıl İşler? <span class="arrow">▼</span></button><div class="accordion-body">Sukuk, geleneksel faizli tahvillere alternatif olarak geliştirilen, varlığa veya hizmete dayalı İslami finansman enstrümanıdır. Sukuk ihraç eden kurum, yatırımcılara sabit faizli bir borç senedi değil, ilgili varlıktan doğan gelir veya mülkiyet payını sunar. Yatırımcılar varlığın getirisinden veya kârından pay alarak tamamen faizsiz kazanç elde etmiş olurlar. Küresel finans piyasalarında kamu ve özel sektör tarafından sıklıkla tercih edilen büyüyen bir alandır.</div></div>
             <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">9. E-Ticaret ve Modern İş Modellerinde Helal Kazanç <span class="arrow">▼</span></button><div class="accordion-body">Günümüz dijital e-ticaret modellerinde açığa satış, teslim alınmayan malın satışı veya belirsizlik (garar) içeren sözleşmeler fıkhen caiz değildir. Kazancın helal çizgide kalabilmesi için alışverişe konu olan malın meşruiyetine, mülkiyetin satıcıda olmasına ve teslimat şartlarına dikkat edilmelidir. Dropshipping veya kripto gibi modern alanlarda alım-satım yapılırken İslam hukuku alimlerinin güncel içtihatları rehber alınmalıdır. Helal kazanç bilinci, dijital ticaretin tüm aşamalarında titizlikle gözetilmelidir.</div></div>
-            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">10. İş Hayatında Helal Lokma ve Rızık Bilinci <span class="arrow">▼</span></button><div class="accordion-body">İslam'da helal rızık peşinde koşmak ibadet hükmündedir ancak tüm süreç dürüstlük, adalet ve hakkaniyet çerçevesinde yürütülmelidir. Çalışanın mesai saatlerine riayet etmesi, işini en mükemmel şekilde yapması ve haksız kazançtan kaçınması rızkın bereketini artıran temel unsurlardır. Haram lokmanın hem dünya huzurunu hem de manevi hayatı olumsuz etkilediği bilinciyle hareket edilir. Toplumun refahı ve huzuru çalışanların iş ahlakına gösterdiği bu hassasiyetle doğrudan ilişkilidir.</div></div>
+            <div class="accordion-item"><button class="accordion-header" onclick="toggleAccordion(this)">10. İş Hayatında Helal Lokma ve Rızık Bilinci <span class="arrow">▼</span></button><div class="accordion-body">Islam'da helal rızık peşinde koşmak ibadet hükmündedir ancak tüm süreç dürüstlük, adalet ve hakkaniyet çerçevesinde yürütülmelidir. Çalışanın mesai saatlerine riayet etmesi, işini en mükemmel şekilde yapması ve haksız kazançtan kaçınması rızkın bereketini artıran temel unsurlardır. Haram lokmanın hem dünya huzurunu hem de manevi hayatı olumsuz etkilediği bilinciyle hareket edilir. Toplumun refahı ve huzuru çalışanların iş ahlakına gösterdiği bu hassasiyetle doğrudan ilişkilidir.</div></div>
         </div>
 
         <!-- 10. S.S.S. -->
@@ -483,9 +505,37 @@
     </div>
 
     <script>
-        const globalUsd = 34.50;
-        const globalEur = 37.80;
-        const globalAltin = 3000.00;
+        let globalUsd = 34.50;
+        let globalEur = 37.80;
+        let globalAltin = 3000.00;
+        let bist100 = 9850.40;
+
+        // Canlı Kur Çekme Fonksiyonu
+        async function fetchLiveRates() {
+            try {
+                let response = await fetch('https://open.er-api.com/v6/latest/USD');
+                let data = await response.json();
+                if (data && data.rates) {
+                    let usdToTry = data.rates.TRY;
+                    let eurToUsd = data.rates.EUR;
+                    let eurToTry = usdToTry / eurToUsd;
+
+                    globalUsd = parseFloat(usdToTry.toFixed(2));
+                    globalEur = parseFloat(eurToTry.toFixed(2));
+                }
+            } catch (e) {
+                console.log("Canlı kur alınamadı, yedek değerler kullanılıyor.");
+            }
+
+            // Ticker çubuğunu ve kurları güncelle
+            document.getElementById('liveTickerText').innerHTML = 
+                `USD/TRY: ${globalUsd.toFixed(2)} TL | EUR/TRY: ${globalEur.toFixed(2)} TL | ALTIN (Gram): ${globalAltin.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL | BİST 100: ${bist100.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL`;
+        }
+
+        // Sayfa yüklendiğinde kurları çek
+        window.onload = function() {
+            fetchLiveRates();
+        };
 
         function switchTab(tabId, element) {
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
@@ -511,7 +561,7 @@
             const currentTheme = body.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             body.setAttribute('data-theme', newTheme);
-            document.querySelector('.theme-toggle').textContent = newTheme === 'light' ? '🌙 Koyu Mod' : '☀️ Açık Mod';
+            document.querySelector('.theme-toggle').textContent = newTheme === 'light' ? '🌙 KOYU MOD' : '☀️ AÇIK MOD';
         }
 
         function filterStocks() {
@@ -578,6 +628,7 @@
         }
 
         function hesaplaKarpayi() {
+            let banka = document.getElementById('kpBanka').value;
             let anapara = parseFloat(document.getElementById('kpAnapara').value) || 0;
             let vade = parseFloat(document.getElementById('kpVade').value) || 0;
             let oran = parseFloat(document.getElementById('kpOran').value) || 0;
@@ -585,7 +636,7 @@
             let toplam = anapara + getiri;
             let sonucBox = document.getElementById('kpSonuc');
             sonucBox.style.display = "block";
-            sonucBox.innerText = `${vade} günlük vade sonunda tahmini Kâr Payı: ${getiri.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL | Toplam Tutar: ${toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL`;
+            sonucBox.innerText = `${banka} üzerinden ${vade} günlük vade sonunda tahmini Kâr Payı: ${getiri.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL | Toplam Tutar: ${toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL`;
         }
 
         function hesaplaFinansman() {
@@ -617,6 +668,8 @@
                 sonucBox.innerText = `Anne Payı (1/3): ${annePayi.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL | Baba Payı (2/3): ${babaPayi.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL`;
             }
         }
+
+        function hesaplamaSimulasyonGuncelle() {} // Yedek
 
         function hesaplaSimulasyon() {
             let tutar = parseFloat(document.getElementById('simTutar').value) || 0;
