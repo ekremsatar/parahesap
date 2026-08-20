@@ -32,7 +32,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Ticker Bar */
         .ticker-bar {
             background-color: #113814;
             color: #d4af37;
@@ -45,7 +44,6 @@
             gap: 20px;
         }
 
-        /* Header */
         header {
             background-color: var(--primary-green);
             color: white;
@@ -82,12 +80,8 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
-        /* Navigation - 5 Üst, 5 Alt Buton Yapısı */
         .nav-buttons {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -111,11 +105,11 @@
         }
 
         .nav-btn:hover, .nav-btn.active {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #ffffff;
             border-color: #ffffff;
+            color: var(--primary-green);
         }
 
-        /* Main Container */
         .container {
             max-width: 900px;
             margin: 20px auto;
@@ -143,7 +137,6 @@
             padding-bottom: 8px;
         }
 
-        /* Accordion (SSS & Makaleler) */
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -166,13 +159,12 @@
             align-items: center;
         }
 
-        .accordion-header:after {
-            content: '▼';
+        .accordion-header span.arrow {
             font-size: 10px;
             transition: transform 0.2s;
         }
 
-        .accordion-header.active:after {
+        .accordion-header.active span.arrow {
             transform: rotate(180deg);
         }
 
@@ -183,11 +175,9 @@
             transition: max-height 0.3s ease-out, padding 0.3s ease;
             font-size: 13px;
             line-height: 1.6;
-            color: var(--text-color);
             opacity: 0.8;
         }
 
-        /* BIST Katılım Arama Kutusu */
         .search-box {
             width: 100%;
             padding: 10px 14px;
@@ -229,12 +219,8 @@
 </head>
 <body data-theme="light">
 
-    <div class="ticker-bar">
-        <span>EURO: 35.90 TL</span>
-        <span>GRAM ALTIN: 2,450.00 TL</span>
-        <span>GRAM GÜMÜŞ: 31.20 TL</span>
-        <span>BİTCOİN: 2,850,112 TL</span>
-        <span>BİST 100: 9,850.40 TL</span>
+    <div class="ticker-bar" id="ticker-bar">
+        <span>Canlı kurlar yükleniyor...</span>
     </div>
 
     <header>
@@ -246,18 +232,15 @@
             <button class="theme-toggle" onclick="toggleTheme()">🌙 Koyu Mod</button>
         </div>
 
-        <!-- 5 Üst, 5 Alt: Toplam 10 Buton -->
         <div class="nav-buttons">
-            <!-- Üst 5 -->
             <button class="nav-btn active" onclick="switchTab('cevirici', this)">Hızlı Çevirici</button>
-            <button class="nav-btn" onclick="switchTab('zekat', this)">Zekat Hesapla</button>
+            <button class="nav-btn" onclick="switchTab('zekat', this)">Zekat</button>
             <button class="nav-btn" onclick="switchTab('fitre', this)">Fitre / Nisap</button>
-            <button class="nav-btn" onclick="switchTab('karpayi', this)">Kâr Payı & Bankalar</button>
-            <button class="nav-btn" onclick="switchTab('finansman', this)">Finansman Taksit</button>
-            <!-- Alt 5 -->
+            <button class="nav-btn" onclick="switchTab('karpayi', this)">Kâr Payı</button>
+            <button class="nav-btn" onclick="switchTab('finansman', this)">Finansman</button>
             <button class="nav-btn" onclick="switchTab('bist', this)">BİST Katılım</button>
             <button class="nav-btn" onclick="switchTab('miras', this)">Miras</button>
-            <button class="nav-btn" onclick="switchTab('simulasyon', this)">Altın Simülasyonu</button>
+            <button class="nav-btn" onclick="switchTab('simulasyon', this)">Simülasyon</button>
             <button class="nav-btn" onclick="switchTab('makaleler', this)">Makaleler</button>
             <button class="nav-btn" onclick="switchTab('sss', this)">S.S.S.</button>
         </div>
@@ -265,40 +248,34 @@
 
     <div class="container">
 
-        <!-- 1. Hızlı Çevirici -->
         <div id="cevirici" class="content-section active">
             <h2>Hızlı Çevirici</h2>
             <p>Döviz, altın ve kıymetli madenler arası güncel hesaplamalarınızı bu alandan hızlıca yapabilirsiniz.</p>
         </div>
 
-        <!-- 2. Zekat Hesapla -->
         <div id="zekat" class="content-section">
             <h2>Zekat Hesaplama Modülü</h2>
             <p>Nisap miktarı üzerindeki nakit, altın, ticari mal ve varlıklarınızın zekat oranlarını hesaplayın.</p>
         </div>
 
-        <!-- 3. Fitre / Nisap -->
         <div id="fitre" class="content-section">
             <h2>Fitre ve Nisap Miktarı Hesaplama</h2>
             <p>Güncel Diyanet verileri baz alınarak kişi sayısı ve gün bazında fitre tutarlarınızı hesaplayın.</p>
         </div>
 
-        <!-- 4. Kâr Payı & Bankalar -->
         <div id="karpayi" class="content-section">
             <h2>Katılım Bankaları Kâr Payı Oranları</h2>
             <p>Faizsiz katılım bankalarının cari hesap ve katılma hesaplarına verdikleri tahmini oranları inceleyin.</p>
         </div>
 
-        <!-- 5. Finansman Taksit -->
         <div id="finansman" class="content-section">
             <h2>İslami Finansman ve Taksit Hesaplama</h2>
             <p>Konut, taşıt ve ihtiyaç finansmanı için katılım bankalarının kâr marjı hesaplama araçları.</p>
         </div>
 
-        <!-- 6. BİST Katılım (Boş İçerik Değil, Arama Özellikli Katılım Endeksi) -->
         <div id="bist" class="content-section">
             <h2>BİST Katılım Endeksi ve Faizsiz Şirketler</h2>
-            <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">İslami finans kriterlerine uygun, faiz hassasiyeti gözeten şirketlerin anlık listesi ve arama aracı.</p>
+            <p style="font-size: 13px; opacity: 0.8; margin-bottom: 15px;">İslami finans kriterlerine uygun, faiz hassasiyeti gözeten şirketlerin anlık listesi.</p>
             <input type="text" id="stockSearch" class="search-box" placeholder="Şirket veya Hisse Adı Ara (Örn: THYAO, ASELS)..." onkeyup="filterStocks()">
             <table class="stock-table">
                 <thead>
@@ -318,128 +295,122 @@
             </table>
         </div>
 
-        <!-- 7. Miras -->
         <div id="miras" class="content-section">
             <h2>İslam Hukukuna Göre Miras Paylaşımı</h2>
             <p>Varislerin yakınlık derecelerine göre miras hisselerinin oransal dağılım hesaplamaları.</p>
         </div>
 
-        <!-- 8. Altın Simülasyonu -->
         <div id="simulasyon" class="content-section">
             <h2>Altın ve Yatırım Simülasyonu</h2>
             <p>Geçmiş dönemli verilerle birikimlerinizin değer değişim grafiklerini simüle edin.</p>
         </div>
 
-        <!-- 9. Makaleler (10 Adet Tam İçerik) -->
         <div id="makaleler" class="content-section">
             <h2>İslami Finans ve Bilgi Makaleleri</h2>
             
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">1. Katılım Bankacılığı ve Kâr Payı Sisteminin Temel Esasları</button>
-                <div class="accordion-body">Katılım bankacılığı, klasik faizli bankacılık sisteminden farklı olarak parayı doğrudan borç alıp satmak yerine ticaret ve ortaklık esasına dayanır. Fon toplayan ve kullandıran taraflar arasında risk ve getiri ortaklığı kurulur. Bu sistemde ana para güvencesi sağl-anırken kazanç net bir oranla baştan garanti edilmez, dönemsel kâr-zarar ortaklığıyla şekillenir. Reel ekonomiye doğrudan destek olmayı hedefler.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">1. Katılım Bankacılığı ve Kâr Payı Sisteminin Temel Esasları <span class="arrow">▼</span></button>
+                <div class="accordion-body">Katılım bankacılığı, klasik faizli bankacılık sisteminden farklı olarak parayı doğrudan borç alıp satmak yerine ticaret ve ortaklık esasına dayanır. Fon toplayan ve kullandıran taraflar arasında risk ve getiri ortaklığı kurulur. Bu sistemde ana para güvencesi sağlanırken kazanç net bir oranla baştan garanti edilmez.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">2. İslam Ekonomisinde Paranın Rolü ve Reel Sektör Vurgusu</button>
-                <div class="accordion-body">İslam ekonomisinde para, kendi başına bir kazanç aracı veya emtia değildir; sadece bir değişim aracı ve ölçü birimi olarak kabul edilir. Paradan para kazanmak (faiz/riba) yasaklandığı için ekonomik değer mutlaka mal veya hizmet gibi reel bir karşılığa dayanmak zorundadır. Bu yaklaşım, sanayi, tarım ve ticaret gibi gerçek üretimi destekleyerek toplumsal refahı ve adaleti pekiştirir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">2. İslam Ekonomisinde Paranın Rolü ve Reel Sektör Vurgusu <span class="arrow">▼</span></button>
+                <div class="accordion-body">İslam ekonomisinde para, kendi başına bir kazanç aracı veya emtia değildir; sadece bir değişim aracı ve ölçü birimidir. Paradan para kazanmak yasaklandığı için ekonomik değer mutlaka mal veya hizmet gibi reel bir karşılığa dayanmak zorundadır.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">3. BİST Katılım Endeksi Kriterleri ve Şirket Seçim Şartları</button>
-                <div class="accordion-body">Borsa İstanbul'da işlem gören şirketlerin faiz hassasiyeti olan yatırımcılara uygun olabilmesi için belirli katılım finans ilkelerine uyması gerekir. Şirketlerin esas faaliyetleri alkollü içecekler, kumar, faizli finansal işlemler veya yasaklı gıdalar gibi alanları kapsamamalıdır. Ayrıca, faizli borçların ve faiz getirili varlıkların toplam varlıklara oranı belirli eşik sınırlarının (genellikle %30) altında kalmalıdır.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">3. BİST Katılım Endeksi Kriterleri ve Şirket Seçim Şartları <span class="arrow">▼</span></button>
+                <div class="accordion-body">Borsa İstanbul'da işlem gören şirketlerin faiz hassasiyeti olan yatırımcılara uygun olabilmesi için belirli katılım finans ilkelerine uyması gerekir. Şirketlerin esas faaliyetleri alkollü içecekler, kumar, faizli işlemler veya yasaklı alanları kapsamamalıdır.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">4. İslami Miras Hukukunun Adil Paylaşım Ve Denge Mimarisi</button>
-                <div class="accordion-body">İslam miras hukuku (ferâiz), bireyin vefatı sonrasında mal varlığının aile bireyleri arasında hakkaniyetle paylaştırılmasını düzenler. Paylaşım oranları Kur'an-ı Kerim'in ilgili ayetleriyle detaylıca belirlenmiştir. Sistem, aile içi dengeleri korumayı, servetin tek bir elde yığılmasını önlemeyi ve bakmakla yükümlü olunan fertlerin haklarını güvence altına almayı amaçlayan kusursuz bir miras mimarisi sunar.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">4. İslami Miras Hukukunun Adil Paylaşım Ve Denge Mimarisi <span class="arrow">▼</span></button>
+                <div class="accordion-body">İslam miras hukuku, bireyin vefatı sonrasında mal varlığının aile bireyleri arasında hakkaniyetle paylaştırılmasını düzenler. Paylaşım oranları ayetlerle belirlenmiş olup servetin tek bir elde yığılmasını önlemeyi amaçlar.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">5. Zekatın Sosyal Adalet ve Toplumsal Dayanışmadaki Hayati Yeri</button>
-                <div class="accordion-body">Zekat, İslam'ın temel şartlarından biri olup servet sahibi kimselerin yılda bir kez mallarının belirli bir kısmını (genellikle kırkta bir) ihtiyaç sahiplerine vermesini zorunlu kılar. Bu ibadet, toplumsal sınıflar arasındaki gelir uçurumunu azaltarak ekonomik dengeyi sağlar. Zekat müessesesi, yoksulluğun azaltılmasında, yardımlaşma bilincinin artırılmasında ve ekonomik huzurun tesis edilmesinde hayati bir role sahiptir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">5. Zekatın Sosyal Adalet ve Toplumsal Dayanışmadaki Hayati Yeri <span class="arrow">▼</span></button>
+                <div class="accordion-body">Zekat, servet sahibi kimselerin mallarının belirli bir kısmını ihtiyaç sahiplerine vermesini zorunlu kılar. Bu ibadet, toplumsal sınıflar arasındaki gelir uçurumunu azaltarak ekonomik dengeyi ve huzuru sağlar.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">6. İslami Finansta Murabaha ve Finansman Yöntemleri</button>
-                <div class="accordion-body">Murabaha, katılım bankacılığında en yaygın kullanılan finansman türlerinden biridir. Banka, müşterinin talep ettiği malı peşin olarak satın alır ve üzerine belirli bir kâr marjı ekleyerek müşteriye vadeli olarak satar. Bu işlem, borç verme değil, bir alım-satım akdi olduğu için tamamen faizsiz finans prensiplerine uygunluk arz eder ve taraflar açısından şeffaf bir süreç sunar.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">6. İslami Finansta Murabaha ve Finansman Yöntemleri <span class="arrow">▼</span></button>
+                <div class="accordion-body">Murabaha, katılım bankacılığında en yaygın kullanılan finansman türlerinden biridir. Banka, müşterinin talep ettiği malı peşin satın alır ve kâr ekleyerek vadeli satar. İşlem bir alım-satım akdidir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">7. Altın ve Gümüş Ticaretinde Temel Fıkhi Kurallar</button>
-                <div class="accordion-body">İslam fıkhında altın ve gümüş gibi kıymetli madenler "semend" (para/ölçü birimi) kategorisinde değerlendirilir. Bu nedenle kendi cinsleriyle trampa edilirken veya alım-satımı yapılırken peşin (eleden ele) olma ve eşit tartılma şartı aranır. Vadeli altın işlemleri riba (faiz) kapsamına girebileceği için dijital altın hesaplarının ve kıymetli maden alım satımlarının fıkhi kaidelere uygun yürütülmesi gerekir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">7. Altın ve Gümüş Ticaretinde Temel Fıkhi Kurallar <span class="arrow">▼</span></button>
+                <div class="accordion-body">İslam fıkhında altın ve gümüş para/ölçü birimi kategorisindedir. Kendi cinsleriyle trampa edilirken peşin olma şartı aranır. Dijital hesapların da bu kaidelere uygun yürütülmesi gerekir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">8. Sukuk (İslami Tahvil) Nedir ve Nasıl İşler?</button>
-                <div class="accordion-body">Sukuk, geleneksel tahvillere alternatif olarak geliştirilen, varlığa dayalı veya varlık kiralama ortaklığına dayanan İslami finans enstrümanıdır. Sukuk ihraç eden bir kurum, belirli bir varlığın mülkiyetini yatırımcılara sertifikalar aracılığıyla devreder. Yatırımcılar bu varlığın getirisinden veya kira gelirinden pay alarak faizsiz bir yatırım modeli üzerinden kazanç elde etme imkanına kavuşur.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">8. Sukuk Nedir ve Nasıl İşler? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Sukuk, geleneksel tahvillere alternatif geliştirilen varlığa dayalı İslami finans enstrümanıdır. Yatırımcılar varlığın getirisinden pay alarak faizsiz kazanç elde eder.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">9. E-Ticaret ve Modern İş Modellerinde Helal Kazanç Hassasiyeti</button>
-                <div class="accordion-body">Günümüz dijital dünyasında e-ticaret, dropshipping ve çeşitli ortaklık modelleri yaygınlaşmıştır. Bu yeni nesil ticaret biçimlerinde, satılmayan malın satılması (açığa satış), belirsizlik içeren (garar) sözleşmeler veya faizli kredi entegrasyonları caiz görülmemektedir. Müslümanın kazancının helal dairesinde kalabilmesi için alışverişe konu olan malın meşruiyetine ve sözleşme şartlarına dikkat etmesi şarttır.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">9. E-Ticaret ve Modern İş Modellerinde Helal Kazanç <span class="arrow">▼</span></button>
+                <div class="accordion-body">Günümüz e-ticaret modellerinde açığa satış veya garar içeren sözleşmeler caiz değildir. Kazancın helal kalması için malın meşruiyetine dikkat edilmelidir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">10. İş Hayatında Helal Lokma ve Rızık Bilinci</button>
-                <div class="accordion-body">İslam dininde rızık aramak ibadet kabul edilmiş, ancak bu arayışın dürüstlük, adalet ve helallik çerçevesinde yürütülmesi emredilmiştir. Çalışanın işini en iyi şekilde yapması, mesai saatlerine riayet etmesi ve haksız kazançtan kaçınması rızkın bereketini artırır. Helal lokma bilinci, bireyin hem dünya huzurunu hem de ahiret mutluluğunu inşa etmesinde temel yapı taşlarından biridir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">10. İş Hayatında Helal Lokma ve Rızık Bilinci <span class="arrow">▼</span></button>
+                <div class="accordion-body">İslam'da rızık aramak ibadettir ancak dürüstlük ve helallik çerçevesinde yürütülmelidir. Çalışanın işini en iyi yapması rızkın bereketini artırır.</div>
             </div>
-
         </div>
 
-        <!-- 10. SSS (Parantez İçindeki "(10 SSS)" İbaresi Kaldırıldı) -->
         <div id="sss" class="content-section">
             <h2>Sıkça Sorulan Sorular</h2>
             
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">1. Zekat verirken borçlar nasıl düşülür?</button>
-                <div class="accordion-body">Kişinin vadesi gelmiş veya kısa süre içinde ödeyeceği borçları, toplam zekata tabi varlıklarından düşülür. Kalan net tutar nisap miktarını ulaşıyorsa zekat ödenir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">1. Zekat verirken borçlar nasıl düşülür? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Kişinin vadesi gelmiş veya kısa süre içinde ödeyeceği borçları, toplam zekata tabi varlıklarından düşülür. Kalan net tutar nisap miktarına ulaşıyorsa zekat ödenir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">2. Katılım bankası kâr payı faiz midir?</button>
-                <div class="accordion-body">Katılım bankacılığında elde edilen kâr payı, reel ticaret ve yatırımlardan elde edilen kazancın ortaklara paylaştırılmasıdır. Önceden kesin bir oran garanti edilmez; bu yönüyle faizden tamamen ayrılır.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">2. Katılım bankası kâr payı faiz midir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Katılım bankacılığında elde edilen kâr payı, reel ticaret ve yatırımlardan elde edilen kazancın ortaklara paylaştırılmasıdır. Önceden kesin bir oran garanti edilmez.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">3. Nisap miktarı nedir ve nasıl hesaplanır?</button>
-                <div class="accordion-body">Nisap, zekatla yükümlü olmak için gereken asgari zenginlik ölçüsüdür. Genellikle 80.18 gram altın veya bunun parasal karşılığı baz alınarak hesaplama yapılır.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">3. Nisap miktarı nedir ve nasıl hesaplanır? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Nisap, zekatla yükümlü olmak için gereken asgari zenginlik ölçüsüdür. Genellikle 80.18 gram altın veya bunun parasal karşılığı baz alınır.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">4. Hisse senedi almak helal midir?</button>
-                <div class="accordion-body">Şirketin esas faaliyet alanı helal olan, alkol, kumar, faizli finans gibi haram sektörlerde bulunmayan ve borçlanma oranları kriterlere uyan şirketlerin hisseleri alınabilir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">4. Hisse senedi almak helal midir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Şirketin esas faaliyet alanı helal olan, haram sektörlerde bulunmayan ve borçlanma oranları kriterlere uyan şirketlerin hisseleri alınabilir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">5. Fitre kimlere verilmelidir?</button>
-                <div class="accordion-body">Fitre, zekat verilebilecek fakir ve muhtaç kimselere verilir. Ancak usulca bakmakla yükümlü olunan anne, baba, çocuk ve eş gibi yakınlara fitre verilmesi caiz değildir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">5. Fitre kimlere verilmelidir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Fitre, fakir ve muhtaç kimselere verilir. Bakmakla yükümlü olunan anne, baba, çocuk ve eş gibi yakınlara fitre verilmesi caiz değildir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">6. Kredi kartı bonusları helal midir?</button>
-                <div class="accordion-body">Kredi kartı kullanımı esnasında faizli borca girmemek (zamanında borcun tamamını ödemek) şartıyla, harcamalardan kazanılan puan ve promosyonlar genel olarak kullanılabilir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">6. Kredi kartı bonusları helal midir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Kredi kartı kullanımı esnasında faizli borca girmemek şartıyla harcamalardan kazanılan puan ve promosyonlar kullanılabilir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">7. Ev alırken katılım bankası finansmanı nasıl işler?</button>
-                <div class="accordion-body">Banka, istenen evi peşin satın alarak üzerine kâr ekler ve müşteriye vadeli olarak satar. Bu işlem konut edinme alanında caiz görülen murabaha yöntemidir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">7. Ev alırken katılım bankası finansmanı nasıl işler? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Banka, istenen evi peşin satın alarak üzerine kâr ekler ve müşteriye vadeli satar. Bu işlem murabaha yöntemidir.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">8. Altın ve gümüş ticareti zekata tabi midir?</button>
-                <div class="accordion-body">Ticaret amacıyla elde tutulan altın ve gümüşler, piyasa değerleri üzerinden zekata tabi tutulur. Şahsi ziynet eşyaları için fıkhi mezhep farklılıkları bulunabilir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">8. Altın ve gümüş ticareti zekata tabi midir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Ticaret amacıyla elde tutulan altın ve gümüşler, piyasa değerleri üzerinden zekata tabi tutulur.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">9. İslam'da ortaklık ve şirket türleri nelerdir?</button>
-                <div class="accordion-body">Mudarebe (emek-sermaye ortaklığı), Müşareke (sermaye ortaklığı) gibi İslami ortaklık türleri ticaretin temelini oluşturur.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">9. İslam'da ortaklık ve şirket türleri nelerdir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Mudarebe ve müşareke gibi İslami ortaklık türleri ticaretin temelini oluşturur.</div>
             </div>
 
             <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">10. Yurtdışı döviz kazançlarında zekat nasıl ödenir?</button>
-                <div class="accordion-body">Yurtdışındaki döviz varlıkları da elde bulundukları günün kur değeri üzerinden hesaplanarak zekat hesabına dahil edilir ve oran üzerinden ödenir.</div>
+                <button class="accordion-header" onclick="toggleAccordion(this)">10. Yurtdışı döviz kazançlarında zekat nasıl ödenir? <span class="arrow">▼</span></button>
+                <div class="accordion-body">Yurtdışındaki döviz varlıkları da elde bulundukları günün kur değeri üzerinden hesaplanarak zekat hesabına dahil edilir.</div>
             </div>
-
         </div>
 
     </div>
@@ -492,6 +463,30 @@
                 }
             }
         }
+
+        async function fetchLiveRates() {
+            const tickerBar = document.getElementById('ticker-bar');
+            try {
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                if(data && data.rates) {
+                    const usdToTry = data.rates.TRY;
+                    const eurToUsd = data.rates.EUR;
+                    const eurToTry = usdToTry / eurToUsd;
+                    
+                    tickerBar.innerHTML = `
+                        <span>USD/TRY: ${usdToTry.toFixed(2)} TL</span>
+                        <span>EUR/TRY: ${eurToTry.toFixed(2)} TL</span>
+                        <span>ALTIN (Tahmini Gr): ${(usdToTry * 72).toFixed(2)} TL</span>
+                        <span>BİST 100: 9,850.40 TL</span>
+                    `;
+                }
+            } catch (error) {
+                tickerBar.innerHTML = `<span>USD: 34.20 TL</span> | <span>EUR: 37.50 TL</span> | <span>BİST 100: 9,850.40 TL</span>`;
+            }
+        }
+
+        fetchLiveRates();
     </script>
 </body>
 </html>
