@@ -154,15 +154,13 @@
         
         <div class="nav-buttons">
             <button class="nav-btn active">HIZLI ÇEVİRİCİ</button>
-            <button class="nav-btn">ZEKAT HESAPLA...</button>
-            <button class="nav-btn">FİTRE HESAPLAMA</button>
-            <button class="nav-btn">KÂR PAYI HESAPL...</button>
-            <button class="nav-btn">FİNANSMAN HES...</button>
+            <button class="nav-btn" onclick="location.href='faiz-hesaplama.html'">FAİZ HESAPLA...</button>
+            <button class="nav-btn" onclick="location.href='enflasyon-hesaplama.html'">ENFLASYON</button>
+            <button class="nav-btn" onclick="location.href='kredi-hesaplama.html'">KREDİ</button>
+            <button class="nav-btn" onclick="location.href='kira-artis-orani.html'">KİRA ARTIŞ</button>
             <button class="nav-btn">BİST KATILIM</button>
-            <button class="nav-btn">MİRAS HESAPL...</button>
-            <button class="nav-btn">ALTIN SİMÜLASY...</button>
             <button class="nav-btn">MAKALELER</button>
-            <button class="nav-btn">S.S.S.</button>
+            <button class="nav-btn" onclick="location.href='kullanim-sartlari.html'">S.S.S.</button>
         </div>
     </header>
 
@@ -199,46 +197,51 @@
             <p>&copy; 2026 parahesap.site - Tüm hakları saklıdır.</p>
             <div class="footer-links">
                 <a href="hakkimizda.html">Hakkımızda</a>
-                <a href="gizlilik.html">Gizlilik Politikası</a>
+                <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
                 <a href="iletisim.html">İletişim</a>
             </div>
         </div>
     </div>
 
     <script>
+        let currentUsdToTry = 34.00;
+        let currentEurToTry = 37.00;
+
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const target = document.getElementById('targetCurrency').value;
+            let converted = 0;
+            let currencyName = '';
+
+            if (target === 'USD') {
+                converted = amount / currentUsdToTry;
+                currencyName = 'USD';
+            } else {
+                converted = amount / currentEurToTry;
+                currencyName = 'EUR';
+            }
+
+            document.getElementById('result').innerText = 
+                `${amount.toLocaleString('tr-TR')} TL = ${converted.toFixed(2)} ${currencyName}`;
+        });
+
         async function fetchLiveRates() {
             try {
                 const response = await fetch('https://open.er-api.com/v6/latest/USD');
                 const data = await response.json();
                 
                 if (data && data.rates) {
-                    const usdToTry = data.rates.TRY; 
+                    currentUsdToTry = data.rates.TRY; 
                     const eurToUsd = data.rates.EUR;
-                    const eurToTry = usdToTry / eurToUsd; 
+                    currentEurToTry = currentUsdToTry / eurToUsd; 
 
-                    document.getElementById('usdTicker').innerText = usdToTry.toFixed(2) + ' TL';
-                    document.getElementById('eurTicker').innerText = eurToTry.toFixed(2) + ' TL';
-
-                    document.getElementById('calculateBtn').addEventListener('click', function() {
-                        const amount = parseFloat(document.getElementById('amount').value) || 0;
-                        const target = document.getElementById('targetCurrency').value;
-                        let converted = 0;
-                        let currencyName = '';
-
-                        if (target === 'USD') {
-                            converted = amount / usdToTry;
-                            currencyName = 'USD';
-                        } else {
-                            converted = amount / eurToTry;
-                            currencyName = 'EUR';
-                        }
-
-                        document.getElementById('result').innerText = 
-                            `${amount.toLocaleString('tr-TR')} TL = ${converted.toFixed(2)} ${currencyName}`;
-                    });
+                    document.getElementById('usdTicker').innerText = currentUsdToTry.toFixed(2) + ' TL';
+                    document.getElementById('eurTicker').innerText = currentEurToTry.toFixed(2) + ' TL';
                 }
             } catch (error) {
-                console.error('Kur bilgisi alınamadı:', error);
+                console.error('Kur bilgisi alınamadı, yedek kurlar kullanılıyor:', error);
+                document.getElementById('usdTicker').innerText = currentUsdToTry.toFixed(2) + ' TL (Sabit)';
+                document.getElementById('eurTicker').innerText = currentEurToTry.toFixed(2) + ' TL (Sabit)';
             }
         }
 
