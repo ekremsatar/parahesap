@@ -2,151 +2,165 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Parahesap - Faizsiz Finans ve Helal Hesaplama Portalı. Zekat, fitre, miras, döviz çevirici ve daha fazlası." />
-  <title>Parahesap | Faizsiz Finans ve Helal Hesaplama Portalı</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PARAHESAP | Faizsiz Finans ve Helal Hesaplama</title>
+  <meta
+    name="description"
+    content="Döviz çevirici, zekât hesaplama, fitre, miras, altın ve finansman hesaplama araçları."
+  />
+
   <style>
     :root {
-      --bg: #f0f2f5;
-      --surface: #ffffff;
-      --header: #0d5c2e;
-      --header-dark: #094422;
-      --primary: #128a3e;
-      --primary-hover: #0f7a36;
-      --primary-soft: #e8f5ec;
-      --text: #1a1d21;
-      --text-muted: #5c6570;
-      --border: #e2e6eb;
-      --ticker-bg: #0a4a24;
-      --shadow: 0 4px 24px rgba(0,0,0,.06);
-      --radius: 14px;
-      --radius-sm: 10px;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --primary: #176326;
+      --primary-dark: #10481b;
+      --primary-light: #2f853d;
+      --gold: #d7b84b;
+
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #20242a;
+      --muted: #68717d;
+      --border: #dfe5e9;
+      --input-border: #1e1e1e;
+
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
     }
 
-    [data-theme="dark"] {
-      --bg: #0f1419;
-      --surface: #1a222c;
-      --header: #0a3d1f;
-      --header-dark: #072e17;
-      --primary: #22c55e;
-      --primary-hover: #16a34a;
-      --primary-soft: #14532d33;
-      --text: #e8eaed;
-      --text-muted: #9aa3ad;
-      --border: #2a3441;
-      --ticker-bg: #062816;
-      --shadow: 0 4px 24px rgba(0,0,0,.35);
+    body.dark-mode {
+      --bg: #121714;
+      --card: #1d251f;
+      --text: #eff5ef;
+      --muted: #afb9b0;
+      --border: #334036;
+      --input-border: #bdc8bd;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100dvh;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
-    /* ---------- HEADER ---------- */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
     .site-header {
-      background: linear-gradient(160deg, var(--header) 0%, var(--header-dark) 100%);
+      background: var(--primary);
       color: #fff;
-      padding: 0.85rem 1rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+      padding: 22px 20px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     }
 
-    .header-top {
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
-      max-width: 1100px;
-      margin: 0 auto 0.85rem;
+      gap: 16px;
+      margin-bottom: 18px;
     }
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      min-width: 0;
+    .logo {
+      font-size: 31px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      line-height: 1;
     }
 
-    .brand h1 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      line-height: 1.2;
+    .tagline {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      margin-top: 7px;
+      text-transform: uppercase;
     }
 
-    .brand span {
-      font-size: 0.68rem;
-      opacity: 0.85;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .theme-btn {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.25);
+    .theme-button {
+      background: transparent;
       color: #fff;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      border-radius: 25px;
+      padding: 9px 15px;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
-      font-family: inherit;
-      transition: background .2s, transform .15s;
+      white-space: nowrap;
+      transition: 0.2s ease;
     }
 
-    .theme-btn:hover { background: rgba(255,255,255,.22); }
-    .theme-btn:active { transform: scale(0.97); }
-
-    /* Nav grid */
-    .nav-scroll {
-      max-width: 1100px;
-      margin: 0 auto;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 2px;
+    .theme-button:hover {
+      background: rgba(255, 255, 255, 0.13);
     }
-    .nav-scroll::-webkit-scrollbar { display: none; }
 
-    .nav-grid {
+    /* MENU */
+    .menu-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 0.45rem;
-      min-width: 640px;
+      gap: 10px;
     }
 
-    @media (min-width: 900px) {
-      .nav-grid { min-width: 0; }
-    }
-
-    .nav-btn {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.18);
+    .menu-item {
+      min-height: 43px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 10px;
+      text-align: center;
       color: #fff;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.55rem 0.35rem;
-      border-radius: 8px;
-      cursor: 
+      font-size: 12px;
+      font-weight: 700;
+      border: 2px solid #3d9d4b;
+      border-radius: 7px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .menu-item.active {
+      background: #fff;
+      color: var(--primary);
+      border-color: #fff;
+    }
+
+    /* TICKER */
+    .ticker-wrapper {
+      background: #10391a;
+      color: var(--gold);
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+    .ticker {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      min-height: 42px;
+      padding: 0 15px;
+      white-space: nowrap;
+      font-size: 
