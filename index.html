@@ -1,5 +1,199 @@
 <!DOCTYPE html>
 <html lang="tr">
+    <!-- =========================================================================
+  PARAHESAP.SITE — <head> içine, </head> etiketinden HEMEN ÖNCE yapıştırın
+  İçerik: Google Analytics (GA4) + AdSense doğrulama/reklam kodu + SEO meta
+  etiketleri + Yapısal veri (Schema.org) + Çerez onay bandı + Canlı kur/altın/
+  kripto çubuğu (Trunçgil Finans API + CoinGecko API, ikisi de ücretsiz/keysiz)
+  ========================================================================= -->
+
+<!-- 1) TEMEL SEO / SOSYAL PAYLAŞIM ETİKETLERİ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ParaHesap — Faizsiz finans ve helal hesaplama portalı. Zekat, fitre, kâr payı, miras ve finansman hesaplama araçları; canlı döviz, altın ve kripto kurları.">
+<meta name="keywords" content="zekat hesaplama, fitre hesaplama, faizsiz finans, katılım bankacılığı, kâr payı hesaplama, miras hesaplama, canlı döviz kuru, altın fiyatı">
+<meta name="robots" content="index, follow">
+<meta name="author" content="ParaHesap">
+<link rel="canonical" href="https://parahesap.site/">
+<meta name="theme-color" content="#14532d">
+
+<!-- Open Graph (Facebook/WhatsApp paylaşım kartı) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ParaHesap — Faizsiz Finans ve Helal Hesaplama Portalı">
+<meta property="og:description" content="Zekat, fitre, kâr payı, miras ve finansman hesaplama araçları; canlı döviz, altın ve kripto kurları.">
+<meta property="og:url" content="https://parahesap.site/">
+<meta property="og:image" content="https://parahesap.site/og-image.jpg">
+<meta property="og:locale" content="tr_TR">
+
+<!-- Twitter/X kartı -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ParaHesap — Faizsiz Finans ve Helal Hesaplama Portalı">
+<meta name="twitter:description" content="Zekat, fitre, kâr payı, miras ve finansman hesaplama araçları.">
+<meta name="twitter:image" content="https://parahesap.site/og-image.jpg">
+
+<!-- Favicon (dosyaları site köküne yükleyin, yoksa 404 verir, önemli değil ama düzeltin) -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- 2) GOOGLE SEARCH CONSOLE DOĞRULAMA
+     Search Console > Mülk ekle > HTML etiketi seçeneğinden aldığınız
+     "content" değerini aşağıya yapıştırın (AdSense onayı için site sahipliğinin
+     doğrulanmış olması şart değildir ama SEO ve AdSense hesabı eşleştirmesi için
+     şiddetle tavsiye edilir). -->
+<meta name="google-site-verification" content="BURAYA_SEARCH_CONSOLE_KODUNUZU_YAPISTIRIN">
+
+<!-- 3) GOOGLE ANALYTICS (GA4) — Ölçüm Kimliği: G-GKXWCDPHMF -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // anonymize_ip artık GA4'te varsayılan olarak aktiftir, KVKK/GDPR uyumu için
+  // yine de açıkça belirtiyoruz.
+  gtag('config', 'G-GKXWCDPHMF', { 'anonymize_ip': true });
+</script>
+
+<!-- 4) GOOGLE ADSENSE — Yayıncı Kimliği: pub-2881789176542881
+     Bu script, hem AdSense'in "site sahipliği doğrulama/inceleme" kodu hem de
+     otomatik reklam yerleşimi kodudur. AdSense panelinde başvuru yaparken
+     "Site kodunu yapıştırdım" seçeneğini işaretleyebilirsiniz. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881"
+     crossorigin="anonymous"></script>
+
+<!-- 5) YAPISAL VERİ (Schema.org) — Google'a sitenizin ne olduğunu anlatır,
+     SEO ve zengin sonuçlar (rich results) için önemlidir. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ParaHesap",
+  "url": "https://parahesap.site/",
+  "description": "Faizsiz finans ve helal hesaplama portalı: zekat, fitre, kâr payı, miras ve finansman hesaplama araçları, canlı döviz-altın-kripto kurları.",
+  "inLanguage": "tr-TR",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ParaHesap"
+  }
+}
+</script>
+
+<!-- =========================================================================
+  6) ÇEREZ ONAY BANDI (KVKK / GDPR) — AdSense onayı için ZORUNLU denecek kadar
+     önemlidir. Reklam ve analytics çerezleri için kullanıcı onayı istenmeden
+     yayın yapan siteler AdSense incelemesinde "ilkelere uygun olmayan içerik/
+     politika" gerekçesiyle reddedilebilir.
+  ========================================================================= -->
+<style>
+  #cookieConsentBar{position:fixed;left:0;right:0;bottom:0;z-index:99999;
+    background:#14532d;color:#fff;padding:14px 18px;font-family:Arial,Helvetica,sans-serif;
+    font-size:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+    justify-content:space-between;box-shadow:0 -2px 10px rgba(0,0,0,.2)}
+  #cookieConsentBar a{color:#a7f3d0;text-decoration:underline}
+  #cookieConsentBar button{cursor:pointer;border:none;border-radius:6px;
+    padding:8px 16px;font-weight:bold}
+  #ccAccept{background:#22c55e;color:#062}
+  #ccReject{background:transparent;color:#fff;border:1px solid #fff!important}
+</style>
+
+<!-- 7) CANLI DÖVİZ / ALTIN / KRİPTO ÇUBUĞU
+     Trunçgil Finans API (döviz+altın, anahtarsız/ücretsiz) ve CoinGecko API
+     (kripto, anahtarsız/ücretsiz) kullanılır. Mevcut kayan kur çubuğunuzdaki
+     her rakamın etrafına aşağıdaki id'lerden birini verin, script otomatik
+     doldurup 60 saniyede bir günceller. Örnek:
+     <span id="rate-usd">USD: -- TL</span>
+     <span id="rate-eur">EUR: -- TL</span>
+     <span id="rate-gram-altin">GRAM ALTIN: -- TL</span>
+     <span id="rate-gumus">GÜMÜŞ: -- TL</span>
+     <span id="rate-btc">BTC: -- TL</span>
+     <span id="rate-eth">ETH: -- TL</span>
+     <span id="rate-sol">SOL: -- TL</span>
+-->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  function fmt(n){
+    return Number(n).toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+  function setText(id, text){
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  // --- Döviz + Altın + Gümüş (Trunçgil Finans, anahtarsız) ---
+  function updateFxAndGold(){
+    fetch('https://finans.truncgil.com/today.json')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d['USD']) setText('rate-usd', 'USD: ' + fmt(d['USD']['Satış']) + ' TL');
+        if (d['EUR']) setText('rate-eur', 'EUR: ' + fmt(d['EUR']['Satış']) + ' TL');
+        if (d['Gram Altın']) setText('rate-gram-altin', 'GRAM ALTIN: ' + fmt(d['Gram Altın']['Satış']) + ' TL');
+        if (d['GUMUS'] || d['Gümüş']) {
+          var gumus = d['GUMUS'] || d['Gümüş'];
+          setText('rate-gumus', 'GÜMÜŞ: ' + fmt(gumus['Satış']) + ' TL');
+        }
+      })
+      .catch(function(err){ console.warn('Kur verisi alınamadı:', err); });
+  }
+
+  // --- Kripto (CoinGecko, anahtarsız) ---
+  function updateCrypto(){
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=try')
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d.bitcoin) setText('rate-btc', 'BTC: ' + fmt(d.bitcoin.try) + ' TL');
+        if (d.ethereum) setText('rate-eth', 'ETH: ' + fmt(d.ethereum.try) + ' TL');
+        if (d.solana) setText('rate-sol', 'SOL: ' + fmt(d.solana.try) + ' TL');
+      })
+      .catch(function(err){ console.warn('Kripto verisi alınamadı:', err); });
+  }
+
+  updateFxAndGold();
+  updateCrypto();
+  setInterval(updateFxAndGold, 60000);  // 60 sn'de bir güncelle
+  setInterval(updateCrypto, 60000);
+
+  // ---------------------------------------------------------------------
+  // ÇEREZ ONAYI mantığı + onay verilmeden önce reklam/analytics çalıştırma
+  // ---------------------------------------------------------------------
+  var CONSENT_KEY = 'parahesap_cookie_consent';
+  var consent = document.cookie.split('; ').find(function(row){ return row.startsWith(CONSENT_KEY + '='); });
+
+  function loadAdsAndAnalytics(){
+    // AdSense reklam birimlerinizi sayfa içinde <ins class="adsbygoogle">...</ins>
+    // olarak eklediyseniz burada push edilir.
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch(e) {}
+  }
+
+  if (consent) {
+    loadAdsAndAnalytics();
+  } else {
+    var bar = document.createElement('div');
+    bar.id = 'cookieConsentBar';
+    bar.innerHTML =
+      '<span>Bu sitede deneyiminizi iyileştirmek ve reklam göstermek için çerezler kullanıyoruz. ' +
+      '<a href="/gizlilik-politikasi.html">Gizlilik Politikası</a> ve ' +
+      '<a href="/cerez-politikasi.html">Çerez Politikası</a>\'nı inceleyebilirsiniz.</span>' +
+      '<span><button id="ccReject">Reddet</button> ' +
+      '<button id="ccAccept">Kabul Et</button></span>';
+    document.body.appendChild(bar);
+
+    document.getElementById('ccAccept').addEventListener('click', function(){
+      document.cookie = CONSENT_KEY + '=accepted; max-age=' + (60*60*24*180) + '; path=/';
+      bar.remove();
+      loadAdsAndAnalytics();
+    });
+    document.getElementById('ccReject').addEventListener('click', function(){
+      document.cookie = CONSENT_KEY + '=rejected; max-age=' + (60*60*24*180) + '; path=/';
+      bar.remove();
+      // Reddedilirse reklam/analytics kişiselleştirmesi yüklenmez.
+    });
+  }
+});
+</script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
