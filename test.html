@@ -1,4 +1,3 @@
-EKREM:
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -79,17 +78,14 @@ button.btn-calculate:hover { background-color: var(--accent-green); }
 
 .result-box { margin-top: 12px; padding: 10px; background: rgba(46, 125, 50, 0.1); border-left: 4px solid var(--light-green); font-size: 1rem; font-weight: bold; color: var(--light-green); display: none; }
 
-/* Pratik Ek Hesaplama Araçları */
 .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
 .quick-box { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--light-green); padding: 10px; border-radius: 6px; }
 .quick-box h3 { font-size: 0.85rem; color: var(--light-green); margin-bottom: 4px; }
 .quick-box p { font-size: 0.75rem; margin-bottom: 6px; opacity: 0.8; }
 .quick-box button { background: var(--light-green); color: white; border: none; padding: 4px 6px; font-size: 0.7rem; border-radius: 3px; cursor: pointer; width: 100%; font-weight: bold; }
 
-/* AdSense Alanı (Boşlukları Kapatan Akıllı Tasarım) */
 .adsense-box { margin: 10px 0; text-align: center; min-height: 50px; overflow: hidden; }
 
-/* Modal Pencereler */
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; padding: 15px; }
 .modal-content { background: var(--card-bg); color: var(--text-color); padding: 20px; border-radius: 8px; max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border-color); position: relative; }
 .close-modal { position: absolute; right: 12px; top: 12px; font-size: 1.1rem; cursor: pointer; color: var(--light-green); font-weight: bold; }
@@ -109,7 +105,6 @@ footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 6px; c
 <button class="theme-toggle" onclick="toggleTheme()">Tema</button>
 </header>
 
-<!-- CANLI KUR BANTI -->
 <div class="ticker-container">
 <div class="ticker-track">
 <span class="ticker-item">GRAM ALTIN: <span id="t-gold">3.150,00 TL</span></span>
@@ -119,7 +114,6 @@ footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 6px; c
 </div>
 </div>
 
-<!-- KRİPTO BANTI -->
 <div class="ticker-container" style="background-color: #0c1f0e;">
 <div class="ticker-track" style="animation-duration: 40s;">
 <span class="ticker-item">BITCOIN (BTC): <span id="t-btc">3.775.183 TL</span></span>
@@ -130,7 +124,6 @@ footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 6px; c
 </div>
 
 EKREM:
-<!-- Mobil Menü -->
 <nav>
 <div class="nav-menu">
 <button onclick="showSection('hizliCeviriciSec', this)" class="active-btn">Hızlı Çevirici</button>
@@ -146,13 +139,11 @@ EKREM:
 
 <div class="container">
 
-<!-- Üst Reklam Alanı -->
 <div class="adsense-box">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2881789176542881" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<!-- 1. Hızlı Çevirici -->
 <div id="hizliCeviriciSec" class="calculator-section active">
 <div class="card">
 <h2>DETAYLI HIZLI ÇEVİRİCİ</h2>
@@ -178,11 +169,9 @@ EKREM:
 </div>
 </div>
 
-<!-- 2. Zekat Hesaplama -->
 <div id="zekatSec" class="calculator-section">
 <div class="card">
 <h2>ZEKAT HESAPLAMA</h2>
-<p>Temel ihtiyaçlar haricinde nisap miktarına ulaşan varlıklar için yıllık %2.5 zekat hesabı.</p>
 <div class="form-group"><label>Nakit ve Banka (TL)</label><input type="number" id="cashAsset" value="0"></div>
 <div class="form-group"><label>Altın Değeri (TL)</label><input type="number" id="goldAsset" value="0"></div>
 <div class="form-group"><label>Borçlar (TL)</label><input type="number" id="debtAmount" value="0"></div>
@@ -191,7 +180,6 @@ EKREM:
 </div>
 </div>
 
-<!-- 3. Fitre Hesaplama -->
 <div id="fitreSec" class="calculator-section">
 <div class="card">
 <h2>FİTRE HESAPLAMA</h2>
@@ -202,11 +190,11 @@ EKREM:
 </div>
 </div>
 
-EKREM:
-<!-- 4. Kâr Payı -->
 <div id="karPayiSec" class="calculator-section">
 <div class="card">
 <h2>KÂR PAYI HESAPLAMA</h2>
+
+EKREM:
 <div class="form-group"><label>Anapara (TL)</label><input type="number" id="kpPrincipal" value="50000"></div>
 <div class="form-group"><label>Vade (Gün)</label><input type="number" id="kpDays" value="30"></div>
 <div class="form-group"><label>Yıllık Verim (%)</label><input type="number" id="kpRate" value="42"></div>
@@ -215,7 +203,6 @@ EKREM:
 </div>
 </div>
 
-<!-- 5. Finansman -->
 <div id="finansmanSec" class="calculator-section">
 <div class="card">
 <h2>FİNANSMAN HESABI</h2>
@@ -226,7 +213,6 @@ EKREM:
 </div>
 </div>
 
-<!-- 6. Bist -->
 <div id="bistSec" class="calculator-section">
 <div class="card">
 <h2>BİST KATILIM</h2>
@@ -234,7 +220,6 @@ EKREM:
 </div>
 </div>
 
-<!-- 7. Miras -->
 <div id="mirasSec" class="calculator-section">
 <div class="card">
 <h2>MİRAS PAYLAŞIMI</h2>
@@ -244,7 +229,6 @@ EKREM:
 </div>
 </div>
 
-<!-- 8. Altın Simülasyonu -->
 <div id="altinSimSec" class="calculator-section">
 <div class="card">
 <h2>ALTIN SİMÜLASYONU</h2>
@@ -254,31 +238,12 @@ EKREM:
 <div id="simResultBox" class="result-box"></div>
 </div>
 </div>
-
-<!-- Pratik Ek Kutular -->
-<div class="card">
-<h2>PRATİK ARAÇLAR</h2>
-<div class="quick-grid">
-<div class="quick-box">
-<h3>Zekat Nisap</h3>
-<p>Nisap sınırını incele.</p>
-<button onclick="showSection('zekatSec', document.querySelectorAll('nav button')[1])">Aç</button>
-</div>
-<div class="quick-box">
-<h3>Kâr Payı</h3>
-<p>Getiri oranları.</p>
-<button onclick="showSection('karPayiSec', document.querySelectorAll('nav button')[3])">Aç</button>
-</div>
-</div>
-</div>
 </div>
 
-<!-- Modaller -->
 <div id="privacyModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacyModal')">&times;</span><h2>Gizlilik Politikası</h2><p>Google AdSense çerezleri kullanılmaktadır.</p></div></div>
 <div id="termsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('termsModal')">&times;</span><h2>Kullanım Şartları</h2><p>Veriler bilgilendirme amaçlıdır.</p></div></div>
 <div id="contactModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('contactModal')">&times;</span><h2>İletişim</h2><p>destek@parahesap.site</p></div></div>
 
-EKREM:
 <footer>
 <div class="footer-links">
 <a onclick="openModal('privacyModal')">Gizlilik</a> | 
@@ -302,14 +267,17 @@ if(btnElement) btnElement.classList.add('active-btn');
 window.scrollTo({top: 100, behavior: 'smooth'});
 }
 
+EKREM:
 function openModal(id) { document.getElementById(id).style.display = 'flex'; }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+// Güvenli Havuz (Dış API hata verse bile sistem çökmez, varsayılan değerlerle çalışır)
 let liveRates = { USD: 34.15, EUR: 38.20, GOLD: 3150.00, SILVER: 36.50, BTC: 3775183, ETH: 148000, SOL: 6450 };
 
 async function fetchRealtimeData() {
 try {
-let res = await fetch('https://api.genelpara.com/embed/para.json');
+let res = await fetch('https://api.genelpara.com/embed/para.json', { mode: 'cors' });
+if(res.ok) {
 let data = await res.json();
 if(data) {
 if(data.USD) liveRates.USD = parseFloat(data.USD.satis);
@@ -317,7 +285,10 @@ if(data.EUR) liveRates.EUR = parseFloat(data.EUR.satis);
 if(data.GA) liveRates.GOLD = parseFloat(data.GA.satis);
 if(data.GAG) liveRates.SILVER = parseFloat(data.GAG.satis);
 }
-} catch (err) {}
+}
+} catch (err) {
+// Sessizce yerel önbellek kurlarını kullanmaya devam eder (Konsolu kirletmez)
+}
 
 document.getElementById('t-gold').innerText = liveRates.GOLD.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-silver').innerText = liveRates.SILVER.toLocaleString('tr-TR') + ' TL';
@@ -352,4 +323,48 @@ box.innerHTML = Zekat (%2.5): <strong>${z.toLocaleString('tr-TR')} TL</strong>;
 }
 
 function calculateFitre() {
-let total = (parseFloat(doc
+let total = (parseFloat(document.getElementById('fitreCount').value)  0) * (parseFloat(document.getElementById('fitrePrice').value)  0);
+let box = document.getElementById('fitreResultBox');
+box.style.display = 'block';
+box.innerHTML = Toplam: <strong>${total.toLocaleString('tr-TR')} TL</strong>;
+}
+
+function calculateKarPayi() {
+let p = parseFloat(document.getElementById('kpPrincipal').value) || 0;
+let d = parseFloat(document.getElementById('kpDays').value) || 0;
+
+EKREM:
+let r = parseFloat(document.getElementById('kpRate').value) || 0;
+let profit = (p * (r / 100) * (d / 365));
+let box = document.getElementById('kpResultBox');
+box.style.display = 'block';
+box.innerHTML = Kâr Payı: <strong>${profit.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</strong>;
+}
+
+function calculateFinansman() {
+let amt = parseFloat(document.getElementById('finAmount').value) || 0;
+let m = parseFloat(document.getElementById('finMonth').value) || 1;
+let per = (amt * 1.15) / m;
+let box = document.getElementById('finResultBox');
+box.style.display = 'block';
+box.innerHTML = Aylık Taksit: <strong>${per.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</strong>;
+}
+
+function calculateMiras() {
+let amt = parseFloat(document.getElementById('mirasAmount').value) || 0;
+let box = document.getElementById('mirasResultBox');
+box.style.display = 'block';
+box.innerHTML = Eş Payı (1/8): ${(amt/8).toLocaleString('tr-TR', {maximumFractionDigits:2})} TL;
+}
+
+function calculateSim() {
+let g = parseFloat(document.getElementById('simGram').value) || 0;
+let m = parseFloat(document.getElementById('simMonth').value) || 0;
+let totalGram = g * m;
+let box = document.getElementById('simResultBox');
+box.style.display = 'block';
+box.innerHTML = Toplam Biriken: <strong>${totalGram} Gram</strong>;
+}
+</script>
+</body>
+</html>
