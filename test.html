@@ -6,8 +6,7 @@
 <title>ParaHesap - Faizsiz Finans ve Helal Hesaplama Portalı</title>
 <meta name="description" content="Güncel döviz kurları, altın fiyatları, zekat, fitre ve helal finans hesaplama araçları.">
 
-<!-- Google AdSense & Analytics -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -46,14 +45,12 @@ header { background-color: var(--primary-green); color: var(--white); padding: 1
 
 .theme-toggle { background: var(--light-green); color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
 
-/* Kayan Kur Bantları */
 .ticker-container { background-color: #143216; color: #a5d6a7; overflow: hidden; white-space: nowrap; width: 100%; padding: 5px 0; font-size: 0.8rem; border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; }
 .ticker-track { display: inline-block; animation: ticker 35s linear infinite; }
 .ticker-item { display: inline-block; padding: 0 15px; }
 .ticker-item span { color: var(--white); font-weight: bold; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
 
-/* Mobil Kaydırılabilir Menü */
 nav { background-color: var(--primary-green); padding: 6px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 nav::-webkit-scrollbar { display: none; }
 .nav-menu { display: flex; gap: 5px; padding: 0 10px; width: max-content; }
@@ -66,25 +63,17 @@ nav::-webkit-scrollbar { display: none; }
 
 .card { background: var(--card-bg); padding: 18px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border-color); }
 .card h2 { color: var(--light-green); margin-bottom: 8px; font-size: 1.1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; }
-
-EKREM:
 .card p { font-size: 0.85rem; margin-bottom: 12px; opacity: 0.85; }
 
 .form-group { margin-bottom: 12px; }
+
+EKREM:
 label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 0.8rem; }
 input, select { width: 100%; padding: 9px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem; background: var(--card-bg); color: var(--text-color); }
 button.btn-calculate { background-color: var(--light-green); color: var(--white); border: none; width: 100%; padding: 11px; font-size: 0.95rem; font-weight: bold; border-radius: 4px; cursor: pointer; }
 button.btn-calculate:hover { background-color: var(--accent-green); }
 
 .result-box { margin-top: 12px; padding: 10px; background: rgba(46, 125, 50, 0.1); border-left: 4px solid var(--light-green); font-size: 1rem; font-weight: bold; color: var(--light-green); display: none; }
-
-.quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
-.quick-box { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--light-green); padding: 10px; border-radius: 6px; }
-.quick-box h3 { font-size: 0.85rem; color: var(--light-green); margin-bottom: 4px; }
-.quick-box p { font-size: 0.75rem; margin-bottom: 6px; opacity: 0.8; }
-.quick-box button { background: var(--light-green); color: white; border: none; padding: 4px 6px; font-size: 0.7rem; border-radius: 3px; cursor: pointer; width: 100%; font-weight: bold; }
-
-.adsense-box { margin: 10px 0; text-align: center; min-height: 50px; overflow: hidden; }
 
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; padding: 15px; }
 .modal-content { background: var(--card-bg); color: var(--text-color); padding: 20px; border-radius: 8px; max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border-color); position: relative; }
@@ -123,7 +112,6 @@ footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 6px; c
 </div>
 </div>
 
-EKREM:
 <nav>
 <div class="nav-menu">
 <button onclick="showSection('hizliCeviriciSec', this)" class="active-btn">Hızlı Çevirici</button>
@@ -138,13 +126,9 @@ EKREM:
 </nav>
 
 <div class="container">
-
-<div class="adsense-box">
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2881789176542881" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
 <div id="hizliCeviriciSec" class="calculator-section active">
+
+EKREM:
 <div class="card">
 <h2>DETAYLI HIZLI ÇEVİRİCİ</h2>
 <p>Türk Lirası varlıklarınızı güncel döviz kurları, altın ve kripto para birimleri cinsinden anında dönüştürün.</p>
@@ -193,8 +177,6 @@ EKREM:
 <div id="karPayiSec" class="calculator-section">
 <div class="card">
 <h2>KÂR PAYI HESAPLAMA</h2>
-
-EKREM:
 <div class="form-group"><label>Anapara (TL)</label><input type="number" id="kpPrincipal" value="50000"></div>
 <div class="form-group"><label>Vade (Gün)</label><input type="number" id="kpDays" value="30"></div>
 <div class="form-group"><label>Yıllık Verim (%)</label><input type="number" id="kpRate" value="42"></div>
@@ -220,6 +202,7 @@ EKREM:
 </div>
 </div>
 
+EKREM:
 <div id="mirasSec" class="calculator-section">
 <div class="card">
 <h2>MİRAS PAYLAŞIMI</h2>
@@ -240,7 +223,7 @@ EKREM:
 </div>
 </div>
 
-<div id="privacyModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacyModal')">&times;</span><h2>Gizlilik Politikası</h2><p>Google AdSense çerezleri kullanılmaktadır.</p></div></div>
+<div id="privacyModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacyModal')">&times;</span><h2>Gizlilik Politikası</h2><p>Google çerezleri kullanılmaktadır.</p></div></div>
 <div id="termsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('termsModal')">&times;</span><h2>Kullanım Şartları</h2><p>Veriler bilgilendirme amaçlıdır.</p></div></div>
 <div id="contactModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('contactModal')">&times;</span><h2>İletişim</h2><p>destek@parahesap.site</p></div></div>
 
@@ -267,38 +250,10 @@ if(btnElement) btnElement.classList.add('active-btn');
 window.scrollTo({top: 100, behavior: 'smooth'});
 }
 
-EKREM:
 function openModal(id) { document.getElementById(id).style.display = 'flex'; }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-// Güvenli Havuz (Dış API hata verse bile sistem çökmez, varsayılan değerlerle çalışır)
 let liveRates = { USD: 34.15, EUR: 38.20, GOLD: 3150.00, SILVER: 36.50, BTC: 3775183, ETH: 148000, SOL: 6450 };
-
-async function fetchRealtimeData() {
-try {
-let res = await fetch('https://api.genelpara.com/embed/para.json', { mode: 'cors' });
-if(res.ok) {
-let data = await res.json();
-if(data) {
-if(data.USD) liveRates.USD = parseFloat(data.USD.satis);
-if(data.EUR) liveRates.EUR = parseFloat(data.EUR.satis);
-if(data.GA) liveRates.GOLD = parseFloat(data.GA.satis);
-if(data.GAG) liveRates.SILVER = parseFloat(data.GAG.satis);
-}
-}
-} catch (err) {
-// Sessizce yerel önbellek kurlarını kullanmaya devam eder (Konsolu kirletmez)
-}
-
-document.getElementById('t-gold').innerText = liveRates.GOLD.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-silver').innerText = liveRates.SILVER.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-usd').innerText = liveRates.USD.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-eur').innerText = liveRates.EUR.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-btc').innerText = liveRates.BTC.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-eth').innerText = liveRates.ETH.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-sol').innerText = liveRates.SOL.toLocaleString('tr-TR') + ' TL';
-}
-fetchRealtimeData();
 
 function calculate() {
 let amount = parseFloat(document.getElementById('amount').value);
@@ -314,6 +269,8 @@ resBox.innerHTML = ${amount.toLocaleString('tr-TR')} TL = <strong>${val.toFixed(
 function calculateZakat() {
 let cash = parseFloat(document.getElementById('cashAsset').value) || 0;
 let gold = parseFloat(document.getElementById('goldAsset').value) || 0;
+
+EKREM:
 let debt = parseFloat(document.getElementById('debtAmount').value) || 0;
 let net = Math.max(0, (cash + gold) - debt);
 let z = net * 0.025;
@@ -332,8 +289,6 @@ box.innerHTML = Toplam: <strong>${total.toLocaleString('tr-TR')} TL</strong>;
 function calculateKarPayi() {
 let p = parseFloat(document.getElementById('kpPrincipal').value) || 0;
 let d = parseFloat(document.getElementById('kpDays').value) || 0;
-
-EKREM:
 let r = parseFloat(document.getElementById('kpRate').value) || 0;
 let profit = (p * (r / 100) * (d / 365));
 let box = document.getElementById('kpResultBox');
