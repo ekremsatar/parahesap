@@ -41,63 +41,62 @@ gtag('config', 'G-GKXWCDPHMF');
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
 
-header { background-color: var(--primary-green); color: var(--white); padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-.logo h1 { font-size: 1.4rem; letter-spacing: 1px; }
-.logo p { font-size: 0.7rem; color: #a5d6a7; }
+header { background-color: var(--primary-green); color: var(--white); padding: 12px 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+.logo h1 { font-size: 1.2rem; letter-spacing: 1px; }
+.logo p { font-size: 0.65rem; color: #a5d6a7; }
 
-.theme-toggle { background: var(--light-green); color: white; border: none; padding: 7px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold; }
+.theme-toggle { background: var(--light-green); color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: bold; }
 
 /* Kayan Kur Bantları */
-.ticker-container { background-color: #143216; color: #a5d6a7; overflow: hidden; white-space: nowrap; width: 100%; padding: 6px 0; font-size: 0.85rem; border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; }
+.ticker-container { background-color: #143216; color: #a5d6a7; overflow: hidden; white-space: nowrap; width: 100%; padding: 5px 0; font-size: 0.8rem; border-top: 1px solid #2e7d32; border-bottom: 1px solid #2e7d32; }
 .ticker-track { display: inline-block; animation: ticker 35s linear infinite; }
-.ticker-item { display: inline-block; padding: 0 20px; }
+.ticker-item { display: inline-block; padding: 0 15px; }
 .ticker-item span { color: var(--white); font-weight: bold; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
 
-/* Mobil Uyumlu Kaydırılabilir 8'li Menü */
-nav { background-color: var(--primary-green); padding: 8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+/* Mobil Kaydırılabilir Menü */
+nav { background-color: var(--primary-green); padding: 6px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 nav::-webkit-scrollbar { display: none; }
-.nav-menu { display: flex; justify-content: flex-start; gap: 6px; padding: 0 15px; width: max-content; margin: 0 auto; }
-.nav-menu button { background-color: var(--light-green); color: var(--white); padding: 7px 12px; border: none; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
-.nav-menu button:hover, .nav-menu button.active-btn { background-color: var(--accent-green); }
+.nav-menu { display: flex; gap: 5px; padding: 0 10px; width: max-content; }
+.nav-menu button { background-color: var(--light-green); color: var(--white); padding: 6px 10px; border: none; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.nav-menu button.active-btn { background-color: var(--accent-green); }
 
-.container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+.container { max-width: 900px; margin: 15px auto; padding: 0 10px; }
 .calculator-section { display: none; }
 .calculator-section.active { display: block; }
 
-.card { background: var(--card-bg); padding: 22px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 25px; border: 1px solid var(--border-color); }
+.card { background: var(--card-bg); padding: 18px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border-color); }
+.card h2 { color: var(--light-green); margin-bottom: 8px; font-size: 1.1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; }
 
 EKREM:
-.card h2 { color: var(--light-green); margin-bottom: 10px; font-size: 1.2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 6px; }
-.card p { font-size: 0.9rem; margin-bottom: 15px; opacity: 0.85; }
+.card p { font-size: 0.85rem; margin-bottom: 12px; opacity: 0.85; }
 
-.form-group { margin-bottom: 14px; }
-label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; }
-input, select, textarea { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.95rem; background: var(--card-bg); color: var(--text-color); }
-button.btn-calculate { background-color: var(--light-green); color: var(--white); border: none; width: 100%; padding: 12px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+.form-group { margin-bottom: 12px; }
+label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 0.8rem; }
+input, select { width: 100%; padding: 9px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem; background: var(--card-bg); color: var(--text-color); }
+button.btn-calculate { background-color: var(--light-green); color: var(--white); border: none; width: 100%; padding: 11px; font-size: 0.95rem; font-weight: bold; border-radius: 4px; cursor: pointer; }
 button.btn-calculate:hover { background-color: var(--accent-green); }
 
-.result-box { margin-top: 15px; padding: 12px; background: rgba(46, 125, 50, 0.1); border-left: 4px solid var(--light-green); font-size: 1.05rem; font-weight: bold; color: var(--light-green); display: none; }
+.result-box { margin-top: 12px; padding: 10px; background: rgba(46, 125, 50, 0.1); border-left: 4px solid var(--light-green); font-size: 1rem; font-weight: bold; color: var(--light-green); display: none; }
 
-/* Pratik Ek Hesaplama Araçları Kutuları */
-.quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 15px; }
-.quick-box { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 4px solid var(--light-green); padding: 14px; border-radius: 6px; }
-.quick-box h3 { font-size: 0.95rem; color: var(--light-green); margin-bottom: 6px; }
-.quick-box p { font-size: 0.8rem; margin-bottom: 8px; color: var(--text-color); opacity: 0.8; }
-.quick-box button { background: var(--light-green); color: white; border: none; padding: 5px 8px; font-size: 0.75rem; border-radius: 3px; cursor: pointer; font-weight: bold; width: 100%; }
+/* Pratik Ek Hesaplama Araçları */
+.quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
+.quick-box { background: var(--card-bg); border: 1px solid var(--border-color); border-top: 3px solid var(--light-green); padding: 10px; border-radius: 6px; }
+.quick-box h3 { font-size: 0.85rem; color: var(--light-green); margin-bottom: 4px; }
+.quick-box p { font-size: 0.75rem; margin-bottom: 6px; opacity: 0.8; }
+.quick-box button { background: var(--light-green); color: white; border: none; padding: 4px 6px; font-size: 0.7rem; border-radius: 3px; cursor: pointer; width: 100%; font-weight: bold; }
 
-/* AdSense Reklam Alanı */
-.adsense-box { margin: 15px 0; text-align: center; background: rgba(0,0,0,0.01); padding: 8px; border: 1px dashed var(--border-color); border-radius: 6px; min-height: 90px; }
+/* AdSense Alanı (Boşlukları Kapatan Akıllı Tasarım) */
+.adsense-box { margin: 10px 0; text-align: center; min-height: 50px; overflow: hidden; }
 
-/* Modal Pencereler (Yasal Sayfalar İçin) */
-.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; padding: 20px; }
-.modal-content { background: var(--card-bg); color: var(--text-color); padding: 25px; border-radius: 8px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border-color); position: relative; }
-.close-modal { position: absolute; right: 15px; top: 15px; font-size: 1.2rem; cursor: pointer; font-weight: bold; color: var(--light-green); }
+/* Modal Pencereler */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; padding: 15px; }
+.modal-content { background: var(--card-bg); color: var(--text-color); padding: 20px; border-radius: 8px; max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border-color); position: relative; }
+.close-modal { position: absolute; right: 12px; top: 12px; font-size: 1.1rem; cursor: pointer; color: var(--light-green); font-weight: bold; }
 
-footer { background-color: var(--primary-green); color: var(--white); text-align: center; padding: 20px; margin-top: 35px; font-size: 0.8rem; }
-footer .footer-links { margin-bottom: 8px; }
-footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 8px; cursor: pointer; }
-footer .footer-links a:hover { text-decoration: underline; }
+footer { background-color: var(--primary-green); color: var(--white); text-align: center; padding: 15px; margin-top: 25px; font-size: 0.75rem; }
+footer .footer-links { margin-bottom: 6px; }
+footer .footer-links a { color: #a5d6a7; text-decoration: none; margin: 0 6px; cursor: pointer; }
 </style>
 </head>
 <body data-theme="light">
@@ -107,7 +106,7 @@ footer .footer-links a:hover { text-decoration: underline; }
 <h1>PARAHESAP</h1>
 <p>FAİZSİZ FİNANS VE HELAL HESAPLAMA PORTALI</p>
 </div>
-<button class="theme-toggle" onclick="toggleTheme()">Karanlık/Aydınlık Mod</button>
+<button class="theme-toggle" onclick="toggleTheme()">Tema</button>
 </header>
 
 <!-- CANLI KUR BANTI -->
@@ -117,59 +116,50 @@ footer .footer-links a:hover { text-decoration: underline; }
 <span class="ticker-item">GÜMÜŞ: <span id="t-silver">36,50 TL</span></span>
 <span class="ticker-item">USD/TRY: <span id="t-usd">34,15 TL</span></span>
 <span class="ticker-item">EUR/TRY: <span id="t-eur">38,20 TL</span></span>
-<span class="ticker-item">GRAM ALTIN: <span id="t-gold2">3.150,00 TL</span></span>
+</div>
+</div>
+
+<!-- KRİPTO BANTI -->
+<div class="ticker-container" style="background-color: #0c1f0e;">
+<div class="ticker-track" style="animation-duration: 40s;">
+<span class="ticker-item">BITCOIN (BTC): <span id="t-btc">3.775.183 TL</span></span>
+<span class="ticker-item">ETHEREUM (ETH): <span id="t-eth">148.000 TL</span></span>
+<span class="ticker-item">SOLANA (SOL): <span id="t-sol">6.450 TL</span></span>
+<span class="ticker-item">BIST 100: <span id="t-bist">9.850,40</span></span>
 </div>
 </div>
 
 EKREM:
-<!-- KRİPTO / BIST BANTI -->
-<div class="ticker-container" style="background-color: #0c1f0e;">
-<div class="ticker-track" style="animation-duration: 40s;">
-<span class="ticker-item">BITCOIN (BTC): <span id="t-btc">3.775.183 TL</span></span>
-<span class="ticker-item">SOLANA (SOL): <span id="t-sol">6.450 TL</span></span>
-<span class="ticker-item">ETHEREUM (ETH): <span id="t-eth">148.000 TL</span></span>
-<span class="ticker-item">BIST 100: <span id="t-bist">9.850,40</span></span>
-<span class="ticker-item">BITCOIN (BTC): <span id="t-btc2">3.775.183 TL</span></span>
-</div>
-</div>
-
-<!-- Mobil Kaydırılabilir 8'li Menü -->
+<!-- Mobil Menü -->
 <nav>
 <div class="nav-menu">
 <button onclick="showSection('hizliCeviriciSec', this)" class="active-btn">Hızlı Çevirici</button>
-<button onclick="showSection('zekatSec', this)">Zekat Hesapla</button>
-<button onclick="showSection('fitreSec', this)">Fitre Hesaplama</button>
+<button onclick="showSection('zekatSec', this)">Zekat</button>
+<button onclick="showSection('fitreSec', this)">Fitre</button>
 <button onclick="showSection('karPayiSec', this)">Kâr Payı</button>
 <button onclick="showSection('finansmanSec', this)">Finansman</button>
-<button onclick="showSection('bistSec', this)">Bist Katılım</button>
+<button onclick="showSection('bistSec', this)">Bist</button>
 <button onclick="showSection('mirasSec', this)">Miras</button>
-<button onclick="showSection('altinSimSec', this)">Altın Simülasyonu</button>
+<button onclick="showSection('altinSimSec', this)">Altın Sim.</button>
 </div>
 </nav>
 
 <div class="container">
 
-<!-- AdSense Üst Reklam Alanı -->
+<!-- Üst Reklam Alanı -->
 <div class="adsense-box">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-2881789176542881"
-data-ad-slot="auto"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2881789176542881" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- 1. Hızlı Çevirici -->
 <div id="hizliCeviriciSec" class="calculator-section active">
 <div class="card">
 <h2>DETAYLI HIZLI ÇEVİRİCİ</h2>
-<p>Türk Lirası varlıklarınızı güncel döviz kurları, gram altın, gümüş ve önde gelen kripto para birimleri (Bitcoin, Ethereum, Solana) cinsinden anında dönüştürün.</p>
+<p>Türk Lirası varlıklarınızı güncel döviz kurları, altın ve kripto para birimleri cinsinden anında dönüştürün.</p>
 <div class="form-group">
 <label for="amount">Tutar (TL)</label>
-<input type="number" id="amount" value="10000" placeholder="Tutar giriniz...">
+<input type="number" id="amount" value="10000">
 </div>
 <div class="form-group">
 <label for="targetCurrency">Hedef Birim</label>
@@ -183,7 +173,7 @@ data-full-width-responsive="true"></ins>
 <option value="SOL">Solana (SOL)</option>
 </select>
 </div>
-<button class="btn-calculate" onclick="calculate()">HESAPLA VE DETAYLANDIR</button>
+<button class="btn-calculate" onclick="calculate()">HESAPLA</button>
 <div id="resultBox" class="result-box"></div>
 </div>
 </div>
@@ -191,14 +181,12 @@ data-full-width-responsive="true"></ins>
 <!-- 2. Zekat Hesaplama -->
 <div id="zekatSec" class="calculator-section">
 <div class="card">
-<h2>ZEKAT VE NİSAP HESAPLAMA</h2>
-<p>İslam fıkhına göre zekat yükümlülüğü, temel ihtiyaçlar haricinde nisap miktarına (80.18 gr altın veya dengi nakit) ulaşan mallar için yıllık %2.5 oranında hesaplanır.</p>
-
-EKREM:
-<div class="form-group"><label>Nakit Varlıklar ve Banka (TL)</label><input type="number" id="cashAsset" value="0"></div>
-<div class="form-group"><label>Altın ve Ziynet Değeri (TL)</label><input type="number" id="goldAsset" value="0"></div>
-<div class="form-group"><label>Toplam Borçlar (TL)</label><input type="number" id="debtAmount" value="0"></div>
-<button class="btn-calculate" onclick="calculateZakat()">ZEKAT MİKTARINI HESAPLA</button>
+<h2>ZEKAT HESAPLAMA</h2>
+<p>Temel ihtiyaçlar haricinde nisap miktarına ulaşan varlıklar için yıllık %2.5 zekat hesabı.</p>
+<div class="form-group"><label>Nakit ve Banka (TL)</label><input type="number" id="cashAsset" value="0"></div>
+<div class="form-group"><label>Altın Değeri (TL)</label><input type="number" id="goldAsset" value="0"></div>
+<div class="form-group"><label>Borçlar (TL)</label><input type="number" id="debtAmount" value="0"></div>
+<button class="btn-calculate" onclick="calculateZakat()">ZEKAT HESAPLA</button>
 <div id="zakatResultBox" class="result-box"></div>
 </div>
 </div>
@@ -207,57 +195,51 @@ EKREM:
 <div id="fitreSec" class="calculator-section">
 <div class="card">
 <h2>FİTRE HESAPLAMA</h2>
-<p>Ramazan ayında hanedeki her birey için verilmesi vacip olan sadaka-i fıtır (fitre) miktarını Diyanet İşleri Başkanlığı'nın güncel taban bedeli üzerinden hesaplayın.</p>
 <div class="form-group"><label>Kişi Sayısı</label><input type="number" id="fitreCount" value="4"></div>
-<div class="form-group"><label>Günlük Fitre Bedeli (TL)</label><input type="number" id="fitrePrice" value="130"></div>
-<button class="btn-calculate" onclick="calculateFitre()">TOPLAM FİTREYİ HESAPLA</button>
+<div class="form-group"><label>Günlük Fitre (TL)</label><input type="number" id="fitrePrice" value="130"></div>
+<button class="btn-calculate" onclick="calculateFitre()">HESAPLA</button>
 <div id="fitreResultBox" class="result-box"></div>
 </div>
 </div>
 
-<!-- 4. Kâr Payı Hesaplama -->
+EKREM:
+<!-- 4. Kâr Payı -->
 <div id="karPayiSec" class="calculator-section">
 <div class="card">
 <h2>KÂR PAYI HESAPLAMA</h2>
-<p>Katılım bankalarının ortaklık esaslı fon kullandırma sistemlerinde, vade süresi ve dönemsel verimlilik oranına bağlı tahmini getiri projeksiyonu.</p>
-<div class="form-group"><label>Yatırılacak Anapara (TL)</label><input type="number" id="kpPrincipal" value="50000"></div>
-<div class="form-group"><label>Vade Süresi (Gün)</label><input type="number" id="kpDays" value="30"></div>
-<div class="form-group"><label>Tahmini Yıllık Verim Oranı (%)</label><input type="number" id="kpRate" value="42"></div>
-<button class="btn-calculate" onclick="calculateKarPayi()">KÂR PAYI HESAPLA</button>
+<div class="form-group"><label>Anapara (TL)</label><input type="number" id="kpPrincipal" value="50000"></div>
+<div class="form-group"><label>Vade (Gün)</label><input type="number" id="kpDays" value="30"></div>
+<div class="form-group"><label>Yıllık Verim (%)</label><input type="number" id="kpRate" value="42"></div>
+<button class="btn-calculate" onclick="calculateKarPayi()">HESAPLA</button>
 <div id="kpResultBox" class="result-box"></div>
 </div>
 </div>
 
-<!-- 5. Finansman Hesaplama -->
+<!-- 5. Finansman -->
 <div id="finansmanSec" class="calculator-section">
 <div class="card">
-<h2>FAİZSİZ FİNANSMAN / MALİYET HESABI</h2>
-<p>Ev, araç veya ticari ihtiyaçlar için katılım bankacılığı prensiplerine uygun kâr marjlı vade ve taksit planlaması tahmini.</p>
-<div class="form-group"><label>Finansman Tutarı (TL)</label><input type="number" id="finAmount" value="100000"></div>
+<h2>FİNANSMAN HESABI</h2>
+<div class="form-group"><label>Tutar (TL)</label><input type="number" id="finAmount" value="100000"></div>
 <div class="form-group"><label>Vade (Ay)</label><input type="number" id="finMonth" value="12"></div>
-<button class="btn-calculate" onclick="calculateFinansman()">TAKSİTLERİ HESAPLA</button>
+<button class="btn-calculate" onclick="calculateFinansman()">HESAPLA</button>
 <div id="finResultBox" class="result-box"></div>
 </div>
 </div>
 
-<!-- 6. Bist Katılım -->
+<!-- 6. Bist -->
 <div id="bistSec" class="calculator-section">
 <div class="card">
-<h2>BİST KATILIM ENDEKSİ BİLGİSİ</h2>
-<p>BIST Katılım 100 Endeksi (XUSPM), faaliyet konuları İslami finans ilkelerine uygun şirketlerin hisse senetlerinin performansını ölçer.</p>
-<div class="result-box" style="display:block; margin-top:15px;">Güncel BIST 100 Puanı: <strong>9.850,40</strong></div>
+<h2>BİST KATILIM</h2>
+<div class="result-box" style="display:block;">Güncel BIST 100: <strong>9.850,40</strong></div>
 </div>
 </div>
 
-<!-- 7. Miras Hesaplama -->
+<!-- 7. Miras -->
 <div id="mirasSec" class="calculator-section">
 <div class="card">
-<h2>MİRAS PAYLAŞIM ÖNİZLEMESİ</h2>
-
-EKREM:
-<p>İslam hukukuna göre terekenin yasal varisler (eş, çocuk vb.) arasındaki taksim oranlarını gösteren temel önizleme aracı.</p>
+<h2>MİRAS PAYLAŞIMI</h2>
 <div class="form-group"><label>Toplam Miras (TL)</label><input type="number" id="mirasAmount" value="1000000"></div>
-<button class="btn-calculate" onclick="calculateMiras()">HİSSELERİ HESAPLA</button>
+<button class="btn-calculate" onclick="calculateMiras()">HESAPLA</button>
 <div id="mirasResultBox" class="result-box"></div>
 </div>
 </div>
@@ -265,92 +247,45 @@ EKREM:
 <!-- 8. Altın Simülasyonu -->
 <div id="altinSimSec" class="calculator-section">
 <div class="card">
-<h2>ALTIN BİRİKİM SİMÜLASYONU</h2>
-<p>Her ay düzenli gram altın kenara koyma alışkanlığının uzun vadede varlık koruma ve birikim gücünü simüle edin.</p>
-<div class="form-group"><label>Aylık Kenara Konulan Gram</label><input type="number" id="simGram" value="5"></div>
+<h2>ALTIN SİMÜLASYONU</h2>
+<div class="form-group"><label>Aylık Gram</label><input type="number" id="simGram" value="5"></div>
 <div class="form-group"><label>Süre (Ay)</label><input type="number" id="simMonth" value="12"></div>
-<button class="btn-calculate" onclick="calculateSim()">SİMÜLASYONU BAŞLAT</button>
+<button class="btn-calculate" onclick="calculateSim()">HESAPLA</button>
 <div id="simResultBox" class="result-box"></div>
 </div>
 </div>
 
-<!-- PRATİK EK KUTULAR -->
-<div class="card" style="margin-top: 30px;">
-<h2>PRATİK EK HESAPLAMA ARAÇLARI</h2>
-<p>Hızlı erişim sağlayabileceğiniz ek finansmodülleri:</p>
+<!-- Pratik Ek Kutular -->
+<div class="card">
+<h2>PRATİK ARAÇLAR</h2>
 <div class="quick-grid">
 <div class="quick-box">
-<h3>Kıdem Tazminatı</h3>
-<p>Çalışma süresi ve brüt ücrete göre tazminat hesabı.</p>
-<button onclick="showSection('hizliCeviriciSec', document.querySelector('nav button'))">İncele</button>
+<h3>Zekat Nisap</h3>
+<p>Nisap sınırını incele.</p>
+<button onclick="showSection('zekatSec', document.querySelectorAll('nav button')[1])">Aç</button>
 </div>
 <div class="quick-box">
-<h3>Net / Brüt Maaş</h3>
-<p>Aylık kazancınızın kesintiler dahil net/brüt hesabı.</p>
-<button onclick="showSection('hizliCeviriciSec', document.querySelector('nav button'))">İncele</button>
-</div>
-<div class="quick-box">
-<h3>Zekat Nisap Sınırı</h3>
-<p>80.18 gram altın ölçüsüne göre güncel nisap durumu.</p>
-<button onclick="showSection('zekatSec', document.querySelectorAll('nav button')[1])">Hesapla</button>
-</div>
-<div class="quick-box">
-<h3>Kâr Payı Oranı</h3>
-<p>Katılım bankalarının tahmini dönemsel getirileri.</p>
-<button onclick="showSection('karPayiSec', document.querySelectorAll('nav button')[3])">Hesapla</button>
+<h3>Kâr Payı</h3>
+<p>Getiri oranları.</p>
+<button onclick="showSection('karPayiSec', document.querySelectorAll('nav button')[3])">Aç</button>
 </div>
 </div>
 </div>
 </div>
 
-<!-- AdSense Alt Reklam Alanı -->
-<div class="container" style="margin-top: -10px;">
-<div class="adsense-box">
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-2881789176542881"
-data-ad-slot="auto"
-data-ad-format="auto"
-data-full-width-responsive="true"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-</div>
-
-<!-- Yasal Sayfalar Modalları (AdSense Onay Zorunluluğu) -->
-<div id="privacyModal" class="modal">
-<div class="modal-content">
-<span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
-<h2 style="color:var(--light-green); margin-bottom:10px;">Gizlilik Politikası</h2>
-<p>ParaHesap.site olarak ziyaretçilerimizin gizliliğine önem veriyoruz. Sitemizde üçüncü taraf reklam sağlayıcılar (Google AdSense) çerez (cookie) kullanabilir. Google, çerezler aracılığıyla kullanıcılarımızın geçmiş ziyaretlerine dayalı olarak reklam sunar. İstediğiniz zaman tarayıcı ayarlarından çerezleri devre dışı bırakabilirsiniz.</p>
-</div>
-</div>
+<!-- Modaller -->
+<div id="privacyModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('privacyModal')">&times;</span><h2>Gizlilik Politikası</h2><p>Google AdSense çerezleri kullanılmaktadır.</p></div></div>
+<div id="termsModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('termsModal')">&times;</span><h2>Kullanım Şartları</h2><p>Veriler bilgilendirme amaçlıdır.</p></div></div>
+<div id="contactModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal('contactModal')">&times;</span><h2>İletişim</h2><p>destek@parahesap.site</p></div></div>
 
 EKREM:
-<div id="termsModal" class="modal">
-<div class="modal-content">
-<span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
-<h2 style="color:var(--light-green); margin-bottom:10px;">Kullanım Şartları</h2>
-<p>Bu web sitesinde sunulan tüm hesaplama araçları, kurlar ve veriler yalnızca bilgilendirme amaçlıdır. Kesin finansal ve hukuki kararlar almadan önce resmi kurumların verilerini baz almanız tavsiye edilir.</p>
-</div>
-</div>
-
-<div id="contactModal" class="modal">
-<div class="modal-content">
-<span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
-<h2 style="color:var(--light-green); margin-bottom:10px;">İletişim</h2>
-<p>Görüş, öneri ve destek talepleriniz için bizimle doğrudan iletişime geçebilirsiniz: <strong>destek@parahesap.site</strong></p>
-</div>
-</div>
-
 <footer>
 <div class="footer-links">
-<a onclick="openModal('privacyModal')">Gizlilik Politikası</a> | 
-<a onclick="openModal('termsModal')">Kullanım Şartları</a> | 
+<a onclick="openModal('privacyModal')">Gizlilik</a> | 
+<a onclick="openModal('termsModal')">Şartlar</a> | 
 <a onclick="openModal('contactModal')">İletişim</a>
 </div>
-<p>&copy; 2026 ParaHesap.site - Tüm Hakları Saklıdır.</p>
+<p>&copy; 2026 ParaHesap.site</p>
 </footer>
 
 <script>
@@ -362,45 +297,59 @@ body.setAttribute('data-theme', body.getAttribute('data-theme') === 'light' ? 'd
 function showSection(secId, btnElement) {
 document.querySelectorAll('.calculator-section').forEach(s => s.classList.remove('active'));
 document.querySelectorAll('.nav-menu button').forEach(b => b.classList.remove('active-btn'));
-
 document.getElementById(secId).classList.add('active');
 if(btnElement) btnElement.classList.add('active-btn');
-
-window.scrollTo({top: 150, behavior: 'smooth'});
+window.scrollTo({top: 100, behavior: 'smooth'});
 }
 
-function openModal(modalId) {
-document.getElementById(modalId).style.display = 'flex';
-}
+function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-function closeModal(modalId) {
-document.getElementById(modalId).style.display = 'none';
-}
-
-// Kapsamlı ve Güvenli Canlı Veri Havuzu
 let liveRates = { USD: 34.15, EUR: 38.20, GOLD: 3150.00, SILVER: 36.50, BTC: 3775183, ETH: 148000, SOL: 6450 };
 
 async function fetchRealtimeData() {
 try {
-let response = await fetch('https://api.genelpara.com/embed/para.json');
-let data = await response.json();
+let res = await fetch('https://api.genelpara.com/embed/para.json');
+let data = await res.json();
 if(data) {
 if(data.USD) liveRates.USD = parseFloat(data.USD.satis);
 if(data.EUR) liveRates.EUR = parseFloat(data.EUR.satis);
 if(data.GA) liveRates.GOLD = parseFloat(data.GA.satis);
 if(data.GAG) liveRates.SILVER = parseFloat(data.GAG.satis);
 }
-} catch (err) {
-console.log("Canlı veriler güvenli yerel önbellekle çalışıyor.");
-}
+} catch (err) {}
 
 document.getElementById('t-gold').innerText = liveRates.GOLD.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-gold2').innerText = liveRates.GOLD.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-silver').innerText = liveRates.SILVER.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-usd').innerText = liveRates.USD.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-eur').innerText = liveRates.EUR.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-btc').innerText = liveRates.BTC.toLocaleString('tr-TR') + ' TL';
-document.getElementById('t-btc2').innerText = liveRates.BTC.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-eth').innerText = liveRates.ETH.toLocaleString('tr-TR') + ' TL';
 document.getElementById('t-sol').innerText = liveRates.SOL.toLocaleString('tr-TR') + ' TL';
 }
+fetchRealtimeData();
+
+function calculate() {
+let amount = parseFloat(document.getElementById('amount').value);
+let target = document.getElementById('targetCurrency').value;
+let resBox = document.getElementById('resultBox');
+if(!amount || amount <= 0) { alert('Geçerli tutar giriniz.'); return; }
+let val = amount / liveRates[target];
+let names = { USD: 'Dolar', EUR: 'Euro', GOLD: 'Gram Altın', SILVER: 'Gram Gümüş', BTC: 'Bitcoin', ETH: 'Ethereum', SOL: 'Solana' };
+resBox.style.display = 'block';
+resBox.innerHTML = ${amount.toLocaleString('tr-TR')} TL = <strong>${val.toFixed(4)} ${names[target]}</strong>;
+}
+
+function calculateZakat() {
+let cash = parseFloat(document.getElementById('cashAsset').value) || 0;
+let gold = parseFloat(document.getElementById('goldAsset').value) || 0;
+let debt = parseFloat(document.getElementById('debtAmount').value) || 0;
+let net = Math.max(0, (cash + gold) - debt);
+let z = net * 0.025;
+let box = document.getElementById('zakatResultBox');
+box.style.display = 'block';
+box.innerHTML = Zekat (%2.5): <strong>${z.toLocaleString('tr-TR')} TL</strong>;
+}
+
+function calculateFitre() {
+let total = (parseFloat(doc
