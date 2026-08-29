@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zam Hesaplama - Profesyonel Hesaplama Portalı</title>
-    <meta name="description" content="Zam hesaplama, maaş, vergi, finans, sınav ve matematiksel hesaplamalar için güvenilir portal.">
+    <title>Profesyonel Hesaplama Portalı</title>
     
-    <!-- Google AdSense & Analytics Entegrasyonu -->
+    <!-- Google AdSense Entegrasyonu -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
     <style>
         :root {
             --primary-blue: #0056b3;
             --hover-blue: #003d82;
-            --bg-color: #f8f9fa;
+            --bg-color: #f4f6f9;
             --text-color: #333333;
-            --border-color: #dee2e6;
+            --border-color: #d1d5db;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -23,193 +22,325 @@
 
         /* Üst Menü Barı */
         nav { background-color: #ffffff; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; padding: 0 10px; }
         
         .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background-color: inherit; color: #222; padding: 14px 16px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; }
+        .dropbtn { background-color: inherit; color: #111; padding: 12px 14px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; }
         .dropbtn:hover { color: var(--primary-blue); background-color: #f1f3f5; }
 
-        /* Açılır Menü İçeriği */
-        .dropdown-content { display: none; position: absolute; background-color: var(--primary-blue); min-width: 240px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; top: 100%; left: 0; border-radius: 0 0 4px 4px; }
-        .dropdown-content a { color: white; padding: 10px 16px; text-decoration: none; display: block; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Açılır Menü İçeriği (Genişletilmiş Sütun Yapısı) */
+        .dropdown-content { display: none; position: absolute; background-color: var(--primary-blue); min-width: 250px; max-height: 400px; overflow-y: auto; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; top: 100%; left: 0; border-radius: 0 0 4px 4px; }
+        .dropdown-content a { color: white; padding: 8px 14px; text-decoration: none; display: block; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
         .dropdown-content a:hover { background-color: var(--hover-blue); }
         .dropdown:hover .dropdown-content { display: block; }
         
-        /* 'Yeni' Rozeti */
-        .badge-yeni { background-color: #ff007f; color: white; font-size: 9px; padding: 2px 5px; border-radius: 3px; margin-left: 6px; font-weight: bold; text-transform: uppercase; }
+        .badge-yeni { background-color: #ff007f; color: white; font-size: 8px; padding: 2px 4px; border-radius: 3px; margin-left: 6px; font-weight: bold; }
 
-        /* Ana İçerik Alanı */
-        .main-container { max-width: 1100px; margin: 30px auto; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; padding: 0 15px; }
-        .content-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-        .sidebar { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); height: fit-content; }
+        /* Yan Dikey Reklam Alanları ile Ana Düzen */
+        .page-wrapper { display: flex; max-width: 1550px; margin: 20px auto; gap: 15px; padding: 0 10px; }
+        
+        .side-ad { width: 160px; min-width: 160px; background: #e9ecef; border: 1px dashed #adb5bd; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; color: #6c757d; border-radius: 4px; height: 600px; position: sticky; top: 70px; }
+        
+        .center-content { flex: 1; display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
 
-        h1, h2 { color: var(--primary-blue); margin-bottom: 15px; }
-        h1 { font-size: 24px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
-        h2 { font-size: 18px; margin-top: 20px; }
-        p { margin-bottom: 15px; font-size: 14px; }
+        /* İçerik Kartı */
+        .content-card { background: white; padding: 25px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+        h1 { color: var(--primary-blue); font-size: 22px; margin-bottom: 15px; border-bottom: 2px solid #f1f3f5; padding-bottom: 8px; }
+        p { font-size: 13px; margin-bottom: 15px; }
 
-        /* Form Elemanları */
+        /* Form Alanları */
         .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 5px; }
-        input, select { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; }
-        .btn-hesapla { background-color: var(--primary-blue); color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 14px; }
+        label { display: block; font-weight: 600; font-size: 12px; margin-bottom: 5px; }
+        input { width: 100%; padding: 9px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px; }
+        .btn-hesapla { background-color: var(--primary-blue); color: white; border: none; padding: 10px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 13px; }
         .btn-hesapla:hover { background-color: var(--hover-blue); }
+        .result-box { margin-top: 15px; padding: 12px; background: #e7f1ff; border-left: 4px solid var(--primary-blue); font-size: 14px; display: none; font-weight: bold; }
 
-        .result-box { margin-top: 20px; padding: 15px; background: #e7f1ff; border-left: 5px solid var(--primary-blue); font-size: 15px; font-weight: bold; display: none; }
+        /* Alt Butonlar (Yeniden Hesapla, Kopyala, Paylaş vb.) */
+        .action-buttons { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+        .action-btn { background: #f8f9fa; border: 1px solid var(--border-color); padding: 7px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: 600; color: #495057; display: flex; align-items: center; gap: 5px; }
+        .action-btn:hover { background: #e2e6ea; }
 
-        /* Sidebar İlgili Hesaplamalar Listesi */
+        /* Alt Yatay Reklam Alanı */
+        .horizontal-ad { margin-top: 20px; background: #e9ecef; border: 1px dashed #adb5bd; padding: 15px; text-align: center; font-size: 12px; color: #6c757d; border-radius: 4px; }
+
+        /* Sağ Sidebar: İlgili Hesaplamalar Kutusu */
+        .sidebar { background: #ffffff; border: 1px solid var(--border-color); border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+        .sidebar-header { background-color: var(--primary-blue); color: white; padding: 10px 15px; font-size: 14px; font-weight: bold; }
         .sidebar ul { list-style: none; }
-        .sidebar li { margin-bottom: 10px; border-bottom: 1px solid #f1f3f5; padding-bottom: 8px; }
-        .sidebar a { color: #333; text-decoration: none; font-size: 13px; font-weight: 600; }
-        .sidebar a:hover { color: var(--primary-blue); }
+        .sidebar li { border-bottom: 1px solid #f1f3f5; }
+        .sidebar li:last-child { border-bottom: none; }
+        .sidebar a { color: var(--primary-blue); text-decoration: none; display: block; padding: 10px 15px; font-size: 12px; font-weight: 600; }
+        .sidebar a:hover { background-color: #f8f9fa; text-decoration: underline; }
 
-        footer { text-align: center; padding: 20px; margin-top: 40px; background: #ffffff; border-top: 1px solid var(--border-color); font-size: 13px; color: #666; }
+        footer { text-align: center; padding: 20px; margin-top: 30px; background: #ffffff; border-top: 1px solid var(--border-color); font-size: 12px; color: #666; }
 
-        @media (max-width: 768px) {
-            .main-container { grid-template-columns: 1fr; }
+        @media (max-width: 1200px) {
+            .side-ad { display: none; }
+            .center-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ÜST MENÜ VE KATEGORİLER -->
+    <!-- ÜST MENÜ VE TÜM KATEGORİLER -->
     <nav>
         <div class="nav-container">
+            <div class="dropdown">
+                <button class="dropbtn">Kredi</button>
+                <div class="dropdown-content">
+                    <a href="#">İhtiyaç Kredisi Hesaplama</a>
+                    <a href="#">Konut Kredisi Hesaplama</a>
+                    <a href="#">Taşıt Kredisi Hesaplama</a>
+                    <a href="#">KOBİ Kredisi Hesaplama</a>
+                </div>
+            </div>
+
             <div class="dropdown">
                 <button class="dropbtn">Finans</button>
                 <div class="dropdown-content">
                     <a href="#">Altın Hesaplama</a>
                     <a href="#">Bileşik Büyüme Hesaplama</a>
-                    <a href="#">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">Kira Artış Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Birikim Hesaplama</a>
+                    <a href="#">Bono Hesaplama</a>
                     <a href="#">Döviz Hesaplama</a>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">Muhasebe</button>
-                <div class="dropdown-content">
-                    <a href="#">Brütten Nete Maaş Hesaplama</a>
-                    <a href="#">Kıdem Tazminatı Hesaplama</a>
-                    <a href="#">İhbar Tazminatı Hesaplama</a>
-                    <a href="#">Yıllık İzin Hesaplama</a>
-                    <a href="#">Binek Araç Gider Kısıtlaması <span class="badge-yeni">yeni</span></a>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">Vergi</button>
-                <div class="dropdown-content">
-                    <a href="#">KDV Hesaplama</a>
-                    <a href="#">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">Emlak Vergisi Hesaplama</a>
+                    <a href="#">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Eurobond Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Faiz Hesaplama</a>
+                    <a href="#">Geçmiş Altın Fiyatları</a>
+                    <a href="#">Geçmiş Döviz Kurları</a>
+                    <a href="#">IBAN Doğrulama</a>
+                    <a href="#">Kira Artış Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
                 </div>
             </div>
 
             <div class="dropdown">
                 <button class="dropbtn">Sınav</button>
                 <div class="dropdown-content">
-                    <a href="#">KPSS Puan Hesaplama</a>
-                    <a href="#">YKS Taban Puanları Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">AGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
                     <a href="#">ALES Puan Hesaplama</a>
+                    <a href="#">DGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">DUS Puan Hesaplama</a>
+                    <a href="#">Ehliyet Sınavı Puanı</a>
+                    <a href="#">KPSS Puan Hesaplama</a>
+                    <a href="#">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">MSÜ Puan Hesaplama</a>
+                    <a href="#">TUS Puan Hesaplama</a>
+                    <a href="#">TYT Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Eğitim</button>
+                <div class="dropdown-content">
+                    <a href="#">Ders Notu Hesaplama</a>
+                    <a href="#">E-Okul Not Hesaplama</a>
+                    <a href="#">Lise Ortalama Hesaplama</a>
+                    <a href="#">Takdir Teşekkür Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Üniversite Not Ortalaması</a>
                 </div>
             </div>
 
             <div class="dropdown">
                 <button class="dropbtn">Sağlık</button>
                 <div class="dropdown-content">
-                    <a href="#">Vücut Kitle Endeksi Hesaplama</a>
-                    <a href="#">İdeal Kilo Hesaplama</a>
+                    <a href="#">Adet Günü Hesaplama</a>
                     <a href="#">Bazal Metabolizma Hızı <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Bel / Kalça Oranı <span class="badge-yeni">yeni</span></a>
                     <a href="#">Günlük Kalori İhtiyacı</a>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">Zaman</button>
-                <div class="dropdown-content">
-                    <a href="#">Yaş Hesaplama</a>
-                    <a href="#">İki Tarih Arasındaki Gün Sayısı</a>
-                    <a href="#">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
-                    <a href="#">Saat Farkı Hesaplama</a>
+                    <a href="#">İdeal Kilo Hesaplama</a>
+                    <a href="#">Vücut Kitle Endeksi</a>
+                    <a href="#">Yaşam Süresi Hesaplama <span class="badge-yeni">yeni</span></a>
                 </div>
             </div>
 
             <div class="dropdown">
                 <button class="dropbtn">Matematik</button>
                 <div class="dropdown-content">
-                    <a href="#">Yüzde Hesaplama</a>
-                    <a href="#">KÖklü Sayı Hesaplama</a>
-                    <a href="#">Standart Sapma Hesaplama</a>
+                    <a href="#">Alan Hesaplama</a>
+                    <a href="#">Altın Oran Hesaplama</a>
+                    <a href="#">Basit Faiz Hesaplama</a>
+                    <a href="#">EBOB EKOK Hesaplama</a>
                     <a href="#">Metrekare Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Sayı Okunuşu Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Standart Sapma Hesaplama</a>
+                    <a href="#">Yüzde Hesaplama</a>
                 </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Zaman</button>
+                <div class="dropdown-content">
+                    <a href="#">Ay Evresi Hesaplama</a>
+                    <a href="#">Bayram Namazı Saati</a>
+                    <a href="#">İki Tarih Arasındaki Gün</a>
+                    <a href="#">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Kaç Gün Oldu / Kaldı</a>
+                    <a href="#">Yaş Hesaplama</a>
+                    <a href="#">Zaman Farkı Hesaplama <span class="badge-yeni">yeni</span></a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Muhasebe</button>
+                <div class="dropdown-content">
+                    <a href="#">Amortisman Hesaplama</a>
+                    <a href="#">Binek Araç Gider Kısıtlaması <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Brütten Nete Maaş</a>
+                    <a href="#">Doğum İzni Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Emeklilik Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Kıdem Tazminatı Hesaplama</a>
+                    <a href="#">Yıllık İzin Hesaplama</a>
+                    <a href="#">Yolluk Hesaplama <span class="badge-yeni">yeni</span></a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Vergi</button>
+                <div class="dropdown-content">
+                    <a href="#">Damga Vergisi Hesaplama</a>
+                    <a href="#">Emlak Vergisi Hesaplama</a>
+                    <a href="#">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">KDV Hesaplama</a>
+                    <a href="#">Kira Stopaj Hesaplama</a>
+                    <a href="#">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Ticaret</button>
+                <div class="dropdown-content"><a href="#">Ticari Hesaplamalar</a></div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Hukuk</button>
+                <div class="dropdown-content"><a href="#">Hukuki Hesaplamalar</a></div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Sigorta</button>
+                <div class="dropdown-content">
+                    <a href="#">DASK Sigortası Hesaplama</a>
+                    <a href="#">Kasko Değeri Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a href="#">Sağlık Sigortası Hesaplama</a>
+                    <a href="#">Trafik Sigortası Hesaplama <span class="badge-yeni">yeni</span></a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Seyahat</button>
+                <div class="dropdown-content"><a href="#">Yol ve Seyahat Araçları</a></div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Diğer</button>
+                <div class="dropdown-content"><a href="#">Çeşitli Hesaplamalar</a></div>
             </div>
         </div>
     </nav>
 
-    <!-- ANA İÇERİK VE YAN MENÜ -->
-    <div class="main-container">
+    <!-- ANA SAYFA DÜZENİ (SOL REKLAM + İÇERİK/SIDEBAR + SAĞ REKLAM) -->
+    <div class="page-wrapper">
         
-        <!-- Sol Bölüm: Hesaplama Aracı ve Makale Detayı -->
-        <div class="content-card">
-            <h1>Zam Oranı ve Zamlı Fiyat Hesaplama</h1>
-            <p>Bu araç ile bir malın veya maaşın yüzdelik zam miktarını, zamlı satış fiyatını ve artış oranını kolayca hesaplayabilirsiniz.</p>
-
-            <div class="form-group">
-                <label>Mevcut Fiyat / Tutar (TL)</label>
-                <input type="number" id="mevcutFiyat" value="500" placeholder="Örn: 500">
-            </div>
-
-            <div class="form-group">
-                <label>Zam Oranı (%)</label>
-                <input type="number" id="zamOrani" value="10" placeholder="Örn: 10">
-            </div>
-
-            <button class="btn-hesapla" onclick="hesaplaZam()">HESAPLA</button>
-
-            <div id="sonucAlani" class="result-box"></div>
-
-            <h2 style="margin-top: 30px;">Zam Nasıl Hesaplanır?</h2>
-            <p>100 sayısına artış oranı eklenir ve sonuç 100'e bölünür. Elde edilen sonuç normal fiyatla çarpıldığında arttırılmış yeni fiyat elde edilir. Örneğin 500 TL olan bir mala %10 zam yapıldığında:</p>
-            <p><strong>Yeni Fiyat = 500 x (100 + 10) / 100 = 550 TL</strong> olarak hesaplanır.</p>
+        <!-- Sol Dikey AdSense Reklam Alanı -->
+        <div class="side-ad">
+            Sol Dikey AdSense<br>(160x600)
         </div>
 
-        <!-- Sağ Bölüm: İlgili Hesaplamalar (Sidebar) -->
-        <div class="sidebar">
-            <h2>İlgili Hesaplamalar</h2>
-            <ul>
-                <li><a href="#">Brütten Nete Maaş Hesaplama</a></li>
-                <li><a href="#">Kıdem Tazminatı Hesaplama</a></li>
-                <li><a href="#">Fazla Mesai Ücreti Hesaplama</a></li>
-                <li><a href="#">İşsizlik Maaşı Hesaplama</a></li>
-                <li><a href="#">Netten Brüte Maaş Hesaplama</a></li>
-                <li><a href="#">Yıllık İzin Hesaplama</a></li>
-            </ul>
+        <!-- Orta Alan: İçerik ve Sağ İlgili Hesaplamalar Kutusu -->
+        <div class="center-content">
+            
+            <!-- Sol Taraf: Hesap Aracı -->
+            <div class="content-card">
+                <h1>Zam Oranı ve Hesaplama Aracı</h1>
+                <p>Mevcut tutarı ve zam oranını girerek yeni tutarı hesaplayabilirsiniz.</p>
+
+                <div class="form-group">
+                    <label>Mevcut Tutar (TL)</label>
+                    <input type="number" id="tutar" value="1000">
+                </div>
+
+                <div class="form-group">
+                    <label>Zam Oranı (%)</label>
+                    <input type="number" id="oran" value="15">
+                </div>
+
+                <button class="btn-hesapla" onclick="hesapla()">HESAPLA</button>
+
+                <div id="sonuc" class="result-box"></div>
+
+                <!-- İstediğiniz Yeniden Hesapla, Kopyala, Paylaş Butonları -->
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="sifirla()">🔄 Yeniden Hesapla</button>
+                    <button class="action-btn" onclick="kopyala()">📋 Sonucu Kopyala</button>
+                    <button class="action-btn" onclick="paylas()">🔗 Bağlantıyı Paylaş</button>
+                </div>
+
+                <!-- Butonların Altındaki Yatay AdSense Reklam Alanı -->
+                <div class="horizontal-ad">
+                    Yatay AdSense Reklam Alanı (Responsive / Leaderboard)
+                </div>
+            </div>
+
+            <!-- Sağ Taraf: İstediğiniz İlgili Hesaplamalar Kutusu -->
+            <div class="sidebar">
+                <div class="sidebar-header">İlgili Hesaplamalar</div>
+                <ul>
+                    <li><a href="#">Brütten Nete Maaş Hesaplama</a></li>
+                    <li><a href="#">Kıdem Tazminatı Hesaplama</a></li>
+                    <li><a href="#">Fazla Mesai Ücreti Hesaplama</a></li>
+                    <li><a href="#">İşsizlik Maaşı Hesaplama</a></li>
+                    <li><a href="#">Netten Brüte Maaş Hesaplama</a></li>
+                    <li><a href="#">Yıllık İzin Hesaplama</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Sağ Dikey AdSense Reklam Alanı -->
+        <div class="side-ad">
+            Sağ Dikey AdSense<br>(160x600)
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Hesaplama Portalı — Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2026 Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- Hesaplama Mantığı İçin JavaScript -->
     <script>
-        function hesaplaZam() {
-            let fiyat = parseFloat(document.getElementById('mevcutFiyat').value) || 0;
-            let oran = parseFloat(document.getElementById('zamOrani').value) || 0;
-            
-            let zamliFiyat = fiyat + (fiyat * oran / 100);
-            let fark = zamliFiyat - fiyat;
+        function hesapla() {
+            let t = parseFloat(document.getElementById('tutar').value) || 0;
+            let o = parseFloat(document.getElementById('oran').value) || 0;
+            let yeniTutar = t + (t * o / 100);
+            let fark = yeniTutar - t;
 
-            let sonucBox = document.getElementById('sonucAlani');
-            sonucBox.style.display = 'block';
-            sonucBox.innerHTML = `Zam Miktarı: ${fark.toLocaleString('tr-TR', {minimumFractionDigits:2})} TL <br> Yeni Zamlı Fiyat: <strong>${zamliFiyat.toLocaleString('tr-TR', {minimumFractionDigits:2})} TL</strong>`;
+            let res = document.getElementById('sonuc');
+            res.style.display = 'block';
+            res.innerHTML = `Artış Miktarı: ${fark.toLocaleString('tr-TR', {minimumFractionDigits:2})} TL <br> Yeni Tutar: <strong>${yeniTutar.toLocaleString('tr-TR', {minimumFractionDigits:2})} TL</strong>`;
+        }
+
+        function sifirla() {
+            document.getElementById('tutar').value = '';
+            document.getElementById('oran').value = '';
+            document.getElementById('sonuc').style.display = 'none';
+        }
+
+        function kopyala() {
+            let sonucMetni = document.getElementById('sonuc').innerText;
+            if(sonucMetni) {
+                navigator.clipboard.writeText(sonucMetni);
+                alert("Sonuç panoya kopyalandı!");
+            } else {
+                alert("Önce hesaplama yapmalısınız.");
+            }
+        }
+
+        function paylas() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Sayfa bağlantısı kopyalandı!");
         }
     </script>
-
 </body>
 </html>
