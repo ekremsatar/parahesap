@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profesyonel Hesaplama Portalı</title>
+    <title>parahesap.site - Profesyonel Hesaplama Portalı</title>
     
     <!-- Google AdSense Entegrasyonu -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
@@ -20,17 +20,34 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
 
-        /* Üst Menü Barı */
-        nav { background-color: #ffffff; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; padding: 0 10px; }
+        /* Site Başlık Alanı (parahesap mavi, site kırmızı) */
+        .site-header-brand {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .site-logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo-para { color: var(--primary-blue); }
+        .logo-hesap { color: var(--primary-blue); }
+        .logo-site { color: #ff0055; }
+
+        /* Üst Menü Barı - Hesapla Butonu Gibi Mavi Tonlu */
+        nav { background-color: var(--primary-blue); box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; padding: 0 5px; }
         
         .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background-color: inherit; color: #111; padding: 12px 14px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; }
-        .dropbtn:hover { color: var(--primary-blue); background-color: #f1f3f5; }
+        .dropbtn { background-color: transparent; color: white; padding: 12px 14px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+        .dropbtn:hover { background-color: var(--hover-blue); }
 
-        /* Açılır Menü İçeriği (Genişletilmiş Sütun Yapısı) */
-        .dropdown-content { display: none; position: absolute; background-color: var(--primary-blue); min-width: 250px; max-height: 400px; overflow-y: auto; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; top: 100%; left: 0; border-radius: 0 0 4px 4px; }
-        .dropdown-content a { color: white; padding: 8px 14px; text-decoration: none; display: block; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
+        /* Açılır Menü İçeriği */
+        .dropdown-content { display: none; position: absolute; background-color: var(--primary-blue); min-width: 250px; max-height: 400px; overflow-y: auto; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; top: 100%; left: 0; border-radius: 0 0 4px 4px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-content a { color: white; padding: 9px 14px; text-decoration: none; display: block; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); white-space: nowrap; }
         .dropdown-content a:hover { background-color: var(--hover-blue); }
         .dropdown:hover .dropdown-content { display: block; }
         
@@ -56,7 +73,7 @@
         .btn-hesapla:hover { background-color: var(--hover-blue); }
         .result-box { margin-top: 15px; padding: 12px; background: #e7f1ff; border-left: 4px solid var(--primary-blue); font-size: 14px; display: none; font-weight: bold; }
 
-        /* Alt Butonlar (Yeniden Hesapla, Kopyala, Paylaş vb.) */
+        /* Alt Butonlar Grubu (Yeniden Hesapla, Kopyala, Paylaş, E-posta, Yazdır, Hata Bildir) */
         .action-buttons { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
         .action-btn { background: #f8f9fa; border: 1px solid var(--border-color); padding: 7px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: 600; color: #495057; display: flex; align-items: center; gap: 5px; }
         .action-btn:hover { background: #e2e6ea; }
@@ -83,7 +100,14 @@
 </head>
 <body>
 
-    <!-- ÜST MENÜ VE TÜM KATEGORİLER -->
+    <!-- Sitenin Üst Başlık Alanı -->
+    <div class="site-header-brand">
+        <a href="#" class="site-logo">
+            <span class="logo-para">para</span><span class="logo-hesap">hesap</span><span class="logo-site">.site</span>
+        </a>
+    </div>
+
+    <!-- ÜST MENÜ VE TÜM KATEGORİLER (Mavi Tonlu) -->
     <nav>
         <div class="nav-container">
             <div class="dropdown">
@@ -235,12 +259,12 @@
 
             <div class="dropdown">
                 <button class="dropbtn">Diğer</button>
-                <div class="dropdown-content"><a href="#">Çeşitli Hesaplamalar</a></div>
+                <div class="dropdown-content"><a href="#"><span class="badge-yeni">yeni</span> Çeşitli Hesaplamalar</a></div>
             </div>
         </div>
     </nav>
 
-    <!-- ANA SAYFA DÜZENİ (SOL REKLAM + İÇERİK/SIDEBAR + SAĞ REKLAM) -->
+    <!-- ANA SAYFA DÜZENİ -->
     <div class="page-wrapper">
         
         <!-- Sol Dikey AdSense Reklam Alanı -->
@@ -270,11 +294,14 @@
 
                 <div id="sonuc" class="result-box"></div>
 
-                <!-- İstediğiniz Yeniden Hesapla, Kopyala, Paylaş Butonları -->
+                <!-- Eksiksiz Alt Butonlar (Yeniden Hesapla, Kopyala, Paylaş, E-posta, Yazdır, Hata Bildir) -->
                 <div class="action-buttons">
                     <button class="action-btn" onclick="sifirla()">🔄 Yeniden Hesapla</button>
-                    <button class="action-btn" onclick="kopyala()">📋 Sonucu Kopyala</button>
-                    <button class="action-btn" onclick="paylas()">🔗 Bağlantıyı Paylaş</button>
+                    <button class="action-btn" onclick="kopyala()">📋 Kopyala</button>
+                    <button class="action-btn" onclick="paylas()">🔗 Paylaş</button>
+                    <button class="action-btn" onclick="epostaGonder()">✉️ E-posta Gönder</button>
+                    <button class="action-btn" onclick="window.print()">🖨️ Yazdır</button>
+                    <button class="action-btn" onclick="hataBildir()">⚠️ Hata Bildir</button>
                 </div>
 
                 <!-- Butonların Altındaki Yatay AdSense Reklam Alanı -->
@@ -283,7 +310,7 @@
                 </div>
             </div>
 
-            <!-- Sağ Taraf: İstediğiniz İlgili Hesaplamalar Kutusu -->
+            <!-- Sağ Taraf: İlgili Hesaplamalar Kutusu -->
             <div class="sidebar">
                 <div class="sidebar-header">İlgili Hesaplamalar</div>
                 <ul>
@@ -306,7 +333,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2026 parahesap.site — Tüm Hakları Saklıdır.</p>
     </footer>
 
     <script>
@@ -340,6 +367,16 @@
         function paylas() {
             navigator.clipboard.writeText(window.location.href);
             alert("Sayfa bağlantısı kopyalandı!");
+        }
+
+        function epostaGonder() {
+            let sonucMetni = document.getElementById('sonuc').innerText || "Henüz hesaplama yapılmadı.";
+            window.location.href = `mailto:?subject=Hesaplama Sonucu&body=Hesaplama Detayları:%0A${encodeURIComponent(sonucMetni)}`;
+        }
+
+        function hataBildir() {
+            let sayfaURL = window.location.href;
+            window.location.href = `mailto:destek@parahesap.site?subject=Hata Bildirimi&body=Merhaba, şu sayfada hata buldum: ${encodeURIComponent(sayfaURL)}`;
         }
     </script>
 </body>
