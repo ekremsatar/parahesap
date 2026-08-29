@@ -235,41 +235,64 @@
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Tüm Hesaplamalar ▾</button>
     </div>
 
-    <!-- Mobil Açılır Akordeon Menü -->
+    <!-- Mobil Açılır Akordeon Menü (Zekat, Fitre ve Düzenlenmiş İsimlerle) -->
     <div id="mobileDrawer" class="mobile-drawer">
         <div class="mobile-search-box">
             <input type="text" placeholder="Kolay Arama: Örn. ideal kilo, döviz, tyt">
             <button class="mobile-search-btn">GİT</button>
         </div>
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Kredi Hesaplamaları <span>▾</span></div>
-        <div class="mobile-sub-menu"><a href="#">İhtiyaç Kredisi Hesaplama</a><a href="#">Konut Kredisi Hesaplama</a></div>
         
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Finansal Hesaplamalar <span>▾</span></div>
-        <div class="mobile-sub-menu"><a href="#">Altın Hesaplama</a><a href="#">Döviz Hesaplama</a><a href="#">Enflasyon Hesaplama</a></div>
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">1. Kredi Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">İhtiyaç Kredisi Hesaplaması</a><a href="#">Konut Kredisi Hesaplaması</a></div>
         
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Sınav Puanı Hesaplamaları <span>▾</span></div>
-        <div class="mobile-sub-menu"><a href="#">KPSS Puan Hesaplama</a><a href="#">TYT Puan Hesaplama</a></div>
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">2. Finansal Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Altın Hesaplaması</a><a href="#">Döviz Hesaplaması</a><a href="#">Enflasyon Hesaplaması <span class="badge-yeni">yeni</span></a></div>
         
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Eğitim & Sağlık <span>▾</span></div>
-        <div class="mobile-sub-menu"><a href="#">Not Ortalaması</a><a href="#">Vücut Kitle Endeksi</a></div>
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">3. Sınav Puanı <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">KPSS Puanı Hesaplaması</a><a href="#">TYT Puanı Hesaplaması <span class="badge-yeni">yeni</span></a></div>
+        
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">4. Eğitim <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Not Ortalaması Hesaplaması</a></div>
 
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Muhasebe & Vergi <span>▾</span></div>
-        <div class="mobile-sub-menu"><a href="#">Brütten Nete Maaş</a><a href="#">KDV Hesaplama</a><a href="#">Kıdem Tazminatı</a></div>
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">5. Sağlık <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Vücut Kitle Endeksi Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">6. Matematiksel <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Yüzde Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">7. Zaman <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Yaş Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">8. Muhasebe <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Maaş Hesaplaması</a><a href="#">Kıdem Tazminatı Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">9. Vergi <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">KDV Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">10. Ticari <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Kâr / Zarar Hesaplaması</a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">11. Dini / İslami <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Zekat Hesaplaması <span class="badge-yeni">yeni</span></a><a href="#">Fitre Hesaplaması <span class="badge-yeni">yeni</span></a></div>
+
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">12. Rehber / Blog <span>▾</span></div>
+        <div class="mobile-sub-menu"><a href="#">Finansal Makaleler</a></div>
     </div>
 
     <!-- Üst Masaüstü Menü -->
     <nav>
         <div class="nav-container">
-            <div class="dropdown"><button class="dropbtn">Kredi Hesaplamaları</button><div class="dropdown-content"><a href="#">İhtiyaç Kredisi</a><a href="#">Konut Kredisi</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Finansal Hesaplamalar</button><div class="dropdown-content"><a href="#">Altın Hesaplama</a><a href="#">Döviz Hesaplama</a><a href="#">Enflasyon <span class="badge-yeni">yeni</span></a></div></div>
-            <div class="dropdown"><button class="dropbtn">Sınav Puanı</button><div class="dropdown-content"><a href="#">KPSS Puanı</a><a href="#">TYT Puanı <span class="badge-yeni">yeni</span></a></div></div>
-            <div class="dropdown"><button class="dropbtn">Eğitim</button><div class="dropdown-content"><a href="#">Not Ortalaması</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Sağlık</button><div class="dropdown-content"><a href="#">Vücut Kitle Endeksi</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Matematiksel</button><div class="dropdown-content"><a href="#">Yüzde Hesaplama</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Zaman</button><div class="dropdown-content"><a href="#">Yaş Hesaplama</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Muhasebe</button><div class="dropdown-content"><a href="#">Maaş Hesaplama</a><a href="#">Kıdem Tazminatı</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Vergi</button><div class="dropdown-content"><a href="#">KDV Hesaplama</a></div></div>
-            <div class="dropdown"><button class="dropbtn">Ticari</button><div class="dropdown-content"><a href="#">Kâr / Zarar</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Kredi Hesaplamaları</button><div class="dropdown-content"><a href="#">İhtiyaç Kredisi Hesaplaması</a><a href="#">Konut Kredisi Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Finansal Hesaplamalar</button><div class="dropdown-content"><a href="#">Altın Hesaplaması</a><a href="#">Döviz Hesaplaması</a><a href="#">Enflasyon Hesaplaması <span class="badge-yeni">yeni</span></a></div></div>
+            <div class="dropdown"><button class="dropbtn">Sınav Puanı</button><div class="dropdown-content"><a href="#">KPSS Puanı Hesaplaması</a><a href="#">TYT Puanı Hesaplaması <span class="badge-yeni">yeni</span></a></div></div>
+            <div class="dropdown"><button class="dropbtn">Eğitim</button><div class="dropdown-content"><a href="#">Not Ortalaması Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Sağlık</button><div class="dropdown-content"><a href="#">Vücut Kitle Endeksi Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Matematiksel</button><div class="dropdown-content"><a href="#">Yüzde Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Zaman</button><div class="dropdown-content"><a href="#">Yaş Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Muhasebe</button><div class="dropdown-content"><a href="#">Maaş Hesaplaması</a><a href="#">Kıdem Tazminatı Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Vergi</button><div class="dropdown-content"><a href="#">KDV Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Ticari</button><div class="dropdown-content"><a href="#">Kâr / Zarar Hesaplaması</a></div></div>
+            <div class="dropdown"><button class="dropbtn">Dini / İslami</button><div class="dropdown-content"><a href="#">Zekat Hesaplaması <span class="badge-yeni">yeni</span></a><a href="#">Fitre Hesaplaması <span class="badge-yeni">yeni</span></a></div></div>
             <div class="dropdown"><button class="dropbtn">Rehber / Blog</button><div class="dropdown-content"><a href="#">Finansal Makaleler</a></div></div>
         </div>
     </nav>
@@ -294,33 +317,33 @@
                 <!-- Hızlı Site İçi Arama Çubuğu -->
                 <div class="home-search-container">
                     <div class="home-search-bar">
-                        <input type="text" id="siteSearchInput" placeholder="Aradığınız hesaplama türünü yazın (Örn: Maaş, Kredi, Enflasyon)...">
+                        <input type="text" id="siteSearchInput" placeholder="Aradığınız hesaplama türünü yazın (Örn: Maaş, Kredi, Zekat)...">
                         <button onclick="siteAramaYap()">Ara</button>
                     </div>
                 </div>
 
                 <!-- Popüler / Hızlı Erişim Kartları (Grid) -->
                 <div class="quick-access-grid">
-                    <a href="#" class="quick-card"><span class="icon">💰</span>Maaş Hesapla</a>
-                    <a href="#" class="quick-card"><span class="icon">🏠</span>Konut Kredisi</a>
-                    <a href="#" class="quick-card"><span class="icon">📈</span>Enflasyon</a>
-                    <a href="#" class="quick-card"><span class="icon">🪙</span>Altın / Döviz</a>
+                    <a href="#" class="quick-card"><span class="icon">💰</span>Maaş Hesaplaması</a>
+                    <a href="#" class="quick-card"><span class="icon">🏠</span>Konut Kredisi Hesaplaması</a>
+                    <a href="#" class="quick-card"><span class="icon">🌙</span>Zekat Hesaplaması</a>
+                    <a href="#" class="quick-card"><span class="icon">🪙</span>Altın Hesaplaması</a>
                 </div>
 
                 <!-- Büyük Harf ve Doğru Kırmızı Renkli Başlık -->
-                <h1 class="page-main-title">ZAM HESAPLAMA</h1>
+                <h1 class="page-main-title">ZAM HESAPLAMASI</h1>
                 <p>Aşağıdaki hesaplama aracında işlem türünü seçtikten sonra istenen bilgileri giriniz ve hesapla butonuna basınız.</p>
 
                 <!-- Üst Yatay Reklam -->
                 <div class="top-horizontal-ad">Yatay AdSense Reklam Alanı (Leaderboard)</div>
 
-                <div class="box-title">ZAM ORANI HESAPLAMA ARACI</div>
+                <div class="box-title">ZAM ORANI HESAPLAMASI</div>
 
                 <div class="form-group">
                     <label>İşlem:</label>
                     <select id="islemTuru">
-                        <option>Zamlı fiyat hesaplama (Normal fiyat ve artış oranı ile)</option>
-                        <option>Zam orani bulma</option>
+                        <option>Zamlı fiyat hesaplaması (Normal fiyat ve artış oranı ile)</option>
+                        <option>Zam oranı bulma hesaplaması</option>
                     </select>
                 </div>
 
@@ -372,12 +395,12 @@
             <div class="sidebar">
                 <div class="sidebar-header">İLGİLİ HESAPLAMALAR</div>
                 <ul>
-                    <li><a href="#">Brütten Nete Maaş Hesaplama</a></li>
-                    <li><a href="#">Kıdem Tazminatı Hesaplama</a></li>
-                    <li><a href="#">Fazla Mesai Ücreti Hesaplama</a></li>
-                    <li><a href="#">İşsizlik Maaşı Hesaplama</a></li>
-                    <li><a href="#">Netten Brüte Maaş Hesaplama</a></li>
-                    <li><a href="#">Yıllık İzin Hesaplama</a></li>
+                    <li><a href="#">Brütten Nete Maaş Hesaplaması</a></li>
+                    <li><a href="#">Kıdem Tazminatı Hesaplaması</a></li>
+                    <li><a href="#">Fazla Mesai Ücreti Hesaplaması</a></li>
+                    <li><a href="#">İşsizlik Maaşı Hesaplaması</a></li>
+                    <li><a href="#">Netten Brüte Maaş Hesaplaması</a></li>
+                    <li><a href="#">Yıllık İzin Hesaplaması</a></li>
                 </ul>
             </div>
 
