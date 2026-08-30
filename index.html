@@ -15,6 +15,7 @@
             --text-muted: #666666;
             --border: #dee2e6;
             --accent: #e83e8c;
+            --red-brand: #d90429;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -41,16 +42,16 @@
         .brand {
             font-size: 22px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--red-brand) !important; /* Başlık Kırmızı */
             text-decoration: none;
             display: flex;
             flex-direction: column;
         }
         .brand span {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--red-brand) !important; /* Slogan Kırmızı ve Tırnaklı */
             font-style: italic;
-            font-weight: normal;
+            font-weight: 600;
         }
         .btn-tum {
             background-color: var(--primary);
@@ -132,14 +133,14 @@
             font-weight: 600;
             color: var(--primary);
         }
-        /* Dinamik Hesaplama Alanı */
+        /* Dinamik Hesaplama Paneli */
         .calc-panel {
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 24px;
-            display: none; /* Varsayılan gizli, seçim yapılınca açılır */
+            display: none;
         }
         .calc-panel.active {
             display: block;
@@ -185,9 +186,40 @@
             cursor: pointer;
             margin-top: 8px;
         }
+        /* Bilgilendirme / Soru-Cevap Makale Alanı */
+        .info-article {
+            margin-top: 20px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 16px;
+            border-radius: 4px;
+        }
+        .info-article h3 {
+            font-size: 15px;
+            color: var(--primary-dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .qa-item {
+            margin-bottom: 10px;
+        }
+        .qa-item h4 {
+            font-size: 13px;
+            color: var(--text-main);
+            margin: 0 0 4px 0;
+        }
+        .qa-item p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
         /* Akordiyon Menü Tasarımı (11 Kategori Tam Liste) */
         #accordionSection {
             margin-top: 20px;
+            display: none;
+        }
+        #accordionSection.active {
+            display: block;
         }
         .accordion-category {
             margin-bottom: 4px;
@@ -256,7 +288,7 @@
     <div class="nav-wrap">
         <a href="index.html" class="brand">
             parahesap.site
-            <span>Anında hesapla, geleceğini planla</span>
+            <span>"Anında hesapla, geleceğini planla"</span>
         </a>
         <button class="btn-tum" onclick="toggleTumHesaplamalar()">Tüm Hesaplamalar ▼</button>
     </div>
@@ -291,7 +323,7 @@
         </div>
     </div>
 
-    <!-- Dinamik Hesaplama Paneli (Kutulara veya araca tıklandığında açılır) -->
+    <!-- Dinamik Hesaplama Paneli ve Altında 5 Başlıklı Soru-Cevap / Makale Alanı -->
     <div id="calcPanel" class="calc-panel">
         <h2 id="calcTitle">Hesaplama Başlığı</h2>
         <p id="calcDesc">İlgili bilgileri girerek anında hesaplama yapabilirsiniz.</p>
@@ -309,11 +341,36 @@
         </div>
         <button class="btn-hesapla" onclick="hesaplaYap()">Hesapla</button>
         <div id="sonucAlani" style="margin-top: 12px; font-weight: 600; color: var(--primary);"></div>
+
+        <!-- Her Hesaplama Altında Çıkan 5 Başlıklı Soru-Cevap / Bilgi Alanı -->
+        <div class="info-article" id="infoArticleBox">
+            <h3 id="articleTitle">Bu Hesaplama Hakkında Bilmeniz Gerekenler</h3>
+            <div class="qa-item">
+                <h4 id="qa1h">1. Bu hesaplama nasıl yapılır?</h4>
+                <p id="qa1p">İlgili parametreler girilerek matematiksel formüllerle anlık sonuç üretilir.</p>
+            </div>
+            <div class="qa-item">
+                <h4 id="qa2h">2. Hangi kriterler dikkate alınır?</h4>
+                <p id="qa2p">Güncel oranlar, yasal kesintiler ve temel parametreler baz alınır.</p>
+            </div>
+            <div class="qa-item">
+                <h4 id="qa3h">3. Sonuçlar resmiyet taşır mı?</h4>
+                <p id="qa3p">Araçlarımız bilgilendirme amaçlı olup, resmi kurumlarda teyit edilmelidir.</p>
+            </div>
+            <div class="qa-item">
+                <h4 id="qa4h">4. Oranlar ne sıklıkla güncellenir?</h4>
+                <p id="qa4p">Ekonomik ve yasal değişikliklere göre periyodik olarak güncellenmektedir.</p>
+            </div>
+            <div class="qa-item">
+                <h4 id="qa5h">5. Neden bu aracı kullanmalıyım?</h4>
+                <p id="qa5p">Finansal planlamalarınızı hızlı ve hatasız yapmanıza olanak tanır.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- 11 Kategorili Tam Akordiyon Liste (Başlangıçta gizli veya altta hazır durur, "Tüm Hesaplamalar" butonuna basınca açılır) -->
-    <div id="accordionSection" style="display:none;">
-        <h3 style="font-size:15px; color:var(--primary); margin-bottom:12px;">Tüm Hesaplama Kategorileri</h3>
+    <!-- 11 Kategorili Tam Akordiyon Liste (Tüm Hesaplamalar Butonuyla Açılır) -->
+    <div id="accordionSection">
+        <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Kategorileri</h3>
         
         <div class="accordion-category">
             <div class="accordion-header" onclick="toggleAccordion(this)">1. Kredi Hesaplamaları</div>
@@ -339,6 +396,8 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">YKS / TYT Puan Hesaplama</a>
                 <a href="#" onclick="openCalculator('genel'); return false;">LGS Puan Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">ALES Puan Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">DGS Puan Hesaplama</a>
             </div>
         </div>
 
@@ -346,6 +405,7 @@
             <div class="accordion-header" onclick="toggleAccordion(this)">4. Eğitim Hesaplamaları</div>
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">Not Ortalaması (AGNO) Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">Takdir / Teşekkür Belgesi Hesaplama</a>
             </div>
         </div>
 
@@ -354,6 +414,7 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">Vücut Kitle İndeksi (VKİ) Hesaplama</a>
                 <a href="#" onclick="openCalculator('genel'); return false;">Günlük Kalori İhtiyacı Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">İdeal Kilo Hesaplama</a>
             </div>
         </div>
 
@@ -362,6 +423,7 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">Yüzde Hesaplama</a>
                 <a href="#" onclick="openCalculator('genel'); return false;">Oran Orantı Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">Karekök ve Üs Hesaplama</a>
             </div>
         </div>
 
@@ -370,6 +432,7 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">Tarih Farkı / Gün Hesaplama</a>
                 <a href="#" onclick="openCalculator('genel'); return false;">Yaş Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">İş Günü Hesaplama</a>
             </div>
         </div>
 
@@ -378,6 +441,7 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('mass'); return false;">Kıdem ve İhbar Tazminatı Hesaplama</a>
                 <a href="#" onclick="openCalculator('mass'); return false;">Fazla Mesai Hesaplama</a>
+                <a href="#" onclick="openCalculator('mass'); return false;">Netten Brüte Maaş Hesaplama</a>
             </div>
         </div>
 
@@ -386,6 +450,7 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('kdv'); return false;">MTV (Motorlu Taşıtlar Vergisi) Hesaplama</a>
                 <a href="#" onclick="openCalculator('kdv'); return false;">Gelir Vergisi Hesaplama</a>
+                <a href="#" onclick="openCalculator('kdv'); return false;">Emlak Vergisi Hesaplama</a>
             </div>
         </div>
 
@@ -393,7 +458,8 @@
             <div class="accordion-header" onclick="toggleAccordion(this)">10. Ticaret ve Esnaf</div>
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('kdv'); return false;">Kâr / Zarar Hesaplama</a>
-                <a href="#" onclick="openCalculator('kdv'); return false;">İskonto / Indirim Hesaplama</a>
+                <a href="#" onclick="openCalculator('kdv'); return false;">İskonto / İndirim Hesaplama</a>
+                <a href="#" onclick="openCalculator('kdv'); return false;">Birim Maliyet Hesaplama</a>
             </div>
         </div>
 
@@ -402,13 +468,14 @@
             <div class="accordion-content">
                 <a href="#" onclick="openCalculator('genel'); return false;">Yasal Faiz Hesaplama</a>
                 <a href="#" onclick="openCalculator('genel'); return false;">Kira Artış Oranı Hesaplama</a>
+                <a href="#" onclick="openCalculator('genel'); return false;">Kıdem Tazminatı Tavanı Hesaplama</a>
             </div>
         </div>
     </div>
 </main>
 
 <footer>
-    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 8px;">"Anında hesapla, geleceğini planla"</p>
+    <p style="color: var(--red-brand); font-style: italic; font-weight: 600; margin-bottom: 8px;">"Anında hesapla, geleceğini planla"</p>
     <div>
         <a href="#">Hakkımızda</a> | 
         <a href="#">İletişim</a> | 
@@ -421,11 +488,9 @@
 <script>
     function toggleTumHesaplamalar() {
         let section = document.getElementById('accordionSection');
-        if(section.style.display === 'none') {
-            section.style.display = 'block';
+        section.classList.toggle('active');
+        if(section.classList.contains('active')) {
             window.scrollTo({top: section.offsetTop - 60, behavior: 'smooth'});
-        } else {
-            section.style.display = 'none';
         }
     }
 
@@ -447,31 +512,96 @@
         document.getElementById('input1').value = "";
         document.getElementById('input2').value = "";
 
+        // İçerik ve Soru-Cevap metinlerini türe göre dinamik dolduruyoruz
         if(type === 'mass') {
             title.innerHTML = "Maaş / Zam Hesaplaması";
             desc.innerHTML = "Mevcut maaşınızı ve beklenen oranları girerek hesaplayın.";
             l1.innerHTML = "Mevcut Tutar / Maaş (TL):";
             l2.innerHTML = "Beklenen Zam Oranı (%):";
+
+            document.getElementById('articleTitle').innerHTML = "Maaş ve Zam Hesaplaması Hakkında Bilmeniz Gerekenler";
+            document.getElementById('qa1h').innerHTML = "1. Maaş zammı nasıl hesaplanır?";
+            document.getElementById('qa1p').innerHTML = "Mevcut net veya brüt maaşınız ile hedeflenen zam yüzdesi çarpılarak artış miktarı bulunur ve ana ücrete eklenir.";
+            document.getElementById('qa2h').innerHTML = "2. Enflasyon farkı maaşa nasıl yansır?";
+            document.getElementById('qa2p').innerHTML = "TÜİK tarafından açıklanan enflasyon oranları ve toplu sözleşme hükümleri baz alınarak ek zam oranları hesaplamalara dahil edilir.";
+            document.getElementById('qa3h').innerHTML = "3. Brütten nete maaş geçişi nedir?";
+            document.getElementById('qa3p').innerHTML = "Brüt kazançtan SGK işçi payı, işsizlik sigortası, gelir damga vergileri düşülerek ele geçen net tutar hesaplanır.";
+            document.getElementById('qa4h').innerHTML = "4. Asgari geçim indirimleri dikkate alınıyor mu?";
+            document.getElementById('qa4p').innerHTML = "Hesaplama araçlarımız genel parametreler üzerinden pratik ve hızlı sonuç vermesi için tasarlanmıştır.";
+            document.getElementById('qa5h').innerHTML = "5. Bu hesaplama aracı güvenilir mi?";
+            document.getElementById('qa5p').innerHTML = "Genel finansal matematik formüllerine dayanarak en yakın tahmini rakamları hızlıca sunar.";
+
         } else if(type === 'kredi') {
             title.innerHTML = "Konut Kredisi Hesaplaması";
             desc.innerHTML = "Kredi tutarı ve faiz oranını girerek taksit tutarını hesaplayın.";
             l1.innerHTML = "Ana Tutar / Kredi Tutarı (TL):";
             l2.innerHTML = "Aylık Oran / Faiz (%):";
+
+            document.getElementById('articleTitle').innerHTML = "Konut Kredisi Hesaplama ve Ödeme Rehberi";
+            document.getElementById('qa1h').innerHTML = "1. Konut kredisi faizi nasıl hesaplanır?";
+            document.getElementById('qa1p').innerHTML = "Bankaların sunduğu aylık faiz oranları, vade sayısı ve ana para tutarı üzerinden anuitete formülüyle aylık taksitler belirlenir.";
+            document.getElementById('qa2h').innerHTML = "2. Vade süresi taksiti nasıl etkiler?";
+            document.getElementById('qa2p').innerHTML = "Vade uzadıkça aylık ödemeler düşer ancak toplamda ödenen faiz miktarı artış gösterir.";
+            document.getElementById('qa3h').innerHTML = "3. Kredi masrafları nelerdir?";
+            document.getElementById('qa3p').innerHTML = "Dosya masrafı, ekspertiz ücreti ve konut sigortası gibi yasal ek ödemeler kredi maliyetine dahildir.";
+            document.getElementById('qa4h').innerHTML = "4. Erken kapama yapılabilir mi?";
+            document.getElementById('qa4p').innerHTML = "Tüketici kanununa göre kredinizi erken kapatma veya ara ödeme yapma hakkınız bulunmaktadır.";
+            document.getElementById('qa5h').innerHTML = "5. En uygun kredi nasıl seçilir?";
+            document.getElementById('qa5p').innerHTML = "Toplam geri ödeme tutarı ve yıllık maliyet oranları kıyaslanarak en avantajlı banka seçilebilir.";
+
         } else if(type === 'zekat') {
             title.innerHTML = "Zekat Hesaplaması";
             desc.innerHTML = "Toplam varlıklarınızı girerek zekat miktarını öğrenin.";
             l1.innerHTML = "Toplam Varlık / Nakit (TL):";
             l2.innerHTML = "Borçlar (TL):";
+
+            document.getElementById('articleTitle').innerHTML = "Zekat Hesaplaması ve Esasları Rehberi";
+            document.getElementById('qa1h').innerHTML = "1. Zekat kimlere farzdır?";
+            document.getElementById('qa1p').innerHTML = "Asli ihtiyaçları dışında nisap miktarı kadar zenginliğe sahip ve üzerinden bir kameri yıl geçmiş müslümanlara farzdır.";
+            document.getElementById('qa2h').innerHTML = "2. Nisap miktarı nedir?";
+            document.getElementById('qa2p').innerHTML = "80.18 gram altın veya bu değerde nakit/ticari mala sahip olmak nisap miktarını oluşturur.";
+            document.getElementById('qa3h').innerHTML = "3. Zekat oranı yüzde kaçtır?";
+            document.getElementById('qa3p').innerHTML = "Nakit, altın, gümüş ve ticari mallarda zekat oranı kırkta bir yani %2.5'tir.";
+            document.getElementById('qa4h').innerHTML = "4. Borçlar zekattan düşülür mü?";
+            document.getElementById('qa4p').innerHTML = "Vadesi gelen veya ödenmesi gereken borçlar toplam varlıktan düşüldükten sonra kalan tutar hesaplanır.";
+            document.getElementById('qa5h').innerHTML = "5. Hangi mallardan zekat verilir?";
+            document.getElementById('qa5p').innerHTML = "Nakit paralar, altın, ticari envanterler ve yatırım amaçlı menkul kıymetler zekata tabidir.";
+
         } else if(type === 'kdv') {
             title.innerHTML = "KDV Hesaplama";
             desc.innerHTML = "Tutar ve KDV oranını girerek hesaplama yapın.";
             l1.innerHTML = "Tutar (TL):";
             l2.innerHTML = "KDV Oranı (%):";
+
+            document.getElementById('articleTitle').innerHTML = "KDV (Katma Değer Vergisi) Hesaplama Rehberi";
+            document.getElementById('qa1h').innerHTML = "1. KDV hariç ve dahil tutar nasıl bulunur?";
+            document.getElementById('qa1p').innerHTML = "Matraha KDV oranı eklenerek KDV dahil tutara ulaşılsın; tersten işlemde ise orana bölünerek hariç tutar bulunur.";
+            document.getElementById('qa2h').innerHTML = "2. Güncel KDV oranları nelerdir?";
+            document.getElementById('qa2p').innerHTML = "Türkiye'de genel KDV oranı %20, temel gıdalarda %1 ve bazı sektörel hizmetlerde %10 olarak uygulanmaktadır.";
+            document.getElementById('qa3h').innerHTML = "3. Ticarette KDV neden önemlidir?";
+            document.getElementById('qa3p').innerHTML = "Faturalandırma süreçleri, maliyet muhasebesi ve vergi beyannameleri için doğru KDV hesaplanması şarttır.";
+            document.getElementById('qa4h').innerHTML = "4. KDV indirimi nasıl yapılır?";
+            document.getElementById('qa4p').innerHTML = "İstisna veya indirimli oran uygulanan mal ve hizmetlerde özel vergi mevzuatı dikkate alınır.";
+            document.getElementById('qa5h').innerHTML = "5. Bu araçla hangi işlemler yapılır?";
+            document.getElementById('qa5p').innerHTML = "Hem KDV ekleme hem de KDV'yi fiyattan çıkarma işlemlerini pratikçe gerçekleştirebilirsiniz.";
+
         } else {
             title.innerHTML = "Genel Hesaplama Aracı";
             desc.innerHTML = "İstenen değerleri girerek hesaplayın.";
             l1.innerHTML = "Değer 1:";
             l2.innerHTML = "Değer 2:";
+
+            document.getElementById('articleTitle').innerHTML = "Genel Hesaplama Araçları ve Kullanım Kılavuzu";
+            document.getElementById('qa1h').innerHTML = "1. Bu araç ne işe yarar?";
+            document.getElementById('qa1p').innerHTML = "Pratik matematiksel ve finansal hesaplamaları saniyeler içinde yapmanızı sağlar.";
+            document.getElementById('qa2h').innerHTML = "2. Nasıl kullanılır?";
+            document.getElementById('qa2p').innerHTML = "İlgili kutucuklara sayısal değerleri girerek hesapla butonuna basmanız yeterlidir.";
+            document.getElementById('qa3h').innerHTML = "3. Hatalı sonuç çıkarsa ne yapmalıyım?";
+            document.getElementById('qa3p').innerHTML = "Girdiğiniz rakamların ondalık ve basamak ayraçlarını kontrol ediniz.";
+            document.getElementById('qa4h').innerHTML = "4. Güvenli mi?";
+            document.getElementById('qa4p').innerHTML = "Tüm işlemler tarayıcınız üzerinden anlık olarak gerçekleştirilir.";
+            document.getElementById('qa5h').innerHTML = "5. Desteklenen formatlar nelerdir?";
+            document.getElementById('qa5p').innerHTML = "Standart rakam ve ondalık sayı formatlarını destekler.";
         }
 
         window.scrollTo({top: panel.offsetTop - 60, behavior: 'smooth'});
@@ -494,9 +624,10 @@
     function filterTools() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let categories = document.querySelectorAll('.accordion-category');
+        let section = document.getElementById('accordionSection');
 
         if(input.length > 0) {
-            document.getElementById('accordionSection').style.display = 'block';
+            section.classList.add('active');
         }
 
         categories.forEach(cat => {
