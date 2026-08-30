@@ -7,290 +7,266 @@
     <!-- Google AdSense & Analytics -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Senin CSS'ini ezmeden ek açılır menü ve rozet uyarlamaları */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 240px;
+            z-index: 1000;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+        .dropdown-container:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            border-radius: 0;
+            text-align: left;
+        }
+        .dropdown-menu a:hover {
+            background: var(--bg-gradient);
+            color: var(--primary);
+        }
+        .badge-yeni {
+            background-color: #ff6b35;
+            color: #fff;
+            font-size: 9px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            margin-left: 6px;
+            font-weight: 700;
+        }
+        nav ul {
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
-<header class="main-header">
-    <div class="top-bar">
-        <a href="index.html" class="logo">parahesap.site</a>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Hesaplama aracı ara..." onkeyup="filterTools()">
-            <button onclick="executeSearch()">🔍</button>
-        </div>
+<header class="site">
+    <div class="wrap nav-wrap">
+        <a href="index.html" class="brand">
+            <span class="brand-dot"></span>parahesap.site
+        </a>
+        
+        <nav>
+            <ul>
+                <li class="dropdown-container">
+                    <a href="#">Kredi ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="kredi-hesaplama.html">Konut Kredisi Hesaplama</a>
+                        <a href="kredi-hesaplama.html">İhtiyaç Kredisi Hesaplama</a>
+                        <a href="kredi-hesaplama.html">Taşıt Kredisi Hesaplama</a>
+                        <a href="kredi-hesaplama.html">Ticari Kredi Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Finans ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="faiz-hesaplama.html">Altın Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Bileşik Büyüme Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Birikim Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Bono Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Döviz Hesaplama</a>
+                        <a href="enflasyon-hesaplama.html">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">Eurobond Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">Faiz Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Geçmiş Altın Fiyatları Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Geçmiş Döviz Kurları Hesaplama</a>
+                        <a href="faiz-hesaplama.html">IBAN Doğrulama</a>
+                        <a href="faiz-hesaplama.html">İç ve Dış İskonto Hesaplama</a>
+                        <a href="faiz-hesaplama.html">İç Verim Oranı Hesaplama</a>
+                        <a href="kira-artis-orani.html">Kira Artış Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">Net Bugünkü Değer Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Ortalama Vade Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Reel Getiri Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Vadeli Mevduat Faizi Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Sınav ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">AGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">ALES Puan Hesaplama</a>
+                        <a href="test.html">DGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Ehliyet Sınavı Puan Hesaplama</a>
+                        <a href="test.html">Hâkim ve Savcı Yrd. Sınavı <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">KPSS Puan Hesaplama</a>
+                        <a href="test.html">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">MSÜ Puan Hesaplama</a>
+                        <a href="test.html">OBP Okul Puanı Hesaplama</a>
+                        <a href="test.html">PMYO Puan Hesaplama</a>
+                        <a href="test.html">POMEM Puan Hesaplama</a>
+                        <a href="test.html">TUS Puan Hesaplama</a>
+                        <a href="test.html">TYT Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Üniversite (YKS) Taban Puanları <span class="badge-yeni">yeni</span></a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Eğitim ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Ders Notu Hesaplama</a>
+                        <a href="test.html">E-Okul Not Hesaplama</a>
+                        <a href="test.html">Lise Ortalama Hesaplama</a>
+                        <a href="test.html">Takdir Teşekkür Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Üniversite Not Ortalaması Hesaplama</a>
+                        <a href="test.html">Vize Final Ortalama Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Sağlık ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Adet Günü Hesaplama</a>
+                        <a href="test.html">Bazal Metabolizma Hızı <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Bel / Kalça Oranı <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Gebelik Hesaplama</a>
+                        <a href="test.html">Günlük Kalori İhtiyacı</a>
+                        <a href="test.html">Günlük Su İhtiyacı Hesaplama</a>
+                        <a href="test.html">İdeal Kilo Hesaplama</a>
+                        <a href="test.html">Vücut Kitle Endeksi Hesaplama</a>
+                        <a href="test.html">Yaşam Süresi Hesaplama <span class="badge-yeni">yeni</span></a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Matematik ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Alan Hesaplama</a>
+                        <a href="test.html">Altın Oran Hesaplama</a>
+                        <a href="test.html">Basit Faiz Hesaplama</a>
+                        <a href="test.html">Çevre Hesaplama</a>
+                        <a href="test.html">EBOB EKOK Hesaplama</a>
+                        <a href="test.html">Metrekare Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Sayı Okunuşu Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Standart Sapma Hesaplama</a>
+                        <a href="test.html">Üslü Sayı Hesaplama</a>
+                        <a href="test.html">Yüzde Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Zaman ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Hafta Hesaplama</a>
+                        <a href="test.html">İki Tarih Arasındaki Gün</a>
+                        <a href="test.html">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Kaç Gün Kaldı Hesaplama</a>
+                        <a href="test.html">Saat Farkı Hesaplama</a>
+                        <a href="test.html">Yaş Hesaplama</a>
+                        <a href="test.html">Zaman Farkı Hesaplama <span class="badge-yeni">yeni</span></a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Muhasebe ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Amortisman Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Brütten Nete Maaş Hesaplama</a>
+                        <a href="test.html">Emeklilik Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">Fazla Mesai Ücreti Hesaplama</a>
+                        <a href="faiz-hesaplama.html">İşsizlik Maaşı Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Kıdem Tazminatı Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Netten Brüte Maaş Hesaplama</a>
+                        <a href="faiz-hesaplama.html">Yıllık İzin Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Vergi ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Emlak Vergisi Hesaplama</a>
+                        <a href="test.html">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">KDV Hesaplama</a>
+                        <a href="test.html">Kira Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="faiz-hesaplama.html">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Ticaret ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Desi Hesaplama</a>
+                        <a href="test.html">Fiyat Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">İndirim Hesaplama</a>
+                        <a href="test.html">Kâr Hesaplama</a>
+                        <a href="test.html">Kargo Ücreti Hesaplama <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Tapu Harcı Hesaplama</a>
+                        <a href="test.html">Zam Hesaplama</a>
+                    </div>
+                </li>
+
+                <li class="dropdown-container">
+                    <a href="#">Hukuk ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="test.html">Arabuluculuk Ücreti Hesaplama</a>
+                        <a href="test.html">Hukuki Süre Hesaplama</a>
+                        <a href="test.html">İcra Masrafı Hesaplama</a>
+                        <a href="test.html">Uzlaştırmacı Ücreti <span class="badge-yeni">yeni</span></a>
+                        <a href="test.html">Vekâlet Ücreti Hesaplama</a>
+                        <a href="test.html">Yasal Faiz Hesaplama <span class="badge-yeni">yeni</span></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
     </div>
-
-    <!-- Üst Menü / Sekmeler -->
-    <nav class="nav-menu">
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Kredi ▼</a>
-            <div class="dropdown-content">
-                <a href="kredi-hesaplama.html">Konut Kredisi Hesaplama</a>
-                <a href="kredi-hesaplama.html">İhtiyaç Kredisi Hesaplama</a>
-                <a href="kredi-hesaplama.html">Taşıt Kredisi Hesaplama</a>
-                <a href="kredi-hesaplama.html">Ticari Kredi Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Finans ▼</a>
-            <div class="dropdown-content">
-                <a href="faiz-hesaplama.html">Altın Hesaplama</a>
-                <a href="faiz-hesaplama.html">Bileşik Büyüme Hesaplama</a>
-                <a href="faiz-hesaplama.html">Birikim Hesaplama</a>
-                <a href="faiz-hesaplama.html">Bono Hesaplama</a>
-                <a href="faiz-hesaplama.html">Döviz Hesaplama</a>
-                <a href="enflasyon-hesaplama.html">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">Eurobond Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">Faiz Hesaplama</a>
-                <a href="faiz-hesaplama.html">Geçmiş Altın Fiyatları Hesaplama</a>
-                <a href="faiz-hesaplama.html">Geçmiş Döviz Kurları Hesaplama</a>
-                <a href="faiz-hesaplama.html">IBAN Doğrulama</a>
-                <a href="faiz-hesaplama.html">İç ve Dış İskonto Hesaplama</a>
-                <a href="faiz-hesaplama.html">İç Verim Oranı Hesaplama</a>
-                <a href="kira-artis-orani.html">Kira Artış Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">Net Bugünkü Değer Hesaplama</a>
-                <a href="faiz-hesaplama.html">Ortalama Vade Hesaplama</a>
-                <a href="faiz-hesaplama.html">Parasal Değer Hesaplama</a>
-                <a href="faiz-hesaplama.html">Reel Getiri Hesaplama</a>
-                <a href="faiz-hesaplama.html">Repo Hesaplama</a>
-                <a href="faiz-hesaplama.html">Sermaye ve Temettü Hesaplama</a>
-                <a href="faiz-hesaplama.html">Tahvil Hesaplama</a>
-                <a href="faiz-hesaplama.html">Vadeli İşlem Fiyatı Hesaplama</a>
-                <a href="faiz-hesaplama.html">Vadeli Mevduat Faizi Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Sınav ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">AGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">AKS Puan Hesaplama</a>
-                <a href="test.html">ALES Puan Hesaplama</a>
-                <a href="test.html">DGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">DGS Taban Puanları Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">DİB MBSTS Puan Hesaplama</a>
-                <a href="test.html">DUS Puan Hesaplama</a>
-                <a href="test.html">Ehliyet Sınavı Puan Hesaplama</a>
-                <a href="test.html">EKPSS Puan Hesaplama</a>
-                <a href="test.html">EUS Puan Hesaplama</a>
-                <a href="test.html">Hâkim ve Savcı Yrd. Sınavı Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">HMGS Puan Hesaplama</a>
-                <a href="test.html">İSG Puan Hesaplama</a>
-                <a href="test.html">İYÖS Puan Hesaplama</a>
-                <a href="test.html">KPSS Puan Hesaplama</a>
-                <a href="test.html">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Lise (LGS) Taban Puanları Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">MSÜ Puan Hesaplama</a>
-                <a href="test.html">OBP Okul Puanı Hesaplama</a>
-                <a href="test.html">ÖYP Puan Hesaplama</a>
-                <a href="test.html">Özel Güvenlik Sınavı Puan Hesaplama</a>
-                <a href="test.html">PMYO Puan Hesaplama</a>
-                <a href="test.html">POMEM Puan Hesaplama</a>
-                <a href="test.html">PYBS Puan Hesaplama</a>
-                <a href="test.html">TUS Puan Hesaplama</a>
-                <a href="test.html">TYT Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Üniversite (YKS) Taban Puanları Hesaplama <span class="badge-yeni">yeni</span></a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Eğitim ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Ders Notu Hesaplama</a>
-                <a href="test.html">E-Okul Not Hesaplama</a>
-                <a href="test.html">Lise Ders Puanı Hesaplama</a>
-                <a href="test.html">Lise Mezuniyet Puanı Hesaplama</a>
-                <a href="test.html">Lise Ortalama Hesaplama</a>
-                <a href="test.html">Lise Sınıf Geçme Hesaplama</a>
-                <a href="test.html">Lise YBP Hesaplama</a>
-                <a href="test.html">Okula Başlama Yaşı Hesaplama</a>
-                <a href="test.html">Takdir Teşekkür Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Üniversite Not Ortalaması Hesaplama</a>
-                <a href="test.html">Vize Final Ortalama Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Sağlık ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Adet Günü Hesaplama</a>
-                <a href="test.html">Aşı Takvimi Hesaplama</a>
-                <a href="test.html">Bazal Metabolizma Hızı Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Bebek Boyu Hesaplama</a>
-                <a href="test.html">Bebek Kilosu Hesaplama</a>
-                <a href="test.html">Bel / Kalça Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Doğum Tarihi Hesaplama</a>
-                <a href="test.html">Gebelik Hesaplama</a>
-                <a href="test.html">Günlük Kalori İhtiyacı Hesaplama</a>
-                <a href="test.html">Günlük Karbonhidrat İhtiyacı Hesaplama</a>
-                <a href="test.html">Günlük Kreatin Dozu Hesaplama</a>
-                <a href="test.html">Günlük Makro Besin İhtiyacı Hesaplama</a>
-                <a href="test.html">Günlük Protein İhtiyacı Hesaplama</a>
-                <a href="test.html">Günlük Su İhtiyacı Hesaplama</a>
-                <a href="test.html">Günlük Yağ İhtiyacı Hesaplama</a>
-                <a href="test.html">İdeal Kilo Hesaplama</a>
-                <a href="test.html">Sigara Maliyeti Hesaplama</a>
-                <a href="test.html">Sütyen Bedeni Hesaplama</a>
-                <a href="test.html">Vücut Kitle Endeksi Hesaplama</a>
-                <a href="test.html">Vücut Yağ Oranı Hesaplama</a>
-                <a href="test.html">Yaşam Süresi Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Yumurtlama Dönemi Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Matematik ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Alan Hesaplama</a>
-                <a href="test.html">Altın Oran Hesaplama</a>
-                <a href="test.html">Asal Çarpan Hesaplama</a>
-                <a href="test.html">Basit Faiz Hesaplama</a>
-                <a href="test.html">Bileşik Faiz Hesaplama</a>
-                <a href="test.html">Çevre Hesaplama</a>
-                <a href="test.html">EBOB EKOK Hesaplama</a>
-                <a href="test.html">Faiz Hesaplama</a>
-                <a href="test.html">Faktöriyel Hesaplama</a>
-                <a href="test.html">Hacim Hesaplama</a>
-                <a href="test.html">İnç Hesaplama</a>
-                <a href="test.html">Kombinasyon Hesaplama</a>
-                <a href="test.html">Köklü Sayı Hesaplama</a>
-                <a href="test.html">Metrekare Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Mil Hesaplama</a>
-                <a href="test.html">Modüler Aritmetik Hesaplama</a>
-                <a href="test.html">Oran Hesaplama</a>
-                <a href="test.html">Permütasyon Hesaplama</a>
-                <a href="test.html">Rastgele Sayı Hesaplama</a>
-                <a href="test.html">Sayı Okunuşu Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Standart Sapma Hesaplama</a>
-                <a href="test.html">Taban Dönüşümü Hesaplama</a>
-                <a href="test.html">Üslü Sayı Hesaplama</a>
-                <a href="test.html">Yüzde Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Zaman ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Ay Evresi Hesaplama</a>
-                <a href="test.html">Bayram Namazı Saati Hesaplama</a>
-                <a href="test.html">Cuma Namazı Saati Hesaplama</a>
-                <a href="test.html">Gün Batımı Hesaplama</a>
-                <a href="test.html">Gün Doğumu Hesaplama</a>
-                <a href="test.html">Hafta Hesaplama</a>
-                <a href="test.html">Hangi Gün Hesaplama</a>
-                <a href="test.html">Hicri Takvim Hesaplama</a>
-                <a href="test.html">İki Tarih Arasındaki Gün Sayısını Hesaplama</a>
-                <a href="test.html">İki Tarih Arasındaki Hafta Sayısını Hesaplama</a>
-                <a href="test.html">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Kaç Gün Kaldı Hesaplama</a>
-                <a href="test.html">Kaç Gün Oldu Hesaplama</a>
-                <a href="test.html">Ramazanın Kaçıncı Günü Hesaplama</a>
-                <a href="test.html">Saat Farkı Hesaplama</a>
-                <a href="test.html">Saat Kaç Hesaplama</a>
-                <a href="test.html">Şafak Hesaplama</a>
-                <a href="test.html">Tarih Hesaplama</a>
-                <a href="test.html">Vade Hesaplama</a>
-                <a href="test.html">Yaş Hesaplama</a>
-                <a href="test.html">Yılın Kaçıncı Günü Hesaplama</a>
-                <a href="test.html">Zaman Farkı Hesaplama <span class="badge-yeni">yeni</span></a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Muhasebe ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Amortisman Hesaplama</a>
-                <a href="test.html">Asgari Geçim İndirimi Hesaplama</a>
-                <a href="test.html">Binek Araç Gider Kısıtlaması Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">Brütten Nete Maaş Hesaplama</a>
-                <a href="test.html">Doğum İzni Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Emeklilik Borçlanması Hesaplama</a>
-                <a href="test.html">Emeklilik Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">Fazla Mesai Ücreti Hesaplama</a>
-                <a href="test.html">Gecikme Zammı Hesaplama</a>
-                <a href="test.html">Huzur Hakkı Hesaplama</a>
-                <a href="test.html">İhbar Tazminatı Hesaplama</a>
-                <a href="faiz-hesaplama.html">İşsizlik Maaşı Hesaplama</a>
-                <a href="faiz-hesaplama.html">Kıdem Tazminatı Hesaplama</a>
-                <a href="test.html">Kısa Çalışma Ödeneği Hesaplama</a>
-                <a href="faiz-hesaplama.html">Maaş Hesaplama</a>
-                <a href="faiz-hesaplama.html">Netten Brüte Maaş Hesaplama</a>
-                <a href="test.html">Serbest Meslek Makbuzu Hesaplama</a>
-                <a href="faiz-hesaplama.html">Yıllık İzin Hesaplama</a>
-                <a href="test.html">Yıllık İzin Ücreti Hesaplama</a>
-                <a href="test.html">Yeniden Değerleme Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Yolluk Hesaplama <span class="badge-yeni">yeni</span></a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Vergi ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Damga Vergisi Hesaplama</a>
-                <a href="test.html">Değer Artış Kazancı Vergisi Hesaplama</a>
-                <a href="test.html">Değerli Konut Vergisi Hesaplama</a>
-                <a href="test.html">Emlak Vergisi Hesaplama</a>
-                <a href="test.html">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Gümrük Vergisi Hesaplama</a>
-                <a href="test.html">Kambiyo Vergisi Hesaplama</a>
-                <a href="faiz-hesaplama.html">KDV Hesaplama</a>
-                <a href="test.html">KDV Tevkifatı Hesaplama</a>
-                <a href="test.html">Kira Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Kira Stopaj Hesaplama</a>
-                <a href="test.html">Konaklama Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Kurumlar Vergisi Hesaplama</a>
-                <a href="faiz-hesaplama.html">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="faiz-hesaplama.html">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Veraset ve İntikal Vergisi Hesaplama</a>
-                <a href="test.html">Vergi Gecikme Faizi Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Ticaret ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Arsa Payı Hesaplama</a>
-                <a href="test.html">Desi Hesaplama</a>
-                <a href="test.html">Fiyat Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">İndirim Hesaplama</a>
-                <a href="test.html">İnşaat Alanı Hesaplama</a>
-                <a href="test.html">Kâr Hesaplama</a>
-                <a href="test.html">Kargo Ücreti Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Ortalama Maliyet Hesaplama</a>
-                <a href="test.html">Tapu Harcı Hesaplama</a>
-                <a href="test.html">Zam Hesaplama</a>
-                <a href="test.html">Zarar Hesaplama</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Hukuk ▼</a>
-            <div class="dropdown-content">
-                <a href="test.html">Arabuluculuk Ücreti Hesaplama</a>
-                <a href="test.html">E-tebligat Tebliğ Tarihi Hesaplama</a>
-                <a href="test.html">Hukuki Süre Hesaplama</a>
-                <a href="test.html">İcra Masrafı Hesaplama</a>
-                <a href="test.html">Uzlaştırmacı Ücreti Hesaplama <span class="badge-yeni">yeni</span></a>
-                <a href="test.html">Vekâlet Ücreti Hesaplama</a>
-                <a href="test.html">Yasal Faiz Hesaplama <span class="badge-yeni">yeni</span></a>
-            </div>
-        </div>
-    </nav>
 </header>
 
-<main class="content-container">
-    <div class="welcome-box">
+<!-- Akan Canlı Kur Bandı -->
+<div class="ticker-bar">
+    <div class="ticker-track">
+        <div class="ticker-item">ALTIN: <strong>2.450 TL</strong> <span>▲</span></div>
+        <div class="ticker-item">USD/TRY: <strong>32.50 TL</strong> <span>▲</span></div>
+        <div class="ticker-item">EUR/TRY: <strong>35.20 TL</strong> <span>▼</span></div>
+        <div class="ticker-item">ENFLASYON: <strong>%75.5</strong> <span>-</span></div>
+        <div class="ticker-item">ALTIN: <strong>2.450 TL</strong> <span>▲</span></div>
+        <div class="ticker-item">USD/TRY: <strong>32.50 TL</strong> <span>▲</span></div>
+        <div class="ticker-item">EUR/TRY: <strong>35.20 TL</strong> <span>▼</span></div>
+        <div class="ticker-item">ENFLASYON: <strong>%75.5</strong> <span>-</span></div>
+    </div>
+</div>
+
+<main class="wrap container">
+    <div class="calc-header">
         <h1>Para Hesap Portalına Hoş Geldiniz</h1>
-        <p>İstediğiniz kategoriye yukarıdaki menüden tıklayarak hesaplama araçlarına hızlıca ulaşabilirsiniz.</p>
+        <p>İstediğiniz kategoriye yukarıdaki menüden imlecinizi götürerek ulaşabilir veya aşağıdaki arama çubuğunu kullanabilirsiniz.</p>
+    </div>
+
+    <!-- Arama Alanı -->
+    <div class="calc-form">
+        <div class="input-card">
+            <label>Hesaplama Aracı Ara</label>
+            <input type="text" id="searchInput" placeholder="Örn: Kredi, KDV, Enflasyon, YKS..." onkeyup="filterTools()">
+        </div>
     </div>
 </main>
 
-<footer class="site-footer">
-    <div class="footer-links">
-        <a href="hakkimizda.html">Hakkımızda</a> | 
-        <a href="iletisim.html">İletişim</a> | 
-        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
-        <a href="kullanim-sartlari.html">Kullanım Şartları</a>
+<footer style="text-align: center; padding: 30px 0; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px;">
+    <div style="margin-bottom: 10px;">
+        <a href="hakkimizda.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Hakkımızda</a> | 
+        <a href="iletisim.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">İletişim</a> | 
+        <a href="gizlilik-politikasi.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Gizlilik Politikası</a>
     </div>
     <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
 </footer>
@@ -298,7 +274,7 @@
 <script>
     function filterTools() {
         let input = document.getElementById('searchInput').value.toLowerCase();
-        let links = document.querySelectorAll('.dropdown-content a');
+        let links = document.querySelectorAll('.dropdown-menu a');
         links.forEach(link => {
             let text = link.textContent || link.innerText;
             if (text.toLowerCase().indexOf(input) > -1) {
@@ -307,9 +283,6 @@
                 link.style.display = "none";
             }
         });
-    }
-    function executeSearch() {
-        filterTools();
     }
 </script>
 
