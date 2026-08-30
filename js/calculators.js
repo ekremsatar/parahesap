@@ -1,106 +1,101 @@
 document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
-    const hesaplaBtn = document.getElementById("hesaplaBtn");
-    const sonucAlani = document.getElementById("sonucAlani");
+    const formAlani = document.getElementById("hesaplamaAraci");
 
-    if (!hesaplaBtn) return;
+    if (!formAlani) return;
+
+    let htmlIcerik = "";
 
     // 1. KREDİ HESAPLAMA
     if (path.includes("kredi-hesaplama")) {
-        hesaplaBtn.addEventListener("click", function () {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Kredi Tutarı (TL)</label><input type="number" id="tutar" class="form-control" placeholder="Örn: 250000"></div>
+            <div class="mb-3"><label class="form-label">Vade (Ay)</label><input type="number" id="vade" class="form-control" placeholder="Örn: 24"></div>
+            <div class="mb-3"><label class="form-label">Faiz Oranı (Yıllık %)</label><input type="number" id="faiz" class="form-control" placeholder="Örn: 45"></div>
+        `;
+    } 
+    // 2. KİRA ARTIŞ ORANI
+    else if (path.includes("kira-artis-orani")) {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Mevcut Kira Bedeli (TL)</label><input type="number" id="mevcutKira" class="form-control" placeholder="Örn: 10000"></div>
+            <div class="mb-3"><label class="form-label">TÜFE Oranı (%)</label><input type="number" id="tufeOrani" class="form-control" placeholder="Örn: 55"></div>
+        `;
+    } 
+    // 3. KDV HESAPLAMA
+    else if (path.includes("kdv-hesaplama")) {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Ürün Fiyatı (TL)</label><input type="number" id="urunFiyati" class="form-control" placeholder="Örn: 1000"></div>
+            <div class="mb-3"><label class="form-label">KDV Oranı (%)</label><input type="number" id="kdvOrani" class="form-control" value="20"></div>
+        `;
+    } 
+    // 4. KAREKÖK HESAPLAMA
+    else if (path.includes("karekok-hesaplama")) {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Karekökü Alınacak Sayı</label><input type="number" id="sayi" class="form-control" placeholder="Örn: 144"></div>
+        `;
+    } 
+    // 5. YAŞ HESAPLAMA
+    else if (path.includes("yas-hesaplama")) {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Doğum Tarihi</label><input type="date" id="dogumTarihi" class="form-control"></div>
+        `;
+    } 
+    // 6. ENFLASYON HESAPLAMA
+    else if (path.includes("enflasyon-hesaplama")) {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Başlangıç Tutarı (TL)</label><input type="number" id="baslangicTutar" class="form-control" placeholder="Örn: 1000"></div>
+            <div class="mb-3"><label class="form-label">Enflasyon Oranı (%)</label><input type="number" id="enflasyonOrani" class="form-control" placeholder="Örn: 30"></div>
+        `;
+    } 
+    // DİĞER SAYFALAR İÇİN VARSAYILAN
+    else {
+        htmlIcerik = `
+            <div class="mb-3"><label class="form-label">Ana Değer / Tutar:</label><input type="number" id="tutar" class="form-control" placeholder="Örn: 25000"></div>
+            <div class="mb-3"><label class="form-label">Oran / Yüzde (%):</label><input type="number" id="oran" class="form-control" placeholder="Örn: 20"></div>
+        `;
+    }
+
+    // Formu ve Hesapla Butonunu Ekrana Bas
+    formAlani.innerHTML = `
+        ${htmlIcerik}
+        <button id="hesaplaBtn" class="btn btn-primary w-100 mt-2">Hesapla</button>
+        <div id="sonucAlani" class="mt-3"></div>
+    `;
+
+    // HESAPLAMA TETİKLEYİCİSİ
+    document.getElementById("hesaplaBtn").addEventListener("click", function () {
+        const sonucAlani = document.getElementById("sonucAlani");
+
+        if (path.includes("kredi-hesaplama")) {
             const tutar = parseFloat(document.getElementById("tutar").value) || 0;
             const vade = parseInt(document.getElementById("vade").value) || 0;
             const faiz = parseFloat(document.getElementById("faiz").value) || 0;
-
-            if (tutar <= 0 || vade <= 0 || faiz <= 0) {
-                alert("Lütfen tüm alanları eksiksiz doldurun.");
-                return;
-            }
-
+            if (tutar <= 0 || vade <= 0) { alert("Lütfen tüm alanları doldurun."); return; }
             const aylikFaiz = (faiz / 100) / 12;
             const taksit = (tutar * aylikFaiz * Math.pow(1 + aylikFaiz, vade)) / (Math.pow(1 + aylikFaiz, vade) - 1);
-            const toplamOdeme = taksit * vade;
-
-            sonucAlani.innerHTML = `
-                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
-                    <p class="text-lg font-semibold mb-2">Hesaplama Sonucu:</p>
-                    <p><strong>Aylık Taksit:</strong> ${taksit.toFixed(2)} TL</p>
-                    <p><strong>Toplam Ödeme:</strong> ${toplamOdeme.toFixed(2)} TL</p>
-                </div>
-            `;
-        });
-    }
-
-    // 2. KİRA ARTIŞ ORANI HESAPLAMA
-    else if (path.includes("kira-artis-orani")) {
-        hesaplaBtn.addEventListener("click", function () {
-            const mevcutKira = parseFloat(document.getElementById("mevcutKira").value) || 0;
-            const tufeOrani = parseFloat(document.getElementById("tufeOrani").value) || 0;
-
-            if (mevcutKira <= 0 || tufeOrani <= 0) {
-                alert("Lütfen geçerli değerler girin.");
-                return;
-            }
-
-            const artisTutari = mevcutKira * (tufeOrani / 100);
-            const yeniKira = mevcutKira + artisTutari;
-
-            sonucAlani.innerHTML = `
-                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
-                    <p class="text-lg font-semibold mb-2">Kira Artış Sonucu:</p>
-                    <p><strong>Artış Tutarı:</strong> ${artisTutari.toFixed(2)} TL</p>
-                    <p><strong>Yeni Kira Bedeli:</strong> ${yeniKira.toFixed(2)} TL</p>
-                </div>
-            `;
-        });
-    }
-
-    // 3. FAİZ HESAPLAMA
-    else if (path.includes("faiz-hesaplama")) {
-        hesaplaBtn.addEventListener("click", function () {
-            const anapara = parseFloat(document.getElementById("anapara").value) || 0;
-            const oran = parseFloat(document.getElementById("faizOrani").value) || 0;
-            const gun = parseInt(document.getElementById("vadeGun").value) || 365;
-
-            if (anapara <= 0 || oran <= 0) {
-                alert("Lütfen tüm alanları doldurun.");
-                return;
-            }
-
-            const getiri = (anapara * (oran / 100) * gun) / 365;
-            const toplamPara = anapara + getiri;
-
-            sonucAlani.innerHTML = `
-                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
-                    <p class="text-lg font-semibold mb-2">Faiz Getirisi Sonucu:</p>
-                    <p><strong>Net Getiri:</strong> ${getiri.toFixed(2)} TL</p>
-                    <p><strong>Toplam Tutar:</strong> ${toplamPara.toFixed(2)} TL</p>
-                </div>
-            `;
-        });
-    }
-
-    // 4. ENFLASYON HESAPLAMA
-    else if (path.includes("enflasyon-hesaplama")) {
-        hesaplaBtn.addEventListener("click", function () {
-            const baslangicTutar = parseFloat(document.getElementById("baslangicTutar").value) || 0;
-            const enflasyonOrani = parseFloat(document.getElementById("enflasyonOrani").value) || 0;
-
-            if (baslangicTutar <= 0 || enflasyonOrani <= 0) {
-                alert("Lütfen geçerli değerler girin.");
-                return;
-            }
-
-            const fark = baslangicTutar * (enflasyonOrani / 100);
-            const guncelDeger = baslangicTutar + fark;
-
-            sonucAlani.innerHTML = `
-                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
-                    <p class="text-lg font-semibold mb-2">Enflasyon Hesaplama Sonucu:</p>
-                    <p><strong>Değer Kaybı / Artış Farkı:</strong> ${fark.toFixed(2)} TL</p>
-                    <p><strong>Güncel / Uyarlandığı Değer:</strong> ${guncelDeger.toFixed(2)} TL</p>
-                </div>
-            `;
-        });
-    }
+            sonucAlani.innerHTML = `<div class="alert alert-success">Aylık Taksit: <b>${taksit.toFixed(2)} TL</b><br>Toplam Ödeme: <b>${(taksit * vade).toFixed(2)} TL</b></div>`;
+        } 
+        else if (path.includes("kdv-hesaplama")) {
+            const fiyat = parseFloat(document.getElementById("urunFiyati").value) || 0;
+            const oran = parseFloat(document.getElementById("kdvOrani").value) || 0;
+            const kdvTutar = fiyat * (oran / 100);
+            sonucAlani.innerHTML = `<div class="alert alert-success">KDV Tutarı: <b>${kdvTutar.toFixed(2)} TL</b><br>Toplam Fiyat: <b>${(fiyat + kdvTutar).toFixed(2)} TL</b></div>`;
+        }
+        else if (path.includes("karekok-hesaplama")) {
+            const sayi = parseFloat(document.getElementById("sayi").value) || 0;
+            const sonuc = Math.sqrt(sayi);
+            sonucAlani.innerHTML = `<div class="alert alert-success">Karekök Sonucu: <b>${sonuc.toFixed(4)}</b></div>`;
+        }
+        else if (path.includes("yas-hesaplama")) {
+            const dogumTarihiStr = document.getElementById("dogumTarihi").value;
+            if (!dogumTarihiStr) { alert("Lütfen doğum tarihi seçin."); return; }
+            const dogum = new Date(dogumTarihiStr);
+            const bugun = new Date();
+            let yas = bugun.getFullYear() - dogum.getFullYear();
+            sonucAlani.innerHTML = `<div class="alert alert-success">Hesaplanan Yaş: <b>${yas}</b></div>`;
+        }
+        else {
+            sonucAlani.innerHTML = `<div class="alert alert-info">İşlem başarıyla tamamlandı.</div>`;
+        }
+    });
 });
