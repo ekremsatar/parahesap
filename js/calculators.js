@@ -1,73 +1,106 @@
-function fmtTL(n){
-  return n.toLocaleString('tr-TR', {maximumFractionDigits: 2, minimumFractionDigits: 2}) + ' ₺';
-}
-function fmtPct(n){
-  return n.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' %';
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const path = window.location.pathname;
+    const hesaplaBtn = document.getElementById("hesaplaBtn");
+    const sonucAlani = document.getElementById("sonucAlani");
 
-function hesaplaKredi(){
-  const tutar = parseFloat(document.getElementById('krediTutar').value);
-  const oran = parseFloat(document.getElementById('krediOran').value);
-  const vade = parseInt(document.getElementById('krediVade').value);
+    if (!hesaplaBtn) return;
 
-  if(!tutar || !oran || !vade || tutar<=0 || vade<=0){
-    alert('Lütfen tüm alanları geçerli değerlerle doldurun.');
-    return;
-  }
+    // 1. KREDİ HESAPLAMA
+    if (path.includes("kredi-hesaplama")) {
+        hesaplaBtn.addEventListener("click", function () {
+            const tutar = parseFloat(document.getElementById("tutar").value) || 0;
+            const vade = parseInt(document.getElementById("vade").value) || 0;
+            const faiz = parseFloat(document.getElementById("faiz").value) || 0;
 
-  const aylikOran = oran/100;
-  const taksit = tutar * (aylikOran * Math.pow(1+aylikOran, vade)) / (Math.pow(1+aylikOran, vade)-1);
-  const toplamOdeme = taksit * vade;
-  const toplamFaiz = toplamOdeme - tutar;
+            if (tutar <= 0 || vade <= 0 || faiz <= 0) {
+                alert("Lütfen tüm alanları eksiksiz doldurun.");
+                return;
+            }
 
-  document.getElementById('kredi-taksit').textContent = fmtTL(taksit);
-  document.getElementById('kredi-toplam').textContent = fmtTL(toplamOdeme);
-  document.getElementById('kredi-faiz').textContent = fmtTL(toplamFaiz);
-  document.getElementById('krediReceipt').classList.add('show');
-}
+            const aylikFaiz = (faiz / 100) / 12;
+            const taksit = (tutar * aylikFaiz * Math.pow(1 + aylikFaiz, vade)) / (Math.pow(1 + aylikFaiz, vade) - 1);
+            const toplamOdeme = taksit * vade;
 
-function hesaplaFaiz(){
-  const anapara = parseFloat(document.getElementById('faizAnapara').value);
-  const oran = parseFloat(document.getElementById('faizOran').value);
-  const yil = parseFloat(document.getElementById('faizYil').value);
-  const aylikEkleme = parseFloat(document.getElementById('faizAylik').value) || 0;
+            sonucAlani.innerHTML = `
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
+                    <p class="text-lg font-semibold mb-2">Hesaplama Sonucu:</p>
+                    <p><strong>Aylık Taksit:</strong> ${taksit.toFixed(2)} TL</p>
+                    <p><strong>Toplam Ödeme:</strong> ${toplamOdeme.toFixed(2)} TL</p>
+                </div>
+            `;
+        });
+    }
 
-  if(!anapara || !oran || !yil || anapara<=0 || yil<=0){
-    alert('Lütfen tüm alanları geçerli değerlerle doldurun.');
-    return;
-  }
+    // 2. KİRA ARTIŞ ORANI HESAPLAMA
+    else if (path.includes("kira-artis-orani")) {
+        hesaplaBtn.addEventListener("click", function () {
+            const mevcutKira = parseFloat(document.getElementById("mevcutKira").value) || 0;
+            const tufeOrani = parseFloat(document.getElementById("tufeOrani").value) || 0;
 
-  const aylikOran = (oran/100)/12;
-  const ay = yil*12;
-  let bakiye = anapara;
-  for(let i=0;i<ay;i++){
-    bakiye = bakiye*(1+aylikOran) + aylikEkleme;
-  }
-  const toplamKatki = anapara + (aylikEkleme*ay);
-  const kazanc = bakiye - toplamKatki;
+            if (mevcutKira <= 0 || tufeOrani <= 0) {
+                alert("Lütfen geçerli değerler girin.");
+                return;
+            }
 
-  document.getElementById('faiz-son').textContent = fmtTL(bakiye);
-  document.getElementById('faiz-katki').textContent = fmtTL(toplamKatki);
-  document.getElementById('faiz-kazanc').textContent = fmtTL(kazanc);
-  document.getElementById('faizReceipt').classList.add('show');
-}
+            const artisTutari = mevcutKira * (tufeOrani / 100);
+            const yeniKira = mevcutKira + artisTutari;
 
-function hesaplaEnflasyon(){
-  const tutar = parseFloat(document.getElementById('enfTutar').value);
-  const oran = parseFloat(document.getElementById('enfOran').value);
-  const yil = parseFloat(document.getElementById('enfYil').value);
+            sonucAlani.innerHTML = `
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
+                    <p class="text-lg font-semibold mb-2">Kira Artış Sonucu:</p>
+                    <p><strong>Artış Tutarı:</strong> ${artisTutari.toFixed(2)} TL</p>
+                    <p><strong>Yeni Kira Bedeli:</strong> ${yeniKira.toFixed(2)} TL</p>
+                </div>
+            `;
+        });
+    }
 
-  if(!tutar || !oran || !yil || tutar<=0 || yil<=0){
-    alert('Lütfen tüm alanları geçerli değerlerle doldurun.');
-    return;
-  }
+    // 3. FAİZ HESAPLAMA
+    else if (path.includes("faiz-hesaplama")) {
+        hesaplaBtn.addEventListener("click", function () {
+            const anapara = parseFloat(document.getElementById("anapara").value) || 0;
+            const oran = parseFloat(document.getElementById("faizOrani").value) || 0;
+            const gun = parseInt(document.getElementById("vadeGun").value) || 365;
 
-  const gelecekDeger = tutar * Math.pow(1+(oran/100), yil);
-  const kaybedilenDeger = gelecekDeger - tutar;
-  const alimGucuOrani = (tutar/gelecekDeger)*100;
+            if (anapara <= 0 || oran <= 0) {
+                alert("Lütfen tüm alanları doldurun.");
+                return;
+            }
 
-  document.getElementById('enf-gelecek').textContent = fmtTL(gelecekDeger);
-  document.getElementById('enf-kayip').textContent = fmtTL(kaybedilenDeger);
-  document.getElementById('enf-guc').textContent = fmtPct(alimGucuOrani);
-  document.getElementById('enfReceipt').classList.add('show');
-}
+            const getiri = (anapara * (oran / 100) * gun) / 365;
+            const toplamPara = anapara + getiri;
+
+            sonucAlani.innerHTML = `
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
+                    <p class="text-lg font-semibold mb-2">Faiz Getirisi Sonucu:</p>
+                    <p><strong>Net Getiri:</strong> ${getiri.toFixed(2)} TL</p>
+                    <p><strong>Toplam Tutar:</strong> ${toplamPara.toFixed(2)} TL</p>
+                </div>
+            `;
+        });
+    }
+
+    // 4. ENFLASYON HESAPLAMA
+    else if (path.includes("enflasyon-hesaplama")) {
+        hesaplaBtn.addEventListener("click", function () {
+            const baslangicTutar = parseFloat(document.getElementById("baslangicTutar").value) || 0;
+            const enflasyonOrani = parseFloat(document.getElementById("enflasyonOrani").value) || 0;
+
+            if (baslangicTutar <= 0 || enflasyonOrani <= 0) {
+                alert("Lütfen geçerli değerler girin.");
+                return;
+            }
+
+            const fark = baslangicTutar * (enflasyonOrani / 100);
+            const guncelDeger = baslangicTutar + fark;
+
+            sonucAlani.innerHTML = `
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4 text-gray-800">
+                    <p class="text-lg font-semibold mb-2">Enflasyon Hesaplama Sonucu:</p>
+                    <p><strong>Değer Kaybı / Artış Farkı:</strong> ${fark.toFixed(2)} TL</p>
+                    <p><strong>Güncel / Uyarlandığı Değer:</strong> ${guncelDeger.toFixed(2)} TL</p>
+                </div>
+            `;
+        });
+    }
+});
