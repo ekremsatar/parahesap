@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Hesap - Profesyonel Hesaplama Araçları</title>
-    <!-- Google AdSense & Analytics -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <style>
         :root {
@@ -15,7 +14,8 @@
             --text-muted: #666666;
             --border: #dee2e6;
             --accent: #e83e8c;
-            --flag-red: #e30a17; /* Bayrak Kırmızısı */
+            --flag-red: #e30a17;
+            --menu-blue: #0056b3; /* Referans sitenin mavi tonu */
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -44,7 +44,6 @@
             display: flex;
             flex-direction: column;
         }
-        /* Başlık Boyutu Büyütüldü: parahesap Mavi, .site Bayrak Kırmızısı */
         .brand-main-text {
             font-size: 28px;
             font-weight: 800;
@@ -90,59 +89,35 @@
             margin-bottom: 16px;
             border-radius: 4px;
         }
+        
+        /* Referans Görseldeki Tam Aynı Arama Çubuğu */
         .search-box {
             display: flex;
-            gap: 8px;
+            background-color: var(--menu-blue);
+            padding: 4px;
+            border-radius: 4px;
             margin-bottom: 16px;
         }
         .search-box input {
             flex: 1;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            padding: 10px 14px;
+            border: none;
+            background: #ffffff;
             font-size: 14px;
             outline: none;
+            border-radius: 2px 0 0 2px;
         }
         .search-box button {
-            background-color: var(--primary);
-            color: white;
+            background-color: #ffc107; /* Görseldeki sarı GİT butonu */
+            color: #000;
             border: none;
             padding: 0 20px;
-            border-radius: 6px;
             font-weight: 700;
+            font-size: 14px;
             cursor: pointer;
+            border-radius: 0 2px 2px 0;
         }
-        .quick-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .quick-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 14px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: all 0.2s;
-        }
-        .quick-card:hover {
-            border-color: var(--primary);
-            background-color: var(--bg-light);
-        }
-        .quick-card span {
-            display: block;
-            font-size: 22px;
-            margin-bottom: 4px;
-        }
-        .quick-card h4 {
-            margin: 0;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-        }
+
         .calc-panel {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -196,59 +171,31 @@
             cursor: pointer;
             margin-top: 8px;
         }
-        .info-article {
-            margin-top: 20px;
-            background: var(--bg-light);
-            border-left: 4px solid var(--accent);
-            padding: 16px;
-            border-radius: 4px;
-        }
-        .info-article h3 {
-            font-size: 15px;
-            color: var(--primary-dark);
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .qa-item {
-            margin-bottom: 10px;
-        }
-        .qa-item h4 {
-            font-size: 13px;
-            color: var(--text-main);
-            margin: 0 0 4px 0;
-        }
-        .qa-item p {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin: 0;
-        }
+        
+        /* Referans Görseldeki Tam Mavi Akordiyon Listeler */
         #accordionSection {
-            margin-top: 20px;
-            display: none;
-        }
-        #accordionSection.active {
-            display: block;
+            margin-top: 10px;
         }
         .accordion-category {
-            margin-bottom: 4px;
-            border-radius: 4px;
+            margin-bottom: 3px;
+            border-radius: 2px;
             overflow: hidden;
-            border: 1px solid var(--primary);
         }
         .accordion-header {
-            background-color: var(--primary);
+            background-color: var(--menu-blue);
             color: white;
-            padding: 12px 16px;
+            padding: 14px 16px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .accordion-header::after {
             content: "▼";
-            font-size: 10px;
+            font-size: 11px;
             transition: transform 0.2s;
         }
         .accordion-header.active::after {
@@ -257,14 +204,13 @@
         .accordion-content {
             display: none;
             background-color: #ffffff;
-            border-top: 1px solid var(--border);
         }
         .accordion-content.open {
             display: block;
         }
         .accordion-content a {
             display: block;
-            padding: 11px 16px;
+            padding: 12px 16px;
             color: var(--primary);
             text-decoration: none;
             border-bottom: 1px solid #f1f3f5;
@@ -276,7 +222,6 @@
             text-decoration: underline;
         }
 
-        /* Sayfa İçerikleri (Hakkımızda, İletişim vb.) */
         .content-page {
             display: none;
             background: #fff;
@@ -290,15 +235,6 @@
             font-size: 20px;
             margin-top: 0;
             margin-bottom: 15px;
-        }
-        .content-page h3 {
-            font-size: 15px;
-            color: var(--primary-dark);
-            margin-top: 20px;
-            margin-bottom: 8px;
-            background: #e9ecef;
-            padding: 6px 10px;
-            border-radius: 4px;
         }
         .content-page p {
             font-size: 13px;
@@ -343,114 +279,70 @@
 <main class="main-container">
     <div class="adsense-box">AdSense Yatay Reklam Alanı (Üst Alan)</div>
 
-    <!-- ANA SAYFA İÇERİĞİ -->
+    <!-- ANA SAYFA / AKORDİYON ALANI -->
     <div id="homeContent" class="content-page active">
-        <!-- Arama Çubuğu -->
+        <!-- Referans Ekran Görselindeki Arama Çubuğu -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Aradığınız hesaplama türünü yazın (Örn: Maaş, Kredi, Zekat)..." onkeyup="filterTools()">
-            <button onclick="filterTools()">Ara</button>
-        </div>
-
-        <!-- 4'lü Hızlı Erişim Kutuları -->
-        <div class="quick-grid">
-            <div class="quick-card" onclick="openCalculator('mass')">
-                <span>💰</span>
-                <h4>Maaş Hesaplaması</h4>
-            </div>
-            <div class="quick-card" onclick="openCalculator('kredi')">
-                <span>🏠</span>
-                <h4>Konut Kredisi</h4>
-            </div>
-            <div class="quick-card" onclick="openCalculator('zekat')">
-                <span>🌙</span>
-                <h4>Zekat Hesaplaması</h4>
-            </div>
-            <div class="quick-card" onclick="openCalculator('kdv')">
-                <span>🪙</span>
-                <h4>KDV Hesaplama</h4>
-            </div>
+            <input type="text" id="searchInput" placeholder="Kolay Arama: Örn. zekat, kredi, tyt..." onkeyup="filterTools()">
+            <button onclick="filterTools()">GİT</button>
         </div>
 
         <!-- Dinamik Hesaplama Paneli -->
         <div id="calcPanel" class="calc-panel">
             <h2 id="calcTitle">Hesaplama Başlığı</h2>
             <p id="calcDesc">İlgili bilgileri girerek anında hesaplama yapabilirsiniz.</p>
-            <div class="adsense-box">Yatay AdSense Reklam Alanı</div>
-            <div style="background: #e9ecef; padding: 6px 10px; font-weight: 600; font-size: 12px; margin-bottom: 12px; border-radius: 4px;">
-                HESAPLAMA PARAMETRELERİ
+            <div class="form-group">
+                <label id="label1">Değer 1:</label>
+                <input type="number" id="input1" placeholder="Değer giriniz">
             </div>
             <div class="form-group">
-                <label id="label1">Tutar (TL):</label>
-                <input type="number" id="input1" placeholder="Örn: 25000">
-            </div>
-            <div class="form-group">
-                <label id="label2">Oran / Yüzde (%):</label>
-                <input type="number" id="input2" placeholder="Örn: 20" step="0.01">
+                <label id="label2">Değer 2:</label>
+                <input type="number" id="input2" placeholder="Değer giriniz">
             </div>
             <button class="btn-hesapla" onclick="hesaplaYap()">Hesapla</button>
             <div id="sonucAlani" style="margin-top: 12px; font-weight: 600; color: var(--primary);"></div>
-
-            <!-- Soru-Cevap Bilgi Alanı -->
-            <div class="info-article" id="infoArticleBox">
-                <h3 id="articleTitle">Bu Hesaplama Hakkında Bilmeniz Gerekenler</h3>
-                <div class="qa-item">
-                    <h4 id="qa1h">1. Bu hesaplama nasıl yapılır?</h4>
-                    <p id="qa1p">İlgili parametreler girilerek matematiksel formüllerle anlık sonuç üretilir.</p>
-                </div>
-                <div class="qa-item">
-                    <h4 id="qa2h">2. Hangi kriterler dikkate alınır?</h4>
-                    <p id="qa2p">Güncel oranlar, yasal kesintiler ve temel parametreler baz alınır.</p>
-                </div>
-                <div class="qa-item">
-                    <h4 id="qa3h">3. Sonuçlar resmiyet taşır mı?</h4>
-                    <p id="qa3p">Araçlarımız bilgilendirme amaçlı olup, resmi kurumlarda teyit edilmelidir.</p>
-                </div>
-                <div class="qa-item">
-                    <h4 id="qa4h">4. Oranlar ne sıklıkla güncellenir?</h4>
-                    <p id="qa4p">Ekonomik ve yasal değişikliklere göre periyodik olarak güncellenmektedir.</p>
-                </div>
-                <div class="qa-item">
-                    <h4 id="qa5h">5. Neden bu aracı kullanmalıyım?</h4>
-                    <p id="qa5p">Finansal planlamalarınızı hızlı ve hatasız yapmanıza olanak tanır.</p>
-                </div>
-            </div>
         </div>
 
-        <!-- 11 Kategorili Tam Akordiyon Liste -->
+        <!-- 14 Kategorili Tam Mavi Akordiyon Liste (Dini Hesaplamalar Dahil) -->
         <div id="accordionSection">
-            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Kategorileri</h3>
             
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">1. Kredi Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Dini Hesaplamalar</div>
+                <div class="accordion-content">
+                    <a href="#" onclick="openCalculator('zekat'); return false;">Zekat Hesaplama</a>
+                    <a href="#" onclick="openCalculator('fitre'); return false;">Fitre Hesaplama</a>
+                    <a href="#" onclick="openCalculator('miras'); return false;">Miras Payı Hesaplama</a>
+                </div>
+            </div>
+
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Kredi Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('kredi'); return false;">Konut Kredisi Hesaplama</a>
                     <a href="#" onclick="openCalculator('kredi'); return false;">İhtiyaç Kredisi Hesaplama</a>
                     <a href="#" onclick="openCalculator('kredi'); return false;">Taşıt Kredisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Ticari Kredi Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">2. Finansal Hesaplamalar</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Finansal Hesaplamalar</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('mass'); return false;">Brütten Nete Maaş Hesaplama</a>
                     <a href="#" onclick="openCalculator('kdv'); return false;">KDV Hesaplama</a>
-                    <a href="#" onclick="openCalculator('zekat'); return false;">Zekat Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">3. Sınav Puanı Hesaplama</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Sınav Puanı Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">YKS / TYT Puan Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">LGS Puan Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">ALES Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">DGS Puan Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">4. Eğitim Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Eğitim Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">Not Ortalaması (AGNO) Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">Takdir / Teşekkür Belgesi Hesaplama</a>
@@ -458,141 +350,103 @@
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">5. Sağlık Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Sağlık Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">Vücut Kitle İndeksi (VKİ) Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">Günlük Kalori İhtiyacı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İdeal Kilo Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">6. Matematiksel Hesaplamalar</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Matematiksel Hesaplamalar</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">Yüzde Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">Oran Orantı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Karekök ve Üs Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">7. Zaman Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Zaman Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">Tarih Farkı / Gün Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">Yaş Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İş Günü Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">8. Muhasebe ve Maaş</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Muhasebesel Hesaplamalar</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('mass'); return false;">Kıdem ve İhbar Tazminatı Hesaplama</a>
                     <a href="#" onclick="openCalculator('mass'); return false;">Fazla Mesai Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Netten Brüte Maaş Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">9. Vergi Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Vergi Hesaplamaları</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('kdv'); return false;">MTV (Motorlu Taşıtlar Vergisi) Hesaplama</a>
                     <a href="#" onclick="openCalculator('kdv'); return false;">Gelir Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Emlak Vergisi Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">10. Ticaret ve Esnaf</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Ticari Hesaplamalar</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('kdv'); return false;">Kâr / Zarar Hesaplama</a>
                     <a href="#" onclick="openCalculator('kdv'); return false;">İskonto / İndirim Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Birim Maliyet Hesaplama</a>
                 </div>
             </div>
 
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">11. Hukuk Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">Hukuki Hesaplamalar</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('genel'); return false;">Yasal Faiz Hesaplama</a>
                     <a href="#" onclick="openCalculator('genel'); return false;">Kira Artış Oranı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kıdem Tazminatı Tavanı Hesaplama</a>
                 </div>
             </div>
+
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Sigorta Hesaplamaları</div>
+                <div class="accordion-content">
+                    <a href="#" onclick="openCalculator('genel'); return false;">Kasko Değer Listesi & Hesaplama</a>
+                    <a href="#" onclick="openCalculator('genel'); return false;">Trafik Sigortası Hesaplama</a>
+                </div>
+            </div>
+
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Seyahat Hesaplamaları</div>
+                <div class="accordion-content">
+                    <a href="#" onclick="openCalculator('genel'); return false;">YAKIT (Benzin / Mazot) Maliyet Hesaplama</a>
+                    <a href="#" onclick="openCalculator('genel'); return false;">Mesafe ve Süre Hesaplama</a>
+                </div>
+            </div>
+
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Diğer Hesaplamalar</div>
+                <div class="accordion-content">
+                    <a href="#" onclick="openCalculator('genel'); return false;">Özel Sayı ve Birim Çeviriciler</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- DETAYLI HAKKIMIZDA SAYFASI -->
+    <!-- HAKKINDA, İLETİŞİM VB. SAYFALAR -->
     <div id="hakkimizdaContent" class="content-page">
         <h2>parahesap.site Hakkında</h2>
-        <p>parahesap.site sitesi, insanların ihtiyaçları gözetilerek günlük yaşamda sıkça kullanılan hesaplamaları internet üzerinde tek bir çatı altında toplamayı kendine görev edinmiş bir projedir. Farklı alanlardaki pratik hesaplama araçlarıyla siz değerli kullanıcılarımızın hizmetine sunulmuştur.</p>
-        
-        <h3>Misyonumuz</h3>
-        <p>Pratik hesaplama çözümlerimizdeki hizmet kalitemizi kullanıcılarımızın ihtiyaçları doğrultusunda sürekli olarak daha üst seviyelere taşımak.</p>
-        
-        <h3>Vizyonumuz</h3>
-        <p>Ücretsiz online hesaplama hizmetlerimizle sağladığımız güvenilirlik ve yüksek hizmet kalitesi ile internet kullanıcılarının hesap konusundaki ilk ve tek tercihi olmak.</p>
-        
-        <h3>Kalite Politikamız</h3>
-        <p>Tüm hesaplama araçlarını tek bir noktada toplamayı kendine görev edinen projede, verilen hizmet kalitesinin en yüksek seviyede olması için gerekli optimizasyon ve analiz süreçleri sürekli olarak tekrarlanmaktadır.</p>
+        <p>Günlük yaşamda ihtiyaç duyulan tüm finansal, dini ve pratik hesaplamaları tek çatı altında toplar.</p>
     </div>
-
-    <!-- DETAYLI İLETİŞİM SAYFASI -->
     <div id="iletisimContent" class="content-page">
         <h2>İletişim</h2>
-        <p>Aşağıdaki form aracılığıyla öneri, görüş, istek ve sorunlarınızı bize iletebilirsiniz. Gönderdiğiniz mesaj geri dönüş gerektiriyorsa, destek ekibimizin sizinle irtibata geçebilmesi için e-posta adresinizi belirtmeyi unutmayınız.</p>
-        
-        <div style="background: #f8f9fa; border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-top: 15px;">
-            <h3 style="margin-top:0; background:none; padding:0; color:var(--primary);">İletişim Formu</h3>
-            <div class="form-group">
-                <label>Mesajınızın Konusu:</label>
-                <select>
-                    <option>Genel</option>
-                    <option>Yardım</option>
-                    <option>Hata Bildirimi</option>
-                    <option>Öneri</option>
-                    <option>İstek</option>
-                    <option>Reklam İş Birliği</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Adınız:</label>
-                <input type="text" placeholder="Adınız Soyadınız">
-            </div>
-            <div class="form-group">
-                <label>E-posta Adresiniz:</label>
-                <input type="email" placeholder="ornek@mail.com">
-            </div>
-            <div class="form-group">
-                <label>Mesajınız:</label>
-                <textarea rows="5" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
-            </div>
-            <button class="btn-hesapla" onclick="alert('Mesajınız başarıyla gönderildi. Teşekkür ederiz!')">Gönder</button>
-        </div>
+        <p>Görüş ve önerileriniz için bize ulaşabilirsiniz.</p>
     </div>
-
-    <!-- DETAYLI GİZLİLİK POLİTİKASI SAYFASI -->
     <div id="gizlilikContent" class="content-page">
         <h2>Gizlilik Politikası</h2>
-        <p>Bu web sitesini ziyaret etmeniz ve bu site vasıtasıyla sunduğumuz hizmetlerden yararlanmanız sırasında, size ve talep ettiğiniz hizmetlere ilişkin olarak elde ettiğimiz bilgilerin ne şekilde kullanılacağı ve korunacağı işbu Gizlilik Politikası'nda belirtilen şartlara tabidir.</p>
-        
-        <h3>1. Bilgilerin Kullanılması ve Korunması</h3>
-        <p>Web sitemiz, girilen bilgilerin güvenliği açısından SSL sistemi ile donatılmıştır. Bu nedenle, bu bilgiler internetteki diğer kişiler tarafından görülemez. Üyelerimizle ilgili olarak elde ettiğimiz bilgiler, ticari sırlarımıza gösterdiğimiz özen derecesinde gizli olarak korunmaktadır.</p>
-        
-        <h3>2. Bilgi Kaynakları</h3>
-        <p>Sizinle ilgili olarak elde ettiğimiz bilgiler, size en uygun hizmeti sunmamız ve bu hizmetlerin kalitesini sürekli olarak artırmamızı temin etmeye yöneliktir.</p>
+        <p>Verileriniz güvenle korunmaktadır.</p>
     </div>
-
-    <!-- DETAYLI KULLANIM ŞARTLARI SAYFASI -->
     <div id="kullanimContent" class="content-page">
         <h2>Kullanım Şartları</h2>
-        <p>Bu siteyi kullanmaya başladıktan sonra aşağıda yazılmış olan tüm hususları tamamen anlamış ve kabul etmiş sayılırsınız. parahesap.site bu maddelerde önceden haber vermeksizin değişiklik yapabilir.</p>
-        
-        <h3>Telif Hakları</h3>
-        <p>Sitedeki yazı ve resimlerin hiçbiri tamamen veya kısmen, izin alınmadan herhangi bir basın yayın organında veya internet ortamında kullanılamaz. Aksi takdirde 5846 sayılı Fikir ve Sanat Eserleri Kanunu ihlali söz konusu olup yasal işlem yapılabilir.</p>
-        
-        <h3>Sorumluluk Reddi</h3>
-        <p>Bu sitede sunulan tüm hesaplama araçları ve sonuçlar bilgilendirme amaçlıdır. Resmi işlemlerde doğabilecek farklılıklardan site yönetimi hiçbir şekilde sorumlu tutulamaz.</p>
+        <p>Site kullanım koşulları hakkındadır.</p>
     </div>
 
 </main>
@@ -623,11 +477,7 @@
 
     function toggleTumHesaplamalar() {
         showHome();
-        let section = document.getElementById('accordionSection');
-        section.classList.toggle('active');
-        if(section.classList.contains('active')) {
-            window.scrollTo({top: section.offsetTop - 60, behavior: 'smooth'});
-        }
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     function toggleAccordion(header) {
@@ -648,29 +498,24 @@
         document.getElementById('input1').value = "";
         document.getElementById('input2').value = "";
 
-        if(type === 'mass') {
-            title.innerHTML = "Maaş / Zam Hesaplaması";
-            desc.innerHTML = "Mevcut maaşınızı ve beklenen oranları girerek hesaplayın.";
-            l1.innerHTML = "Mevcut Tutar / Maaş (TL):";
-            l2.innerHTML = "Beklenen Zam Oranı (%):";
-        } else if(type === 'kredi') {
-            title.innerHTML = "Konut Kredisi Hesaplaması";
-            desc.innerHTML = "Kredi tutarı ve faiz oranını girerek taksit tutarını hesaplayın.";
-            l1.innerHTML = "Ana Tutar / Kredi Tutarı (TL):";
-            l2.innerHTML = "Aylık Oran / Faiz (%):";
-        } else if(type === 'zekat') {
+        if(type === 'zekat') {
             title.innerHTML = "Zekat Hesaplaması";
-            desc.innerHTML = "Toplam varlıklarınızı girerek zekat miktarını öğrenin.";
-            l1.innerHTML = "Toplam Varlık / Nakit (TL):";
+            desc.innerHTML = "Nakit, altın ve ticari varlıklarınızı girerek %2.5 zekat oranına göre hesaplayın.";
+            l1.innerHTML = "Toplam Varlık / Nakit / Altın Değeri (TL):";
             l2.innerHTML = "Borçlar (TL):";
-        } else if(type === 'kdv') {
-            title.innerHTML = "KDV Hesaplama";
-            desc.innerHTML = "Tutar ve KDV oranını girerek hesaplama yapın.";
-            l1.innerHTML = "Tutar (TL):";
-            l2.innerHTML = "KDV Oranı (%):";
+        } else if(type === 'fitre') {
+            title.innerHTML = "Fitre Hesaplaması";
+            desc.innerHTML = "Güncel fitre bedeli ile aile birey sayısını hesaplayın.";
+            l1.innerHTML = "Günlük Fitre Tutarı (TL):";
+            l2.innerHTML = "Aile Birey Sayısı:";
+        } else if(type === 'miras') {
+            title.innerHTML = "Miras Payı Hesaplaması";
+            desc.innerHTML = "Bırakılan toplam tereke ve mirasçı durumuna göre hesaplama.";
+            l1.innerHTML = "Toplam Tereke / Miras Tutarı (TL):";
+            l2.innerHTML = "Kişi / Varis Katsayısı:";
         } else {
-            title.innerHTML = "Genel Hesaplama Aracı";
-            desc.innerHTML = "İstenen değerleri girerek hesaplayın.";
+            title.innerHTML = "Hesaplama Aracı";
+            desc.innerHTML = "İlgili değerleri girerek hesaplama yapın.";
             l1.innerHTML = "Değer 1:";
             l2.innerHTML = "Değer 2:";
         }
@@ -683,23 +528,29 @@
         let v2 = parseFloat(document.getElementById('input2').value);
         let sonuc = document.getElementById('sonucAlani');
 
-        if(isNaN(v1) || isNaN(v2)) {
-            sonuc.innerHTML = "<span style='color:red;'>Lütfen tüm alanları eksiksiz doldurunuz!</span>";
+        if(isNaN(v1)) {
+            sonuc.innerHTML = "<span style='color:red;'>Lütfen geçerli bir tutar giriniz!</span>";
             return;
         }
 
-        let hesap = (v1 * (1 + v2 / 100)).toFixed(2);
-        sonuc.innerHTML = `Hesaplama Sonucu (Tahmini): ${hesap} TL`;
+        let hesap = 0;
+        if(document.getElementById('calcTitle').innerHTML.includes("ZEKAT")) {
+            let netVarlik = v1 - (isNaN(v2) ? 0 : v2);
+            hesap = netVarlik > 0 ? (netVarlik * 0.025).toFixed(2) : 0;
+            sonuc.innerHTML = `Ödenecek Zekat Tutarı: ${hesap} TL`;
+        } else if(document.getElementById('calcTitle').innerHTML.includes("FİTRE")) {
+            let kiler = isNaN(v2) ? 1 : v2;
+            hesap = (v1 * kiler * 30).toFixed(2);
+            sonuc.innerHTML = `Toplam Fitre (Ramazan Boyunca): ${hesap} TL`;
+        } else {
+            hesap = (v1 * 1.20).toFixed(2);
+            sonuc.innerHTML = `Hesaplama Sonucu: ${hesap} TL`;
+        }
     }
 
     function filterTools() {
         let input = document.getElementById('searchInput').value.toLowerCase();
         let categories = document.querySelectorAll('.accordion-category');
-        let section = document.getElementById('accordionSection');
-
-        if(input.length > 0) {
-            section.classList.add('active');
-        }
 
         categories.forEach(cat => {
             let links = cat.querySelectorAll('.accordion-content a');
