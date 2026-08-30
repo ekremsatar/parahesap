@@ -8,279 +8,377 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Senin CSS'ini ezmeden ek açılır menü ve rozet uyarlamaları */
-        .dropdown-container {
-            position: relative;
-            display: inline-block;
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border: #dee2e6;
         }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background: #ffffff;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            padding: 10px 0;
-            min-width: 240px;
-            z-index: 1000;
-            max-height: 350px;
-            overflow-y: auto;
-        }
-        .dropdown-container:hover .dropdown-menu {
-            display: block;
-        }
-        .dropdown-menu a {
-            display: block;
-            padding: 8px 16px;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
             color: var(--text-main);
-            font-size: 13px;
-            font-weight: 500;
-            border: none;
-            background: transparent;
-            border-radius: 0;
-            text-align: left;
+            margin: 0;
+            padding: 0;
         }
-        .dropdown-menu a:hover {
-            background: var(--bg-gradient);
+        header.site {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
             color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-style: italic;
+            font-weight: normal;
+        }
+        .btn-tum {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        .search-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+        .search-box button {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        /* Accordion Categories */
+        .accordion-category {
+            margin-bottom: 2px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--primary);
+        }
+        .accordion-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .accordion-header:hover {
+            background-color: var(--primary-dark);
+        }
+        .accordion-header::after {
+            content: "▼";
+            font-size: 11px;
+            transition: transform 0.2s;
+        }
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            display: none;
+            background-color: #ffffff;
+            border-top: 1px solid var(--border);
+        }
+        .accordion-content.open {
+            display: block;
+        }
+        .accordion-content a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid #f1f3f5;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .accordion-content a:hover {
+            background-color: var(--bg-light);
+            text-decoration: underline;
+        }
+        .accordion-content a:last-child {
+            border-bottom: none;
         }
         .badge-yeni {
-            background-color: #ff6b35;
-            color: #fff;
-            font-size: 9px;
-            padding: 2px 5px;
+            background-color: #e83e8c;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
             border-radius: 4px;
             margin-left: 6px;
             font-weight: 700;
         }
-        nav ul {
-            align-items: center;
+        footer {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
         }
     </style>
 </head>
 <body>
 
 <header class="site">
-    <div class="wrap nav-wrap">
+    <div class="nav-wrap">
         <a href="index.html" class="brand">
-            <span class="brand-dot"></span>parahesap.site
+            parahesap.site
+            <span>Anında hesapla, geleceğini planla</span>
         </a>
-        
-        <nav>
-            <ul>
-                <li class="dropdown-container">
-                    <a href="#">Kredi ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="kredi-hesaplama.html">Konut Kredisi Hesaplama</a>
-                        <a href="kredi-hesaplama.html">İhtiyaç Kredisi Hesaplama</a>
-                        <a href="kredi-hesaplama.html">Taşıt Kredisi Hesaplama</a>
-                        <a href="kredi-hesaplama.html">Ticari Kredi Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Finans ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="faiz-hesaplama.html">Altın Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Bileşik Büyüme Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Birikim Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Bono Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Döviz Hesaplama</a>
-                        <a href="enflasyon-hesaplama.html">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">Eurobond Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">Faiz Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Geçmiş Altın Fiyatları Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Geçmiş Döviz Kurları Hesaplama</a>
-                        <a href="faiz-hesaplama.html">IBAN Doğrulama</a>
-                        <a href="faiz-hesaplama.html">İç ve Dış İskonto Hesaplama</a>
-                        <a href="faiz-hesaplama.html">İç Verim Oranı Hesaplama</a>
-                        <a href="kira-artis-orani.html">Kira Artış Oranı Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">Net Bugünkü Değer Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Ortalama Vade Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Reel Getiri Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Vadeli Mevduat Faizi Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Sınav ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">AGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">ALES Puan Hesaplama</a>
-                        <a href="test.html">DGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Ehliyet Sınavı Puan Hesaplama</a>
-                        <a href="test.html">Hâkim ve Savcı Yrd. Sınavı <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">KPSS Puan Hesaplama</a>
-                        <a href="test.html">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">MSÜ Puan Hesaplama</a>
-                        <a href="test.html">OBP Okul Puanı Hesaplama</a>
-                        <a href="test.html">PMYO Puan Hesaplama</a>
-                        <a href="test.html">POMEM Puan Hesaplama</a>
-                        <a href="test.html">TUS Puan Hesaplama</a>
-                        <a href="test.html">TYT Puan Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Üniversite (YKS) Taban Puanları <span class="badge-yeni">yeni</span></a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Eğitim ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Ders Notu Hesaplama</a>
-                        <a href="test.html">E-Okul Not Hesaplama</a>
-                        <a href="test.html">Lise Ortalama Hesaplama</a>
-                        <a href="test.html">Takdir Teşekkür Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Üniversite Not Ortalaması Hesaplama</a>
-                        <a href="test.html">Vize Final Ortalama Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Sağlık ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Adet Günü Hesaplama</a>
-                        <a href="test.html">Bazal Metabolizma Hızı <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Bel / Kalça Oranı <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Gebelik Hesaplama</a>
-                        <a href="test.html">Günlük Kalori İhtiyacı</a>
-                        <a href="test.html">Günlük Su İhtiyacı Hesaplama</a>
-                        <a href="test.html">İdeal Kilo Hesaplama</a>
-                        <a href="test.html">Vücut Kitle Endeksi Hesaplama</a>
-                        <a href="test.html">Yaşam Süresi Hesaplama <span class="badge-yeni">yeni</span></a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Matematik ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Alan Hesaplama</a>
-                        <a href="test.html">Altın Oran Hesaplama</a>
-                        <a href="test.html">Basit Faiz Hesaplama</a>
-                        <a href="test.html">Çevre Hesaplama</a>
-                        <a href="test.html">EBOB EKOK Hesaplama</a>
-                        <a href="test.html">Metrekare Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Sayı Okunuşu Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Standart Sapma Hesaplama</a>
-                        <a href="test.html">Üslü Sayı Hesaplama</a>
-                        <a href="test.html">Yüzde Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Zaman ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Hafta Hesaplama</a>
-                        <a href="test.html">İki Tarih Arasındaki Gün</a>
-                        <a href="test.html">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Kaç Gün Kaldı Hesaplama</a>
-                        <a href="test.html">Saat Farkı Hesaplama</a>
-                        <a href="test.html">Yaş Hesaplama</a>
-                        <a href="test.html">Zaman Farkı Hesaplama <span class="badge-yeni">yeni</span></a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Muhasebe ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Amortisman Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Brütten Nete Maaş Hesaplama</a>
-                        <a href="test.html">Emeklilik Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">Fazla Mesai Ücreti Hesaplama</a>
-                        <a href="faiz-hesaplama.html">İşsizlik Maaşı Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Kıdem Tazminatı Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Netten Brüte Maaş Hesaplama</a>
-                        <a href="faiz-hesaplama.html">Yıllık İzin Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Vergi ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Emlak Vergisi Hesaplama</a>
-                        <a href="test.html">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">KDV Hesaplama</a>
-                        <a href="test.html">Kira Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="faiz-hesaplama.html">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Ticaret ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Desi Hesaplama</a>
-                        <a href="test.html">Fiyat Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">İndirim Hesaplama</a>
-                        <a href="test.html">Kâr Hesaplama</a>
-                        <a href="test.html">Kargo Ücreti Hesaplama <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Tapu Harcı Hesaplama</a>
-                        <a href="test.html">Zam Hesaplama</a>
-                    </div>
-                </li>
-
-                <li class="dropdown-container">
-                    <a href="#">Hukuk ▼</a>
-                    <div class="dropdown-menu">
-                        <a href="test.html">Arabuluculuk Ücreti Hesaplama</a>
-                        <a href="test.html">Hukuki Süre Hesaplama</a>
-                        <a href="test.html">İcra Masrafı Hesaplama</a>
-                        <a href="test.html">Uzlaştırmacı Ücreti <span class="badge-yeni">yeni</span></a>
-                        <a href="test.html">Vekâlet Ücreti Hesaplama</a>
-                        <a href="test.html">Yasal Faiz Hesaplama <span class="badge-yeni">yeni</span></a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <a href="test.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
     </div>
 </header>
 
-<!-- Akan Canlı Kur Bandı -->
-<div class="ticker-bar">
-    <div class="ticker-track">
-        <div class="ticker-item">ALTIN: <strong>2.450 TL</strong> <span>▲</span></div>
-        <div class="ticker-item">USD/TRY: <strong>32.50 TL</strong> <span>▲</span></div>
-        <div class="ticker-item">EUR/TRY: <strong>35.20 TL</strong> <span>▼</span></div>
-        <div class="ticker-item">ENFLASYON: <strong>%75.5</strong> <span>-</span></div>
-        <div class="ticker-item">ALTIN: <strong>2.450 TL</strong> <span>▲</span></div>
-        <div class="ticker-item">USD/TRY: <strong>32.50 TL</strong> <span>▲</span></div>
-        <div class="ticker-item">EUR/TRY: <strong>35.20 TL</strong> <span>▼</span></div>
-        <div class="ticker-item">ENFLASYON: <strong>%75.5</strong> <span>-</span></div>
-    </div>
-</div>
-
-<main class="wrap container">
-    <div class="calc-header">
-        <h1>Para Hesap Portalına Hoş Geldiniz</h1>
-        <p>İstediğiniz kategoriye yukarıdaki menüden imlecinizi götürerek ulaşabilir veya aşağıdaki arama çubuğunu kullanabilirsiniz.</p>
+<main class="main-container">
+    <!-- Arama Çubuğu -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Kolay Arama (Örn: Kredi, KDV, Zekat)..." onkeyup="filterTools()">
+        <button onclick="filterTools()">GİT</button>
     </div>
 
-    <!-- Arama Alanı -->
-    <div class="calc-form">
-        <div class="input-card">
-            <label>Hesaplama Aracı Ara</label>
-            <input type="text" id="searchInput" placeholder="Örn: Kredi, KDV, Enflasyon, YKS..." onkeyup="filterTools()">
+    <!-- Akordiyon Kategoriler (3. Resim Standardı) -->
+    <div id="categoryContainer">
+        
+        <!-- 1. Kredi Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">1. Kredi Hesaplamaları</div>
+            <div class="accordion-content open">
+                <a href="kredi-hesaplama.html">Konut Kredisi Hesaplama</a>
+                <a href="kredi-hesaplama.html">İhtiyaç Kredisi Hesaplama</a>
+                <a href="kredi-hesaplama.html">Taşıt Kredisi Hesaplama</a>
+                <a href="kredi-hesaplama.html">Ticari Kredi Hesaplama</a>
+            </div>
         </div>
+
+        <!-- 2. Finansal Hesaplamalar -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">2. Finansal Hesaplamalar</div>
+            <div class="accordion-content">
+                <a href="faiz-hesaplama.html">Brütten Nete Maaş Hesaplama</a>
+                <a href="enflasyon-hesaplama.html">Enflasyon Hesaplama</a>
+                <a href="test.html">Zam Hesaplama</a>
+                <a href="kdv-hesaplama.html">KDV Hesaplama</a>
+                <a href="faiz-hesaplama.html">Altın Hesaplama</a>
+                <a href="faiz-hesaplama.html">Döviz Hesaplama</a>
+                <a href="faiz-hesaplama.html">Vadeli Mevduat Faizi Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 3. Sınav Puanı Hesaplama -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">3. Sınav Puanı Hesaplama</div>
+            <div class="accordion-content">
+                <a href="test.html">YKS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">LGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">KPSS Puan Hesaplama</a>
+                <a href="test.html">ALES Puan Hesaplama</a>
+                <a href="test.html">DGS Puan Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">MSÜ Puan Hesaplama</a>
+                <a href="test.html">Ehliyet Sınavı Puan Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 4. Eğitim Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">4. Eğitim Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="test.html">Ortalama (Not) Hesaplama</a>
+                <a href="test.html">Takdir Teşekkür Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">Üniversite Not Ortalaması Hesaplama</a>
+                <a href="test.html">Vize Final Ortalama Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 5. Sağlık Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">5. Sağlık Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="test.html">Vücut Kitle Endeksi (VKİ)</a>
+                <a href="test.html">Günlük Kalori İhtiyacı</a>
+                <a href="test.html">İdeal Kilo Hesaplama</a>
+                <a href="test.html">Gebelik Hesaplama</a>
+                <a href="test.html">Bazal Metabolizma Hızı <span class="badge-yeni">yeni</span></a>
+            </div>
+        </div>
+
+        <!-- 6. Matematiksel Hesaplamalar -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">6. Matematiksel Hesaplamalar</div>
+            <div class="accordion-content">
+                <a href="test.html">Yüzde Hesaplama</a>
+                <a href="test.html">Alan Hesaplama</a>
+                <a href="test.html">Çevre Hesaplama</a>
+                <a href="test.html">EBOB EKOK Hesaplama</a>
+                <a href="test.html">Standart Sapma Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 7. Zaman Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">7. Zaman Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="test.html">Yaş Hesaplama</a>
+                <a href="test.html">İki Tarih Arasındaki Gün</a>
+                <a href="test.html">İş Günü Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">Saat Farkı Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 8. Muhasebe ve Maaş -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">8. Muhasebe ve Maaş</div>
+            <div class="accordion-content">
+                <a href="test.html">Kıdem Tazminatı Hesaplama</a>
+                <a href="test.html">İhbar Tazminatı Hesaplama</a>
+                <a href="test.html">İşsizlik Maaşı Hesaplama</a>
+                <a href="test.html">Netten Brüte Maaş Hesaplama</a>
+                <a href="test.html">Yıllık İzin Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 9. Vergi Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">9. Vergi Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="kdv-hesaplama.html">KDV Hesaplama</a>
+                <a href="test.html">ÖTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">MTV Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">Gelir Vergisi Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">Emlak Vergisi Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 10. Ticaret ve Esnaf -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">10. Ticaret ve Esnaf</div>
+            <div class="accordion-content">
+                <a href="test.html">Kâr Hesaplama</a>
+                <a href="test.html">İndirim Hesaplama</a>
+                <a href="test.html">Zam Hesaplama</a>
+                <a href="test.html">Desi Hesaplama</a>
+                <a href="test.html">Tapu Harcı Hesaplama</a>
+            </div>
+        </div>
+
+        <!-- 11. Hukuk Hesaplamaları -->
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">11. Hukuk Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="test.html">Yasal Faiz Hesaplama <span class="badge-yeni">yeni</span></a>
+                <a href="test.html">İcra Masrafı Hesaplama</a>
+                <a href="test.html">Vekâlet Ücreti Hesaplama</a>
+                <a href="test.html">Arabuluculuk Ücreti Hesaplama</a>
+            </div>
+        </div>
+
     </div>
 </main>
 
-<footer style="text-align: center; padding: 30px 0; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px;">
-    <div style="margin-bottom: 10px;">
-        <a href="hakkimizda.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Hakkımızda</a> | 
-        <a href="iletisim.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">İletişim</a> | 
-        <a href="gizlilik-politikasi.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px;">Gizlilik Politikası</a>
+<footer>
+    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
+    <div>
+        <a href="hakkimizda.html">Hakkımızda</a> | 
+        <a href="iletisim.html">İletişim</a> | 
+        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
+        <a href="kullanim-sartlari.html">Kullanım Şartları</a>
     </div>
-    <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
+    <p style="margin-top: 10px;">© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
 </footer>
 
 <script>
+    function toggleAccordion(header) {
+        header.classList.toggle('active');
+        let content = header.nextElementSibling;
+        content.classList.toggle('open');
+    }
+
     function filterTools() {
         let input = document.getElementById('searchInput').value.toLowerCase();
-        let links = document.querySelectorAll('.dropdown-menu a');
-        links.forEach(link => {
-            let text = link.textContent || link.innerText;
-            if (text.toLowerCase().indexOf(input) > -1) {
-                link.style.display = "";
+        let categories = document.querySelectorAll('.accordion-category');
+
+        categories.forEach(cat => {
+            let links = cat.querySelectorAll('.accordion-content a');
+            let header = cat.querySelector('.accordion-header');
+            let content = cat.querySelector('.accordion-content');
+            let matchFound = false;
+
+            links.forEach(link => {
+                let text = link.textContent || link.innerText;
+                if (text.toLowerCase().indexOf(input) > -1) {
+                    link.style.display = "";
+                    matchFound = true;
+                } else {
+                    link.style.display = "none";
+                }
+            });
+
+            if (input === "") {
+                cat.style.display = "";
+                content.classList.remove('open');
+                header.classList.remove('active');
+            } else if (matchFound) {
+                cat.style.display = "";
+                content.classList.add('open');
+                header.classList.add('active');
             } else {
-                link.style.display = "none";
+                cat.style.display = "none";
             }
         });
     }
