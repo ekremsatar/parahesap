@@ -15,7 +15,7 @@
             --text-muted: #666666;
             --border: #dee2e6;
             --accent: #e83e8c;
-            --red-brand: #d90429;
+            --flag-red: #e30a17; /* Bayrak Kırmızısı */
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -42,14 +42,20 @@
         .brand {
             font-size: 22px;
             font-weight: 700;
-            color: var(--red-brand) !important; /* Başlık Kırmızı */
             text-decoration: none;
             display: flex;
             flex-direction: column;
         }
+        /* parahesap Mavi, .site Bayrak Kırmızısı */
+        .brand-text {
+            color: var(--primary);
+        }
+        .brand-ext {
+            color: var(--flag-red);
+        }
         .brand span {
             font-size: 11px;
-            color: var(--red-brand) !important; /* Slogan Kırmızı ve Tırnaklı */
+            color: var(--flag-red) !important; /* Slogan Tırnak içinde Kırmızı */
             font-style: italic;
             font-weight: 600;
         }
@@ -267,6 +273,31 @@
             background-color: var(--bg-light);
             text-decoration: underline;
         }
+        /* Sayfa Bilgi Modalı (Hakkımızda vb. için) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
         footer {
             text-align: center;
             padding: 30px 16px;
@@ -276,9 +307,14 @@
             margin-top: 40px;
         }
         footer a {
-            color: var(--text-muted);
+            color: var(--primary);
             text-decoration: none;
             margin: 0 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -287,7 +323,7 @@
 <header class="site">
     <div class="nav-wrap">
         <a href="index.html" class="brand">
-            parahesap.site
+            <div><span class="brand-text">parahesap</span><span class="brand-ext">.site</span></div>
             <span>"Anında hesapla, geleceğini planla"</span>
         </a>
         <button class="btn-tum" onclick="toggleTumHesaplamalar()">Tüm Hesaplamalar ▼</button>
@@ -368,7 +404,7 @@
         </div>
     </div>
 
-    <!-- 11 Kategorili Tam Akordiyon Liste (Tüm Hesaplamalar Butonuyla Açılır) -->
+    <!-- 11 Kategorili Tam Akordiyon Liste -->
     <div id="accordionSection">
         <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Kategorileri</h3>
         
@@ -474,13 +510,22 @@
     </div>
 </main>
 
+<!-- Bilgi Modalları (Hakkımızda, İletişim, Gizlilik, Kullanım Şartları) -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle" style="color: var(--primary); margin-top:0;">Başlık</h3>
+        <p id="modalText" style="font-size: 13px; color: var(--text-main); line-height: 1.5;"></p>
+    </div>
+</div>
+
 <footer>
-    <p style="color: var(--red-brand); font-style: italic; font-weight: 600; margin-bottom: 8px;">"Anında hesapla, geleceğini planla"</p>
+    <p style="color: var(--flag-red); font-style: italic; font-weight: 600; margin-bottom: 8px;">"Anında hesapla, geleceğini planla"</p>
     <div>
-        <a href="#">Hakkımızda</a> | 
-        <a href="#">İletişim</a> | 
-        <a href="#">Gizlilik Politikası</a> | 
-        <a href="#">Kullanım Şartları</a>
+        <a onclick="showPage('hakkimizda')">Hakkımızda</a> | 
+        <a onclick="showPage('iletisim')">İletişim</a> | 
+        <a onclick="showPage('gizlilik')">Gizlilik Politikası</a> | 
+        <a onclick="showPage('kullanim')">Kullanım Şartları</a>
     </div>
     <p style="margin-top: 8px;">© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
 </footer>
@@ -512,7 +557,6 @@
         document.getElementById('input1').value = "";
         document.getElementById('input2').value = "";
 
-        // İçerik ve Soru-Cevap metinlerini türe göre dinamik dolduruyoruz
         if(type === 'mass') {
             title.innerHTML = "Maaş / Zam Hesaplaması";
             desc.innerHTML = "Mevcut maaşınızı ve beklenen oranları girerek hesaplayın.";
@@ -658,6 +702,32 @@
                 cat.style.display = "none";
             }
         });
+    }
+
+    function showPage(type) {
+        let modal = document.getElementById('infoModal');
+        let title = document.getElementById('modalTitle');
+        let text = document.getElementById('modalText');
+
+        modal.style.display = 'flex';
+
+        if(type === 'hakkimizda') {
+            title.innerHTML = "Hakkımızda";
+            text.innerHTML = "parahesap.site, kullanıcıların günlük finansal, ticari, eğitim ve yaşam hesaplamalarını en hızlı, doğru ve pratik şekilde yapabilmesi amacıyla kurulmuş ücretsiz bir dijital hesaplama platformudur.";
+        } else if(type === 'iletisim') {
+            title.innerHTML = "İletişim";
+            text.innerHTML = "Soru, öneri ve reklam iş birlikleri için bizimle iletişim kanalları üzerinden irtibat kurabilirsiniz. Geri bildirimleriniz sitemizi geliştirmemiz için bizim çok değerlidir.";
+        } else if(type === 'gizlilik') {
+            title.innerHTML = "Gizlilik Politikası";
+            text.innerHTML = "Ziyaretçilerimizin gizliliği bizim için önemlidir. Sitemizde sunulan hizmetler sırasında paylaşılan veriler ve çerez politikaları uluslararası standartlara uygun olarak korunmaktadır.";
+        } else if(type === 'kullanim') {
+            title.innerHTML = "Kullanım Şartları";
+            text.innerHTML = "Bu sitede sunulan tüm hesaplama araçları ve veriler bilgilendirme amaçlıdır. Resmi işlemlerde doğabilecek farklılıklardan site yönetimi sorumlu tutulamaz.";
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('infoModal').style.display = 'none';
     }
 </script>
 
