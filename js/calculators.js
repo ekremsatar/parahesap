@@ -1,28 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname.toLowerCase();
 
-    // Sayfada hesaplama formunun veya parametrelerin bulunduğu ana alanı bul
-    let formAlani = document.querySelector("form") || document.getElementById("hesaplamaAraci");
-
-    if (!formAlani) {
-        // Eğer özel bir id yoksa, "HESAPLAMA PARAMETRELERİ" başlığının altındaki alanı bulmaya çalış
-        const basliklar = document.querySelectorAll("h1, h2, h3, h4, h5, .card, .container div");
-        for (let el of basliklar) {
-            if (el.textContent.includes("HESAPLAMA PARAMETRELERİ")) {
-                formAlani = el.nextElementSibling || el.parentElement;
-                break;
+    // 1. Sayfada hardcoded (statik) olarak bulunan eski "Ana Değer" veya "Oran" kutularını bul ve DOM'dan tamamen sil
+    const allElements = document.querySelectorAll("label, div, span, p");
+    allElements.forEach(el => {
+        if (el.textContent.includes("Ana Değer") || el.textContent.includes("Oran / Yüzde")) {
+            const box = el.closest(".mb-3") || el.closest(".form-group") || el.parentElement;
+            if (box && box !== document.body) {
+                box.remove();
             }
         }
-    }
+    });
 
-    // Hiçbiri bulunamazsa içeriği değiştirmek için uygun bir yer bul
-    if (!formAlani) {
-        formAlani = document.querySelector(".col-md-8, .content, main") || document.body;
-    }
-
+    // 2. URL'ye göre gelecek yeni ve doğru parametreler
     let htmlIcerik = "";
 
-    // URL'ye göre sayfanın özel inputları
     if (path.includes("kredi") || path.includes("konut")) {
         htmlIcerik = `
             <div class="mb-3"><label class="form-label">Kredi Tutarı (TL)</label><input type="number" id="tutar" class="form-control" placeholder="Örn: 250000"></div>
@@ -60,16 +52,28 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // Parametre alanını tamamen yenile ve sadece doğru olanları koy
-    formAlani.innerHTML = `
-        <div id="dinamikFormAlani">
+    // 3. Sayfadaki eski "Hesapla" butonunun veya form alanının olduğu yeri bulup içeriği yenile
+    let hedefAlan = document.getElementById("hesaplamaAraci") || document.querySelector("form");
+
+    if (!hedefAlan) {
+        const btnlar = document.querySelectorAll("button, input[type='submit']");
+        for (let b of btnlar) {
+            if (b.textContent.includes("Hesapla") || b.value?.includes("Hesapla")) {
+                hedefAlan = b.closest("div") || b.parentElement;
+                break;
+            }
+        }
+    }
+
+    if (hedefAlan) {
+        hedefAlan.innerHTML = `
             ${htmlIcerik}
             <button id="hesaplaBtn" class="btn btn-primary w-100 mt-2">Hesapla</button>
             <div id="sonucAlani" class="mt-3"></div>
-        </div>
-    `;
+        `;
 
-    document.getElementById("hesaplaBtn").addEventListener("click", function () {
-        document.getElementById("sonucAlani").innerHTML = `<div class="alert alert-success">Hesaplama başarıyla yapıldı.</div>`;
-    });
+        document.getElementById("hesaplaBtn").addEventListener("click", function () {
+            document.getElementById("sonucAlani").innerHTML = `<div class="alert alert-success">Hesaplama başarıyla yapıldı.</div>`;
+        });
+    }
 });
