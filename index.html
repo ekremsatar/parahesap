@@ -135,57 +135,6 @@
             font-weight: 600;
             color: var(--primary);
         }
-        /* Calculator Panel */
-        .calc-panel {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-        .calc-panel h2 {
-            color: #e83e8c;
-            font-size: 18px;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .calc-panel p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-        .form-group {
-            margin-bottom: 14px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .btn- hesapla {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .btn-hesapla:hover {
-            background-color: var(--primary-dark);
-        }
         footer {
             text-align: center;
             padding: 30px 16px;
@@ -209,6 +158,7 @@
             parahesap.site
             <span>Anında hesapla, geleceğini planla</span>
         </a>
+        <!-- Doğrudan akordiyon menü sayfasına yönlendiriyoruz -->
         <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
     </div>
 </header>
@@ -223,50 +173,24 @@
         <button onclick="searchTool()">Ara</button>
     </div>
 
-    <!-- Hızlı Kısayol Kartları (2. Resim Düzeni) -->
+    <!-- Hızlı Kısayol Kartları (3. Resimdeki test.html sayfasına gider) -->
     <div class="quick-grid">
-        <a href="test.html" class="quick-card">
+        <a href="test.html?tip=mass" class="quick-card">
             <span>💰</span>
             <h4>Maaş Hesaplaması</h4>
         </a>
-        <a href="kredi-hesaplama.html" class="quick-card">
+        <a href="test.html?tip=kredi" class="quick-card">
             <span>🏠</span>
             <h4>Konut Kredisi</h4>
         </a>
-        <a href="test.html" class="quick-card">
+        <a href="test.html?tip=zekat" class="quick-card">
             <span>🌙</span>
             <h4>Zekat Hesaplaması</h4>
         </a>
-        <a href="kdv-hesaplama.html" class="quick-card">
+        <a href="test.html?tip=kdv" class="quick-card">
             <span>🪙</span>
             <h4>KDV Hesaplama</h4>
         </a>
-    </div>
-
-    <!-- Aktif Hesaplama Modülü (Konut Kredisi Örneği) -->
-    <div class="calc-panel">
-        <h2>KONUT KREDİSİ HESAPLAMASI</h2>
-        <p>Aşağıdaki hesaplama aracında işlem türünü seçtikten sonra istenen bilgileri giriniz ve hesapla butonuna basınız.</p>
-        
-        <div class="adsense-box" style="margin-bottom: 14px; padding: 10px;">Yatay AdSense Reklam Alanı (Leaderboard)</div>
-
-        <div style="background: #e9ecef; padding: 8px 12px; font-weight: 600; font-size: 13px; margin-bottom: 14px; border-radius: 4px;">
-            HESAPLAMA PARAMETRELERİ
-        </div>
-
-        <div class="form-group">
-            <label>Ana Tutar / Kredi Tutarı (TL):</label>
-            <input type="number" id="krediTutar" placeholder="Örn: 250000">
-        </div>
-
-        <div class="form-group">
-            <label>Aylık Oran / Faiz (%):</label>
-            <input type="number" id="faizOran" placeholder="Örn: 3.19" step="0.01">
-        </div>
-
-        <button class="btn-hesapla" onclick="hesaplaYap()">Hesapla</button>
-        
-        <div id="sonucAlani" style="margin-top: 15px; font-weight: 600; color: var(--primary);"></div>
     </div>
 </main>
 
@@ -285,23 +209,8 @@
     function searchTool() {
         let val = document.getElementById('searchInput').value.trim();
         if(val) {
-            alert("Aranan araç: " + val + " (Tüm Hesaplamalar sayfasına yönlendiriliyorsunuz)");
             window.location.href = "tum-hesaplamalar.html";
         }
-    }
-
-    function hesaplaYap() {
-        let tutar = document.getElementById('krediTutar').value;
-        let oran = document.getElementById('faizOran').value;
-        let sonuc = document.getElementById('sonucAlani');
-        
-        if(!tutar || !oran) {
-            sonuc.innerHTML = "<span style='color:red;'>Lütfen tüm alanları doldurunuz!</span>";
-            return;
-        }
-        
-        let taksit = (tutar * (oran / 100) * 1.2).toFixed(2);
-        sonuc.innerHTML = `Tahmini Aylık Taksit: ${taksit} TL`;
     }
 </script>
 
