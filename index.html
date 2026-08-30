@@ -44,6 +44,7 @@
             font-weight: 800;
             text-decoration: none;
             letter-spacing: -0.5px;
+            cursor: pointer;
         }
         .logo-para { color: var(--primary-blue); }
         .logo-hesap { color: var(--primary-blue); }
@@ -191,6 +192,13 @@
         .btn-hesapla:hover { background-color: var(--hover-blue); }
         .result-box { margin-top: 15px; padding: 12px; background: #e7f1ff; border-left: 4px solid var(--primary-blue); font-size: 14px; display: none; font-weight: bold; }
 
+        /* Yasal / Statik Sayfa Stilleri */
+        .static-page-content { display: none; }
+        .static-page-content h2 { font-size: 16px; color: var(--primary-blue); margin-top: 15px; margin-bottom: 8px; font-weight: 700; }
+        .static-page-content p { font-size: 13px; line-height: 1.7; color: #444; margin-bottom: 12px; }
+        .static-page-content ul { margin-left: 20px; margin-bottom: 15px; font-size: 13px; }
+        .static-page-content li { margin-bottom: 6px; }
+
         /* Sağ Sidebar */
         .sidebar { background: #ffffff; border: 1px solid var(--border-color); border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
         .sidebar-header { background-color: var(--primary-blue); color: white; padding: 10px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
@@ -204,7 +212,7 @@
         footer { text-align: center; padding: 25px; margin-top: 30px; background: #ffffff; border-top: 1px solid var(--border-color); font-size: 12px; color: #666; }
         .footer-quote { color: var(--brand-red); font-weight: bold; font-size: 15px; margin-bottom: 15px; font-style: italic; }
         .footer-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
-        .footer-links a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .footer-links a { color: var(--primary-blue); text-decoration: none; font-weight: 600; cursor: pointer; }
         .footer-links a:hover { text-decoration: underline; }
 
         @media (max-width: 900px) {
@@ -221,7 +229,7 @@
     <!-- Site Üst Başlık ve Logo -->
     <div class="site-header-brand">
         <div>
-            <a href="#" class="site-logo" onclick="hesaplamaSec('Zam Hesaplaması')">
+            <a class="site-logo" onclick="hesaplamaSec('Zam Hesaplaması')">
                 <span class="logo-para">para</span><span class="logo-hesap">hesap</span><span class="logo-site">.site</span>
             </a>
             <div class="tagline">"Anında hesapla, geleceğini planla"</div>
@@ -321,29 +329,75 @@
                     <a onclick="hesaplamaSec('KDV Hesaplaması')" class="quick-card"><span class="icon">🪙</span>KDV Hesaplama</a>
                 </div>
 
-                <!-- Dinamik Başlık ve Açıklama -->
-                <h1 id="aktifBaslik" class="page-main-title">ZAM HESAPLAMASI</h1>
-                <p id="aktifAciklama">Aşağıdaki hesaplama aracında işlem türünü seçtikten sonra istenen bilgileri giriniz ve hesapla butonuna basınız.</p>
+                <!-- HESAPLAMA MOTORU GÖVDESİ -->
+                <div id="hesaplamaBolumu">
+                    <h1 id="aktifBaslik" class="page-main-title">ZAM HESAPLAMASI</h1>
+                    <p id="aktifAciklama">Aşağıdaki hesaplama aracında işlem türünü seçtikten sonra istenen bilgileri giriniz ve hesapla butonuna basınız.</p>
 
-                <div class="top-horizontal-ad">Yatay AdSense Reklam Alanı (Leaderboard)</div>
+                    <div class="top-horizontal-ad">Yatay AdSense Reklam Alanı (Leaderboard)</div>
 
-                <div class="box-title">Hesaplama Parametreleri</div>
-                
-                <div id="formAlanlari">
-                    <div class="form-group">
-                        <label id="label1">Mevcut Tutar / Maaş (TL):</label>
-                        <input type="number" id="input1" inputmode="decimal" step="any" placeholder="Örn: 25000">
+                    <div class="box-title">Hesaplama Parametreleri</div>
+                    
+                    <div id="formAlanlari">
+                        <div class="form-group">
+                            <label id="label1">Mevcut Tutar / Maaş (TL):</label>
+                            <input type="number" id="input1" inputmode="decimal" step="any" placeholder="Örn: 25000">
+                        </div>
+                        <div class="form-group" id="group2">
+                            <label id="label2">Beklenen Zam Oranı (%):</label>
+                            <input type="number" id="input2" inputmode="decimal" step="any" placeholder="Örn: 20">
+                        </div>
                     </div>
-                    <div class="form-group" id="group2">
-                        <label id="label2">Beklenen Zam Oranı (%):</label>
-                        <input type="number" id="input2" inputmode="decimal" step="any" placeholder="Örn: 20">
+
+                    <button class="btn-hesapla" onclick="hesaplaCalistir()">Hesapla</button>
+                    
+                    <div id="sonucAlani" class="result-box">
+                        <span id="sonucMetni">Yeni Tutar:</span> <span id="sonucDeger">0</span> TL
                     </div>
                 </div>
 
-                <button class="btn-hesapla" onclick="hesaplaCalistir()">Hesapla</button>
-                
-                <div id="sonucAlani" class="result-box">
-                    <span id="sonucMetni">Yeni Tutar:</span> <span id="sonucDeger">0</span> TL
+                <!-- HAKKIMIZDA SAYFASI -->
+                <div id="hakkimizdaSayfasi" class="static-page-content">
+                    <h1 class="page-main-title">HAKKIMIZDA</h1>
+                    <p><strong>parahesap.site</strong>, kullanıcıların günlük yaşamlarında, iş hayatlarında ve finansal planlamalarında ihtiyaç duydukları tüm hesaplama işlemlerini hızlı, güvenilir ve pratik bir şekilde yapabilmeleri amacıyla kurulmuş kapsamlı bir hesaplama portalıdır.</p>
+                    <h2>Misyonumuz</h2>
+                    <p>Karmaşık matematiksel formülleri, vergi mevzuatlarını ve finansal hesaplamaları herkesin kolayca anlayabileceği ve saniyeler içinde sonuç alabileceği dijital araçlara dönüştürmektir.</p>
+                    <h2>Neden parahesap.site?</h2>
+                    <p>Sitemiz güncel oranlar, sade arayüz yapısı ve kesintisiz altyapısıyla en doğru sonuçlara en kısa sürede ulaşmanızı hedefler. Kredi hesaplamalarından zekat oranlarına, maaş netleştirmeden KDV hesaplarına kadar geniş bir yelpazede hizmet vermekteyiz.</p>
+                </div>
+
+                <!-- İLETİŞİM SAYFASI -->
+                <div id="iletisimSayfasi" class="static-page-content">
+                    <h1 class="page-main-title">İLETİŞİM</h1>
+                    <p>Görüş, öneri, hata bildirimleri veya reklam/iş birliği talepleriniz için bizimle aşağıdaki iletişim kanalları üzerinden 7/24 bağlantı kurabilirsiniz.</p>
+                    <h2>İletişim Bilgileri</h2>
+                    <p><strong>E-Posta:</strong> bilgi@parahesap.site</p>
+                    <p><strong>Destek Saatleri:</strong> Hafta içi 09:00 - 18:00</p>
+                    <p>Portalımızda yer almasını istediğiniz yeni hesaplama araçları veya düzeltilmesini istediğiniz veriler için bize doğrudan e-posta gönderebilirsiniz.</p>
+                </div>
+
+                <!-- GİZLİLİK POLİTİKASI SAYFASI -->
+                <div id="gizlilikSayfasi" class="static-page-content">
+                    <h1 class="page-main-title">GİZLİLİK POLİTİKASI</h1>
+                    <p>parahesap.site olarak ziyaretçilerimizin gizliliğine büyük önem veriyoruz. Bu gizlilik politikası belgesi, parahesap.site tarafından hangi kişisel verilerin toplandığını ve bunların nasıl kullanıldığını açıklar.</p>
+                    <h2>Çerezler (Cookies) ve Web İşaretçileri</h2>
+                    <p>Sitemiz, kullanıcı deneyimini iyileştirmek ve site trafiğini analiz etmek amacıyla çerezleri kullanır.</p>
+                    <h2>Google AdSense ve Reklam Politikası</h2>
+                    <p>Üçüncü taraf tedarikçiler olarak Google, sitemizde reklam yayınlamak için çerezleri (DoubleClick çerezi dahil) kullanır. Google'ın çerezleri kullanması, sitemize ve internetteki diğer sitelere yaptığınız ziyaretlere dayalı olarak kullanıcılarımıza reklam sunmasına olanak tanır. Kullanıcılar, Google Reklam ve İçerik Ağı gizlilik politikasını ziyaret ederek çerez kullanımını devre dışı bırakabilirler.</p>
+                    <h2>Google Analytics</h2>
+                    <p>Sitemiz ziyaretçi istatistiklerini ölçmek için Google Analytics (GA4) altyapısını kullanmaktadır. Bu araç IP adresiniz gibi verileri anonim olarak toplar.</p>
+                </div>
+
+                <!-- KULLANIM ŞARTLARI SAYFASI -->
+                <div id="kullanimSayfasi" class="static-page-content">
+                    <h1 class="page-main-title">KULLANIM ŞARTLARI</h1>
+                    <p>Bu web sitesini (parahesap.site) ziyaret ederek ve kullanarak aşağıdaki şartları ve koşulları kabul etmiş sayılırsınız.</p>
+                    <h2>1. Bilgilendirme Amaçlıdır</h2>
+                    <p>Sitemizde yer alan tüm hesaplama araçları (kredi, vergi, zekat, maaş vb.) yalnızca bilgilendirme amaçlıdır. Çıkan sonuçlar resmi kurumların veya bankaların nihai işlem tutarlarıyla farklılık gösterebilir. parahesap.site doğabilecek hesaplama farklarından sorumlu tutulamaz.</p>
+                    <h2>2. Telif Hakları</h2>
+                    <p>Sitede yer alan tüm tasarım öğeleri, yazılım kodları, arayüz yerleşimleri ve içerikler parahesap.site'ye aittir. İzinsiz kopyalanamaz veya başka mecralarda ticari amaçla kullanılamaz.</p>
+                    <h2>3. Değişiklik Hakkı</h2>
+                    <p>parahesap.site, site içerisindeki tüm bilgileri, araçları ve kullanım koşullarını önceden bildirmeksizin değiştirme hakkını saklı tutar.</p>
                 </div>
 
             </div>
@@ -369,10 +423,10 @@
     <footer>
         <div class="footer-quote">"Anında hesapla, geleceğini planla"</div>
         <div class="footer-links">
-            <a href="#">Hakkımızda</a>
-            <a href="#">İletişim</a>
-            <a href="#">Gizlilik Politikası</a>
-            <a href="#">Kullanım Şartları</a>
+            <a onclick="statikSayfaAc('hakkimizda')">Hakkımızda</a>
+            <a onclick="statikSayfaAc('iletisim')">İletişim</a>
+            <a onclick="statikSayfaAc('gizlilik')">Gizlilik Politikası</a>
+            <a onclick="statikSayfaAc('kullanim')">Kullanım Şartları</a>
         </div>
         <p>&copy; 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     </footer>
@@ -398,15 +452,38 @@
             }
         }
 
+        // Tüm ekranları gizleyip sadece isteneni açan ana fonksiyon
+        function ekranlariKapat() {
+            document.getElementById("hesaplamaBolumu").style.display = "none";
+            document.getElementById("hakkimizdaSayfasi").style.display = "none";
+            document.getElementById("iletisimSayfasi").style.display = "none";
+            document.getElementById("gizlilikSayfasi").style.display = "none";
+            document.getElementById("kullanimSayfasi").style.display = "none";
+        }
+
+        function statikSayfaAc(tur) {
+            ekranlariKapat();
+            if (tur === 'hakkimizda') document.getElementById("hakkimizdaSayfasi").style.display = "block";
+            if (tur === 'iletisim') document.getElementById("iletisimSayfasi").style.display = "block";
+            if (tur === 'gizlilik') document.getElementById("gizlilikSayfasi").style.display = "block";
+            if (tur === 'kullanim') document.getElementById("kullanimSayfasi").style.display = "block";
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById("mobileDrawer").style.display = "none";
+            document.getElementById("searchResultsDropdown").style.display = "none";
+        }
+
         /* Dinamik Hesaplama Türü Değiştirici */
         function hesaplamaSec(tur) {
+            ekranlariKapat();
+            document.getElementById("hesaplamaBolumu").style.display = "block";
+
             aktifHesap = tur;
             document.getElementById("aktifBaslik").innerText = tur.toUpperCase();
             document.getElementById("sonucAlani").style.display = "none";
             document.getElementById("siteSearchInput").value = "";
             document.getElementById("searchResultsDropdown").style.display = "none";
             
-            // Mobil menüyü kapat
             document.getElementById("mobileDrawer").style.display = "none";
 
             var l1 = document.getElementById("label1");
@@ -432,12 +509,13 @@
                 g2.style.display = "block";
             } else if (tur.includes("Zekat")) {
                 l1.innerText = "Toplam Nakit / Altın Varlığı (TL):";
-                g2.style.display = "none"; // Zekat için tek girdi yeterli
+                g2.style.display = "none";
             } else {
                 l1.innerText = "Ana Tutar (TL):";
                 l2.innerText = "Oran / Yüzde (%):";
                 g2.style.display = "block";
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         /* Hesaplama İşlemini Yürüten Fonksiyon */
@@ -451,7 +529,6 @@
                 sonucDeger = v1 + (v1 * v2 / 100);
                 sonucMetinEtiketi = "Zamlı Yeni Tutar:";
             } else if (aktifHesap.includes("Kredi")) {
-                // Basit taksit simülasyonu formülü
                 sonucDeger = (v1 + (v1 * (v2 / 100) * 12)) / 12;
                 sonucMetinEtiketi = "Tahmini Aylık Taksit:";
             } else if (aktifHesap.includes("KDV")) {
