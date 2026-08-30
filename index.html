@@ -68,7 +68,7 @@
 
         /* Üst Menü Barı - Masaüstü */
         nav { background-color: #ffffff; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; padding: 0 10px; }
+        .nav-container { max-width: 1550px; margin: 0 auto; display: flex; align-items: center; overflow-x: auto; padding: 0 10px; }
         
         .dropdown { position: relative; display: inline-block; }
         .dropbtn { background-color: transparent; color: #222; padding: 12px 10px; font-size: 12px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; }
@@ -237,59 +237,421 @@
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Tüm Hesaplamalar ▾</button>
     </div>
 
-    <!-- Mobil Açılır Akordeon Menü -->
+    <!-- Mobil Açılır Akordeon Menü (14 Kategori, Her Birinde 10+ Modül) -->
     <div id="mobileDrawer" class="mobile-drawer">
         <div class="mobile-search-box">
             <input type="text" placeholder="Kolay Arama: Örn. ideal kilo, döviz, zekat">
             <button class="mobile-search-btn">GİT</button>
         </div>
         
+        <!-- 1. Kredi Hesaplamaları -->
         <div class="mobile-drawer-item" onclick="toggleSub(this)">Kredi Hesaplamaları <span>▾</span></div>
         <div class="mobile-sub-menu">
-            <a onclick="hesaplamaSec('Konut Kredisi Hesaplaması')">Konut Kredisi Hesaplaması</a>
-            <a onclick="hesaplamaSec('Taşıt Kredisi Hesaplaması')">Taşıt Kredisi Hesaplaması</a>
-            <a onclick="hesaplamaSec('İhtiyaç Kredisi Hesaplaması')">İhtiyaç Kredisi Hesaplaması</a>
-            <a onclick="hesaplamaSec('KOBİ Kredisi Hesaplaması')">KOBİ Kredisi Hesaplaması</a>
-        </div>
-        
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Finansal Hesaplamalar <span>▾</span></div>
-        <div class="mobile-sub-menu">
-            <a onclick="hesaplamaSec('Brütten Nete Maaş Hesaplaması')">Brütten Nete Maaş Hesaplaması</a>
-            <a onclick="hesaplamaSec('Enflasyon Hesaplaması')">Enflasyon Hesaplaması <span class="badge-yeni">yeni</span></a>
-            <a onclick="hesaplamaSec('Zam Hesaplaması')">Zam Hesaplaması</a>
-            <a onclick="hesaplamaSec('KDV Hesaplaması')">KDV Hesaplama</a>
+            <a onclick="hesaplamaSec('Konut Kredisi Hesaplaması')">Konut Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Taşıt Kredisi Hesaplaması')">Taşıt Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('İhtiyaç Kredisi Hesaplaması')">İhtiyaç Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('KOBİ Kredisi Hesaplaması')">KOBİ Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Esnaf Kredisi Hesaplaması')">Esnaf Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Tatil Kredisi Hesaplaması')">Tatil Kredisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Mevduat Faizi Hesaplaması')">Mevduat Faizi Hesaplama</a>
+            <a onclick="hesaplamaSec('Repo Hesaplaması')">Repo Hesaplama</a>
+            <a onclick="hesaplamaSec('Altın Hesabı Faizi')">Altın Hesabı Faizi</a>
+            <a onclick="hesaplamaSec('Borç Kapatma Kredisi')">Borç Kapatma Kredisi</a>
         </div>
 
-        <div class="mobile-drawer-item" onclick="toggleSub(this)">Dini / İslami <span>▾</span></div>
+        <!-- 2. Finansal Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Finansal Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Brütten Nete Maaş Hesaplaması')">Brütten Nete Maaş Hesaplama</a>
+            <a onclick="hesaplamaSec('Enflasyon Hesaplaması')">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
+            <a onclick="hesaplamaSec('Zam Hesaplaması')">Zam Hesaplama</a>
+            <a onclick="hesaplamaSec('KDV Hesaplaması')">KDV Hesaplama</a>
+            <a onclick="hesaplamaSec('Bileşik Faiz Hesaplaması')">Bileşik Faiz Hesaplama</a>
+            <a onclick="hesaplamaSec('Basit Faiz Hesaplaması')">Basit Faiz Hesaplama</a>
+            <a onclick="hesaplamaSec('Döviz Çevirici')">Döviz Çevirici</a>
+            <a onclick="hesaplamaSec('Yatırım Getirisi Hesaplaması')">Yatırım Getirisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Emeklilik Maaşı Hesaplaması')">Emeklilik Maaşı Hesaplama</a>
+            <a onclick="hesaplamaSec('Altın Fiyatları Hesaplama')">Altın Fiyatları Hesaplama</a>
+        </div>
+
+        <!-- 3. Sınav Puanı Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Sınav Puanı Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('YKS Puan Hesaplama')">YKS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('LGS Puan Hesaplama')">LGS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('KPSS Puan Hesaplama')">KPSS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('DGS Puan Hesaplama')">DGS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('ALES Puan Hesaplama')">ALES Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('YDS Puan Hesaplama')">YDS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('TUS Puan Hesaplama')">TUS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('MSÜ Puan Hesaplama')">MSÜ Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('EKPSS Puan Hesaplama')">EKPSS Puan Hesaplama</a>
+            <a onclick="hesaplamaSec('DUS Puan Hesaplama')">DUS Puan Hesaplama</a>
+        </div>
+
+        <!-- 4. Eğitim Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Eğitim Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Ortalama Not Hesaplama')">Ortalama (Not) Hesaplama</a>
+            <a onclick="hesaplamaSec('Takdir Teşekkür Hesaplama')">Takdir Teşekkür Hesaplama</a>
+            <a onclick="hesaplamaSec('Üniversite AGNO Hesaplama')">Üniversite AGNO Hesaplama</a>
+            <a onclick="hesaplamaSec('Devamsızlık Hesaplama')">Devamsızlık Hesaplama</a>
+            <a onclick="hesaplamaSec('Kelime Sayacı')">Kelime Sayacı</a>
+            <a onclick="hesaplamaSec('Harf Notu Hesaplama')">Harf Notu Hesaplama</a>
+            <a onclick="hesaplamaSec('YKS Net Hesaplama')">YKS Net Hesaplama</a>
+            <a onclick="hesaplamaSec('LGS Net Hesaplama')">LGS Net Hesaplama</a>
+            <a onclick="hesaplamaSec('Ders Saati Hesaplama')">Ders Saati Hesaplama</a>
+            <a onclick="hesaplamaSec('Tez Sayfa Maliyeti')">Tez Sayfa Maliyeti</a>
+        </div>
+
+        <!-- 5. Sağlık Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Sağlık Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Vücut Kitle İndeksi (VKİ)')">Vücut Kitle İndeksi (VKİ)</a>
+            <a onclick="hesaplamaSec('İdeal Kilo Hesaplama')">İdeal Kilo Hesaplama</a>
+            <a onclick="hesaplamaSec('Günlük Kalori İhtiyacı')">Günlük Kalori İhtiyacı</a>
+            <a onclick="hesaplamaSec('Su Tüketim Hesaplama')">Su Tüketim Hesaplama</a>
+            <a onclick="hesaplamaSec('Bazal Metabolizma Hızı')">Bazal Metabolizma Hızı</a>
+            <a onclick="hesaplamaSec('Gebelik Haftası Hesaplama')">Gebelik Haftası Hesaplama</a>
+            <a onclick="hesaplamaSec('Yumurtlama Dönemi Hesaplama')">Yumurtlama Dönemi Hesaplama</a>
+            <a onclick="hesaplamaSec('Günlük Protein İhtiyacı')">Günlük Protein İhtiyacı</a>
+            <a onclick="hesaplamaSec('Boy Uzunluk Tahmini')">Boy Uzunluk Tahmini</a>
+            <a onclick="hesaplamaSec('Kalp Atış Hızı Bölgesi')">Kalp Atış Hızı Bölgesi</a>
+        </div>
+
+        <!-- 6. Matematiksel Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Matematiksel Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Yüzde Hesaplama')">Yüzde Hesaplama</a>
+            <a onclick="hesaplamaSec('Oran Orantı Hesaplama')">Oran Orantı Hesaplama</a>
+            <a onclick="hesaplamaSec('Karekök Hesaplama')">Karekök Hesaplama</a>
+            <a onclick="hesaplamaSec('Alan ve Çevre Hesaplama')">Alan ve Çevre Hesaplama</a>
+            <a onclick="hesaplamaSec('Hacim Hesaplama')">Hacim Hesaplama</a>
+            <a onclick="hesaplamaSec('Üslü Sayılar Hesaplama')">Üslü Sayılar Hesaplama</a>
+            <a onclick="hesaplamaSec('Logaritma Hesaplama')">Logaritma Hesaplama</a>
+            <a onclick="hesaplamaSec('Faktöriyel Hesaplama')">Faktöriyel Hesaplama</a>
+            <a onclick="hesaplamaSec('Kesir Hesaplama')">Kesir Hesaplama</a>
+            <a onclick="hesaplamaSec('Aritmetik Ortalama')">Aritmetik Ortalama</a>
+        </div>
+
+        <!-- 7. Zaman Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Zaman Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Yaş Hesaplama')">Yaş Hesaplama</a>
+            <a onclick="hesaplamaSec('Saat Farkı Hesaplama')">Saat Farkı Hesaplama</a>
+            <a onclick="hesaplamaSec('Tarih Ekleme Çıkarma')">Tarih Ekleme / Çıkarma</a>
+            <a onclick="hesaplamaSec('Haftanın Günü Bulma')">Haftanın Günü Bulma</a>
+            <a onclick="hesaplamaSec('Geri Sayım Sayacı')">Geri Sayım Sayacı</a>
+            <a onclick="hesaplamaSec('İki Tarih Arası Gün')">İki Tarih Arası Gün</a>
+            <a onclick="hesaplamaSec('Emeklilik Günü Hesaplama')">Emeklilik Günü Hesaplama</a>
+            <a onclick="hesaplamaSec('Vardiya Çizelgesi Hesaplama')">Vardiya Çizelgesi Hesaplama</a>
+            <a onclick="hesaplamaSec('Kronometre')">Kronometre</a>
+            <a onclick="hesaplamaSec('Burç / Zodyak Hesaplama')">Burç / Zodyak Hesaplama</a>
+        </div>
+
+        <!-- 8. Muhasebesel Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Muhasebesel Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Kıdem Tazminatı Hesaplama')">Kıdem Tazminatı Hesaplama</a>
+            <a onclick="hesaplamaSec('İhbar Tazminatı Hesaplama')">İhbar Tazminatı Hesaplama</a>
+            <a onclick="hesaplamaSec('Fazla Mesai Hesaplama')">Fazla Mesai Hesaplama</a>
+            <a onclick="hesaplamaSec('Netten Brüte Maaş')">Netten Brüte Maaş</a>
+            <a onclick="hesaplamaSec('Asgari Geçim İndirimi')">Asgari Geçim İndirimi</a>
+            <a onclick="hesaplamaSec('Yıllık İzin Ücreti')">Yıllık İzin Ücreti</a>
+            <a onclick="hesaplamaSec('Serbest Meslek Makbuzu')">Serbest Meslek Makbuzu</a>
+            <a onclick="hesaplamaSec('Amortisman Hesaplama')">Amortisman Hesaplama</a>
+            <a onclick="hesaplamaSec('Şirket Kuruluş Maliyeti')">Şirket Kuruluş Maliyeti</a>
+            <a onclick="hesaplamaSec('Bordro Hesaplama')">Bordro Hesaplama</a>
+        </div>
+
+        <!-- 9. Vergi Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Vergi Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Gelir Vergisi Hesaplama')">Gelir Vergisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Motorlu Taşıtlar Vergisi (MTV)')">Motorlu Taşıtlar Vergisi (MTV)</a>
+            <a onclick="hesaplamaSec('Emlak Vergisi Hesaplama')">Emlak Vergisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Damga Vergisi Hesaplama')">Damga Vergisi Hesaplama</a>
+            <a onclick="hesaplamaSec('Kurumlar Vergisi')">Kurumlar Vergisi</a>
+            <a onclick="hesaplamaSec('Veraset ve İntikal Vergisi')">Veraset ve İntikal Vergisi</a>
+            <a onclick="hesaplamaSec('Değer Artış Kazancı')">Değer Artış Kazancı</a>
+            <a onclick="hesaplamaSec('Konaklama Vergisi')">Konaklama Vergisi</a>
+            <a onclick="hesaplamaSec('ÖTV Hesaplama')">ÖTV Hesaplama</a>
+            <a onclick="hesaplamaSec('Gümrük Vergisi')">Gümrük Vergisi</a>
+        </div>
+
+        <!-- 10. Ticari Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Ticari Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Kar / Zarar Hesaplama')">Kar / Zarar Hesaplama</a>
+            <a onclick="hesaplamaSec('Maliyet Hesaplama')">Maliyet Hesaplama</a>
+            <a onclick="hesaplamaSec('İskonto / İndirim Hesaplama')">İskonto / İndirim Hesaplama</a>
+            <a onclick="hesaplamaSec('Başa Baş Noktası')">Başa Baş Noktası</a>
+            <a onclick="hesaplamaSec('Stok Devir Hızı')">Stok Devir Hızı</a>
+            <a onclick="hesaplamaSec('Brüt Kar Marjı')">Brüt Kar Marjı</a>
+            <a onclick="hesaplamaSec('Satış Fiyatı Belirleme')">Satış Fiyatı Belirleme</a>
+            <a onclick="hesaplamaSec('Komisyon Hesaplama')">Komisyon Hesaplama</a>
+            <a onclick="hesaplamaSec('Nakliye Maliyet Hesaplama')">Nakliye Maliyet Hesaplama</a>
+            <a onclick="hesaplamaSec('Kira Artış Oranı Hesaplama')">Kira Artış Oranı Hesaplama</a>
+        </div>
+
+        <!-- 11. Hukuki Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Hukuki Hesaplamalar <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Yasal Faiz Hesaplama')">Yasal Faiz Hesaplama</a>
+            <a onclick="hesaplamaSec('Nafaka Artış Hesaplama')">Nafaka Artış Hesaplama</a>
+            <a onclick="hesaplamaSec('Adli Para Cezası')">Adli Para Cezası</a>
+            <a onclick="hesaplamaSec('Kıdem İhbar Alacağı')">Kıdem / İhbar Alacağı</a>
+            <a onclick="hesaplamaSec('Tahliye Taahhütnamesi Süresi')">Tahliye Taahhütnamesi Süresi</a>
+            <a onclick="hesaplamaSec('Miras Paylaşım Hesaplama')">Miras Paylaşım Hesaplama</a>
+            <a onclick="hesaplamaSec('Avukatlık Asgari Ücret')">Avukatlık Asgari Ücret</a>
+            <a onclick="hesaplamaSec('Dava Harç Hesaplama')">Dava Harç Hesaplama</a>
+            <a onclick="hesaplamaSec('İcra Takip Masrafı')">İcra Takip Masrafı</a>
+            <a onclick="hesaplamaSec('İhtarname Süresi Hesaplama')">İhtarname Süresi Hesaplama</a>
+        </div>
+
+        <!-- 12. Sigorta Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Sigorta Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Trafik Sigortası Prim')">Trafik Sigortası Prim</a>
+            <a onclick="hesaplamaSec('Kasko Değer Hesaplama')">Kasko Değer Hesaplama</a>
+            <a onclick="hesaplamaSec('Zorunlu Deprem Sigortası (DASK)')">Zorunlu Deprem Sigortası (DASK)</a>
+            <a onclick="hesaplamaSec('Sağlık Sigortası Maliyeti')">Sağlık Sigortası Maliyeti</a>
+            <a onclick="hesaplamaSec('Seyahat Sağlık Sigortası')">Seyahat Sağlık Sigortası</a>
+            <a onclick="hesaplamaSec('Kaza Tazminatı Hesaplama')">Kaza Tazminatı Hesaplama</a>
+            <a onclick="hesaplamaSec('Emeklilik Sigorta Primi')">Emeklilik Sigorta Primi</a>
+            <a onclick="hesaplamaSec('Tamamlayıcı Sağlık Sigortası')">Tamamlayıcı Sağlık Sigortası</a>
+            <a onclick="hesaplamaSec('İşsizlik Sigortası Ödeneği')">İşsizlik Sigortası Ödeneği</a>
+            <a onclick="hesaplamaSec('Ferdi Kaza Sigortası')">Ferdi Kaza Sigortası</a>
+        </div>
+
+        <!-- 13. Seyahat Hesaplamaları -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Seyahat Hesaplamaları <span>▾</span></div>
+        <div class="mobile-sub-menu">
+            <a onclick="hesaplamaSec('Yakıt Tüketim Maliyeti')">Yakıt Tüketim Maliyeti</a>
+            <a onclick="hesaplamaSec('Yolculuk Süresi Hesaplama')">Yolculuk Süresi Hesaplama</a>
+            <a onclick="hesaplamaSec('Uçuş Süresi Hesaplama')">Uçuş Süresi Hesaplama</a>
+            <a onclick="hesaplamaSec('Konaklama Maliyeti')">Konaklama Maliyeti</a>
+            <a onclick="hesaplamaSec('Otoban Köprü Geçiş Ücreti')">Otoban / Köprü Geçiş Ücreti</a>
+            <a onclick="hesaplamaSec('Bagaj Ağırlık Maliyeti')">Bagaj Ağırlık Maliyeti</a>
+            <a onclick="hesaplamaSec('Saat Dilimi Farkı')">Saat Dilimi Farkı</a>
+            <a onclick="hesaplamaSec('Döviz Kuru Seyahat Bütçesi')">Döviz Kuru Seyahat Bütçesi</a>
+            <a onclick="hesaplamaSec('Araç Kiralama Maliyeti')">Araç Kiralama Maliyeti</a>
+            <a onclick="hesaplamaSec('Rota Maliyet Dağılımı')">Rota Maliyet Dağılımı</a>
+        </div>
+
+        <!-- 14. Diğer Hesaplamalar -->
+        <div class="mobile-drawer-item" onclick="toggleSub(this)">Diğer Hesaplamalar <span>▾</span></div>
         <div class="mobile-sub-menu">
             <a onclick="hesaplamaSec('Zekat Hesaplaması')">Zekat Hesaplaması <span class="badge-yeni">yeni</span></a>
             <a onclick="hesaplamaSec('Fitre Hesaplaması')">Fitre Hesaplaması <span class="badge-yeni">yeni</span></a>
+            <a onclick="hesaplamaSec('İftar Sahur Vakti')">İftar / Sahur Vakti</a>
+            <a onclick="hesaplamaSec('Yakacak Kömür Hesabı')">Yakacak / Kömür Hesabı</a>
+            <a onclick="hesaplamaSec('Boya Badana Malzemesi')">Boya / Badana Malzemesi</a>
+            <a onclick="hesaplamaSec('Fayans Parke İhtiyacı')">Fayans / Parke İhtiyacı</a>
+            <a onclick="hesaplamaSec('Halı Metrekare Fiyatı')">Halı Metrekare Fiyatı</a>
+            <a onclick="hesaplamaSec('Elektrik Tüketim Faturası')">Elektrik Tüketim Faturası</a>
+            <a onclick="hesaplamaSec('Su Faturası Hesaplama')">Su Faturası Hesaplama</a>
+            <a onclick="hesaplamaSec('Doğalgaz Faturası Hesaplama')">Doğalgaz Faturası Hesaplama</a>
         </div>
     </div>
 
-    <!-- Üst Masaüstü Menü -->
+    <!-- Üst Masaüstü Menü (14 Kategori) -->
     <nav>
         <div class="nav-container">
             <div class="dropdown"><button class="dropbtn">Kredi Hesaplamaları</button>
                 <div class="dropdown-content">
-                    <a onclick="hesaplamaSec('Konut Kredisi Hesaplaması')">Konut Kredisi Hesaplaması</a>
-                    <a onclick="hesaplamaSec('Taşıt Kredisi Hesaplaması')">Taşıt Kredisi Hesaplaması</a>
-                    <a onclick="hesaplamaSec('İhtiyaç Kredisi Hesaplaması')">İhtiyaç Kredisi Hesaplaması</a>
-                    <a onclick="hesaplamaSec('KOBİ Kredisi Hesaplaması')">KOBİ Kredisi Hesaplaması</a>
+                    <a onclick="hesaplamaSec('Konut Kredisi Hesaplaması')">Konut Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Taşıt Kredisi Hesaplaması')">Taşıt Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('İhtiyaç Kredisi Hesaplaması')">İhtiyaç Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('KOBİ Kredisi Hesaplaması')">KOBİ Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Esnaf Kredisi Hesaplaması')">Esnaf Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Tatil Kredisi Hesaplaması')">Tatil Kredisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Mevduat Faizi Hesaplaması')">Mevduat Faizi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Repo Hesaplaması')">Repo Hesaplama</a>
+                    <a onclick="hesaplamaSec('Altın Hesabı Faizi')">Altın Hesabı Faizi</a>
+                    <a onclick="hesaplamaSec('Borç Kapatma Kredisi')">Borç Kapatma Kredisi</a>
                 </div>
             </div>
             <div class="dropdown"><button class="dropbtn">Finansal Hesaplamalar</button>
                 <div class="dropdown-content">
-                    <a onclick="hesaplamaSec('Brütten Nete Maaş Hesaplaması')">Brütten Nete Maaş Hesaplaması</a>
-                    <a onclick="hesaplamaSec('Enflasyon Hesaplaması')">Enflasyon Hesaplaması <span class="badge-yeni">yeni</span></a>
-                    <a onclick="hesaplamaSec('Zam Hesaplaması')">Zam Hesaplaması</a>
+                    <a onclick="hesaplamaSec('Brütten Nete Maaş Hesaplaması')">Brütten Nete Maaş Hesaplama</a>
+                    <a onclick="hesaplamaSec('Enflasyon Hesaplaması')">Enflasyon Hesaplama <span class="badge-yeni">yeni</span></a>
+                    <a onclick="hesaplamaSec('Zam Hesaplaması')">Zam Hesaplama</a>
                     <a onclick="hesaplamaSec('KDV Hesaplaması')">KDV Hesaplama</a>
+                    <a onclick="hesaplamaSec('Bileşik Faiz Hesaplaması')">Bileşik Faiz Hesaplama</a>
+                    <a onclick="hesaplamaSec('Basit Faiz Hesaplaması')">Basit Faiz Hesaplama</a>
+                    <a onclick="hesaplamaSec('Döviz Çevirici')">Döviz Çevirici</a>
+                    <a onclick="hesaplamaSec('Yatırım Getirisi Hesaplaması')">Yatırım Getirisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Emeklilik Maaşı Hesaplaması')">Emeklilik Maaşı Hesaplama</a>
+                    <a onclick="hesaplamaSec('Altın Fiyatları Hesaplama')">Altın Fiyatları Hesaplama</a>
                 </div>
             </div>
-            <div class="dropdown"><button class="dropbtn">Dini / İslami</button>
+            <div class="dropdown"><button class="dropbtn">Sınav Puanı</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('YKS Puan Hesaplama')">YKS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('LGS Puan Hesaplama')">LGS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('KPSS Puan Hesaplama')">KPSS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('DGS Puan Hesaplama')">DGS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('ALES Puan Hesaplama')">ALES Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('YDS Puan Hesaplama')">YDS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('TUS Puan Hesaplama')">TUS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('MSÜ Puan Hesaplama')">MSÜ Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('EKPSS Puan Hesaplama')">EKPSS Puan Hesaplama</a>
+                    <a onclick="hesaplamaSec('DUS Puan Hesaplama')">DUS Puan Hesaplama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Eğitim</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Ortalama Not Hesaplama')">Ortalama (Not) Hesaplama</a>
+                    <a onclick="hesaplamaSec('Takdir Teşekkür Hesaplama')">Takdir Teşekkür Hesaplama</a>
+                    <a onclick="hesaplamaSec('Üniversite AGNO Hesaplama')">Üniversite AGNO Hesaplama</a>
+                    <a onclick="hesaplamaSec('Devamsızlık Hesaplama')">Devamsızlık Hesaplama</a>
+                    <a onclick="hesaplamaSec('Kelime Sayacı')">Kelime Sayacı</a>
+                    <a onclick="hesaplamaSec('Harf Notu Hesaplama')">Harf Notu Hesaplama</a>
+                    <a onclick="hesaplamaSec('YKS Net Hesaplama')">YKS Net Hesaplama</a>
+                    <a onclick="hesaplamaSec('LGS Net Hesaplama')">LGS Net Hesaplama</a>
+                    <a onclick="hesaplamaSec('Ders Saati Hesaplama')">Ders Saati Hesaplama</a>
+                    <a onclick="hesaplamaSec('Tez Sayfa Maliyeti')">Tez Sayfa Maliyeti</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Sağlık</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Vücut Kitle İndeksi (VKİ)')">Vücut Kitle İndeksi (VKİ)</a>
+                    <a onclick="hesaplamaSec('İdeal Kilo Hesaplama')">İdeal Kilo Hesaplama</a>
+                    <a onclick="hesaplamaSec('Günlük Kalori İhtiyacı')">Günlük Kalori İhtiyacı</a>
+                    <a onclick="hesaplamaSec('Su Tüketim Hesaplama')">Su Tüketim Hesaplama</a>
+                    <a onclick="hesaplamaSec('Bazal Metabolizma Hızı')">Bazal Metabolizma Hızı</a>
+                    <a onclick="hesaplamaSec('Gebelik Haftası Hesaplama')">Gebelik Haftası Hesaplama</a>
+                    <a onclick="hesaplamaSec('Yumurtlama Dönemi Hesaplama')">Yumurtlama Dönemi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Günlük Protein İhtiyacı')">Günlük Protein İhtiyacı</a>
+                    <a onclick="hesaplamaSec('Boy Uzunluk Tahmini')">Boy Uzunluk Tahmini</a>
+                    <a onclick="hesaplamaSec('Kalp Atış Hızı Bölgesi')">Kalp Atış Hızı Bölgesi</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Matematiksel</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Yüzde Hesaplama')">Yüzde Hesaplama</a>
+                    <a onclick="hesaplamaSec('Oran Orantı Hesaplama')">Oran Orantı Hesaplama</a>
+                    <a onclick="hesaplamaSec('Karekök Hesaplama')">Karekök Hesaplama</a>
+                    <a onclick="hesaplamaSec('Alan ve Çevre Hesaplama')">Alan ve Çevre Hesaplama</a>
+                    <a onclick="hesaplamaSec('Hacim Hesaplama')">Hacim Hesaplama</a>
+                    <a onclick="hesaplamaSec('Üslü Sayılar Hesaplama')">Üslü Sayılar Hesaplama</a>
+                    <a onclick="hesaplamaSec('Logaritma Hesaplama')">Logaritma Hesaplama</a>
+                    <a onclick="hesaplamaSec('Faktöriyel Hesaplama')">Faktöriyel Hesaplama</a>
+                    <a onclick="hesaplamaSec('Kesir Hesaplama')">Kesir Hesaplama</a>
+                    <a onclick="hesaplamaSec('Aritmetik Ortalama')">Aritmetik Ortalama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Zaman</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Yaş Hesaplama')">Yaş Hesaplama</a>
+                    <a onclick="hesaplamaSec('Saat Farkı Hesaplama')">Saat Farkı Hesaplama</a>
+                    <a onclick="hesaplamaSec('Tarih Ekleme Çıkarma')">Tarih Ekleme / Çıkarma</a>
+                    <a onclick="hesaplamaSec('Haftanın Günü Bulma')">Haftanın Günü Bulma</a>
+                    <a onclick="hesaplamaSec('Geri Sayım Sayacı')">Geri Sayım Sayacı</a>
+                    <a onclick="hesaplamaSec('İki Tarih Arası Gün')">İki Tarih Arası Gün</a>
+                    <a onclick="hesaplamaSec('Emeklilik Günü Hesaplama')">Emeklilik Günü Hesaplama</a>
+                    <a onclick="hesaplamaSec('Vardiya Çizelgesi Hesaplama')">Vardiya Çizelgesi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Kronometre')">Kronometre</a>
+                    <a onclick="hesaplamaSec('Burç / Zodyak Hesaplama')">Burç / Zodyak Hesaplama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Muhasebesel</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Kıdem Tazminatı Hesaplama')">Kıdem Tazminatı Hesaplama</a>
+                    <a onclick="hesaplamaSec('İhbar Tazminatı Hesaplama')">İhbar Tazminatı Hesaplama</a>
+                    <a onclick="hesaplamaSec('Fazla Mesai Hesaplama')">Fazla Mesai Hesaplama</a>
+                    <a onclick="hesaplamaSec('Netten Brüte Maaş')">Netten Brüte Maaş</a>
+                    <a onclick="hesaplamaSec('Asgari Geçim İndirimi')">Asgari Geçim İndirimi</a>
+                    <a onclick="hesaplamaSec('Yıllık İzin Ücreti')">Yıllık İzin Ücreti</a>
+                    <a onclick="hesaplamaSec('Serbest Meslek Makbuzu')">Serbest Meslek Makbuzu</a>
+                    <a onclick="hesaplamaSec('Amortisman Hesaplama')">Amortisman Hesaplama</a>
+                    <a onclick="hesaplamaSec('Şirket Kuruluş Maliyeti')">Şirket Kuruluş Maliyeti</a>
+                    <a onclick="hesaplamaSec('Bordro Hesaplama')">Bordro Hesaplama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Vergi</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Gelir Vergisi Hesaplama')">Gelir Vergisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Motorlu Taşıtlar Vergisi (MTV)')">Motorlu Taşıtlar Vergisi (MTV)</a>
+                    <a onclick="hesaplamaSec('Emlak Vergisi Hesaplama')">Emlak Vergisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Damga Vergisi Hesaplama')">Damga Vergisi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Kurumlar Vergisi')">Kurumlar Vergisi</a>
+                    <a onclick="hesaplamaSec('Veraset ve İntikal Vergisi')">Veraset ve İntikal Vergisi</a>
+                    <a onclick="hesaplamaSec('Değer Artış Kazancı')">Değer Artış Kazancı</a>
+                    <a onclick="hesaplamaSec('Konaklama Vergisi')">Konaklama Vergisi</a>
+                    <a onclick="hesaplamaSec('ÖTV Hesaplama')">ÖTV Hesaplama</a>
+                    <a onclick="hesaplamaSec('Gümrük Vergisi')">Gümrük Vergisi</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Ticari</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Kar / Zarar Hesaplama')">Kar / Zarar Hesaplama</a>
+                    <a onclick="hesaplamaSec('Maliyet Hesaplama')">Maliyet Hesaplama</a>
+                    <a onclick="hesaplamaSec('İskonto / İndirim Hesaplama')">İskonto / İndirim Hesaplama</a>
+                    <a onclick="hesaplamaSec('Başa Baş Noktası')">Başa Baş Noktası</a>
+                    <a onclick="hesaplamaSec('Stok Devir Hızı')">Stok Devir Hızı</a>
+                    <a onclick="hesaplamaSec('Brüt Kar Marjı')">Brüt Kar Marjı</a>
+                    <a onclick="hesaplamaSec('Satış Fiyatı Belirleme')">Satış Fiyatı Belirleme</a>
+                    <a onclick="hesaplamaSec('Komisyon Hesaplama')">Komisyon Hesaplama</a>
+                    <a onclick="hesaplamaSec('Nakliye Maliyet Hesaplama')">Nakliye Maliyet Hesaplama</a>
+                    <a onclick="hesaplamaSec('Kira Artış Oranı Hesaplama')">Kira Artış Oranı Hesaplama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Hukuki</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Yasal Faiz Hesaplama')">Yasal Faiz Hesaplama</a>
+                    <a onclick="hesaplamaSec('Nafaka Artış Hesaplama')">Nafaka Artış Hesaplama</a>
+                    <a onclick="hesaplamaSec('Adli Para Cezası')">Adli Para Cezası</a>
+                    <a onclick="hesaplamaSec('Kıdem İhbar Alacağı')">Kıdem / İhbar Alacağı</a>
+                    <a onclick="hesaplamaSec('Tahliye Taahhütnamesi Süresi')">Tahliye Taahhütnamesi Süresi</a>
+                    <a onclick="hesaplamaSec('Miras Paylaşım Hesaplama')">Miras Paylaşım Hesaplama</a>
+                    <a onclick="hesaplamaSec('Avukatlık Asgari Ücret')">Avukatlık Asgari Ücret</a>
+                    <a onclick="hesaplamaSec('Dava Harç Hesaplama')">Dava Harç Hesaplama</a>
+                    <a onclick="hesaplamaSec('İcra Takip Masrafı')">İcra Takip Masrafı</a>
+                    <a onclick="hesaplamaSec('İhtarname Süresi Hesaplama')">İhtarname Süresi Hesaplama</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Sigorta</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Trafik Sigortası Prim')">Trafik Sigortası Prim</a>
+                    <a onclick="hesaplamaSec('Kasko Değer Hesaplama')">Kasko Değer Hesaplama</a>
+                    <a onclick="hesaplamaSec('Zorunlu Deprem Sigortası (DASK)')">Zorunlu Deprem Sigortası (DASK)</a>
+                    <a onclick="hesaplamaSec('Sağlık Sigortası Maliyeti')">Sağlık Sigortası Maliyeti</a>
+                    <a onclick="hesaplamaSec('Seyahat Sağlık Sigortası')">Seyahat Sağlık Sigortası</a>
+                    <a onclick="hesaplamaSec('Kaza Tazminatı Hesaplama')">Kaza Tazminatı Hesaplama</a>
+                    <a onclick="hesaplamaSec('Emeklilik Sigorta Primi')">Emeklilik Sigorta Primi</a>
+                    <a onclick="hesaplamaSec('Tamamlayıcı Sağlık Sigortası')">Tamamlayıcı Sağlık Sigortası</a>
+                    <a onclick="hesaplamaSec('İşsizlik Sigortası Ödeneği')">İşsizlik Sigortası Ödeneği</a>
+                    <a onclick="hesaplamaSec('Ferdi Kaza Sigortası')">Ferdi Kaza Sigortası</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Seyahat</button>
+                <div class="dropdown-content">
+                    <a onclick="hesaplamaSec('Yakıt Tüketim Maliyeti')">Yakıt Tüketim Maliyeti</a>
+                    <a onclick="hesaplamaSec('Yolculuk Süresi Hesaplama')">Yolculuk Süresi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Uçuş Süresi Hesaplama')">Uçuş Süresi Hesaplama</a>
+                    <a onclick="hesaplamaSec('Konaklama Maliyeti')">Konaklama Maliyeti</a>
+                    <a onclick="hesaplamaSec('Otoban Köprü Geçiş Ücreti')">Otoban / Köprü Geçiş Ücreti</a>
+                    <a onclick="hesaplamaSec('Bagaj Ağırlık Maliyeti')">Bagaj Ağırlık Maliyeti</a>
+                    <a onclick="hesaplamaSec('Saat Dilimi Farkı')">Saat Dilimi Farkı</a>
+                    <a onclick="hesaplamaSec('Döviz Kuru Seyahat Bütçesi')">Döviz Kuru Seyahat Bütçesi</a>
+                    <a onclick="hesaplamaSec('Araç Kiralama Maliyeti')">Araç Kiralama Maliyeti</a>
+                    <a onclick="hesaplamaSec('Rota Maliyet Dağılımı')">Rota Maliyet Dağılımı</a>
+                </div>
+            </div>
+            <div class="dropdown"><button class="dropbtn">Diğer</button>
                 <div class="dropdown-content">
                     <a onclick="hesaplamaSec('Zekat Hesaplaması')">Zekat Hesaplaması <span class="badge-yeni">yeni</span></a>
                     <a onclick="hesaplamaSec('Fitre Hesaplaması')">Fitre Hesaplaması <span class="badge-yeni">yeni</span></a>
+                    <a onclick="hesaplamaSec('İftar Sahur Vakti')">İftar / Sahur Vakti</a>
+                    <a onclick="hesaplamaSec('Yakacak Kömür Hesabı')">Yakacak / Kömür Hesabı</a>
+                    <a onclick="hesaplamaSec('Boya Badana Malzemesi')">Boya / Badana Malzemesi</a>
+                    <a onclick="hesaplamaSec('Fayans Parke İhtiyacı')">Fayans / Parke İhtiyacı</a>
+                    <a onclick="hesaplamaSec('Halı Metrekare Fiyatı')">Halı Metrekare Fiyatı</a>
+                    <a onclick="hesaplamaSec('Elektrik Tüketim Faturası')">Elektrik Tüketim Faturası</a>
+                    <a onclick="hesaplamaSec('Su Faturası Hesaplama')">Su Faturası Hesaplama</a>
+                    <a onclick="hesaplamaSec('Doğalgaz Faturası Hesaplama')">Doğalgaz Faturası Hesaplama</a>
                 </div>
             </div>
         </div>
@@ -362,8 +724,6 @@
                     <p><strong>parahesap.site</strong>, kullanıcıların günlük yaşamlarında, iş hayatlarında ve finansal planlamalarında ihtiyaç duydukları tüm hesaplama işlemlerini hızlı, güvenilir ve pratik bir şekilde yapabilmeleri amacıyla kurulmuş kapsamlı bir hesaplama portalıdır.</p>
                     <h2>Misyonumuz</h2>
                     <p>Karmaşık matematiksel formülleri, vergi mevzuatlarını ve finansal hesaplamaları herkesin kolayca anlayabileceği ve saniyeler içinde sonuç alabileceği dijital araçlara dönüştürmektir.</p>
-                    <h2>Neden parahesap.site?</h2>
-                    <p>Sitemiz güncel oranlar, sade arayüz yapısı ve kesintisiz altyapısıyla en doğru sonuçlara en kısa sürede ulaşmanızı hedefler. Kredi hesaplamalarından zekat oranlarına, maaş netleştirmeden KDV hesaplarına kadar geniş bir yelpazede hizmet vermekteyiz.</p>
                 </div>
 
                 <!-- İLETİŞİM SAYFASI -->
@@ -373,19 +733,14 @@
                     <h2>İletişim Bilgileri</h2>
                     <p><strong>E-Posta:</strong> bilgi@parahesap.site</p>
                     <p><strong>Destek Saatleri:</strong> Hafta içi 09:00 - 18:00</p>
-                    <p>Portalımızda yer almasını istediğiniz yeni hesaplama araçları veya düzeltilmesini istediğiniz veriler için bize doğrudan e-posta gönderebilirsiniz.</p>
                 </div>
 
                 <!-- GİZLİLİK POLİTİKASI SAYFASI -->
                 <div id="gizlilikSayfasi" class="static-page-content">
                     <h1 class="page-main-title">GİZLİLİK POLİTİKASI</h1>
                     <p>parahesap.site olarak ziyaretçilerimizin gizliliğine büyük önem veriyoruz. Bu gizlilik politikası belgesi, parahesap.site tarafından hangi kişisel verilerin toplandığını ve bunların nasıl kullanıldığını açıklar.</p>
-                    <h2>Çerezler (Cookies) ve Web İşaretçileri</h2>
-                    <p>Sitemiz, kullanıcı deneyimini iyileştirmek ve site trafiğini analiz etmek amacıyla çerezleri kullanır.</p>
                     <h2>Google AdSense ve Reklam Politikası</h2>
-                    <p>Üçüncü taraf tedarikçiler olarak Google, sitemizde reklam yayınlamak için çerezleri (DoubleClick çerezi dahil) kullanır. Google'ın çerezleri kullanması, sitemize ve internetteki diğer sitelere yaptığınız ziyaretlere dayalı olarak kullanıcılarımıza reklam sunmasına olanak tanır. Kullanıcılar, Google Reklam ve İçerik Ağı gizlilik politikasını ziyaret ederek çerez kullanımını devre dışı bırakabilirler.</p>
-                    <h2>Google Analytics</h2>
-                    <p>Sitemiz ziyaretçi istatistiklerini ölçmek için Google Analytics (GA4) altyapısını kullanmaktadır. Bu araç IP adresiniz gibi verileri anonim olarak toplar.</p>
+                    <p>Üçüncü taraf tedarikçiler olarak Google, sitemizde reklam yayınlamak için çerezleri kullanır.</p>
                 </div>
 
                 <!-- KULLANIM ŞARTLARI SAYFASI -->
@@ -393,11 +748,7 @@
                     <h1 class="page-main-title">KULLANIM ŞARTLARI</h1>
                     <p>Bu web sitesini (parahesap.site) ziyaret ederek ve kullanarak aşağıdaki şartları ve koşulları kabul etmiş sayılırsınız.</p>
                     <h2>1. Bilgilendirme Amaçlıdır</h2>
-                    <p>Sitemizde yer alan tüm hesaplama araçları (kredi, vergi, zekat, maaş vb.) yalnızca bilgilendirme amaçlıdır. Çıkan sonuçlar resmi kurumların veya bankaların nihai işlem tutarlarıyla farklılık gösterebilir. parahesap.site doğabilecek hesaplama farklarından sorumlu tutulamaz.</p>
-                    <h2>2. Telif Hakları</h2>
-                    <p>Sitede yer alan tüm tasarım öğeleri, yazılım kodları, arayüz yerleşimleri ve içerikler parahesap.site'ye aittir. İzinsiz kopyalanamaz veya başka mecralarda ticari amaçla kullanılamaz.</p>
-                    <h2>3. Değişiklik Hakkı</h2>
-                    <p>parahesap.site, site içerisindeki tüm bilgileri, araçları ve kullanım koşullarını önceden bildirmeksizin değiştirme hakkını saklı tutar.</p>
+                    <p>Sitemizde yer alan tüm hesaplama araçları yalnızca bilgilendirme amaçlıdır.</p>
                 </div>
 
             </div>
@@ -452,7 +803,6 @@
             }
         }
 
-        // Tüm ekranları gizleyip sadece isteneni açan ana fonksiyon
         function ekranlariKapat() {
             document.getElementById("hesaplamaBolumu").style.display = "none";
             document.getElementById("hakkimizdaSayfasi").style.display = "none";
@@ -473,7 +823,6 @@
             document.getElementById("searchResultsDropdown").style.display = "none";
         }
 
-        /* Dinamik Hesaplama Türü Değiştirici */
         function hesaplamaSec(tur) {
             ekranlariKapat();
             document.getElementById("hesaplamaBolumu").style.display = "block";
@@ -483,7 +832,6 @@
             document.getElementById("sonucAlani").style.display = "none";
             document.getElementById("siteSearchInput").value = "";
             document.getElementById("searchResultsDropdown").style.display = "none";
-            
             document.getElementById("mobileDrawer").style.display = "none";
 
             var l1 = document.getElementById("label1");
@@ -499,26 +847,25 @@
                 l1.innerText = "Mevcut Tutar / Maaş (TL):";
                 l2.innerText = "Beklenen Zam Oranı (%):";
                 g2.style.display = "block";
-            } else if (tur.includes("Konut Kredisi") || tur.includes("Taşıt Kredisi") || tur.includes("İhtiyaç Kredisi")) {
-                l1.innerText = "Kredi Tutarı (TL):";
-                l2.innerText = "Aylık Faiz Oranı (%):";
+            } else if (tur.includes("Kredi") || tur.includes("Faiz") || tur.includes("Taksit")) {
+                l1.innerText = "Ana Tutar / Kredi Tutarı (TL):";
+                l2.innerText = "Aylık Oran / Faiz (%):";
                 g2.style.display = "block";
             } else if (tur.includes("KDV")) {
                 l1.innerText = "Ürün Fiyatı (TL):";
                 l2.innerText = "KDV Oranı (% örn: 20):";
                 g2.style.display = "block";
-            } else if (tur.includes("Zekat")) {
-                l1.innerText = "Toplam Nakit / Altın Varlığı (TL):";
+            } else if (tur.includes("Zekat") || tur.includes("Fitre")) {
+                l1.innerText = "Toplam Varlık / Nakit (TL):";
                 g2.style.display = "none";
             } else {
-                l1.innerText = "Ana Tutar (TL):";
+                l1.innerText = "Ana Değer / Tutar:";
                 l2.innerText = "Oran / Yüzde (%):";
                 g2.style.display = "block";
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* Hesaplama İşlemini Yürüten Fonksiyon */
         function hesaplaCalistir() {
             var v1 = parseFloat(document.getElementById("input1").value) || 0;
             var v2 = parseFloat(document.getElementById("input2").value) || 0;
@@ -547,7 +894,6 @@
             document.getElementById("sonucAlani").style.display = "block";
         }
 
-        /* Canlı Arama Fonksiyonu */
         function canliAramaYap() {
             var input = document.getElementById("siteSearchInput");
             var filter = input.value.toLowerCase().trim();
