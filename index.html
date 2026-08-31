@@ -372,7 +372,7 @@
             <p id="articleP2">Bu hesaplama aracı; güncel ekonomik veriler, yasal tavan ve taban oranları dikkate alınarak size en yakın tahmini sonucu sunmak üzere tasarlanmıştır. Finansal geleceğinizi planlarken enflasyon beklentilerini ve vergi dilimi geçişlerini göz önünde bulundurmanız tavsiye edilir.</p>
         </div>
 
-        <!-- 13 Kategorili Tam Akordiyon Menü (Tüm Hesaplamalar Butonuna Basınca veya Aşağıda Açılır) -->
+        <!-- 13 Kategorili Tam Akordiyon Menü (Tüm Hesaplamalar Butonuna Basınca Arama Çubuğunun Hemen Altında Açılır) -->
         <div id="accordionSection">
             <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Kategorileri</h3>
 
@@ -529,7 +529,7 @@
                 </div>
             </div>
 
-            <!-- 10. Ticari Hesaplamalar -->
+            <!-- 10. Ticari Hesaplamaları -->
             <div class="accordion-category">
                 <div class="accordion-header" onclick="toggleAccordion(this)">10. Ticari Hesaplamalar</div>
                 <div class="accordion-content">
@@ -546,7 +546,7 @@
                 </div>
             </div>
 
-            <!-- 11. Hukuki Hesaplamalar -->
+            <!-- 11. Hukuki Hesaplamaları -->
             <div class="accordion-category">
                 <div class="accordion-header" onclick="toggleAccordion(this)">11. Hukuki Hesaplamalar</div>
                 <div class="accordion-content">
@@ -685,12 +685,13 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
+    // Sağ üstteki butona basıldığında akordiyon hemen arama çubuğunun altında açılır ve oraya odaklanır
     function toggleTumHesaplamalar() {
         showHome();
         let section = document.getElementById('accordionSection');
         section.classList.toggle('active');
         if(section.classList.contains('active')) {
-            window.scrollTo({top: section.offsetTop - 60, behavior: 'smooth'});
+            window.scrollTo({top: section.offsetTop - 80, behavior: 'smooth'});
         }
     }
 
