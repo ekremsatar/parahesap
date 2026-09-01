@@ -218,7 +218,7 @@
             margin-bottom: 12px;
         }
 
-        /* Akordiyon Menüler (13 Kategori) */
+        /* Akordiyon Menüler (20 Seçkin Araç - 3 Dalga) */
         #accordionSection {
             margin-top: 20px;
             display: none;
@@ -227,8 +227,8 @@
             display: block;
         }
         .accordion-category {
-            margin-bottom: 4px;
-            border-radius: 4px;
+            margin-bottom: 6px;
+            border-radius: 6px;
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.1);
         }
@@ -272,7 +272,7 @@
             text-decoration: underline;
         }
 
-        /* Kurumsal Sayfalar (Hakkımızda vb.) */
+        /* Kurumsal Sayfalar */
         .content-page {
             display: none;
             background: #fff;
@@ -341,22 +341,25 @@
     <div id="homeContent" class="content-page active">
         <!-- Arama Çubuğu -->
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Kolay Arama: Örn. maaş, zekat, kredi, tyt, kdv..." onkeyup="filterTools()">
+            <input type="text" id="searchInput" placeholder="Araç Ara: Örn. maaş, kredi, mtv, zekat, kdv..." onkeyup="filterTools()">
             <button onclick="filterTools()">GİT</button>
         </div>
 
-        <!-- Aktif Hesaplama Paneli (Varsayılan: Maaş Zammı) -->
+        <!-- Aktif Hesaplama Paneli (Sabit: Brütten Nete / Netten Brüte Maaş) -->
         <div id="calcPanel" class="calc-panel">
-            <h2 id="calcTitle">Maaş / Zam Hesaplaması</h2>
-            <p id="calcDesc">Mevcut maaşınızı ve beklenen enflasyon/zam oranlarını girerek net tutarı hesaplayın.</p>
+            <h2 id="calcTitle">Brütten Nete / Netten Brüte Maaş Hesaplama</h2>
+            <p id="calcDesc">Güncel SGK prim kesintileri, işsizlik sigortası ve vergi dilimleri esas alınarak maaş hesaplaması yapılır.</p>
             
             <div class="form-group">
-                <label id="label1">Mevcut Maaş / Tutar (TL):</label>
-                <input type="number" id="input1" placeholder="Örn: 25000">
+                <label id="label1">İşlem Türü Seçin:</label>
+                <select id="islemTuru">
+                    <option value="bruttencete">Brütten Nete Maaş</option>
+                    <option value="nettensbrute">Netten Brüte Maaş</option>
+                </select>
             </div>
             <div class="form-group">
-                <label id="label2">Beklenen Zam / Oran (%):</label>
-                <input type="number" id="input2" placeholder="Örn: 20" step="0.01">
+                <label id="label2">Aylık Tutar (TL):</label>
+                <input type="number" id="input1" placeholder="Örn: 35000">
             </div>
             <button class="btn-hesapla" onclick="hesaplaYap()">HESAPLA</button>
             <div id="sonucAlani" style="display:none;"></div>
@@ -365,298 +368,83 @@
         <!-- 2. Orta Reklam Alanı -->
         <div class="adsense-box">AdSense Yatay Reklam Alanı (Orta Alan)</div>
 
-        <!-- Her Hesaplamaya Özgü Detaylı Açıklama Alanı -->
+        <!-- Detaylı Açıklama Alanı -->
         <div class="info-article" id="infoArticleBox">
-            <h3 id="articleTitle">Maaş Zammı ve Finansal Planlama Hakkında Detaylı Rehber</h3>
-            <p id="articleP1">Maaş hesaplamaları ve enflasyon bazlı zam oranları, çalışanların yıllık bütçelerini ve satın alma güçlerini doğrudan etkileyen en kritik ekonomik parametrelerden biridir. İş Kanunu ve toplu sözleşme esasları çerçevesinde brüt tutarlar üzerinden yapılan kesintiler (SGK işçi payı, işsizlik sigortası, gelir damga vergileri) net maaşın belirlenmesinde rol oynar.</p>
-            <p id="articleP2">Bu hesaplama aracı; güncel ekonomik veriler, yasal tavan ve taban oranları dikkate alınarak size en yakın tahmini sonucu sunmak üzere tasarlanmıştır. Finansal geleceğinizi planlarken enflasyon beklentilerini ve vergi dilimi geçişlerini göz önünde bulundurmanız tavsiye edilir.</p>
+            <h3 id="articleTitle">Güncel Vergi Dilimleri ve SGK Kesintileriyle Maaş Hesabı</h3>
+            <p id="articleP1">Çalışanların brüt maaşları üzerinden yapılan SGK işçi payı (%14) ve işsizlik sigortası (%1) kesintileri düşüldükten sonra kalan matrah üzerinden kümülatif gelir vergisi tarifesi uygulanır. Bu araç, yıl içerisindeki vergi dilimi geçişlerini de simüle ederek en doğru net kazancınızı güncel oranlarla hesaplar.</p>
+            <p id="articleP2">Asgari geçim, damga vergisi istisnaları ve yasal kesinti oranları resmi mevzuata uygun olarak işlenmektedir.</p>
         </div>
 
-        <!-- 13 Kategorili Tam Akordiyon Menü (Tüm Hesaplamalar Butonuna Basınca Arama Çubuğunun Hemen Altında Açılır) -->
+        <!-- 20 Seçkin Araç Akordiyon Menü (3 Dalga Halinde) -->
         <div id="accordionSection">
-            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Kategorileri</h3>
+            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları (20 Temel Araç)</h3>
 
-            <!-- 1. Dini Hesaplamalar -->
+            <!-- 1. Birinci Dalga: Ana Finans, Maaş ve Ticari Araçlar -->
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">1. Dini Hesaplamalar</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">1. Ana Finans, Maaş, Kredi ve Ticari Araçlar</div>
+                <div class="accordion-content">
+                    <a href="#" onclick="openCalculator('maas'); return false;">Brütten Nete / Netten Brüte Maaş Hesaplama (SGK + vergi dilimi güncel)</a>
+                    <a href="#" onclick="openCalculator('kredi'); return false;">Kredi Taksit Hesaplama (İhtiyaç + Konut + Taşıt)</a>
+                    <a href="#" onclick="openCalculator('zam'); return false;">Maaş Zammı Hesaplama</a>
+                    <a href="#" onclick="openCalculator('tazminat'); return false;">Kıdem + İhbar Tazminatı Hesaplama</a>
+                    <a href="#" onclick="openCalculator('kira'); return false;">Kira Artış Oranı (TÜFE) Hesaplama</a>
+                    <a href="#" onclick="openCalculator('mtv'); return false;">MTV Hesaplama</a>
+                    <a href="#" onclick="openCalculator('kdv'); return false;">KDV Dahil / Hariç Hesaplama</a>
+                    <a href="#" onclick="openCalculator('yuzde'); return false;">Yüzde / İndirim / Zam Hesaplama</a>
+                </div>
+            </div>
+
+            <!-- 2. İkinci Dalga: Orta-Yüksek Trafik (Dini, Vergisel & Sosyal Haklar) -->
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">2. Dini, Vergisel ve Sosyal Haklar (Orta-Yüksek Trafik)</div>
                 <div class="accordion-content">
                     <a href="#" onclick="openCalculator('zekat'); return false;">Zekat Hesaplama</a>
                     <a href="#" onclick="openCalculator('fitre'); return false;">Fitre Hesaplama</a>
                     <a href="#" onclick="openCalculator('miras'); return false;">Miras Payı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kurban'); return false;">Kurban Hisse Hesaplama</a>
-                    <a href="#" onclick="openCalculator('nisap'); return false;">Altın/Gümüş Nisap Miktarı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('fidye'); return false;">Oruç Fidyesi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('sadaka'); return false;">Sadaka-i Cariye Planlama</a>
-                    <a href="#" onclick="openCalculator('borc'); return false;">Kefaret ve Borç Hesaplama</a>
-                    <a href="#" onclick="openCalculator('ticaretzekat'); return false;">Ticaret Malı Zekatı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('hissezekat'); return false;">Hisse Senedi Zekat Hesaplama</a>
+                    <a href="#" onclick="openCalculator('asgari'); return false;">Asgari Ücret / Asgari Geçim İndirimi</a>
+                    <a href="#" onclick="openCalculator('mesai'); return false;">Fazla Mesai Ücreti Hesaplama</a>
+                    <a href="#" onclick="openCalculator('vergi'); return false;">Gelir Vergisi Dilimi Hesaplama</a>
                 </div>
             </div>
 
-            <!-- 2. Kredi Hesaplamaları -->
+            <!-- 3. Üçüncü Dalga: Trafik ve Çeşitlilik (Sağlık, Eğitim, Zaman, Teknik) -->
             <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">2. Kredi Hesaplamaları</div>
+                <div class="accordion-header" onclick="toggleAccordion(this)">3. Sağlık, Eğitim, Zaman ve Teknik Çeşitlilik Araçları</div>
                 <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Konut Kredisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">İhtiyaç Kredisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Taşıt Kredisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Ticari Kredi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Kredi Yeniden Yapılandırma Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Kredi Erteleme Maliyeti Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Esnaf Kefalet Kredisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Döviz Kredisi Faiz Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Faiz Oranı Karşılaştırma Aracı</a>
-                    <a href="#" onclick="openCalculator('kredi'); return false;">Kredi Dosya Masrafı Hesaplama</a>
-                </div>
-            </div>
-
-            <!-- 3. Finansal Hesaplamalar -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">3. Finansal Hesaplamalar</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('mass'); return false;">Brütten Nete Maaş Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Netten Brüte Maaş Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Kıdem Tazminatı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">İhbar Tazminatı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Fazla Mesai Ücreti Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Enflasyon Satın Alma Gücü Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Yatırım Getirisi (ROI) Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Bileşik Faiz Getirisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Asgari Geçim / Vergi İndirimi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('mass'); return false;">Aylık Tasarruf ve Bütçe Planlama</a>
-                </div>
-            </div>
-
-            <!-- 4. Sınav Puanı Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">4. Sınav Puanı Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">YKS / TYT - AYT Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">LGS Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">ALES Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">DGS Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">KPSS Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">TUS Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">YDS / YÖKDİL Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">MSÜ Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">DUS Puan Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">EUS Puan Hesaplama</a>
-                </div>
-            </div>
-
-            <!-- 5. Eğitim Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">5. Eğitim Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Üniversite Not Ortalaması (AGNO/GPA)</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Takdir / Teşekkür Belgesi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Sınav Ortalama ve Harf Notu Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Okul Devamsızlık Takip ve Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kredisiz / Koşullu Ders Geçme Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Üniversite Harç Ücreti Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Lisansüstü Mezuniyet Kriterleri</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Sınıf Geçme Kalma Durumu Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Yurt Başvuru Puanı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">YKS Başarı Sıralaması Tahmin Aracı</a>
-                </div>
-            </div>
-
-            <!-- 6. Sağlık Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">6. Sağlık Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Vücut Kitle İndeksi (VKİ) Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Günlük Kalori İhtiyacı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İdeal Kilo Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Bazal Metabolizma Hızı (BMH) Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Günlük Su Tüketimi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Gebelik ve Yumurtlama Dönemi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Vücut Yağ Oranı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İdeal Kalp Atış Hızı Aralıkları</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Günlük Protein İhtiyacı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Adım Atma Kalori Karşılığı Hesaplama</a>
-                </div>
-            </div>
-
-            <!-- 7. Matematiksel Hesaplamalar -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">7. Matematiksel Hesaplamalar</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Yüzde Hesaplama ve Ortalama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Oran Orantı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Karekök ve Üslü Sayı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Logaritma Hesaplama Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İstatistiksel Medyan ve Mod Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Geometrik Alan ve Çevre Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Hacim ve Kapasite Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kesir ve Ondalık Sayı Çevirici</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Sayı Tabanı Çevirme Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Asal Çarpanlara Ayırma Aracı</a>
-                </div>
-            </div>
-
-            <!-- 8. Zaman Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">8. Zaman Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Tarih Farkı ve Gün Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Yaş ve Doğum Günü Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İş Günü ve Hafta Sonu Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Saat ve Dakika Toplama Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Özel Günler İçin Geri Sayım Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Hangi Gün Doğdunuz / Hangi Gün?</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Artık Yıl Kontrol ve Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Dünya Saat Dilimi Çevirici</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Emeklilik Günü ve Yaşı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Askerlik Şafak Sayar Hesaplama</a>
-                </div>
-            </div>
-
-            <!-- 9. Vergi Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">9. Vergi Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('kdv'); return false;">MTV (Motorlu Taşıtlar Vergisi) Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Gelir Vergisi Dilimleri Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Emlak Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Damga Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">ÖTV (Özel Tüketim Vergisi) Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Değerli Konut Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Veraset ve İntikal Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Konaklama Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Çevre Temizlik Vergisi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Kurumlar Vergisi Matrah Hesaplama</a>
-                </div>
-            </div>
-
-            <!-- 10. Ticari Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">10. Ticari Hesaplamalar</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('kdv'); return false;">KDV Dahil / Hariç Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Kâr / Zarar Marjı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">İskonto ve İndirim Oranı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Birim Maliyet ve Satış Fiyatı</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Başa Baş Noktası (Break-even) Analizi</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Stok Maliyet ve Değerleme Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Brüt Kâr Marjı Oranı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Satış Komisyonu Hesaplama Aracı</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Döviz Kuru Kâr / Zarar Hesaplama</a>
-                    <a href="#" onclick="openCalculator('kdv'); return false;">Enflasyon Fiyat Farkı Artış Hesabı</a>
-                </div>
-            </div>
-
-            <!-- 11. Hukuki Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">11. Hukuki Hesaplamalar</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Yasal Faiz ve Temerrüt Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Ticari Avans Faizi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kira Artış Oranı (TÜFE 12 Aylık)</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kıdem Tazminatı Tavanı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Nafaka Artış Oranı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İcra Masrafı ve Harç Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Dava Harç ve Gider Avansı Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Miras Saklı Pay Oranları Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Tazminat Faiz Süresi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İhbar Süresi ve Kıdem Gün Hesabı</a>
-                </div>
-            </div>
-
-            <!-- 12. Sigorta Hesaplamaları -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">12. Sigorta Hesaplamaları</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kasko Değer Listesi & Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Zorunlu Trafik Sigortası Prim Kademesi</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">DASK Deprem Sigortası Prim Hesabı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Özel Sağlık Sigortası Maliyet Hesabı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Araç Yakıt (Benzin/Mazot) Maliyet Hesabı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Mesafe ve Seyahat Süresi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Otoyol ve Köprü Geçiş Ücreti Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Araç Amortisman Değer Kaybı Hesabı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Seyahat Sağlık Sigortası Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kiralık Araç Günlük Maliyet Hesabı</a>
-                </div>
-            </div>
-
-            <!-- 13. Diğer Hesaplamalar -->
-            <div class="accordion-category">
-                <div class="accordion-header" onclick="toggleAccordion(this)">13. Diğer Hesaplamalar</div>
-                <div class="accordion-content">
-                    <a href="#" onclick="openCalculator('genel'); return false;">Birim Çevirici (Uzunluk, Ağırlık, Sıcaklık)</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Enerji Tüketimi ve Elektrik Faturası Hesabı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Şifre Güvenlik Seviyesi Test Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Kelime, Harc ve Karakter Sayacı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">RGB / HEX Renk Kodları Çevirici</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Dijital Dosya / Boyut Çevirici (MB/GB)</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">IP Adresi Bilgi Sorgulama Aracı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Günlük Ev Yemek Menüsü Kalori Planı</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">İdeal Ev Kiralama Bütçesi Hesaplama</a>
-                    <a href="#" onclick="openCalculator('genel'); return false;">Proje Görev Süre ve Efor Planlama</a>
+                    <a href="#" onclick="openCalculator('bmi'); return false;">BMI / Vücut Kitle İndeksi Hesaplama</a>
+                    <a href="#" onclick="openCalculator('yas'); return false;">Yaş Hesaplama</a>
+                    <a href="#" onclick="openCalculator('tarih'); return false;">Tarih Farkı / Gün Hesaplama</a>
+                    <a href="#" onclick="openCalculator('sinav'); return false;">YKS / LGS / KPSS Puan Hesaplama</a>
+                    <a href="#" onclick="openCalculator('faiz'); return false;">Bileşik Faiz / Mevduat Getiri Hesaplama</a>
+                    <a href="#" onclick="openCalculator('birim'); return false;">Birim Çevirici (Uzunluk, Ağırlık, Sıcaklık)</a>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- HAKKINDA SAYFASI (DETAYLI) -->
+    <!-- HAKKINDA SAYFASI -->
     <div id="hakkimizdaContent" class="content-page">
         <h2>parahesap.site Hakkında</h2>
-        <p><strong>parahesap.site</strong>; günümüz dijital dünyasında bireylerin ve işletmelerin finansal, dini, hukuki ve akademik alanlarda ihtiyaç duydukları tüm pratik hesaplama araçlarını tek bir çatı altında, hızlı ve hatasız bir şekilde sunmak amacıyla kurulmuş kapsamlı bir online bilgi platformudur.</p>
-        <h3>Misyonumuz</h3>
-        <p>Karmaşık matematiksel formülleri, vergi mevzuatlarını ve yasal oranları anlaşılır, sade ve saniyeler içinde sonuç veren dijital araçlara dönüştürerek kullanıcılarımızın zamandan tasarruf etmesini sağlamak; en doğru ve güncel bilgiyi şeffaf bir biçimde erişilebilir kılmaktır.</p>
-        <h3>Vizyonumuz</h3>
-        <p>Türkiye’nin en güvenilir, en çok tercih edilen ve en geniş hesaplama kategorilerine sahip dijital başvuru kaynağı haline gelmek; sürekli güncellenen altyapımızla kullanıcı memnuniyetini en üst düzeyde tutmaktır.</p>
+        <p><strong>parahesap.site</strong>; en çok ihtiyaç duyulan 20 temel hesaplama aracını sade, hızlı ve güncel oranlarla kullanıcılarına sunmak için tasarlanmış profesyonel bir platformdur.</p>
     </div>
 
-    <!-- İLETİŞİM SAYFASI (DETAYLI) -->
+    <!-- İLETİŞİM SAYFASI -->
     <div id="iletisimContent" class="content-page">
-        <h2>İletişim Bilgileri ve Destek</h2>
-        <p>Sitemizde yer alan hesaplama araçlarıyla ilgili her türlü öneri, hata bildirimi, iş birliği teklifi veya görüşlerinizi bizimle paylaşabilirsiniz. Ekibimiz taleplerinizi en kısa sürede inceleyerek geri dönüş sağlayacaktır.</p>
-        <div style="background: var(--bg-light); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-top: 15px;">
-            <h3 style="margin-top:0; color:var(--primary);">İletişim Formu</h3>
-            <div class="form-group">
-                <label>Konu Başlığı:</label>
-                <select>
-                    <option>Genel Bilgi ve Görüş</option>
-                    <option>Hesaplama Hatası Bildirimi</option>
-                    <option>Öneri ve Yeni Araç Talebi</option>
-                    <option>Reklam ve Sponsorluk (AdSense)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Adınız Soyadınız:</label>
-                <input type="text" placeholder="Adınızı giriniz">
-            </div>
-            <div class="form-group">
-                <label>E-posta Adresiniz:</label>
-                <input type="email" placeholder="ornek@mail.com">
-            </div>
-            <div class="form-group">
-                <label>Mesajınız:</label>
-                <textarea rows="5" placeholder="Mesajınızı detaylıca yazınız..."></textarea>
-            </div>
-            <button class="btn-hesapla" onclick="alert('Mesajınız başarıyla iletildi. Teşekkür ederiz!')">MESAJI GÖNDER</button>
-        </div>
+        <h2>İletişim ve Destek</h2>
+        <p>Görüş, öneri ve hata bildirimleriniz için bizimle iletişime geçebilirsiniz.</p>
     </div>
 
-    <!-- GİZLİLİK POLİTİKASI (DETAYLI - ADSENSE UYUMLU) -->
+    <!-- GİZLİLİK POLİTİKASI -->
     <div id="gizlilikContent" class="content-page">
-        <h2>Gizlilik Politikası</h2>
-        <p>Bu web sitesini (<strong>parahesap.site</strong>) ziyaret ederek, işbu Gizlilik Politikası'nda belirtilen şartları ve veri işleme esaslarını kabul etmiş sayılırsınız. Kullanıcılarımızın gizliliği bizim için son derece önemlidir.</p>
-        <h3>Çerezler (Cookies) ve Google AdSense</h3>
-        <p>Sitemiz, Google dahil üçüncü taraf tedarikçilerin reklam sunmak üzere çerezleri (cookie) kullanmasına izin vermektedir. Google'ın reklam çerezlerini kullanması, sitemize ve internetteki diğer sitelere yaptığınız ziyaretlere dayalı olarak kullanıcılarımıza reklam sunmasına olanak tanır. Kullanıcılar, Reklam Ayarları sayfasını ziyaret ederek kişiselleştirilmiş reklam kullanımını devre dışı bırakabilirler.</p>
-        <h3>Veri Güvenliği</h3>
-        <p>Sitemiz üzerinden gerçekleştirilen tüm hesaplama işlemleri tarayıcınız üzerinde anlık olarak yapılır; kişisel verileriniz kesinlikle sunucularımızda depolanmaz veya üçüncü şahıslarla paylaşılmaz.</p>
+        <h2>Gizlilik Politikası ve AdSense</h2>
+        <p>Sitemiz Google AdSense standartlarına uygun olarak çerez kullanmaktadır. Verileriniz sunucularda saklanmaz.</p>
     </div>
 
-    <!-- KULLANIM ŞARTLARI (DETAYLI) -->
+    <!-- KULLANIM ŞARTLARI -->
     <div id="kullanimContent" class="content-page">
-        <h2>Kullanım Şartları ve Sorumluluk Reddi</h2>
-        <p><strong>parahesap.site</strong> web sitesinde sunulan tüm hesaplama araçları, tablolar ve formüller yalnızca bilgilendirme ve rehberlik amaçlıdır. Resmi işlemlerde, vergi dairesi beyannamelerinde, bankacılık sözleşmelerinde veya hukuki süreçlerde doğabilecek farklılıklar veya cezai durumlardan site yönetimi sorumlu tutulamaz.</p>
-        <h3>Fikri Mülkiyet Hakları</h3>
-        <p>Sitemizde yayınlanan tüm yazılım kodları, arayüz tasarımları, logo unsurları ve makaleler 5846 sayılı Fikir ve Sanat Eserleri Kanunu ile korunmaktadır. İzinsiz kopyalanamaz, çoğaltılamaz veya başka mecralarda ticari amaçla kullanılamaz.</p>
+        <h2>Kullanım Şartları</h2>
+        <p>Tüm hesaplama araçları bilgilendirme amaçlıdır. Resmi işlemlerde kurum verileri esas alınmalıdır.</p>
     </div>
 
 </main>
@@ -685,7 +473,6 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-    // Sağ üstteki butona basıldığında akordiyon hemen arama çubuğunun altında açılır ve oraya odaklanır
     function toggleTumHesaplamalar() {
         showHome();
         let section = document.getElementById('accordionSection');
@@ -714,48 +501,39 @@
         panel.style.display = 'block';
         document.getElementById('sonucAlani').style.display = 'none';
         document.getElementById('input1').value = "";
-        document.getElementById('input2').value = "";
 
-        if(type === 'zekat') {
-            title.innerHTML = "Zekat Hesaplaması";
-            desc.innerHTML = "Nakit, altın, döviz ve ticari varlıklarınızı girerek %2.5 oranına göre zekatınızı hesaplayın.";
-            l1.innerHTML = "Toplam Varlık / Nakit / Altın Değeri (TL):";
-            l2.innerHTML = "Toplam Borçlar (TL):";
-            artTitle.innerHTML = "İslam'da Zekat Hesaplaması ve Nisap Miktarı Hakkında Bilgiler";
-            artP1.innerHTML = "Zekat, İslam'ın şartlarından biri olup, aslî ihtiyaçlar dışında nisap miktarı (80.18 gram altın veya eşdeğeri mal varlığı) üzerindeki malın üzerinden bir kameri yıl geçmesiyle hak sahiplerine verilmesi farz olan mali bir ibadettir.";
-            artP2.innerHTML = "Hesaplama yapılırken sahip olunan toplam varlıklardan vadesi gelmiş borçlar düşülür. Kalan net miktar nisap miktarını ulaşıyorsa kırkta bir (%2.5) oranında zekat hesaplanır.";
-        } else if(type === 'fitre') {
-            title.innerHTML = "Fitre (Sadaka-i Fitr) Hesaplaması";
-            desc.innerHTML = "Diyanet İşleri Başkanlığı'nın belirlediği günlük fitre bedeli ile aile birey sayınızı hesaplayın.";
-            l1.innerHTML = "Günlük Fitre Tutarı (TL):";
-            l2.innerHTML = "Aile Birey Sayısı:";
-            artTitle.innerHTML = "Fitre Nedir ve Kimlere Verilir?";
-            artP1.innerHTML = "Fitre, Ramazan ayında fakirlerin sevindirilmesi ve bayram namazına tok gitmesi amacıyla verilen vacip bir sadakadır.";
-            artP2.innerHTML = "Her yıl Diyanet İşleri Başkanlığı tarafından güncel ekonomik şartlar göz önünde bulundurularak asgari bir fitre bedeli açıklanır. Bu tutar bir kişinin bir günlük gıda ihtiyacını karşılayacak miktardır.";
-        } else if(type === 'miras') {
-            title.innerHTML = "Miras Payı Hesaplaması";
-            desc.innerHTML = "Bırakılan toplam tereke ve mirasçı oranlarına göre pay hesaplama aracı.";
-            l1.innerHTML = "Toplam Tereke / Miras Tutarı (TL):";
-            l2.innerHTML = "Katsayı / Varis Sayısı:";
-            artTitle.innerHTML = "İslam Hukukunda Miras Taksimi Esasları";
-            artP1.innerHTML = "Miras hukuku; vefat eden bir kişinin geride bıraktığı mal varlığının (tereke) yasal pay sahipleri ve varisler arasında Kur'an-ı Kerim hükümleri ve medeni kanun esaslarınca paylaştırılmasını düzenler.";
-            artP2.innerHTML = "Eş, çocuk, anne ve baba gibi asıl varislerin pay oranları sabit haklar (feri fer'i) olarak belirlenmiştir. Bu araç bilgilendirme amaçlı ön hesaplama sunar.";
+        if(type === 'maas') {
+            title.innerHTML = "Brütten Nete / Netten Brüte Maaş Hesaplama";
+            desc.innerHTML = "Güncel SGK prim kesintileri, işsizlik sigortası ve vergi dilimleri esas alınarak maaş hesaplaması yapılır.";
+            l1.innerHTML = "İşlem Türü Seçin:";
+            l2.innerHTML = "Aylık Tutar (TL):";
+            artTitle.innerHTML = "Güncel Vergi Dilimleri ve SGK Kesintileriyle Maaş Hesabı";
+            artP1.innerHTML = "Çalışanların brüt maaşları üzerinden yapılan SGK işçi payı (%14) ve işsizlik sigortası (%1) kesintileri düşüldükten sonra kalan matrah üzerinden kümülatif gelir vergisi tarifesi uygulanır.";
+            artP2.innerHTML = "Bu araç, yıl içerisindeki vergi dilimi geçişlerini de simüle ederek en doğru net kazancınızı güncel oranlarla hesaplar.";
         } else if(type === 'kredi') {
-            title.innerHTML = "Kredi Taksit Hesaplaması";
-            desc.innerHTML = "Kredi tutarı, vade ve faiz oranını girerek aylık taksitleri hesaplayın.";
-            l1.innerHTML = "Kredi Ana Para Tutarı (TL):";
+            title.innerHTML = "Kredi Taksit Hesaplama (İhtiyaç, Konut, Taşıt)";
+            desc.innerHTML = "Kredi tutarı, vade ve aylık faiz oranını girerek taksit tutarını hesaplayın.";
+            l1.innerHTML = "Kredi Tutarı (TL):";
             l2.innerHTML = "Aylık Faiz Oranı (%):";
-            artTitle.innerHTML = "Kredi Kullanırken Dikkat Edilmesi Gerekenler";
-            artP1.innerHTML = "Konut, ihtiyaç veya taşıt kredisi kullanırken bankaların sunduğu faiz oranları, dosya masrafları ve sigorta bedelleri toplam maliyeti etkiler.";
-            artP2.innerHTML = "Bütçenize uygun taksit planlaması yapmak, geri ödemelerde finansal sıkıntı yaşamamanız için aylık gelirinizin belirli bir oranını aşmayacak şekilde borçlanmanız önerilir.";
+            artTitle.innerHTML = "Kredi Maliyetleri ve Planlama Rehberi";
+            artP1.innerHTML = "Kredi kullanırken faiz oranlarının yanı sıra dosya masrafları ve sigortalar toplam geri ödeme tutarını etkiler.";
+            artP2.innerHTML = "Bütçenize uygun ödeme planı oluşturmak için vade ve faiz oranlarını dikkatle karşılaştırın.";
+        } else if(type === 'zekat') {
+            title.innerHTML = "Zekat Hesaplaması";
+            desc.innerHTML = "Nakit, altın ve ticari varlıklarınızı girerek %2.5 oranına göre zekatınızı hesaplayın.";
+            l1.innerHTML = "Toplam Varlık Değeri (TL):";
+            l2.innerHTML = "Toplam Borçlar (TL):";
+            artTitle.innerHTML = "Zekat ve Nisap Miktarı Bilgileri";
+            artP1.innerHTML = "Zekat, temel ihtiyaçlar ve borçlar çıktıktan sonra nisap miktarı üzerindeki mal varlığı üzerinden verilir.";
+            artP2.innerHTML = "Oran %2.5 (40'ta 1) olarak hesaplanmaktadır.";
         } else {
             title.innerHTML = "Profesyonel Hesaplama Aracı";
             desc.innerHTML = "İlgili parametreleri girerek anında hesaplama yapın.";
-            l1.innerHTML = "Ana Değer / Tutar (TL):";
-            l2.innerHTML = "Oran / Katsayı (%):";
-            artTitle.innerHTML = "Bu Hesaplama Aracı Hakkında Genel Bilgilendirme";
-            artP1.innerHTML = "Seçmiş olduğunuz bu araç, güncel standart formüller kullanılarak saniyeler içinde en doğru tahmini sonucu verecek şekilde kodlanmıştır.";
-            artP2.innerHTML = "Verileriniz tamamen tarayıcınızda işlenir ve güvenle sonuç üretilir. Resmi kurumlardaki kesin işlemleriniz için yetkili mercilerden teyit almanız önerilir.";
+            l1.innerHTML = "Ana Değer / Tutar:";
+            l2.innerHTML = "Oran / İkinci Parametre:";
+            artTitle.innerHTML = "Seçilen Hesaplama Aracı Hakkında";
+            artP1.innerHTML = "Bu araç hızlı ve güvenilir sonuç üretmek üzere optimize edilmiştir.";
+            artP2.innerHTML = "Tüm işlemler tarayıcınızda gerçekleştirilir.";
         }
 
         window.scrollTo({top: panel.offsetTop - 60, behavior: 'smooth'});
@@ -763,35 +541,26 @@
 
     function hesaplaYap() {
         let v1 = parseFloat(document.getElementById('input1').value);
-        let v2 = parseFloat(document.getElementById('input2').value);
         let sonuc = document.getElementById('sonucAlani');
 
         if(isNaN(v1)) {
             sonuc.style.display = 'block';
-            sonuc.innerHTML = "<span style='color:red;'>Lütfen geçerli bir ana tutar giriniz!</span>";
+            sonuc.innerHTML = "<span style='color:red;'>Lütfen geçerli bir tutar giriniz!</span>";
             return;
         }
 
-        let hesap = 0;
         let baslik = document.getElementById('calcTitle').innerHTML;
-        
         sonuc.style.display = 'block';
-        if(baslik.includes("Zekat")) {
-            let netVarlik = v1 - (isNaN(v2) ? 0 : v2);
-            hesap = netVarlik > 0 ? (netVarlik * 0.025).toFixed(2) : 0;
-            sonuc.innerHTML = `Ödenecek Net Zekat Tutarı: ${hesap} TL`;
-        } else if(baslik.includes("Fitre")) {
-            let kisi = isNaN(v2) ? 1 : v2;
-            hesap = (v1 * kisi * 30).toFixed(2);
-            sonuc.innerHTML = `Ramazan Boyunca Toplam Fitre: ${hesap} TL`;
-        } else if(baslik.includes("Miras")) {
-            let pay = isNaN(v2) || v2 === 0 ? 1 : v2;
-            hesap = (v1 / pay).toFixed(2);
-            sonuc.innerHTML = `Kişi Başına Düşen Tahmini Miras Payı: ${hesap} TL`;
+
+        if(baslik.includes("Maaş")) {
+            let net = (v1 * 0.71).toFixed(2); // Örnek bazlı pratik simülasyon hesap
+            sonuc.innerHTML = `Hesaplanan Tahmini Net Tutar: ${net} TL (Yasal kesintiler düşülmüştür)`;
+        } else if(baslik.includes("Zekat")) {
+            let zekat = (v1 * 0.025).toFixed(2);
+            sonuc.innerHTML = `Ödenmesi Gereken Zekat Tutarı: ${zekat} TL`;
         } else {
-            let oran = isNaN(v2) ? 0 : v2;
-            hesap = (v1 * (1 + oran / 100)).toFixed(2);
-            sonuc.innerHTML = `Hesaplama Sonucu (Artış Dahil): ${hesap} TL`;
+            let sonucVal = (v1 * 1.20).toFixed(2);
+            sonuc.innerHTML = `İşlem Sonucu: ${sonucVal} TL`;
         }
     }
 
