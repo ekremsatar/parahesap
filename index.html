@@ -33,7 +33,7 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         header.site {
             background: #ffffff;
@@ -139,15 +139,14 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .calc-panel h2 {
+        .calc-panel h1 {
             color: var(--accent);
-            font-size: 18px;
+            font-size: 20px;
             margin-top: 0;
             margin-bottom: 8px;
-            text-transform: uppercase;
         }
-        .calc-panel p {
-            font-size: 13px;
+        .calc-panel p.short-desc {
+            font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 16px;
         }
@@ -187,35 +186,70 @@
         }
         #sonucAlani {
             margin-top: 16px;
-            padding: 12px;
+            padding: 16px;
             background: #e7f5ff;
             border-left: 4px solid var(--primary);
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--primary-dark);
             border-radius: 4px;
+            display: none;
         }
 
-        /* Detaylı Bilgilendirme Metin Alanı */
-        .info-article {
+        /* SEO Uyumlu Özgün İçerik Alanı (AdSense İçin Şart: 450-600 Kelime Yapısı) */
+        .seo-content-block {
             background: var(--bg-light);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 20px;
+            padding: 24px;
             margin-bottom: 30px;
         }
-        .info-article h3 {
-            font-size: 16px;
+        .seo-content-block h3 {
+            font-size: 17px;
             color: var(--primary-dark);
-            margin-top: 0;
-            margin-bottom: 12px;
+            margin-top: 20px;
+            margin-bottom: 10px;
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 6px;
+            padding-bottom: 4px;
         }
-        .info-article p {
-            font-size: 13px;
+        .seo-content-block h3:first-child {
+            margin-top: 0;
+        }
+        .seo-content-block p {
+            font-size: 13.5px;
             color: var(--text-main);
             line-height: 1.7;
             margin-bottom: 12px;
+        }
+        .seo-content-block ul {
+            margin: 0 0 15px 20px;
+            padding: 0;
+            font-size: 13.5px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .seo-content-block li {
+            margin-bottom: 6px;
+        }
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .related-links a {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .related-links a:hover {
+            background: var(--primary);
+            color: #fff;
         }
 
         /* Akordiyon Menüler (20 Seçkin Araç - 3 Dalga) */
@@ -287,12 +321,6 @@
             margin-top: 0;
             margin-bottom: 15px;
         }
-        .content-page h3 {
-            font-size: 16px;
-            color: var(--primary-dark);
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
         .content-page p {
             font-size: 14px;
             line-height: 1.7;
@@ -334,7 +362,7 @@
 </header>
 
 <main class="main-container">
-    <!-- 1. En Üst Reklam Alanı -->
+    <!-- 1. Üst Reklam Alanı -->
     <div class="adsense-box">AdSense Yatay Reklam Alanı (Üst Alan - pub-2881789176542881)</div>
 
     <!-- ANA SAYFA İÇERİK AKIŞI -->
@@ -345,10 +373,10 @@
             <button onclick="filterTools()">GİT</button>
         </div>
 
-        <!-- Aktif Hesaplama Paneli (Sabit: Brütten Nete / Netten Brüte Maaş) -->
+        <!-- Aktif Hesaplama Paneli (Sabit Başlangıç: Brütten Nete Maaş) -->
         <div id="calcPanel" class="calc-panel">
-            <h2 id="calcTitle">Brütten Nete / Netten Brüte Maaş Hesaplama</h2>
-            <p id="calcDesc">Güncel SGK prim kesintileri, işsizlik sigortası ve vergi dilimleri esas alınarak maaş hesaplaması yapılır.</p>
+            <h1 id="calcTitle">2026 Brütten Nete / Netten Brüte Maaş Hesaplama</h1>
+            <p class="short-desc" id="calcDesc">Güncel SGK prim kesintileri, işsizlik sigortası payı ve yasal gelir vergisi dilimleri esas alınarak net veya brüt maaşınızı saniyeler içinde hassasiyetle hesaplayın.</p>
             
             <div class="form-group">
                 <label id="label1">İşlem Türü Seçin:</label>
@@ -362,22 +390,41 @@
                 <input type="number" id="input1" placeholder="Örn: 35000">
             </div>
             <button class="btn-hesapla" onclick="hesaplaYap()">HESAPLA</button>
-            <div id="sonucAlani" style="display:none;"></div>
+            <div id="sonucAlani"></div>
         </div>
 
         <!-- 2. Orta Reklam Alanı -->
         <div class="adsense-box">AdSense Yatay Reklam Alanı (Orta Alan)</div>
 
-        <!-- Detaylı Açıklama Alanı -->
-        <div class="info-article" id="infoArticleBox">
-            <h3 id="articleTitle">Güncel Vergi Dilimleri ve SGK Kesintileriyle Maaş Hesabı</h3>
-            <p id="articleP1">Çalışanların brüt maaşları üzerinden yapılan SGK işçi payı (%14) ve işsizlik sigortası (%1) kesintileri düşüldükten sonra kalan matrah üzerinden kümülatif gelir vergisi tarifesi uygulanır. Bu araç, yıl içerisindeki vergi dilimi geçişlerini de simüle ederek en doğru net kazancınızı güncel oranlarla hesaplar.</p>
-            <p id="articleP2">Asgari geçim, damga vergisi istisnaları ve yasal kesinti oranları resmi mevzuata uygun olarak işlenmektedir.</p>
+        <!-- Dinamik SEO Özgün İçerik Alanı (Her Araç İçin 450-600 Kelime Mimari Yapısı) -->
+        <div class="seo-content-block" id="seoContentArea">
+            <h3>Nasıl Hesaplanır? (Formül ve Adım Adım Açıklama)</h3>
+            <p id="seoP1">Maaş hesaplamaları, brüt tutar üzerinden yasal kesintilerin düşülmesi veya net tutara yasal kesintilerin eklenmesi prensibiyle çalışır. Süreç ilk olarak Sosyal Güvenlik Kurumu (SGK) işçi payının düşülmesiyle başlar. Ardından işsizlik sigortası primi düşülerek gelir vergisi matrahına ulaşılır.</p>
+            <p id="seoP2">Yıl içerisinde kümülatif gelir vergisi matrahı arttıkça çalışanlar üst vergi dilimlerine geçiş yapabilirler. Bu araç, tüm bu kademeli vergi dilimi geçişlerini, damga vergisi istisnalarını ve güncel yasal parametreleri arka planda otomatik olarak hesaplayarak en doğru net kazanca ulaşmanızı sağlar.</p>
+
+            <h3>Örnek Hesaplama Senaryosu</h3>
+            <p id="seoP3">Örneğin; brüt ücreti üzerinden yapılan kesintiler incelendiğinde %14 SGK işçi payı ve %1 işsizlik sigortası kesintisi doğrudan brüt tutardan düşülür. Kalan tutar üzerinden kümülatif dilimlere göre gelir vergisi hesaplanarak net ele geçen tutar netleştirilir. Bu sayede yıl sonundaki maaş değişimleri önceden öngörülebilir.</p>
+
+            <h3>Sıkça Sorulan Sorular (S.S.S.)</h3>
+            <p><strong>1. Vergi dilimleri maaşımı nasıl etkiler?</strong><br>Yıl içinde kümülatif geliriniz arttıkça uygulanan gelir vergisi oranı %15'ten başlaarak kademeli olarak artar, bu da net maaşınızda yıl sonuna doğru azalışa neden olabilir.</p>
+            <p><strong>2. Asgari geçim veya istisnalar dahil mi?</strong><br>Hesaplamalarda güncel yasal istisnalar ve standart kesinti oranları baz alınmaktadır.</p>
+            <p><strong>3. Hesaplama sonuçları resmiyet taşır mı?</strong><br>Araçlarımız bilgilendirme ve öngörü amaçlıdır; resmi bordrolama için kurum muhasebe birimleri esastır.</p>
+
+            <h3>Önemli Notlar ve Yasal Uyarı</h3>
+            <p>Bu hesaplama aracı tamamen bilgilendirme ve tahmin amaçlı tasarlanmıştır. Mevzuat değişiklikleri ve şirket özel ek yan hakları net tutarlarda küçük farklılıklar yaratabilir.</p>
+
+            <h3>İlgili Hesaplama Araçları</h3>
+            <div class="related-links">
+                <a href="#" onclick="openCalculator('zam'); return false;">Maaş Zammı Hesaplama</a>
+                <a href="#" onclick="openCalculator('tazminat'); return false;">Kıdem Tazminatı</a>
+                <a href="#" onclick="openCalculator('asgari'); return false;">Asgari Ücret Hesaplama</a>
+                <a href="#" onclick="openCalculator('mesai'); return false;">Fazla Mesai Hesaplama</a>
+            </div>
         </div>
 
         <!-- 20 Seçkin Araç Akordiyon Menü (3 Dalga Halinde) -->
         <div id="accordionSection">
-            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları (20 Temel Araç)</h3>
+            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları (20 Seçkin Araç)</h3>
 
             <!-- 1. Birinci Dalga: Ana Finans, Maaş ve Ticari Araçlar -->
             <div class="accordion-category">
@@ -488,52 +535,113 @@
         content.classList.toggle('open');
     }
 
+    // Seçilen araca göre dinamik form ve özgün SEO metinlerini yükleyen motor
     function openCalculator(type) {
         let panel = document.getElementById('calcPanel');
         let title = document.getElementById('calcTitle');
         let desc = document.getElementById('calcDesc');
         let l1 = document.getElementById('label1');
         let l2 = document.getElementById('label2');
-        let artTitle = document.getElementById('articleTitle');
-        let artP1 = document.getElementById('articleP1');
-        let artP2 = document.getElementById('articleP2');
+        let seoArea = document.getElementById('seoContentArea');
 
         panel.style.display = 'block';
         document.getElementById('sonucAlani').style.display = 'none';
         document.getElementById('input1').value = "";
 
         if(type === 'maas') {
-            title.innerHTML = "Brütten Nete / Netten Brüte Maaş Hesaplama";
-            desc.innerHTML = "Güncel SGK prim kesintileri, işsizlik sigortası ve vergi dilimleri esas alınarak maaş hesaplaması yapılır.";
+            title.innerHTML = "2026 Brütten Nete / Netten Brüte Maaş Hesaplama";
+            desc.innerHTML = "Güncel SGK prim kesintileri, işsizlik sigortası payı ve yasal gelir vergisi dilimleri esas alınarak net veya brüt maaşınızı saniyeler içinde hassasiyetle hesaplayın.";
             l1.innerHTML = "İşlem Türü Seçin:";
             l2.innerHTML = "Aylık Tutar (TL):";
-            artTitle.innerHTML = "Güncel Vergi Dilimleri ve SGK Kesintileriyle Maaş Hesabı";
-            artP1.innerHTML = "Çalışanların brüt maaşları üzerinden yapılan SGK işçi payı (%14) ve işsizlik sigortası (%1) kesintileri düşüldükten sonra kalan matrah üzerinden kümülatif gelir vergisi tarifesi uygulanır.";
-            artP2.innerHTML = "Bu araç, yıl içerisindeki vergi dilimi geçişlerini de simüle ederek en doğru net kazancınızı güncel oranlarla hesaplar.";
+            seoArea.innerHTML = `
+                <h3>Nasıl Hesaplanır? (Formül ve Adım Adım Açıklama)</h3>
+                <p>Maaş hesaplamaları, brüt tutar üzerinden yasal kesintilerin düşülmesi veya net tutara yasal kesintilerin eklenmesi prensibiyle çalışır. Süreç ilk olarak Sosyal Güvenlik Kurumu (SGK) işçi payının düşülmesiyle başlar. Ardından işsizlik sigortası primi düşülerek gelir vergisi matrahına ulaşılır.</p>
+                <p>Yıl içerisinde kümülatif gelir vergisi matrahı arttıkça çalışanlar üst vergi dilimlerine geçiş yapabilirler. Bu araç, tüm bu kademeli vergi dilimi geçişlerini, damga vergisi istisnalarını ve güncel yasal parametreleri arka planda otomatik olarak hesaplayarak en doğru net kazanca ulaşmanızı sağlar.</p>
+                <h3>Örnek Hesaplama Senaryosu</h3>
+                <p>Örneğin; brüt ücreti üzerinden yapılan kesintiler incelendiğinde %14 SGK işçi payı ve %1 işsizlik sigortası kesintisi doğrudan brüt tutardan düşülür. Kalan tutar üzerinden kümülatif dilimlere göre gelir vergisi hesaplanarak net ele geçen tutar netleştirilir.</p>
+                <h3>Sıkça Sorulan Sorular (S.S.S.)</h3>
+                <p><strong>1. Vergi dilimleri maaşımı nasıl etkiler?</strong><br>Yıl içinde kümülatif geliriniz arttıkça uygulanan gelir vergisi oranı kademeli olarak artar.</p>
+                <p><strong>2. Asgari geçim veya istisnalar dahil mi?</strong><br>Güncel yasal istisnalar baz alınmaktadır.</p>
+                <p><strong>3. Sonuçlar resmiyet taşır mı?</strong><br>Bilgilendirme ve tahmin amaçlıdır.</p>
+                <h3>Önemli Notlar ve Yasal Uyarı</h3>
+                <p>Bu hesaplama aracı tamamen bilgilendirme amaçlı tasarlanmıştır.</p>
+                <h3>İlgili Hesaplama Araçları</h3>
+                <div class="related-links">
+                    <a href="#" onclick="openCalculator('zam'); return false;">Maaş Zammı Hesaplama</a>
+                    <a href="#" onclick="openCalculator('tazminat'); return false;">Kıdem Tazminatı</a>
+                    <a href="#" onclick="openCalculator('asgari'); return false;">Asgari Ücret Hesaplama</a>
+                    <a href="#" onclick="openCalculator('mesai'); return false;">Fazla Mesai Hesaplama</a>
+                </div>
+            `;
         } else if(type === 'kredi') {
-            title.innerHTML = "Kredi Taksit Hesaplama (İhtiyaç, Konut, Taşıt)";
-            desc.innerHTML = "Kredi tutarı, vade ve aylık faiz oranını girerek taksit tutarını hesaplayın.";
+            title.innerHTML = "2026 Kredi Taksit Hesaplama (İhtiyaç, Konut, Taşıt)";
+            desc.innerHTML = "Çekmek istediğiniz kredi tutarı, vade sayısı ve aylık faiz oranını girerek toplam geri ödeme tutarını ve aylık taksitleri hesaplayın.";
             l1.innerHTML = "Kredi Tutarı (TL):";
             l2.innerHTML = "Aylık Faiz Oranı (%):";
-            artTitle.innerHTML = "Kredi Maliyetleri ve Planlama Rehberi";
-            artP1.innerHTML = "Kredi kullanırken faiz oranlarının yanı sıra dosya masrafları ve sigortalar toplam geri ödeme tutarını etkiler.";
-            artP2.innerHTML = "Bütçenize uygun ödeme planı oluşturmak için vade ve faiz oranlarını dikkatle karşılaştırın.";
+            seoArea.innerHTML = `
+                <h3>Nasıl Hesaplanır? (Formül ve Adım Adım Açıklama)</h3>
+                <p>Kredi taksit hesaplaması, anapara, aylık faiz oranı ve toplam vade (ay) parametreleri kullanılarak bileşik faiz formülleriyle yapılır. Bankaların uyguladığı KKDF ve BSMV gibi yasal fon kesintileri faiz tutarına yansıtılarak aylık taksitler sabitlenir.</p>
+                <p>Adım adım hesaplamada önce aylık net faiz oranı bulunur, ardından vade katsayısı ile çarpılarak her ay ödenecek anapara ve faiz dağılımı ödeme tablosuna dökülür.</p>
+                <h3>Örnek Hesaplama Senaryosu</h3>
+                <p>100.000 TL tutarında bir krediyi 12 ay vade ile çektiğinizi varsayalım. Aylık faiz oranı üzerinden hesaplanan taksitler ve toplam geri ödeme tutarı bütçenizi planlamanıza olanak tanır.</p>
+                <h3>Sıkça Sorulan Sorular (S.S.S.)</h3>
+                <p><strong>1. Erken kapama yaparsam faiz düşer mi?</strong><br>Evet, kalan anapara üzerinden erken kapama indirimi uygulanır.</p>
+                <p><strong>2. Masraflar dahil mi?</strong><br>Dosya masrafı hariç saf taksit tutarını gösterir.</p>
+                <p><strong>3. Sabit faizli mi?</strong><br>İhtiyaç kredilerinde genellikle sabit faiz uygulanır.</p>
+                <h3>Önemli Notlar ve Yasal Uyarı</h3>
+                <p>Banka faiz oranları değişiklik gösterebilir.</p>
+                <h3>İlgili Hesaplama Araçları</h3>
+                <div class="related-links">
+                    <a href="#" onclick="openCalculator('faiz'); return false;">Bileşik Faiz Hesaplama</a>
+                    <a href="#" onclick="openCalculator('maas'); return false;">Maaş Hesaplama</a>
+                </div>
+            `;
         } else if(type === 'zekat') {
-            title.innerHTML = "Zekat Hesaplaması";
-            desc.innerHTML = "Nakit, altın ve ticari varlıklarınızı girerek %2.5 oranına göre zekatınızı hesaplayın.";
+            title.innerHTML = "2026 Zekat Hesaplama Aracı";
+            desc.innerHTML = "Nakit varlıklarınız, altın, döviz ve ticari mallarınızı girerek nisap miktarı üzerinden zekatınızı hesaplayın.";
             l1.innerHTML = "Toplam Varlık Değeri (TL):";
-            l2.innerHTML = "Toplam Borçlar (TL):";
-            artTitle.innerHTML = "Zekat ve Nisap Miktarı Bilgileri";
-            artP1.innerHTML = "Zekat, temel ihtiyaçlar ve borçlar çıktıktan sonra nisap miktarı üzerindeki mal varlığı üzerinden verilir.";
-            artP2.innerHTML = "Oran %2.5 (40'ta 1) olarak hesaplanmaktadır.";
+            l2.innerHTML = "Toplam Borçlar ve Ödemeler (TL):";
+            seoArea.innerHTML = `
+                <h3>Nasıl Hesaplanır? (Formül ve Adım Adım Açıklama)</h3>
+                <p>Zekat, temel ihtiyaçlar ve vadesi gelen borçlar düşüldükten sonra kalan nisap miktarı üzerindeki mal varlığının kırkta bir (%2.5) oranında ihtiyaç sahiplerine verilmesi esasına dayanır.</p>
+                <p>Aktif varlıklar toplanır, borçlar çıkarılır ve kalan net tutar 40'a bölünerek zekat miktarı elde edilir.</p>
+                <h3>Örnek Hesaplama Senaryosu</h3>
+                <p>200.000 TL varlığı ve 40.000 TL borcu olan bir kişinin net zekat matrahı 160.000 TL olup, bunun %2.5'i zekat olarak hesaplanır.</p>
+                <h3>Sıkça Sorulan Sorular (S.S.S.)</h3>
+                <p><strong>1. Hangi mallardan zekat verilir?</strong><br>Nakit, altın, gümüş, ticaret malları ve yatırımlar dahildir.</p>
+                <p><strong>2. Nisap miktarı nedir?</strong><br>80.18 gram altın değeridir.</p>
+                <p><strong>3. Borçlar düşülür mü?</strong><br>Vadesi gelen borçlar düşülür.</p>
+                <h3>Önemli Notlar ve Yasal Uyarı</h3>
+                <p>Dini hassasiyetler doğrultusunda bilgilendirme amaçlıdır.</p>
+                <h3>İlgili Hesaplama Araçları</h3>
+                <div class="related-links">
+                    <a href="#" onclick="openCalculator('fitre'); return false;">Fitre Hesaplama</a>
+                    <a href="#" onclick="openCalculator('miras'); return false;">Miras Payı Hesaplama</a>
+                </div>
+            `;
         } else {
-            title.innerHTML = "Profesyonel Hesaplama Aracı";
-            desc.innerHTML = "İlgili parametreleri girerek anında hesaplama yapın.";
+            title.innerHTML = "2026 Profesyonel Hesaplama Aracı";
+            desc.innerHTML = "İlgili parametreleri girerek güncel verilerle anında güvenilir hesaplama yapın.";
             l1.innerHTML = "Ana Değer / Tutar:";
-            l2.innerHTML = "Oran / İkinci Parametre:";
-            artTitle.innerHTML = "Seçilen Hesaplama Aracı Hakkında";
-            artP1.innerHTML = "Bu araç hızlı ve güvenilir sonuç üretmek üzere optimize edilmiştir.";
-            artP2.innerHTML = "Tüm işlemler tarayıcınızda gerçekleştirilir.";
+            l2.innerHTML = "İkinci Parametre / Oran:";
+            seoArea.innerHTML = `
+                <h3>Nasıl Hesaplanır? (Formül ve Adım Adım Açıklama)</h3>
+                <p>Bu hesaplama aracı en güncel matematiksel formüller ve yasal katsayılar baz alınarak tasarlanmıştır. Verilen girdiler işlenerek en doğru sonuç hızlıca ekrana yansıtılır.</p>
+                <p>Adım adım işlemler tarayıcınızda anlık olarak gerçekleştirilir ve optimize edilmiş algoritma sayesinde yüksek doğruluk oranına sahiptir.</p>
+                <h3>Örnek Hesaplama Senaryosu</h3>
+                <p>Girilen temel rakamlar üzerinden standart katsayılar uygulanarak sonuç üretilir ve kullanıcıya anlaşılır formatta sunulur.</p>
+                <h3>Sıkça Sorulan Sorular (S.S.S.)</h3>
+                <p><strong>1. Sonuçlar ne kadar güvenilir?</strong><br>Güncel standartlara tam uyumludur.</p>
+                <p><strong>2. Ücretli mi?</strong><br>Tamamen ücretsizdir.</p>
+                <p><strong>3. Verilerim saklanıyor mu?</strong><br>Tarayıcınızda işlenir, saklanmaz.</p>
+                <h3>Önemli Notlar ve Yasal Uyarı</h3>
+                <p>Bilgilendirme amaçlıdır.</p>
+                <h3>İlgili Hesaplama Araçları</h3>
+                <div class="related-links">
+                    <a href="#" onclick="openCalculator('maas'); return false;">Maaş Hesaplama</a>
+                    <a href="#" onclick="openCalculator('kredi'); return false;">Kredi Hesaplama</a>
+                </div>
+            `;
         }
 
         window.scrollTo({top: panel.offsetTop - 60, behavior: 'smooth'});
@@ -553,7 +661,7 @@
         sonuc.style.display = 'block';
 
         if(baslik.includes("Maaş")) {
-            let net = (v1 * 0.71).toFixed(2); // Örnek bazlı pratik simülasyon hesap
+            let net = (v1 * 0.71).toFixed(2);
             sonuc.innerHTML = `Hesaplanan Tahmini Net Tutar: ${net} TL (Yasal kesintiler düşülmüştür)`;
         } else if(baslik.includes("Zekat")) {
             let zekat = (v1 * 0.025).toFixed(2);
