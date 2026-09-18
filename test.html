@@ -13,9 +13,12 @@
             --text-muted: #666666;
             --border: #dee2e6;
         }
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
+            background-color: #f4f6f9;
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -34,6 +37,7 @@
             align-items: center;
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
         .brand {
             font-size: 22px;
@@ -62,51 +66,60 @@
         }
         .main-container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 16px;
+            margin: 20px auto;
+            padding: 0 16px;
+            width: 100%;
         }
         .card {
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 20px;
+            padding: 24px;
             background: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             margin-bottom: 20px;
         }
         h1 {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--primary);
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 10px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-size: 14px;
+            color: var(--text-main);
         }
         input, select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--border);
             border-radius: 6px;
-            font-size: 14px;
-            box-sizing: border-box;
+            font-size: 15px;
+            outline: none;
+            background-color: #fff;
+        }
+        input:focus, select:focus {
+            border-color: var(--primary);
         }
         .btn-calc {
             width: 100%;
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             border-radius: 6px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
+            transition: background 0.2s;
         }
         .btn-calc:hover {
             background-color: var(--primary-dark);
@@ -114,13 +127,15 @@
         .result-box {
             display: none;
             margin-top: 20px;
-            padding: 15px;
-            background-color: var(--bg-light);
+            padding: 16px;
+            background-color: #eef6ff;
             border-left: 4px solid var(--primary);
             border-radius: 4px;
+            font-size: 15px;
+            line-height: 1.6;
         }
         .result-box h3 {
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             font-size: 16px;
             color: var(--primary);
         }
@@ -131,11 +146,12 @@
             font-size: 13px;
             border-top: 1px solid var(--border);
             margin-top: 40px;
+            background: #ffffff;
         }
         footer a {
             color: var(--text-muted);
             text-decoration: none;
-            margin: 0 8px;
+            margin: 0 6px;
         }
     </style>
 </head>
@@ -155,7 +171,7 @@
     <div class="card">
         <h1 id="toolHeader">Hesaplama Aracı</h1>
         
-        <!-- Dinamik Form Alanı -->
+        <!-- Dinamik Form -->
         <div id="formContainer"></div>
 
         <button class="btn-calc" onclick="hesapla()">HESAPLA</button>
@@ -187,13 +203,29 @@
     const form = document.getElementById('formContainer');
     const title = document.getElementById('pageTitle');
 
-    // Tipe göre form alanlarını ve başlığı yüklüyoruz
-    if (tip === 'zekat') {
+    if (tip === 'brutten-nete') {
+        title.innerText = 'Brütten Nete Maaş Hesaplama - Para Hesap';
+        header.innerText = 'Brütten Nete Maaş Hesaplama';
+        form.innerHTML = `
+            <div class="form-group">
+                <label>Brüt Maaşınız (TL):</label>
+                <input type="number" id="brutMaas" placeholder="Örn: 40000">
+            </div>
+            <div class="form-group">
+                <label>Vergi Dilimi tahmini (%):</label>
+                <select id="vergiDilimi">
+                    <option value="15">%15 (Yıl Başı)</option>
+                    <option value="20">%20</option>
+                    <option value="27">%27</option>
+                </select>
+            </div>
+        `;
+    } else if (tip === 'zekat') {
         title.innerText = 'Zekat Hesaplama - Para Hesap';
         header.innerText = 'Zekat Hesaplama';
         form.innerHTML = `
             <div class="form-group">
-                <label>Nakit ve Banka Birikiminiz (TL):</label>
+                <label>Nakit ve Banka Birikimi (TL):</label>
                 <input type="number" id="zekatNakit" placeholder="Örn: 100000">
             </div>
             <div class="form-group">
@@ -201,7 +233,7 @@
                 <input type="number" id="zekatAltin" placeholder="Örn: 50000">
             </div>
             <div class="form-group">
-                <label>Borçlarınız (TL):</label>
+                <label>Borçlar (TL):</label>
                 <input type="number" id="zekatBorc" placeholder="Örn: 10000">
             </div>
         `;
@@ -253,8 +285,21 @@
                 </select>
             </div>
         `;
+    } else if (tip === 'kidem') {
+        title.innerText = 'Kıdem Tazminatı Hesaplama - Para Hesap';
+        header.innerText = 'Kıdem Tazminatı Hesaplama';
+        form.innerHTML = `
+            <div class="form-group">
+                <label>Çalışılan Yıl Sayısı:</label>
+                <input type="number" id="kidemYil" placeholder="Örn: 5">
+            </div>
+            <div class="form-group">
+                <label>Son Son Brüt Maaş (TL):</label>
+                <input type="number" id="kidemMaas" placeholder="Örn: 30000">
+            </div>
+        `;
     } else {
-        // Varsayılan: Maaş / Zam Hesaplama
+        // Maaş Zam Hesaplama (varsayılan)
         title.innerText = 'Maaş / Zam Hesaplama - Para Hesap';
         header.innerText = 'Maaş / Zam Hesaplama';
         form.innerHTML = `
@@ -269,19 +314,32 @@
         `;
     }
 
-    // Hesaplama Fonksiyonu
     function hesapla() {
         const resultBox = document.getElementById('resultBox');
         const resultContent = document.getElementById('resultContent');
         resultBox.style.display = 'block';
 
-        if (tip === 'zekat') {
+        if (tip === 'brutten-nete') {
+            let brut = parseFloat(document.getElementById('brutMaas').value) || 0;
+            let vergi = parseFloat(document.getElementById('vergiDilimi').value);
+            let sgk = brut * 0.15; // %14 SGK + %1 İşsizlik
+            let gelirVergisiMatrahi = brut - sgk;
+            let gelirVergisi = (gelirVergisiMatrahi * vergi) / 100;
+            let damgaVergisi = brut * 0.00759;
+            let net = brut - (sgk + gelirVergisi + damgaVergisi);
+            
+            resultContent.innerHTML = `
+                Brüt Maaş: <b>${brut.toLocaleString('tr-TR')} TL</b><br>
+                Kesintiler Toplamı (SGK + Vergi): <b>${(brut - net).toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b><br>
+                <b>Tahmini Net Ele Geçen: <span style="color:#0056b3;">${net.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</span></b>
+            `;
+        } else if (tip === 'zekat') {
             let nakit = parseFloat(document.getElementById('zekatNakit').value) || 0;
             let altin = parseFloat(document.getElementById('zekatAltin').value) || 0;
             let borc = parseFloat(document.getElementById('zekatBorc').value) || 0;
             let netVarlik = (nakit + altin) - borc;
             if (netVarlik <= 0) {
-                resultContent.innerHTML = "Zekat mükellefi değilsiniz (Net varlığınız eksi veya 0).";
+                resultContent.innerHTML = "Zekat mükellefi değilsiniz (Net varlığınız 0 veya daha az).";
             } else {
                 let zekat = netVarlik / 40;
                 resultContent.innerHTML = `Net Varlığınız: <b>${netVarlik.toLocaleString('tr-TR')} TL</b><br>Vermeniz Gereken Zekat (%2.5): <b>${zekat.toLocaleString('tr-TR')} TL</b>`;
@@ -290,7 +348,7 @@
             let boy = parseFloat(document.getElementById('vkiBoy').value) / 100;
             let kilo = parseFloat(document.getElementById('vkiKilo').value);
             if (!boy || !kilo) {
-                resultContent.innerHTML = "Lütfen geçerli boy ve kilo değerleri giriniz.";
+                resultContent.innerHTML = "Lütfen boy ve kilo değerlerini doğru giriniz.";
                 return;
             }
             let vki = (kilo / (boy * boy)).toFixed(2);
@@ -310,13 +368,20 @@
             }
             let taksit = (tutar * faiz * Math.pow(1 + faiz, vade)) / (Math.pow(1 + faiz, vade) - 1);
             let toplam = taksit * vade;
-            resultContent.innerHTML = `Aylık Taksit: <b>${taksit.toFixed(2)} TL</b><br>Toplam Geri Ödeme: <b>${toplam.toFixed(2)} TL</b>`;
+            resultContent.innerHTML = `Aylık Taksit: <b>${taksit.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b><br>Toplam Geri Ödeme: <b>${toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b>`;
         } else if (tip === 'kdv') {
             let tutar = parseFloat(document.getElementById('kdvTutar').value) || 0;
             let oran = parseFloat(document.getElementById('kdvOran').value);
             let kdvTutar = (tutar * oran) / 100;
             let toplam = tutar + kdvTutar;
-            resultContent.innerHTML = `KDV Tutar: <b>${kdvTutar.toFixed(2)} TL</b><br>KDV Dahil Toplam: <b>${toplam.toFixed(2)} TL</b>`;
+            resultContent.innerHTML = `KDV Tutarı: <b>${kdvTutar.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b><br>KDV Dahil Toplam: <b>${toplam.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b>`;
+        } else if (tip === 'kidem') {
+            let yil = parseFloat(document.getElementById('kidemYil').value) || 0;
+            let maas = parseFloat(document.getElementById('kidemMaas').value) || 0;
+            let brutKidem = yil * maas;
+            let damga = brutKidem * 0.00759;
+            let netKidem = brutKidem - damga;
+            resultContent.innerHTML = `Brüt Kıdem Tazminatı: <b>${brutKidem.toLocaleString('tr-TR')} TL</b><br>Damga Vergisi Kesintisi: <b>${damga.toFixed(2)} TL</b><br><b>Net Alınacak Kıdem: ${netKidem.toLocaleString('tr-TR', {maximumFractionDigits: 2})} TL</b>`;
         } else {
             let maas = parseFloat(document.getElementById('maasMevcut').value) || 0;
             let zam = parseFloat(document.getElementById('maasZam').value) || 0;
