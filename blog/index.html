@@ -1,142 +1,178 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GKXWCDPHMF');
-  </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GKXWCDPHMF');
+    </script>
+    
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="1WuINEQp6A10018kK3YVb8PjJ00pY8xG2843_X" />
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9884783350410091" crossorigin="anonymous"></script>
 
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="1WuINEQp6A1O018k7L1N5Y9G89n-b4yL9">
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finans Rehberleri – ParaHesap</title>
-  <meta name="description" content="Kredi, birikim, bütçe ve enflasyon konularında hazırladığımız detaylı finans rehberleri.">
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finans Rehberleri - ParaHesap</title>
+    <meta name="description" content="Kredi, birikim, bütçe ve enflasyon konularında pratik ve anlaşılır finansal rehberler.">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .blog-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .blog-card h3 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 1.1rem;
+        }
+        .blog-card p {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .blog-card a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .blog-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site">
-    <div class="wrap nav-wrap">
-      <a href="../index.html" class="brand"><span class="brand-dot"></span>ParaHesap</a>
-      <nav>
-        <ul>
-          <li><a href="../kredi-hesaplama.html">Kredi</a></li>
-          <li><a href="../kira-artis-orani.html">Kira Artışı</a></li>
-          <li><a href="../faiz-hesaplama.html">Faiz</a></li>
-          <li><a href="../enflasyon-hesaplama.html">Enflasyon</a></li>
-          <li><a href="index.html" class="active">Rehberler</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header class="site-header">
+        <div class="wrap nav-wrap">
+            <a href="../index.html" class="brand">ParaHesap</a>
+            <nav class="nav">
+                <a href="../index.html">Ana Sayfa</a>
+                <a href="index.html" class="active">Rehberler</a>
+            </nav>
+        </div>
+    </header>
 
-  <div class="ticker-bar">
-    <div class="ticker-track">
-      <div class="ticker-item"><span>USD/TRY:</span> <strong>47.57</strong></div>
-      <div class="ticker-item"><span>EUR/TRY:</span> <strong>54.96</strong></div>
-      <div class="ticker-item"><span>ONS ALTIN:</span> <strong>$4,197</strong></div>
-      <div class="ticker-item"><span>BIST 100:</span> <strong>10,450</strong></div>
-      <div class="ticker-item"><span>GRAM ALTIN:</span> <strong>4,250 TL</strong></div>
-    </div>
-  </div>
+    <main class="wrap" style="padding: 40px 15px;">
+        <h1 style="color: #1e293b; border-bottom: 3px solid #3b82f6; padding-bottom: 10px;">Finansal Rehberler ve Makaleler</h1>
+        <p style="color: #64748b;">Finansal okuryazarlığınızı artıracak ve bütçenizi doğru yönetmenizi sağlayacak rehber yazılarımız.</p>
 
-  <main class="wrap container">
-    <div class="calc-header">
-      <h1>Finans Rehberleri</h1>
-      <p>Bilinçli finansal kararlar almanız için hazırladığımız rehber makaleler.</p>
-    </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div>
+                    <h3>50/30/20 Bütçe Kuralı</h3>
+                    <p>Maaşınızı doğru şekilde kısımlara ayırarak bütçe disiplini sağlama rehberi.</p>
+                </div>
+                <a href="50-30-20-butce-kurali.html">Devamını Oku →</a>
+            </div>
 
-    <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="blog-card">
+                <div>
+                    <h3>Basit Faiz ve Bileşik Faiz</h3>
+                    <p>Yatırımlarınızı katlayan bileşik faiz ile basit faiz arasındaki temel farklar.</p>
+                </div>
+                <a href="basit-faiz-bilesik-faiz-farki.html">Devamını Oku →</a>
+            </div>
 
-      <a href="kredi-notu-nedir.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 01</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Kredi Notu Nedir ve Nasıl Yükseltilir? ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Kredi notunu etkileyen faktörler ve puanınızı yükseltme adımları.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Birikim Yaparken Yapılan Hatalar</h3>
+                    <p>Para biriktirirken en sık düşülen hatalar ve bunlardan korunma yolları.</p>
+                </div>
+                <a href="birikim-hatalari.html">Devamını Oku →</a>
+            </div>
 
-      <a href="dusuk-faizli-kredi-bulma.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 02</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">En Düşük Faizli Kredi Bulma Rehberi ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Bankaların kredi faizlerini ve toplam maliyet oranlarını doğru karşılaştırma.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Düşük Faizli Kredi Bulma</h3>
+                    <p>En uygun kredi oranlarını bulma ve maliyetleri düşürme taktikleri.</p>
+                </div>
+                <a href="dusuk-faizli-kredi-bulma.html">Devamını Oku →</a>
+            </div>
 
-      <a href="basit-faiz-bilesik-faiz-farki.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 03</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Bileşik ve Basit Faiz Arasındaki Fark ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Uzun vadeli birikimlerde katlanarak büyüyen bileşik faiz etkisi.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Emeklilik Birikimi</h3>
+                    <p>Geleceğinizi güvence altına alacak emeklilik birikimi stratejileri.</p>
+                </div>
+                <a href="emeklilik-birikimi.html">Devamını Oku →</a>
+            </div>
 
-      <a href="kira-artis-orani-nasil-hesaplanir.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 04</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Kira Artış Oranı Nasıl Hesaplanır? ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">TÜFE ortalamasına göre yasal kira zam oranı ve ev sahibi-kiracı hakları.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Enflasyona Karşı Korunma</h3>
+                    <p>Alım gücünüzü enflasyon karşısında koruyacak etkili yatırım yöntemleri.</p>
+                </div>
+                <a href="enflasyona-karsi-korunma.html">Devamını Oku →</a>
+            </div>
 
-      <a href="enflasyona-karsi-parayi-koruma.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 05</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Enflasyona Karşı Paranızı Koruma Yolları ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Yüksek enflasyon dönemlerinde birikimleri koruyacak yatırım araçları.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>İhtiyaç ve Taşıt Kredisi Farkı</h3>
+                    <p>Kredi türleri arasındaki farklar ve hangisini seçmeniz gerektiği.</p>
+                </div>
+                <a href="ihtiyac-tasit-kredisi-farki.html">Devamını Oku →</a>
+            </div>
 
-      <a href="konut-kredisi-cekmeden-once.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 06</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Konut Kredisi Çekmeden Önce Dikkat Edilmesi Gerekenler ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Ekspertiz, ipotek ve sigorta gibi ek masraflarla bütçe planlaması.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Kira Artış Oranı Hesaplama</h3>
+                    <p>Yasal kira artış oranları ve TÜFE hesaplama detayları.</p>
+                </div>
+                <a href="kira-artis-orani-nasil-hesaplanir.html">Devamını Oku →</a>
+            </div>
 
-      <a href="kredi-cekmeden-once.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 07</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Kredi Çekmeden Önce Bütçe Analizi ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Aylık taksit tutarını gelire göre doğru oranlama ipuçları.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Konut Kredisi Çekmeden Önce</h3>
+                    <p>Ev alırken dikkat edilmesi gereken masraflar ve kredi şartları.</p>
+                </div>
+                <a href="konut-kredisi-cekmeden-once.html">Devamını Oku →</a>
+            </div>
 
-      <a href="kredi-karti-borcu-kapatma.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 08</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Kredi Kartı Borcu Kapatma Stratejileri ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Kartopu yöntemiyle kart borçlarından hızlıca kurtulma yolları.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Kredi Çekmeden Önce</h3>
+                    <p>Bütçenize en uygun krediyi seçerken dikkat edilecek 5 nokta.</p>
+                </div>
+                <a href="kredi-cekmeden-once.html">Devamını Oku →</a>
+            </div>
 
-      <a href="50-30-20-butce-kurali.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 09</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">50/30/20 Bütçe Kuralı Nedir? ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Maaşınızı ihtiyaç, istek ve birikim arasında bölüştürme rehberi.</p>
-      </a>
+            <div class="blog-card">
+                <div>
+                    <h3>Kredi Kartı Borcu Kapatma</h3>
+                    <p>Kart borçlarından hızlıca kurtulma ve ödeme planı oluşturma rehberi.</p>
+                </div>
+                <a href="kredi-karti-borcu-kapatma.html">Devamını Oku →</a>
+            </div>
 
-      <a href="birikim-hatalari.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 10</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">En Çok Yapılan 5 Birikim Hatası ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Paranızı büyütürken sakınmanız gereken finansal alışkanlıklar.</p>
-      </a>
-
-      <a href="ihtiyac-tasit-kredisi-farki.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 11</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">İhtiyaç ve Taşıt Kredisi Arasındaki Farklar ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Araç alırken hangi kredi türünü tercih etmek daha avantajlı?</p>
-      </a>
-
-      <a href="emeklilik-birikimi.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 12</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Gelecek İçin Emeklilik Birikimi Yapma ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Erken yaşta fon ve BES birikimi başlatmanın uzun vadeli gücü.</p>
-      </a>
-
-      <a href="enflasyona-karsi-korunma.html" class="input-card" style="text-decoration:none;">
-        <label>REHBER 13</label>
-        <span style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">Enflasyona Karşı Paranızı Koruma Rehberi ➔</span>
-        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Paranızın değer kaybetmesini önleyecek varlık dağılım yöntemleri.</p>
-      </a>
-
-    </div>
-  </main>
+            <div class="blog-card">
+                <div>
+                    <h3>Kredi Notu Yükseltme</h3>
+                    <p>Kredi notunuzu kısa sürede yükseltmenin yolları ve ipuçları.</p>
+                </div>
+                <a href="kredi-notu-nasil-yukseltilir.html">Devamını Oku →</a>
+            </div>
+        </div>
+    </main>
 
 </body>
 </html>
