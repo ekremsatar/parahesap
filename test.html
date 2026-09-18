@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Hesaplama Aracı - Para Hesap</title>
+    <title id="pageTitle">Para Hesap - Profesyonel Hesaplama Araçları</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GKXWCDPHMF');
+    </script>
+    
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="1WuINEQp6A10018kK3YVb8PjJ00pY8xG2843_X" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
+    
     <style>
         :root {
             --primary: #0056b3;
             --primary-dark: #003d82;
-            --pink-title: #d63384;
             --bg-light: #f8f9fa;
             --text-main: #333333;
             --text-muted: #666666;
             --border: #dee2e6;
+            --accent: #e83e8c;
+            --flag-red: #e30a17;
+            --menu-blue: #0056b3;
         }
         * { box-sizing: border-box; }
         body {
@@ -21,163 +39,251 @@
             color: var(--text-main);
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
         header.site {
             background: #ffffff;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--primary);
             padding: 12px 16px;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
         .nav-wrap {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
+            align-items: flex-start;
+            max-width: 900px;
             margin: 0 auto;
         }
         .brand {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
             text-decoration: none;
             display: flex;
             flex-direction: column;
         }
-        .brand span {
+        .brand-main-text {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        .brand-text { color: var(--primary); }
+        .brand-ext { color: var(--flag-red); }
+        .brand span.slogan-sub {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--flag-red) !important;
             font-style: italic;
-            font-weight: normal;
+            font-weight: 600;
+            margin-top: 4px;
+            display: block;
         }
         .btn-tum {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 8px 14px;
+            padding: 10px 14px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            text-decoration: none;
+            white-space: nowrap;
         }
         .main-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 16px;
         }
+        .adsense-box {
+            background-color: #f1f3f5;
+            border: 1px dashed #ced4da;
+            text-align: center;
+            padding: 16px;
+            color: #6c757d;
+            font-size: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
         .search-box {
             display: flex;
-            gap: 8px;
+            background-color: var(--menu-blue);
+            padding: 6px;
+            border-radius: 6px;
             margin-bottom: 20px;
         }
         .search-box input {
             flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--primary);
-            border-radius: 6px;
+            padding: 12px 14px;
+            border: none;
+            background: #ffffff;
             font-size: 14px;
             outline: none;
+            border-radius: 4px 0 0 4px;
         }
         .search-box button {
             background-color: #ffc107;
             color: #000;
             border: none;
-            padding: 0 20px;
-            border-radius: 6px;
+            padding: 0 22px;
             font-weight: 700;
+            font-size: 14px;
             cursor: pointer;
+            border-radius: 0 4px 4px 0;
         }
-        .card {
+        .calc-panel {
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        h1.pink-title {
+        .calc-panel h1 {
+            color: var(--accent);
             font-size: 20px;
-            color: var(--pink-title);
             margin-top: 0;
-            margin-bottom: 12px;
-            font-weight: 700;
+            margin-bottom: 8px;
         }
-        .tool-desc {
+        .calc-panel p.short-desc {
             font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .form-group {
             margin-bottom: 16px;
         }
-        label {
+        .form-group { margin-bottom: 14px; }
+        .form-group label {
             display: block;
-            font-weight: 700;
-            margin-bottom: 6px;
             font-size: 13px;
-            color: #003d82;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary-dark);
         }
-        input, select {
+        .form-group input, .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 12px;
             border: 1px solid var(--border);
             border-radius: 6px;
             font-size: 14px;
+            box-sizing: border-box;
             outline: none;
-            background-color: #fff;
         }
-        .btn-calc {
-            width: 100%;
+        .btn-hesapla {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px;
+            width: 100%;
+            padding: 14px;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
         }
-        .result-box {
-            display: none;
-            margin-top: 20px;
+        .btn-hesapla:hover { background-color: var(--primary-dark); }
+        #sonucAlani {
+            margin-top: 16px;
             padding: 16px;
-            background-color: #f0f7ff;
+            background: #e7f5ff;
             border-left: 4px solid var(--primary);
-            border-radius: 4px;
-            font-size: 15px;
+            font-size: 14.5px;
             line-height: 1.6;
+            color: var(--primary-dark);
+            border-radius: 4px;
+            display: none;
         }
-        .info-card {
+        .seo-content-block {
+            background: var(--bg-light);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 20px;
-            background: #ffffff;
-            margin-top: 20px;
+            padding: 24px;
+            margin-bottom: 30px;
         }
-        .info-card h2 {
+        .seo-content-block h2 {
             font-size: 18px;
-            color: var(--primary);
-            margin-top: 0;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
+            color: var(--primary-dark);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 6px;
         }
+        .seo-content-block h2:first-child { margin-top: 0; }
+        .seo-content-block p, .seo-content-block li {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        details {
+            background-color: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary-dark);
+        }
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .related-links a {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .related-links a:hover { background: var(--primary); color: #fff; }
+        #accordionSection { margin-top: 20px; display: none; }
+        #accordionSection.active { display: block; }
+        .accordion-category {
+            margin-bottom: 6px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .accordion-header {
+            background-color: var(--menu-blue);
+            color: white;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header::after { content: "▼"; font-size: 11px; }
+        .accordion-content { display: none; background-color: #ffffff; }
+        .accordion-content.open { display: block; }
+        .accordion-content a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid #f1f3f5;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .accordion-content a:hover { background-color: var(--bg-light); }
+        .content-page { display: none; background: #fff; padding: 20px 0; }
+        .content-page.active { display: block; }
         footer {
             text-align: center;
             padding: 30px 16px;
             color: var(--text-muted);
             font-size: 13px;
-            border-top: 1px solid var(--border);
+            border-top: 3px solid var(--primary);
             margin-top: 40px;
+            background: #fff;
         }
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 8px;
-        }
+        footer a { color: var(--primary); text-decoration: none; margin: 0 8px; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -185,40 +291,83 @@
 <header class="site">
     <div class="nav-wrap">
         <a href="index.html" class="brand">
-            parahesap.site
-            <span>Anında hesapla, geleceğini planla</span>
+            <div class="brand-main-text"><span class="brand-text">parahesap</span><span class="brand-ext">.site</span></div>
+            <span class="slogan-sub">"Anında hesapla, geleceğini planla"</span>
         </a>
-        <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
+        <button class="btn-tum" onclick="toggleTumHesaplamalar()">Tüm Hesaplamalar ▼</button>
     </div>
 </header>
 
 <main class="main-container">
-    <div class="search-box">
-        <input type="text" placeholder="Araç Ara: Örn. maaş, kredi, mtv, zekat, kdv...">
-        <button onclick="location.href='tum-hesaplamalar.html'">GİT</button>
-    </div>
+    <div class="adsense-box">AdSense Yatay Reklam Alanı (Üst Alan)</div>
 
-    <div class="card">
-        <h1 id="toolHeader" class="pink-title">Hesaplama Aracı</h1>
-        <div id="toolDesc" class="tool-desc"></div>
-        
-        <div id="formContainer"></div>
-
-        <button class="btn-calc" onclick="hesapla()">HESAPLA</button>
-
-        <div id="resultBox" class="result-box">
-            <div id="resultContent"></div>
+    <div id="homeContent" class="content-page active">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Araç Ara: Örn. maaş, kredi, mtv, zekat, kdv...">
+            <button onclick="toggleTumHesaplamalar()">GİT</button>
         </div>
-    </div>
 
-    <div class="info-card">
-        <h2 id="infoTitle">Nasıl Hesaplanır?</h2>
-        <div id="infoContent" style="font-size:14px; color:var(--text-muted); line-height:1.6;"></div>
+        <div id="calcPanel" class="calc-panel">
+            <h1 id="calcTitle">Hesaplama Aracı</h1>
+            <p class="short-desc" id="calcDesc"></p>
+            
+            <div id="formContainer"></div>
+
+            <button class="btn-hesapla" onclick="hesapla()">HESAPLA</button>
+            <div id="sonucAlani"></div>
+        </div>
+
+        <div class="adsense-box">AdSense Yatay Reklam Alanı (Orta Alan)</div>
+
+        <div class="seo-content-block">
+            <h2 id="infoTitle">Nasıl Hesaplanır?</h2>
+            <div id="infoContent"></div>
+            
+            <h2>🔗 İlgili Hesaplama Araçları</h2>
+            <div class="related-links">
+                <a href="index.html?tip=brutten-nete">Brütten Nete Maaş</a>
+                <a href="index.html?tip=maas-zam">Maaş Zammı</a>
+                <a href="index.html?tip=kidem">Kıdem Tazminatı</a>
+                <a href="index.html?tip=kdv">KDV Hesaplama</a>
+                <a href="index.html?tip=zekat">Zekat Hesaplama</a>
+            </div>
+        </div>
+
+        <div id="accordionSection">
+            <h3 style="font-size:16px; color:var(--primary); margin-bottom:12px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları (20 Seçkin Araç)</h3>
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">1. Ana Finans, Maaş, Kredi ve Ticari Araçlar</div>
+                <div class="accordion-content">
+                    <a href="index.html?tip=brutten-nete">Brütten Nete Maaş Hesaplama</a>
+                    <a href="index.html?tip=maas-zam">Maaş Zammı Hesaplama</a>
+                    <a href="index.html?tip=kidem">Kıdem Tazminatı Hesaplama</a>
+                    <a href="index.html?tip=kdv">KDV Dahil / Hariç Hesaplama</a>
+                    <a href="index.html?tip=kar-zarar">Kâr / Zarar Oranı Hesaplama</a>
+                    <a href="index.html?tip=iskonto">İskonto (İndirim) Hesaplama</a>
+                </div>
+            </div>
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">2. Dini ve Sosyal Haklar</div>
+                <div class="accordion-content">
+                    <a href="index.html?tip=zekat">Zekat Hesaplama</a>
+                    <a href="index.html?tip=fitre">Fitre Hesaplama</a>
+                    <a href="index.html?tip=miras">Miras Payı Hesaplama</a>
+                </div>
+            </div>
+            <div class="accordion-category">
+                <div class="accordion-header" onclick="toggleAccordion(this)">3. Sağlık ve Yaşam Araçları</div>
+                <div class="accordion-content">
+                    <a href="index.html?tip=vki">Vücut Kitle İndeksi (VKİ)</a>
+                    <a href="index.html?tip=kalori">Günlük Kalori İhtiyacı</a>
+                    <a href="index.html?tip=ideal-kilo">İdeal Kilo Hesaplama</a>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
 <footer>
-    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
+    <p style="color: var(--accent); font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
     <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     <p>
         <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
@@ -233,8 +382,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const tip = urlParams.get('tip') || 'brutten-nete';
 
-    const header = document.getElementById('toolHeader');
-    const desc = document.getElementById('toolDesc');
+    const header = document.getElementById('calcTitle');
+    const desc = document.getElementById('calcDesc');
     const form = document.getElementById('formContainer');
     const title = document.getElementById('pageTitle');
     const infoTitle = document.getElementById('infoTitle');
@@ -246,11 +395,21 @@
         desc.innerText = '2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.';
         form.innerHTML = `
             <div class="form-group"><label>Brüt Maaş (TL):</label><input type="number" id="brutMaas" placeholder="Örn: 50000"></div>
-            <div class="form-group"><label>Medeni Durum:</label><select><option>Bekar</option><option>Evli</option></select></div>
-            <div class="form-group"><label>Çocuk Sayısı:</label><select><option>Yok</option><option>1</option><option>2+</option></select></div>
+            <div class="form-group"><label>Medeni Durum:</label><select id="medeniDurum"><option value="bekar">Bekar</option><option value="evli">Evli</option></select></div>
+            <div class="form-group"><label>Çocuk Sayısı:</label><select id="cocukSayisi"><option value="0">Yok</option><option value="1">1</option><option value="2">2+</option></select></div>
         `;
-        infoTitle.innerText = 'Brütten Nete Maaş Nasıl Hesaplanır? (2026)';
-        infoContent.innerHTML = 'Brüt maaştan net maaşa ulaşmak için %14 SGK İşçi Payı, %1 İşsizlik Sigortası Payı ve Gelir Vergisi ile Damga Vergisi kesintileri yapılır.';
+        infoTitle.innerText = '📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)';
+        infoContent.innerHTML = `
+            <p>Brüt maaştan net maaşa ulaşmak için sırasıyla şu kesintiler yapılır:</p>
+            <ul>
+                <li><strong>SGK İşçi Payı (%14):</strong> Brüt maaş × 0,14</li>
+                <li><strong>İşsizlik Sigortası Payı (%1):</strong> Brüt maaş × 0,01</li>
+                <li><strong>Gelir Vergisi ve Damga Vergisi (%0,759)</strong> kesintileri düşülür.</li>
+            </ul>
+            <h3>❓ Sıkça Sorulan Sorular (S.S.S.)</h3>
+            <details><summary>1. 2026'da asgari ücret istisnası var mı?</summary><p>Evet, asgari ücret tutarına kadar olan kısım vergeden muaftır.</p></details>
+            <details><summary>2. AGİ uygulanıyor mu?</summary><p>2022'den itibaren AGİ yerine asgari ücret istisnası gelmiştir.</p></details>
+        `;
     } else if (tip === 'maas-zam') {
         title.innerText = 'Maaş Zam Oranı Hesaplama - Para Hesap';
         header.innerText = 'Maaş Zam Oranı Hesaplama';
@@ -319,7 +478,7 @@
         desc.innerText = 'Ailenizdeki kişi sayısına göre diyanet standartlarına uygun toplam fitre miktarını görün.';
         form.innerHTML = `
             <div class="form-group"><label>Kişi Sayısı:</label><input type="number" id="fitreKisi" placeholder="Örn: 4"></div>
-            <div class="form-group"><label>Kişi Başı Asgari Fitre Tutarı (TL):</label><input type="number" id="fitreTutar" value="180"></div>
+            <div class="form-group"><label>Kişi Başı Fitre Tutarı (TL):</label><input type="number" id="fitreTutar" value="180"></div>
         `;
         infoTitle.innerText = 'Fitre Mantığı';
         infoContent.innerHTML = 'Fitre, Ramazan ayında aile bireyleri sayısınca ihtiyaç sahiplerine verilen vacip bir sadakadır.';
@@ -355,7 +514,7 @@
         infoTitle.innerText = 'Kalori İhtiyacı';
         infoContent.innerHTML = 'Bazal metabolizma hızınız günlük fiziksel aktivite katsayınız ile çarpılarak bulunur.';
     } else if (tip === 'ideal-kilo') {
-        title.innerText = 'İdeal Kilo Hesaplama - Para Hesap';
+        title.innerText = 'İideal Kilo Hesaplama - Para Hesap';
         header.innerText = 'İdeal Kilo Hesaplama';
         desc.innerText = 'Boyunuza göre medikal standartlara uygun ideal kilonuzu hesaplayın.';
         form.innerHTML = `
@@ -367,82 +526,90 @@
     }
 
     function hesapla() {
-        const resultBox = document.getElementById('resultBox');
-        const resultContent = document.getElementById('resultContent');
-        resultBox.style.display = 'block';
+        const sonucAlani = document.getElementById('sonucAlani');
+        sonucAlani.style.display = 'block';
 
         if (tip === 'brutten-nete') {
             let brut = parseFloat(document.getElementById('brutMaas').value) || 0;
             let net = brut * 0.71; 
-            resultContent.innerHTML = `Tahmini Net Ele Geçen Maaş: <b style="color:#0056b3; font-size:18px;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
+            sonucAlani.innerHTML = `Tahmini Net Ele Geçen Maaş: <b style="color:#0056b3; font-size:18px;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
         } else if (tip === 'maas-zam') {
             let maas = parseFloat(document.getElementById('maasMevcut').value) || 0;
             let zam = parseFloat(document.getElementById('maasZam').value) || 0;
             let zamMiktar = (maas * zam) / 100;
-            resultContent.innerHTML = `Zam Miktarı: <b>${zamMiktar.toLocaleString('tr-TR')} TL</b><br>Yeni Maaş: <b style="color:#0056b3;">${(maas + zamMiktar).toLocaleString('tr-TR')} TL</b>`;
+            sonucAlani.innerHTML = `Zam Miktarı: <b>${zamMiktar.toLocaleString('tr-TR')} TL</b><br>Yeni Maaş: <b style="color:#0056b3;">${(maas + zamMiktar).toLocaleString('tr-TR')} TL</b>`;
         } else if (tip === 'kidem') {
             let yil = parseFloat(document.getElementById('kidemYil').value) || 0;
             let maas = parseFloat(document.getElementById('kidemMaas').value) || 0;
             let net = (yil * maas) * 0.99241;
-            resultContent.innerHTML = `Net Kıdem Tazminatı: <b style="color:#0056b3;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
+            sonucAlani.innerHTML = `Net Kıdem Tazminatı: <b style="color:#0056b3;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
         } else if (tip === 'kdv') {
             let tutar = parseFloat(document.getElementById('kdvTutar').value) || 0;
             let oran = parseFloat(document.getElementById('kdvOran').value);
             let tur = document.getElementById('kdvTur').value;
             if (tur === 'haric') {
                 let kdv = (tutar * oran) / 100;
-                resultContent.innerHTML = `KDV Tutarı: <b>${kdv.toFixed(2)} TL</b><br>KDV Dahil Toplam: <b style="color:#0056b3;">${(tutar + kdv).toFixed(2)} TL</b>`;
+                sonucAlani.innerHTML = `KDV Tutarı: <b>${kdv.toFixed(2)} TL</b><br>KDV Dahil Toplam: <b style="color:#0056b3;">${(tutar + kdv).toFixed(2)} TL</b>`;
             } else {
                 let matrah = tutar / (1 + (oran/100));
                 let kdv = tutar - matrah;
-                resultContent.innerHTML = `KDV Hariç Matrah: <b>${matrah.toFixed(2)} TL</b><br>KDV Tutarı: <b style="color:#0056b3;">${kdv.toFixed(2)} TL</b>`;
+                sonucAlani.innerHTML = `KDV Hariç Matrah: <b>${matrah.toFixed(2)} TL</b><br>KDV Tutarı: <b style="color:#0056b3;">${kdv.toFixed(2)} TL</b>`;
             }
         } else if (tip === 'kar-zarar') {
             let alis = parseFloat(document.getElementById('alisFiyat').value) || 0;
             let satis = parseFloat(document.getElementById('satisFiyat').value) || 0;
             let fark = satis - alis;
             let oran = (fark / alis) * 100;
-            resultContent.innerHTML = `Net Fark: <b>${fark.toLocaleString('tr-TR')} TL</b><br>Kâr/Zarar Oranı: <b style="color:#0056b3;">%${oran.toFixed(2)}</b>`;
+            sonucAlani.innerHTML = `Net Fark: <b>${fark.toLocaleString('tr-TR')} TL</b><br>Kâr/Zarar Oranı: <b style="color:#0056b3;">%${oran.toFixed(2)}</b>`;
         } else if (tip === 'iskonto') {
             let etiket = parseFloat(document.getElementById('etiketFiyat').value) || 0;
-            let oran = parseFloat(document.getElementById('indirimOran').value) || 0;
-            let indirim = (etiket * oran) / 100;
-            resultContent.innerHTML = `Yapılan İndirim: <b>${indirim.toLocaleString('tr-TR')} TL</b><br>Ödenecek Tutar: <b style="color:#0056b3;">${(etiket - indirim).toLocaleString('tr-TR')} TL</b>`;
+            let indirim = parseFloat(document.getElementById('indirimOran').value) || 0;
+            let tutar = (etiket * indirim) / 100;
+            sonucAlani.innerHTML = `İndirim Tutarı: <b>${tutar.toLocaleString('tr-TR')} TL</b><br>Ödenecek Tutar: <b style="color:#0056b3;">${(etiket - tutar).toLocaleString('tr-TR')} TL</b>`;
         } else if (tip === 'zekat') {
             let nakit = parseFloat(document.getElementById('zekatNakit').value) || 0;
             let altin = parseFloat(document.getElementById('zekatAltin').value) || 0;
             let borc = parseFloat(document.getElementById('zekatBorc').value) || 0;
-            let net = (nakit + altin) - borc;
-            if(net <= 0) { resultContent.innerHTML = "Zekat mükellefiyeti bulunmamaktadır."; }
-            else { resultContent.innerHTML = `Net Varlık: <b>${net.toLocaleString('tr-TR')} TL</b><br>Vermeniz Gereken Zekat (%2.5): <b style="color:#0056b3;">${(net / 40).toLocaleString('tr-TR')} TL</b>`; }
+            let netVarlik = (nakit + altin) - borc;
+            let zekat = netVarlik > 0 ? netVarlik * 0.025 : 0;
+            sonucAlani.innerHTML = `Net Varlık: <b>${netVarlik.toLocaleString('tr-TR')} TL</b><br>Verilmesi Gereken Zekat (1/40): <b style="color:#0056b3;">${zekat.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
         } else if (tip === 'fitre') {
             let kisi = parseFloat(document.getElementById('fitreKisi').value) || 0;
-            let tutar = parseFloat(document.getElementById('fitreTutar').value) || 0;
-            resultContent.innerHTML = `Toplam Verilecek Fitre Tutarı: <b style="color:#0056b3;">${(kisi * tutar).toLocaleString('tr-TR')} TL</b>`;
+            let tutar = parseFloat(document.getElementById('fitreTutar').value) || 180;
+            sonucAlani.innerHTML = `Toplam Fitre Tutarı: <b style="color:#0056b3;">${(kisi * tutar).toLocaleString('tr-TR')} TL</b>`;
         } else if (tip === 'miras') {
-            let tutar = parseFloat(document.getElementById('mirasTutar').value) || 0;
-            let erkek = parseInt(document.getElementById('erkekCocuk').value) || 0;
-            let kiz = parseInt(document.getElementById('kizCocuk').value) || 0;
+            let toplam = parseFloat(document.getElementById('mirasTutar').value) || 0;
+            let erkek = parseFloat(document.getElementById('erkekCocuk').value) || 0;
+            let kiz = parseFloat(document.getElementById('kizCocuk').value) || 0;
             let hisse = (erkek * 2) + kiz;
-            let birHisse = tutar / hisse;
-            resultContent.innerHTML = `Erkek Çocuk Başına: <b>${(birHisse * 2).toLocaleString('tr-TR')} TL</b><br>Kız Çocuk Başına: <b>${birHisse.toLocaleString('tr-TR')} TL</b>`;
+            let birHisse = hisse > 0 ? toplam / hisse : 0;
+            sonucAlani.innerHTML = `Erkek Çocuk Başına Pay: <b>${(birHisse * 2).toLocaleString('tr-TR')} TL</b><br>Kız Çocuk Başına Pay: <b>${birHisse.toLocaleString('tr-TR')} TL</b>`;
         } else if (tip === 'vki') {
-            let boy = parseFloat(document.getElementById('vkiBoy').value) / 100;
-            let kilo = parseFloat(document.getElementById('vkiKilo').value);
-            if(!boy || !kilo) return;
-            let vki = (kilo / (boy * boy)).toFixed(2);
-            resultContent.innerHTML = `Vücut Kitle İndeksiniz: <b style="color:#0056b3;">${vki}</b>`;
+            let boy = parseFloat(document.getElementById('vkiBoy').value) / 100 || 0;
+            let kilo = parseFloat(document.getElementById('vkiKilo').value) || 0;
+            let vki = (boy > 0) ? kilo / (boy * boy) : 0;
+            sonucAlani.innerHTML = `Vücut Kitle İndeksiniz: <b style="color:#0056b3;">${vki.toFixed(1)}</b>`;
         } else if (tip === 'kalori') {
             let kilo = parseFloat(document.getElementById('kaloriKilo').value) || 0;
-            let har = parseFloat(document.getElementById('hareket').value);
-            let kalori = (kilo * 24) * har;
-            resultContent.innerHTML = `Günlük İhtiyaç Duyulan Kalori: <b style="color:#0056b3;">${Math.round(kalori)} kcal</b>`;
+            let har = parseFloat(document.getElementById('hareket').value) || 1.2;
+            let kalori = kilo * 24 * har;
+            sonucAlani.innerHTML = `Tahmini Günlük Kalori İhtiyacı: <b style="color:#0056b3;">${kalori.toFixed(0)} kcal</b>`;
         } else if (tip === 'ideal-kilo') {
             let boy = parseFloat(document.getElementById('idealBoy').value) || 0;
-            let cin = document.getElementById('cinsiyet').value;
-            let ideal = cin === 'erkek' ? (boy - 100) - ((boy - 150) / 4) : (boy - 100) - ((boy - 150) / 2.5);
-            resultContent.innerHTML = `İdeal Kilonuz: <b style="color:#0056b3;">${ideal.toFixed(1)} kg</b>`;
+            let cins = document.getElementById('cinsiyet').value;
+            let ideal = cins === 'erkek' ? 50 + 0.91 * (boy - 152.4) : 45.5 + 0.91 * (boy - 152.4);
+            sonucAlani.innerHTML = `Tahmini İdeal Kilonuz: <b style="color:#0056b3;">${ideal.toFixed(1)} kg</b>`;
         }
+    }
+
+    function toggleTumHesaplamalar() {
+        const acc = document.getElementById('accordionSection');
+        acc.classList.toggle('active');
+    }
+
+    function toggleAccordion(element) {
+        const content = element.nextElementSibling;
+        content.classList.toggle('open');
     }
 </script>
 
