@@ -1,13 +1,179 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head><meta charset="UTF-8"><title>Gizlilik Politikası - Para Hesap</title><link rel="stylesheet" href="css/style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası - Para Hesap</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --pink-title: #d63384;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border: #dee2e6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        header.site {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-style: italic;
+            font-weight: normal;
+        }
+        .btn-tum {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        .card-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: var(--primary-dark);
+            font-size: 24px;
+            margin: 0 0 6px 0;
+        }
+        .subtitle {
+            color: var(--pink-title);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .content-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #444444;
+        }
+        h2 {
+            font-size: 17px;
+            color: var(--primary-dark);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            background-color: #ffffff;
+        }
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+    </style>
+</head>
 <body>
-<div class="container" style="margin-top:40px; background:#fff; padding:30px; border-radius:8px;">
-    <h2>Gizlilik Politikası</h2>
-    <p>parahesap.site olarak ziyaretçilerimizin gizliliğine ve kişisel verilerinin korunmasına büyük önem veriyoruz. Bu gizlilik politikası belgesi, sitemizde toplanan ve işlenen verilerin kapsamını açıklamaktadır.</p>
-    <h3>Google AdSense ve Çerezler</h3>
-    <p>Sitemizde reklam gösterimi amacıyla üçüncü taraf tedarikçi olarak Google kullanılmaktadır. Google, çerezler (DoubleClick çerezi dahil) vasıtasıyla kullanıcıların sitemize ve internetteki diğer sitelere yaptıkları geçmiş ziyaretlere dayalı olarak reklamlar sunar. Kullanıcılar, Google Reklam ve İçerik Ağı gizlilik politikasını ziyaret ederek bu çerez kullanımını devre dışı bırakabilirler.</p>
-    <br><a href="index.html">← Ana Sayfaya Dön</a>
-</div>
+
+<header class="site">
+    <div class="nav-wrap">
+        <a href="index.html" class="brand">
+            parahesap.site
+            <span>Anında hesapla, geleceğini planla</span>
+        </a>
+        <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Gizlilik Politikası</h1>
+            <div class="subtitle">Kişisel Verilerinizin Korunması Hakkında Bilgilendirme</div>
+        </div>
+        
+        <div class="content-text">
+            <p><strong>parahesap.site</strong> olarak ziyaretçilerimizin gizliliğine ve kişisel verilerinin korunmasına büyük önem veriyoruz. Bu gizlilik politikası belgesi, sitemizde toplanan ve işlenen verilerin kapsamını ve kullanım şartlarını açıklamaktadır.</p>
+
+            <h2>1. Kişisel Verilerin Toplanması ve Kullanımı</h2>
+            <p>Sitemizde yer alan hesaplama araçlarına girdiğiniz maaş, tutar, oran, kilo veya boy gibi veriler hiçbir şekilde sunucularımıza kaydedilmez. Tüm hesaplama işlemleri tarayıcınız (browser) üzerinde anlık olarak istemci tarafında (Client-Side) gerçekleştirilir.</p>
+
+            <h2>2. Google AdSense ve Çerezler (Cookies)</h2>
+            <p>Sitemizde reklam gösterimi amacıyla üçüncü taraf tedarikçi olarak Google kullanılmaktadır. Google, çerezleri (DoubleClick çerezi dahil) kullanarak kullanıcılarımızın sitemize ve internetteki diğer sitelere yaptıkları ziyaretlere dayalı reklamlar sunar.</p>
+            <p>Ziyaretçilerimiz, Google Reklam ve İçerik Ağı gizlilik politikasını ziyaret ederek kişiselleştirilmiş reklamcılık çerezlerinin kullanımını devre dışı bırakabilirler.</p>
+
+            <h2>3. Analiz ve Log Dosyaları</h2>
+            <p>Standart web sunucularında olduğu gibi sitemizde de genel site trafiğini analiz etmek ve güvenliği sağlamak amacıyla anonim erişim log kayıtları (IP adresi, tarayıcı türü, ziyaret zamanı) tutulabilir.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </div>
+</main>
+
+<footer>
+    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
+    <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
+    <p>
+        <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
+        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
+        <a href="hakkimizda.html">Hakkımızda</a> | 
+        <a href="iletisim.html">İletişim</a> | 
+        <a href="blog/index.html">Blog</a>
+    </p>
+</footer>
+
 </body>
 </html>
