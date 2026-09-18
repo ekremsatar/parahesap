@@ -88,7 +88,7 @@
             cursor: pointer;
         }
         .accordion-category {
-            margin-bottom: 2px;
+            margin-bottom: 8px;
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid var(--primary);
@@ -137,15 +137,6 @@
             background-color: var(--bg-light);
             text-decoration: underline;
         }
-        .badge-yeni {
-            background-color: #e83e8c;
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 6px;
-            font-weight: 700;
-        }
         footer {
             text-align: center;
             padding: 30px 16px;
@@ -181,19 +172,39 @@
 
     <div id="categoryContainer">
         <div class="accordion-category">
-            <div class="accordion-header" onclick="toggleAccordion(this)">1. Kredi Hesaplamaları</div>
+            <div class="accordion-header" onclick="toggleAccordion(this)">1. Finansal Hesaplamalar</div>
             <div class="accordion-content">
-                <a href="test.html?tip=kredi">Konut Kredisi Hesaplama</a>
-                <a href="test.html?tip=kredi">İhtiyaç Kredisi Hesaplama</a>
-                <a href="test.html?tip=kredi">Taşıt Kredisi Hesaplama</a>
+                <a href="test.html?tip=maas">Maaş / Zam Hesaplama</a>
+                <a href="test.html?tip=brutten-nete">Brütten Nete Maaş Hesaplama</a>
+                <a href="test.html?tip=kdv">KDV Hesaplama</a>
+                <a href="test.html?tip=kidem">Kıdem Tazminatı Hesaplama</a>
             </div>
         </div>
+
         <div class="accordion-category">
-            <div class="accordion-header" onclick="toggleAccordion(this)">2. Finansal Hesaplamalar</div>
+            <div class="accordion-header" onclick="toggleAccordion(this)">2. Kredi Hesaplamaları</div>
             <div class="accordion-content">
-                <a href="test.html?tip=mass">Brütten Nete Maaş Hesaplama</a>
-                <a href="test.html?tip=kdv">KDV Hesaplama</a>
+                <a href="test.html?tip=konut-kredisi">Konut Kredisi Hesaplama</a>
+                <a href="test.html?tip=ihtiyac-kredisi">İhtiyaç Kredisi Hesaplama</a>
+                <a href="test.html?tip=tasit-kredisi">Taşıt Kredisi Hesaplama</a>
+            </div>
+        </div>
+
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">3. Dini Hesaplamalar</div>
+            <div class="accordion-content">
                 <a href="test.html?tip=zekat">Zekat Hesaplama</a>
+                <a href="test.html?tip=fitre">Fitre Hesaplama</a>
+                <a href="test.html?tip=miras">Miras Payı Hesaplama</a>
+            </div>
+        </div>
+
+        <div class="accordion-category">
+            <div class="accordion-header" onclick="toggleAccordion(this)">4. Sağlık Hesaplamaları</div>
+            <div class="accordion-content">
+                <a href="test.html?tip=vki">Vücut Kitle İndeksi (VKİ) Hesaplama</a>
+                <a href="test.html?tip=kalori">Günlük Kalori İhtiyacı Hesaplama</a>
+                <a href="test.html?tip=ideal-kilo">İdeal Kilo Hesaplama</a>
             </div>
         </div>
     </div>
@@ -202,6 +213,13 @@
 <footer>
     <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
     <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
+    <p>
+        <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
+        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
+        <a href="hakkimizda.html">Hakkımızda</a> | 
+        <a href="iletisim.html">İletişim</a> | 
+        <a href="blog/index.html">Blog</a>
+    </p>
 </footer>
 
 <script>
