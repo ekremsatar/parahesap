@@ -1,12 +1,204 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head><meta charset="UTF-8"><title>İletişim - Para Hesap</title><link rel="stylesheet" href="css/style.css"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Para Hesap</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --pink-title: #d63384;
+            --bg-light: #f8f9fa;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border: #dee2e6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+        header.site {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-style: italic;
+            font-weight: normal;
+        }
+        .btn-tum {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        .card-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: var(--primary-dark);
+            font-size: 24px;
+            margin: 0 0 6px 0;
+        }
+        .subtitle {
+            color: var(--pink-title);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .info-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            border-radius: 6px;
+        }
+        .info-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 15px;
+            color: var(--primary-dark);
+        }
+        .info-box p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+        .content-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444444;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            background-color: #ffffff;
+        }
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+    </style>
+</head>
 <body>
-<div class="container" style="margin-top:40px; background:#fff; padding:30px; border-radius:8px;">
-    <h2>İletişim</h2>
-    <p>Sitemizde yer alan hesaplama araçları, içerikler veya reklam/iş birliği talepleriniz ile ilgili her türlü soru, öneri ve hata bildirimlerinizi bize aşağıdaki kanallar üzerinden iletebilirsiniz.</p>
-    <p><strong>Elektronik Posta:</strong> destek@parahesap.site<br><strong>Çalışma Saatleri:</strong> Hafta içi 09:00 - 18:00</p>
-    <br><a href="index.html">← Ana Sayfaya Dön</a>
-</div>
+
+<header class="site">
+    <div class="nav-wrap">
+        <a href="index.html" class="brand">
+            parahesap.site
+            <span>Anında hesapla, geleceğini planla</span>
+        </a>
+        <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="card">
+        <div class="card-header">
+            <h1>İletişim & Destek</h1>
+            <div class="subtitle">Bizimle İletişime Geçin</div>
+        </div>
+        
+        <div class="content-text">
+            Sitemizde yer alan hesaplama araçları, içerik telifleri, reklam veya iş birliği talepleriniz ile ilgili her türlü soru, öneri ve hata bildirimlerinizi aşağıdaki kanallar üzerinden ekibimize iletebilirsiniz.
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>📧 E-Posta Destek</h3>
+                <p><strong>destek@parahesap.site</strong></p>
+            </div>
+            <div class="info-box">
+                <h3>🕒 Çalışma Saatleri</h3>
+                <p>Hafta İçi: 09:00 - 18:00</p>
+            </div>
+            <div class="info-box">
+                <h3>⚡ Yanıt Süresi</h3>
+                <p>En geç 24 saat içinde dönüş yapılır.</p>
+            </div>
+        </div>
+
+        <div class="content-text">
+            Görüşleriniz portalımızın geliştirilmesi ve sizlere daha doğru, güncel hesaplama araçları sunabilmemiz açısından büyük önem taşımaktadır.
+        </div>
+
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </div>
+</main>
+
+<footer>
+    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
+    <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
+    <p>
+        <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
+        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
+        <a href="hakkimizda.html">Hakkımızda</a> | 
+        <a href="iletisim.html">İletişim</a> | 
+        <a href="blog/index.html">Blog</a>
+    </p>
+</footer>
+
 </body>
 </html>
