@@ -82,51 +82,56 @@
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 10px 14px;
+            padding: 10px 16px;
             border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
             white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Üst Açılır Menü (Dropdown Container) */
+        /* Yenilenmiş Büyük ve Belirgin Açılır Menü */
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: 100%;
+            top: 105%;
             right: 0;
-            width: 320px;
+            width: 340px;
+            max-width: 90vw;
             background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
             padding: 15px;
             z-index: 2000;
-            margin-top: 10px;
             max-height: 80vh;
             overflow-y: auto;
         }
         .dropdown-menu.show { display: block; }
         .dropdown-menu h4 {
-            margin: 10px 0 6px 0;
-            color: var(--primary-dark);
+            margin: 12px 0 8px 0;
+            color: #ffffff;
+            background: var(--primary);
+            padding: 6px 10px;
+            border-radius: 5px;
             font-size: 13px;
-            border-bottom: 1px solid #f1f3f5;
-            padding-bottom: 4px;
+            font-weight: 700;
         }
         .dropdown-menu h4:first-child { margin-top: 0; }
         .dropdown-menu a {
             display: block;
-            padding: 6px 8px;
-            color: var(--primary);
+            padding: 8px 10px;
+            color: #1e293b;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 1px solid #f1f5f9;
             border-radius: 4px;
         }
         .dropdown-menu a:hover {
-            background-color: #f0f7ff;
+            background-color: #eff6ff;
+            color: var(--primary);
         }
 
         .main-container {
@@ -144,12 +149,17 @@
             margin-bottom: 20px;
             border-radius: 6px;
         }
+
+        /* Arama Kutusu ve Otomatik Tahmin Listesi Yapısı */
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
         .search-box {
             display: flex;
             background-color: var(--menu-blue);
             padding: 6px;
             border-radius: 6px;
-            margin-bottom: 20px;
         }
         .search-box input {
             flex: 1;
@@ -170,6 +180,32 @@
             cursor: pointer;
             border-radius: 0 4px 4px 0;
         }
+        .search-suggestions {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            z-index: 1500;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .search-suggestions div {
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .search-suggestions div:hover {
+            background-color: #eff6ff;
+        }
+
         .calc-panel {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -306,7 +342,7 @@
             <span class="slogan-sub">"Anında hesapla, geleceğini planla"</span>
         </a>
         
-        <!-- Buton ve Şık Açılır Menü -->
+        <!-- Üst Belirgin Açılır Menü -->
         <div style="position: relative;">
             <button class="btn-tum" onclick="toggleDropdown(event)">Tüm Hesaplamalar ▼</button>
             <div id="topDropdown" class="dropdown-menu">
@@ -335,10 +371,13 @@
 <main class="main-container">
 
     <div id="homeContent">
-        <!-- Arama Çubuğu -->
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Araç Ara: Örn. maaş, kredi, mtv, zekat, kdv...">
-            <button onclick="searchTool()">GİT</button>
+        <!-- Arama Kutusu ve Canlı Tahmin Listesi -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Araç Ara: Örn. maaş, kredi, zekat, kdv..." oninput="handleSearchInput()">
+                <button onclick="executeSearch()">GİT</button>
+            </div>
+            <div id="suggestionsBox" class="search-suggestions"></div>
         </div>
 
         <!-- Üst Reklam -->
@@ -403,7 +442,7 @@
                 <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:12px;">
                     <a href="javascript:void(0)" onclick="loadTool('vki')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Vücut Kitle İndeksi (VKİ)</a>
                     <a href="javascript:void(0)" onclick="loadTool('kalori')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Günlük Kalori İhtiyacı</a>
-                    <a href="javascript:void(0)" onclick="loadTool('ideal-kilo')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• İdeal Kilo Hesaplama</a>
+                    <a href="javascript:void(0)" onclick="loadTool('ideal-kilo')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• İideal Kilo Hesaplama</a>
                 </div>
             </div>
         </div>
@@ -425,21 +464,78 @@
 <script>
     let currentTip = 'brutten-nete';
 
+    // Sitedeki Hesaplama Araçlarının Liste Haritası
+    const toolsList = [
+        { key: 'brutten-nete', name: 'Brütten Nete Maaş Hesaplama', tags: ['maaş', 'maas', 'brüt', 'brut', 'net'] },
+        { key: 'maas-zam', name: 'Maaş Zam Oranı Hesaplama', tags: ['zam', 'maaş', 'oran'] },
+        { key: 'kidem', name: 'Kıdem Tazminatı Hesaplama', tags: ['kıdem', 'kidem', 'tazminat'] },
+        { key: 'kdv', name: 'KDV Hesaplama (Dahil / Hariç)', tags: ['kdv', 'fatura', 'vergi'] },
+        { key: 'kar-zarar', name: 'Kâr / Zarar Oranı Hesaplama', tags: ['kar', 'kâr', 'zarar', 'oran'] },
+        { key: 'iskonto', name: 'İskonto (İndirim) Hesaplama', tags: ['iskonto', 'indirim', 'yüzde'] },
+        { key: 'zekat', name: 'Zekat Hesaplama', tags: ['zekat', 'dini', 'altın'] },
+        { key: 'fitre', name: 'Fitre Hesaplama', tags: ['fitre', 'ramazan', 'sadaka'] },
+        { key: 'miras', name: 'Miras Payı Hesaplama', tags: ['miras', 'pay', 'hukuk'] },
+        { key: 'vki', name: 'Vücut Kitle İndeksi (VKİ)', tags: ['vki', 'boy', 'kilo', 'sağlık'] },
+        { key: 'kalori', name: 'Günlük Kalori İhtiyacı', tags: ['kalori', 'diyet', 'kilo'] },
+        { key: 'ideal-kilo', name: 'İdeal Kilo Hesaplama', tags: ['ideal', 'kilo', 'boy'] }
+    ];
+
     function toggleDropdown(event) {
         event.stopPropagation();
         document.getElementById('topDropdown').classList.toggle('show');
     }
 
-    // Dışarı tıklayınca açılır menüyü kapat
+    // Arama Tahminlerini Canlı Getirme
+    function handleSearchInput() {
+        const val = document.getElementById('searchInput').value.toLowerCase().trim();
+        const box = document.getElementById('suggestionsBox');
+        
+        if (val.length < 1) {
+            box.style.display = 'none';
+            return;
+        }
+
+        const matches = toolsList.filter(t => 
+            t.name.toLowerCase().includes(val) || t.tags.some(tag => tag.includes(val))
+        );
+
+        if (matches.length > 0) {
+            box.innerHTML = matches.map(m => 
+                `<div onclick="selectSuggestion('${m.key}')">${m.name}</div>`
+            ).join('');
+            box.style.display = 'block';
+        } else {
+            box.style.display = 'none';
+        }
+    }
+
+    function selectSuggestion(key) {
+        document.getElementById('suggestionsBox').style.display = 'none';
+        document.getElementById('searchInput').value = '';
+        loadTool(key);
+    }
+
+    function executeSearch() {
+        const val = document.getElementById('searchInput').value.toLowerCase().trim();
+        if(!val) return;
+        const match = toolsList.find(t => t.name.toLowerCase().includes(val) || t.tags.some(tag => tag.includes(val)));
+        if (match) {
+            selectSuggestion(match.key);
+        } else {
+            alert('Aramanıza uygun araç bulunamadı.');
+        }
+    }
+
+    // Ekranın herhangi bir yerine tıklayınca açık menüleri kapat
     window.onclick = function(event) {
         if (!event.target.matches('.btn-tum')) {
             var dropdowns = document.getElementsByClassName("dropdown-menu");
             for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
+                dropdowns[i].classList.remove('show');
             }
+        }
+        if (!event.target.matches('#searchInput')) {
+            document.getElementById('suggestionsBox').style.display = 'none';
         }
     }
 
@@ -454,8 +550,6 @@
         const sonucAlani = document.getElementById('sonucAlani');
         
         sonucAlani.style.display = 'none';
-
-        // Açılır menüyü kapat
         document.getElementById('topDropdown').classList.remove('show');
 
         if (tip === 'brutten-nete') {
@@ -595,32 +689,6 @@
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function searchTool() {
-        const query = document.getElementById('searchInput').value.toLowerCase().trim();
-        if(!query) return;
-
-        if (query.includes('maaş') || query.includes('maas') || query.includes('brüt') || query.includes('net')) {
-            loadTool('brutten-nete');
-        } else if (query.includes('zam')) {
-            loadTool('maas-zam');
-        } else if (query.includes('kıdem') || query.includes('kidem') || query.includes('tazminat')) {
-            loadTool('kidem');
-        } else if (query.includes('kdv')) {
-            loadTool('kdv');
-        } else if (query.includes('kar') || query.includes('zarar')) {
-            loadTool('kar-zarar');
-        } else if (query.includes('zekat')) {
-            loadTool('zekat');
-        } else if (query.includes('fitre')) {
-            loadTool('fitre');
-        } else if (query.includes('vki') || query.includes('boy') || query.includes('kilo')) {
-            loadTool('vki');
-        } else {
-            alert('Aradığınız terime uygun araç bulundu ve yüklendi.');
-            loadTool('brutten-nete');
-        }
     }
 
     function hesapla() {
