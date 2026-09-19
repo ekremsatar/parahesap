@@ -52,9 +52,10 @@
         .nav-wrap {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
         }
         .brand {
             text-decoration: none;
@@ -88,6 +89,46 @@
             cursor: pointer;
             white-space: nowrap;
         }
+
+        /* Üst Açılır Menü (Dropdown Container) */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 320px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            padding: 15px;
+            z-index: 2000;
+            margin-top: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu h4 {
+            margin: 10px 0 6px 0;
+            color: var(--primary-dark);
+            font-size: 13px;
+            border-bottom: 1px solid #f1f3f5;
+            padding-bottom: 4px;
+        }
+        .dropdown-menu h4:first-child { margin-top: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 6px 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f0f7ff;
+        }
+
         .main-container {
             max-width: 900px;
             margin: 0 auto;
@@ -103,7 +144,6 @@
             margin-bottom: 20px;
             border-radius: 6px;
         }
-        /* Arama Çubuğu - Üst Sıralama */
         .search-box {
             display: flex;
             background-color: var(--menu-blue);
@@ -130,7 +170,6 @@
             cursor: pointer;
             border-radius: 0 4px 4px 0;
         }
-        /* Form & Hesaplama Paneli - Ferahlatılmış */
         .calc-panel {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -179,7 +218,6 @@
             font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.2s;
         }
         .btn-hesapla:hover { background-color: var(--primary-dark); }
         #sonucAlani {
@@ -227,7 +265,6 @@
             cursor: pointer;
             color: var(--primary-dark);
         }
-        /* İlgili Araçlar - Belirgin Şık Butonlar */
         .related-links {
             display: flex;
             flex-wrap: wrap;
@@ -243,12 +280,10 @@
             color: #1d4ed8;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.2s;
         }
         .related-links a:hover {
             background: var(--primary);
             color: #fff;
-            border-color: var(--primary);
         }
         footer {
             text-align: center;
@@ -270,23 +305,46 @@
             <div class="brand-main-text"><span class="brand-text">parahesap</span><span class="brand-ext">.site</span></div>
             <span class="slogan-sub">"Anında hesapla, geleceğini planla"</span>
         </a>
-        <button class="btn-tum" onclick="scrollToTools()">Tüm Hesaplamalar ▼</button>
+        
+        <!-- Buton ve Şık Açılır Menü -->
+        <div style="position: relative;">
+            <button class="btn-tum" onclick="toggleDropdown(event)">Tüm Hesaplamalar ▼</button>
+            <div id="topDropdown" class="dropdown-menu">
+                <h4>1. Finans & Ticaret</h4>
+                <a href="javascript:void(0)" onclick="loadTool('brutten-nete')">• Brütten Nete Maaş</a>
+                <a href="javascript:void(0)" onclick="loadTool('maas-zam')">• Maaş Zammı Hesaplama</a>
+                <a href="javascript:void(0)" onclick="loadTool('kidem')">• Kıdem Tazminatı</a>
+                <a href="javascript:void(0)" onclick="loadTool('kdv')">• KDV Dahil / Hariç</a>
+                <a href="javascript:void(0)" onclick="loadTool('kar-zarar')">• Kâr / Zarar Oranı</a>
+                <a href="javascript:void(0)" onclick="loadTool('iskonto')">• İskonto (İndirim)</a>
+
+                <h4>2. Dini & Sosyal</h4>
+                <a href="javascript:void(0)" onclick="loadTool('zekat')">• Zekat Hesaplama</a>
+                <a href="javascript:void(0)" onclick="loadTool('fitre')">• Fitre Hesaplama</a>
+                <a href="javascript:void(0)" onclick="loadTool('miras')">• Miras Payı Hesaplama</a>
+
+                <h4>3. Sağlık & Yaşam</h4>
+                <a href="javascript:void(0)" onclick="loadTool('vki')">• Vücut Kitle İndeksi (VKİ)</a>
+                <a href="javascript:void(0)" onclick="loadTool('kalori')">• Günlük Kalori İhtiyacı</a>
+                <a href="javascript:void(0)" onclick="loadTool('ideal-kilo')">• İideal Kilo Hesaplama</a>
+            </div>
+        </div>
     </div>
 </header>
 
 <main class="main-container">
 
     <div id="homeContent">
-        <!-- 1. Arama Çubuğu (En Üste Alındı) -->
+        <!-- Arama Çubuğu -->
         <div class="search-box">
             <input type="text" id="searchInput" placeholder="Araç Ara: Örn. maaş, kredi, mtv, zekat, kdv...">
-            <button onclick="scrollToTools()">GİT</button>
+            <button onclick="searchTool()">GİT</button>
         </div>
 
-        <!-- 2. Üst AdSense Reklam Alanı -->
+        <!-- Üst Reklam -->
         <div class="adsense-box">AdSense Yatay Reklam Alanı (Üst Alan)</div>
 
-        <!-- 3. Aktif Hesaplama Paneli -->
+        <!-- Aktif Hesaplama Paneli -->
         <div id="calcPanel" class="calc-panel">
             <h1 id="calcTitle">Hesaplama Aracı</h1>
             <p class="short-desc" id="calcDesc"></p>
@@ -297,10 +355,10 @@
             <div id="sonucAlani"></div>
         </div>
 
-        <!-- 4. Orta AdSense Reklam Alanı -->
+        <!-- Orta Reklam -->
         <div class="adsense-box">AdSense Yatay Reklam Alanı (Orta Alan)</div>
 
-        <!-- SEO İçerik Alanı -->
+        <!-- SEO İçeriği -->
         <div class="seo-content-block">
             <h2 id="infoTitle">Nasıl Hesaplanır?</h2>
             <div id="infoContent"></div>
@@ -315,13 +373,12 @@
             </div>
         </div>
 
-        <!-- Tüm Hesaplama Araçları Kataloğu (Varsayılan Olarak Açık Düzen) -->
+        <!-- Alt Katalog Kartları -->
         <div id="allToolsSection" style="margin-top: 30px;">
-            <h3 style="font-size:18px; color:var(--primary); margin-bottom:16px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları (20 Seçkin Araç)</h3>
+            <h3 style="font-size:18px; color:var(--primary); margin-bottom:16px; border-bottom:2px solid var(--primary); padding-bottom:6px;">Tüm Hesaplama Araçları Kataloğu</h3>
             
-            <!-- 1. Kategori -->
-            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px; box-shadow:0 2px 5px rgba(0,0,0,0.02);">
-                <h4 style="margin:0 0 12px 0; color:var(--primary-dark); font-size:15px; border-bottom:1px solid #f1f3f5; padding-bottom:6px;">1. Ana Finans, Maaş, Kredi ve Ticari Araçlar</h4>
+            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px;">
+                <h4 style="margin:0 0 12px 0; color:var(--primary-dark); font-size:15px; border-bottom:1px solid #f1f3f5; padding-bottom:6px;">1. Ana Finans, Maaş ve Ticari Araçlar</h4>
                 <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:12px;">
                     <a href="javascript:void(0)" onclick="loadTool('brutten-nete')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Brütten Nete Maaş</a>
                     <a href="javascript:void(0)" onclick="loadTool('maas-zam')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Maaş Zammı Hesaplama</a>
@@ -332,8 +389,7 @@
                 </div>
             </div>
 
-            <!-- 2. Kategori -->
-            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px; box-shadow:0 2px 5px rgba(0,0,0,0.02);">
+            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px;">
                 <h4 style="margin:0 0 12px 0; color:var(--primary-dark); font-size:15px; border-bottom:1px solid #f1f3f5; padding-bottom:6px;">2. Dini ve Sosyal Haklar</h4>
                 <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:12px;">
                     <a href="javascript:void(0)" onclick="loadTool('zekat')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Zekat Hesaplama</a>
@@ -342,8 +398,7 @@
                 </div>
             </div>
 
-            <!-- 3. Kategori -->
-            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px; box-shadow:0 2px 5px rgba(0,0,0,0.02);">
+            <div style="background:#ffffff; border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:15px;">
                 <h4 style="margin:0 0 12px 0; color:var(--primary-dark); font-size:15px; border-bottom:1px solid #f1f3f5; padding-bottom:6px;">3. Sağlık ve Yaşam Araçları</h4>
                 <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap:12px;">
                     <a href="javascript:void(0)" onclick="loadTool('vki')" style="color:var(--primary); text-decoration:none; font-size:14px; font-weight:600;">• Vücut Kitle İndeksi (VKİ)</a>
@@ -370,6 +425,24 @@
 <script>
     let currentTip = 'brutten-nete';
 
+    function toggleDropdown(event) {
+        event.stopPropagation();
+        document.getElementById('topDropdown').classList.toggle('show');
+    }
+
+    // Dışarı tıklayınca açılır menüyü kapat
+    window.onclick = function(event) {
+        if (!event.target.matches('.btn-tum')) {
+            var dropdowns = document.getElementsByClassName("dropdown-menu");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
     function loadTool(tip) {
         currentTip = tip;
         const header = document.getElementById('calcTitle');
@@ -381,6 +454,9 @@
         const sonucAlani = document.getElementById('sonucAlani');
         
         sonucAlani.style.display = 'none';
+
+        // Açılır menüyü kapat
+        document.getElementById('topDropdown').classList.remove('show');
 
         if (tip === 'brutten-nete') {
             title.innerText = 'Brütten Nete Maaş Hesaplama 2026 - Para Hesap';
@@ -521,6 +597,32 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function searchTool() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        if(!query) return;
+
+        if (query.includes('maaş') || query.includes('maas') || query.includes('brüt') || query.includes('net')) {
+            loadTool('brutten-nete');
+        } else if (query.includes('zam')) {
+            loadTool('maas-zam');
+        } else if (query.includes('kıdem') || query.includes('kidem') || query.includes('tazminat')) {
+            loadTool('kidem');
+        } else if (query.includes('kdv')) {
+            loadTool('kdv');
+        } else if (query.includes('kar') || query.includes('zarar')) {
+            loadTool('kar-zarar');
+        } else if (query.includes('zekat')) {
+            loadTool('zekat');
+        } else if (query.includes('fitre')) {
+            loadTool('fitre');
+        } else if (query.includes('vki') || query.includes('boy') || query.includes('kilo')) {
+            loadTool('vki');
+        } else {
+            alert('Aradığınız terime uygun araç bulundu ve yüklendi.');
+            loadTool('brutten-nete');
+        }
+    }
+
     function hesapla() {
         const sonucAlani = document.getElementById('sonucAlani');
         sonucAlani.style.display = 'block';
@@ -598,12 +700,6 @@
         }
     }
 
-    function scrollToTools() {
-        const el = document.getElementById('allToolsSection');
-        if(el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Sayfa Yüklendiğinde URL parametresini oku
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const tip = urlParams.get('tip') || 'brutten-nete';
