@@ -92,17 +92,11 @@
             padding: 0 12px;
         }
 
+        /* Reklam Alanı Düzenlemesi (Gri Kutuyu Gizler, AdSense Yüklenince Gösterir) */
         .ad-space {
-            background-color: #eceff1;
-            border: 1px dashed #b0bec5;
             text-align: center;
-            padding: 10px;
             margin: 15px 0;
-            border-radius: 4px;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
 
         .card-box {
@@ -322,10 +316,10 @@
 
     <div class="main-container">
 
-        <!-- AdSense Üst Reklam Alanı -->
+        <!-- Üst AdSense Kodu -->
         <div class="ad-space">
             <ins class="adsbygoogle"
-                 style="display:block; width:100%"
+                 style="display:block"
                  data-ad-client="ca-pub-2881789176542881"
                  data-ad-slot="auto"
                  data-ad-format="auto"
@@ -375,10 +369,10 @@
             </div>
         </div>
 
-        <!-- AdSense Orta Reklam Alanı -->
+        <!-- Orta AdSense Kodu -->
         <div class="ad-space">
             <ins class="adsbygoogle"
-                 style="display:block; width:100%"
+                 style="display:block"
                  data-ad-client="ca-pub-2881789176542881"
                  data-ad-slot="auto"
                  data-ad-format="auto"
@@ -388,7 +382,7 @@
             </script>
         </div>
 
-        <!-- Detaylı Bilgilendirme ve Rehber Metni (AdSense Düşük Değer Engeli İçin) -->
+        <!-- Detaylı Rehber Metni (AdSense Onayı İçin Özgün Metin) -->
         <div class="card-box">
             <div class="section-header">📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)</div>
             <div class="text-content">
@@ -423,7 +417,7 @@
             </div>
         </div>
 
-        <!-- Tüm Hesaplama Araçları Kataloğu -->
+        <!-- Katalog Bölümü -->
         <div class="card-box" id="katalog">
             <div class="catalog-title">Tüm Hesaplama Araçları Kataloğu</div>
 
@@ -465,9 +459,8 @@
         <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- DETAYLI KURUMSAL MODAL PENCERELERİ (AdSense Politikaları İçin) -->
+    <!-- DETAYLI POPUP/MODAL ALANLARI -->
 
-    <!-- Hakkımızda -->
     <div id="mHakkimizda" class="modal-overlay">
         <div class="modal-box">
             <span class="modal-close" onclick="kapatModal('mHakkimizda')">&times;</span>
@@ -475,12 +468,10 @@
                 <h2>Hakkımızda</h2>
                 <p><strong>parahesap.site</strong>, kullanıcıların günlük finansal, hukuki, ticari ve sağlık alanındaki karmaşık hesaplama ihtiyaçlarını hızlı, güvenilir ve tamamen ücretsiz bir şekilde karşılamak amacıyla kurulmuş bağımsız bir hesaplama platformudur.</p>
                 <p>Platformumuzda yer alan tüm hesaplama araçları; Türkiye Cumhuriyeti güncel mevzuatı, Gelir Vergisi Kanunu, İş Kanunu ve Sosyal Güvenlik Kurumu verileri esas alınarak düzenli olarak güncellenmektedir.</p>
-                <p>Amacımız; sade arayüzümüz ve güçlü altyapımız sayesinde kullanıcılarımızın herhangi bir teknik bilgiye ihtiyaç duymadan en doğru sonuçlara saniyeler içerisinde ulaşmalarını sağlamaktır.</p>
             </div>
         </div>
     </div>
 
-    <!-- İletişim -->
     <div id="mIletisim" class="modal-overlay">
         <div class="modal-box">
             <span class="modal-close" onclick="kapatModal('mIletisim')">&times;</span>
@@ -489,27 +480,23 @@
                 <p>Görüş, öneri, iş birliği veya hatalı hesaplama bildirimleriniz için bizimle aşağıdaki iletişim kanalları üzerinden doğrudan iletişime geçebilirsiniz.</p>
                 <p><strong>E-posta:</strong> iletisim@parahesap.site</p>
                 <p><strong>Web Site:</strong> https://parahesap.site</p>
-                <p><strong>Yanıt Süresi:</strong> Gelen e-postalar en geç 48 saat içerisinde incelenip yanıtlanmaktadır.</p>
             </div>
         </div>
     </div>
 
-    <!-- Gizlilik Politikası -->
     <div id="mGizlilik" class="modal-overlay">
         <div class="modal-box">
             <span class="modal-close" onclick="kapatModal('mGizlilik')">&times;</span>
             <div class="modal-body">
                 <h2>Gizlilik Politikası ve Çerez Bildirimi</h2>
                 <p><strong>Son Güncelleme:</strong> 2026</p>
-                <p>parahesap.site olarak ziyaretçilerimizin kişisel gizliliğine büyük önem veriyoruz. Bu gizlilik politikası metni, sitemizde toplanan verilerin türlerini ve nasıl kullanıldığını açıklamaktadır.</p>
+                <p>parahesap.site olarak ziyaretçilerimizin kişisel gizliliğine büyük önem veriyoruz.</p>
                 <p><strong>1. Veri Toplama:</strong> Sitemizde yer alan hesaplama araçlarına girdiğiniz veriler (maaş tutarları vb.) tamamen tarayıcı tabanlı çalışır ve sunucularımızda saklanmaz.</p>
-                <p><strong>2. Çerezler (Cookies) ve AdSense:</strong> parahesap.site, Google AdSense ve Google Analytics hizmetlerini kullanmaktadır. Google dahil üçüncü taraf sağlayıcılar, kullanıcıların web sitemize yaptığı önceki ziyaretlere dayalı olarak reklam sunmak için çerezlerden yararlanır.</p>
-                <p>Kullanıcılar, <a href="https://www.google.com/settings/ads" target="_blank">Kişiselleştirilmiş Reklam Ayarları</a> sayfasından çerez tercihlerini değiştirebilirler.</p>
+                <p><strong>2. Çerezler (Cookies) ve AdSense:</strong> parahesap.site, Google AdSense ve Google Analytics hizmetlerini kullanmaktadır.</p>
             </div>
         </div>
     </div>
 
-    <!-- Kullanım Şartları -->
     <div id="mKullanim" class="modal-overlay">
         <div class="modal-box">
             <span class="modal-close" onclick="kapatModal('mKullanim')">&times;</span>
@@ -517,8 +504,7 @@
                 <h2>Kullanım Şartları</h2>
                 <p><strong>Son Güncelleme:</strong> 2026</p>
                 <p>parahesap.site web sitesini kullanarak aşağıdaki şartları kabul etmiş sayılırsınız:</p>
-                <p><strong>1. Sorumluluk Reddi:</strong> Sitemizde sunulan tüm hesaplama sonuçları bilgilendirme ve tahmini rehberlik amacıyla sunulmaktadır. Resmi ve hukuki bağlayıcılık taşımaz. Resmi işlemleriniz için mali müşaviriniz veya resmi kurumlar ile iletişime geçiniz.</p>
-                <p><strong>2. Telif Hakları:</strong> Sitede yer alan kodlar, tasarım ve içeriklerin tüm hakları parahesap.site platformuna aittir.</p>
+                <p><strong>1. Sorumluluk Reddi:</strong> Sitemizde sunulan tüm hesaplama sonuçları bilgilendirme ve tahmini rehberlik amacıyla sunulmaktadır. Resmi ve hukuki bağlayıcılık taşımaz.</p>
             </div>
         </div>
     </div>
