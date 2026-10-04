@@ -3,30 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParaHesap - Pratik Hesaplama Araçları</title>
-    <meta name="description" content="2026 yılı güncel maaş, finans, dini ve sağlık hesaplama araçları.">
-    <link rel="canonical" href="https://parahesap.site/">
-
-    <!-- Google Analytics (G-GKXWCDPHMF) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GKXWCDPHMF');
-    </script>
-
-    <!-- Google AdSense (pub-2881789176542881) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
-
+    <title>2026 Brütten Nete Maaş Hesaplama | parahesap.site</title>
     <style>
         :root {
-            --primary-blue: #0056b3;
-            --primary-hover: #003d82;
-            --header-red: #d9534f;
-            --pink-title: #d63384;
-            --bg-gray: #f4f6f9;
-            --border-color: #e0e0e0;
+            --primary-color: #0056b3;
+            --primary-hover: #004085;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e9ecef;
         }
 
         * {
@@ -37,1265 +22,305 @@
         }
 
         body {
-            background-color: var(--bg-gray);
-            color: #333;
-            line-height: 1.5;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 15px;
         }
 
-        header {
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 20px;
-        }
-
-        .header-wrap {
-            max-width: 1000px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .logo-box {
-            text-decoration: none;
-        }
-
-        .logo-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--header-red);
-        }
-
-        .logo-title span {
-            color: var(--primary-blue);
-        }
-
-        .logo-sub {
-            font-size: 11px;
-            color: #d9534f;
-            font-style: italic;
-        }
-
-        .btn-header {
-            background-color: var(--primary-blue);
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .main-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 12px;
-        }
-
-        .ad-space {
-            text-align: center;
-            margin: 15px 0;
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        ins.adsbygoogle[data-ad-status="unfilled"] {
-            display: none !important;
-        }
-
-        .card-box {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-        }
-
-        .card-pink-title {
-            color: var(--pink-title);
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .form-group label {
             display: block;
             font-size: 13px;
-            font-weight: 600;
+            color: #555;
             margin-bottom: 5px;
+            font-weight: 500;
         }
 
-        .form-group input, .form-group select {
+        .form-control {
             width: 100%;
-            padding: 9px 12px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
-            background-color: #fafafa;
         }
 
         .btn-calc {
             width: 100%;
-            background-color: var(--primary-blue);
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 12px;
+            border-radius: 4px;
             font-size: 15px;
             font-weight: bold;
-            border-radius: 4px;
             cursor: pointer;
-            text-transform: uppercase;
+            transition: background-color 0.2s;
         }
 
         .btn-calc:hover {
             background-color: var(--primary-hover);
         }
 
-        .result-card {
-            display: none;
-            margin-top: 18px;
-            padding: 15px;
-            background: #eef6ff;
-            border: 1px solid #b6d4fe;
-            border-radius: 6px;
-        }
-
-        .result-card h4 {
-            color: var(--primary-blue);
+        .section-title {
             font-size: 16px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #cbdff7;
-            padding-bottom: 5px;
-        }
-
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
-
-        .result-row.highlight {
-            font-weight: bold;
-            font-size: 16px;
-            color: #0d6efd;
-            border-top: 1px dashed #abc;
-            padding-top: 8px;
-            margin-top: 8px;
-        }
-
-        .section-header {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 6px;
-            margin: 15px 0 12px 0;
-        }
-
-        .text-content {
-            font-size: 13.5px;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .text-content p {
-            margin-bottom: 10px;
-        }
-
-        .text-content ul {
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-
-        .faq-box {
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            margin-bottom: 8px;
-            background: #fff;
-        }
-
-        .faq-header {
-            padding: 10px 14px;
-            font-size: 14px;
             font-weight: 600;
-            color: #333;
-        }
-
-        .faq-body {
-            padding: 0 14px 10px 14px;
-            font-size: 13px;
-            color: #555;
-        }
-
-        .catalog-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 4px;
-            margin-bottom: 15px;
-        }
-
-        .sub-cat-title {
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
-            margin: 12px 0 8px 0;
-        }
-
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-        }
-
-        .link-btn {
-            background: #f8f9fa;
-            border: 1px solid #e2e8f0;
-            padding: 8px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            color: var(--primary-blue);
-            font-size: 13px;
-            display: block;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
-        }
-
-        .link-btn:hover {
-            background: #e2e8f0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px 10px;
-            font-size: 12px;
-            color: #777;
-            border-top: 1px solid var(--border-color);
-            background: #fff;
-            margin-top: 30px;
-        }
-
-        .footer-nav {
-            margin-bottom: 10px;
-        }
-
-        .footer-nav a {
-            color: #555;
-            text-decoration: none;
-            margin: 0 8px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .footer-nav a:hover {
-            color: var(--primary-blue);
-            text-decoration: underline;
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 9999;
-            overflow-y: auto;
-            backdrop-filter: blur(2px);
-        }
-
-        .modal-box {
-            background: #fff;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 26px;
-            cursor: pointer;
-            color: #888;
-            font-weight: bold;
-        }
-
-        .modal-close:hover {
-            color: #000;
-        }
-
-        .modal-body h2 {
-            font-size: 20px;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eef6ff;
-            padding-bottom: 8px;
-        }
-
-        .modal-body p {
-            font-size: 13.5px;
-            color: #444;
             margin-bottom: 12px;
-            line-height: 1.6;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="header-wrap">
-            <a href="/" class="logo-box">
-                <div class="logo-title">parahesap<span>.site</span></div>
-                <div class="logo-sub">"Anında hesapla, geleceğini planla"</div>
-            </a>
-            <a href="#katalog" class="btn-header">Tüm Hesaplamalar ▼</a>
-        </div>
-    </header>
-
-    <div class="main-container">
-
-        <!-- Üst AdSense Kodu -->
-        <div class="ad-space">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2881789176542881"
-                 data-ad-slot="auto"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <!-- Dinamik Hesaplama Kartı -->
-        <div class="card-box" id="hesaplamaAlani">
-            <div class="card-pink-title" id="formBaslik">2026 Brütten Nete Maaş Hesaplama</div>
-            <div class="card-desc" id="formAciklama">2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.</div>
-
-            <form id="hesapForm" onsubmit="event.preventDefault(); hesaplaIslem();">
-                <div id="dinamikFormAlanlari"></div>
-                <button type="submit" class="btn-calc" id="btnHesapla">HESAPLA</button>
-            </form>
-
-            <div id="sonucAlani" class="result-card">
-                <h4>📊 Hesaplama Sonucu</h4>
-                <div id="sonucIcerik"></div>
-            </div>
-        </div>
-
-        <!-- Orta AdSense Kodu -->
-        <div class="ad-space">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2881789176542881"
-                 data-ad-slot="auto"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <!-- Bilgilendirme ve FAQ Bölümü -->
-        <div class="card-box">
-            <div class="section-header">📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)</div>
-            <div class="text-content">
-                <p>Brüt maaştan net maaşa ulaşmak için sırasıyla şu yasal kesintiler gerçekleştirilmektedir:</p>
-                <ul>
-                    <li><strong>SGK İşçi Payı (%14):</strong> Brüt maaş tutarının %14'ü Sosyal Güvenlik Kurumu'na aktarılır.</li>
-                    <li><strong>İşsizlik Sigortası Payı (%1):</strong> Brüt maaşın %1'i işsizlik fonu primi olarak kesilir.</li>
-                    <li><strong>Gelir Vergisi Matrahı:</strong> Brüt tutardan SGK ve İşsizlik primleri düşülerek vergilendirilecek matrah bulunur.</li>
-                    <li><strong>Gelir Vergisi (%15 - %40):</strong> Kumulatif matraha göre ilgili vergi dilimi uygulanır.</li>
-                    <li><strong>Damga Vergisi (%0,759):</strong> Brüt tutar üzerinden hesaplanan binde 7,59 oranındaki kesintidir.</li>
-                </ul>
-                <p>2026 yılı güncel mevzuat hükümleri uyarınca, tüm çalışanların asgari ücrete denk gelen gelir tutarları gelir vergisi ve damga vergisinden muaf tutulmaktadır.</p>
-            </div>
-
-            <div class="section-header">❓ Sıkça Sorulan Sorular (S.S.S.)</div>
-
-            <div class="faq-box">
-                <div class="faq-header">► 1. 2026 yılında asgari ücret vergi istisnası nasıl uygulanır?</div>
-                <div class="faq-body">Tüm çalışanların brüt ücretlerinin net asgari ücrete kadar olan kısmı gelir vergisinden ve damga vergisinden muaf tutulur.</div>
-            </div>
-
-            <div class="faq-box">
-                <div class="faq-header">► 2. AGI (Asgari Geçim İndirimi) ödeniyor mu?</div>
-                <div class="faq-body">Hayır, AGI uygulaması kaldırılmıştır. Bunun yerine tüm çalışanlara asgari ücret kadar vergi muafiyeti sağlanmaktadır.</div>
-            </div>
-        </div>
-
-        <!-- Tüm Araçlar Kataloğu -->
-        <div class="card-box" id="katalog">
-            <div class="catalog-title">🧮 Tüm Hesaplama Araçları Kataloğu</div>
-
-            <div class="sub-cat-title">1. Ana Finans, Maaş ve Ticari Araçlar</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('maas')">• Brütten Nete Maaş</button>
-                <button type="button" class="link-btn" onclick="aracYukle('zam')">• Maaş Zammı Hesaplama</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kidem')">• Kıdem Tazminatı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kdv')">• KDV Dahil / Hariç</button>
-                <button type="button" class="link-btn" onclick="aracYukle('karzarar')">• Kâr / Zarar Oranı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('iskonto')">• İskonto (İndirim)</button>
-            </div>
-
-            <div class="sub-cat-title">2. Dini ve Sosyal Haklar</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('zekat')">• Zekat Hesaplama</button>
-                <button type="button" class="link-btn" onclick="aracYukle('fitre')">• Fitre Hesaplama</button>
-            </div>
-
-            <div class="sub-cat-title">3. Sağlık ve Yaşam Araçları</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('vki')">• Vücut Kitle İndeksi (VKİ)</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kalori')">• Günlük Kalori İhtiyacı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('idealkilo')">• İdeal Kilo Hesaplama</button>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p style="font-style: italic; color: #d9534f; margin-bottom: 10px; font-size: 13px;">"Anında hesapla, geleceğini planla."</p>
-        <div class="footer-nav">
-            <a onclick="acModal('mKullanim')">Kullanım Şartları</a> | 
-            <a onclick="acModal('mGizlilik')">Gizlilik Politikası ve KVKK</a> | 
-            <a onclick="acModal('mHakkimizda')">Hakkımızda</a> | 
-            <a onclick="acModal('mIletisim')">İletişim & Destek</a>
-        </div>
-        <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
-    </footer>
-
-    <!-- Modallar -->
-    <div id="mHakkimizda" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mHakkimizda')">&times;</span>
-            <div class="modal-body">
-                <h2>Hakkımızda</h2>
-                <p>parahesap.site, finansal ve yaşam hesaplamalarını hızlıca yapmanızı sağlayan ücretsiz bir platformdur.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="mIletisim" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mIletisim')">&times;</span>
-            <div class="modal-body">
-                <h2>İletişim & Destek</h2>
-                <p>E-posta: iletisim@parahesap.site</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="mGizlilik" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mGizlilik')">&times;</span>
-            <div class="modal-body">
-                <h2>Gizlilik Politikası ve KVKK</h2>
-                <p>Girdiğiniz hiçbir veri sunucularımızda saklanmaz, işlemler yerel olarak çalışır.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="mKullanim" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mKullanim')">&times;</span>
-            <div class="modal-body">
-                <h2>Kullanım Şartları</h2>
-                <p>Hesaplama sonuçları bilgilendirme amaçlıdır.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Temsili JavaScript Motoru -->
-    <script>
-        let mevcutArac = 'maas';
-
-        function acModal(id) { document.getElementById(id).style.display = 'block'; }
-        function kapatModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        window.onclick = function(e) {
-            if (e.target.classList.contains('modal-overlay')) {
-                e.target.style.display = 'none';
-            }
-        }
-
-        function aracYukle(tip) {
-            mevcutArac = tip;
-            document.getElementById('sonucAlani').style.display = 'none';
-            const area = document.getElementById('dinamikFormAlanlari');
-
-            if (tip === 'maas') {
-                document.getElementById('formBaslik').innerText = "2026 Brütten Nete Maaş Hesaplama";
-                document.getElementById('formAciklama').innerText = "Güncel SGK, işsizlik ve vergi dilimlerine göre net maaşınızı hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Brüt Maaş (TL):</label><input type="number" id="inp1" placeholder="Örn: 50000" required></div>
-                    <div class="form-group"><label>Medeni Durum:</label><select id="inp2"><option value="bekar">Bekar</option><option value="evli">Evli</option></select></div>
-                    <div class="form-group"><label>Çocuk Sayısı:</label><select id="inp3"><option value="0">Yok</option><option value="1">1</option><option value="2">2</option></select></div>
-                `;
-            } else if (tip === 'zam') {
-                document.getElementById('formBaslik').innerText = "Maaş Zammı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Mevcut maaşınıza yapılan zam oranını hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Mevcut Maaş (TL):</label><input type="number" id="inp1" placeholder="Örn: 30000" required></div>
-                    <div class="form-group"><label>Zam Oranı (%):</label><input type="number" id="inp2" placeholder="Örn: 25" required></div>
-                `;
-            } else if (tip === 'kidem') {
-                document.getElementById('formBaslik').innerText = "Kıdem Tazminatı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Çalıştığınız yıl ve son brüt ücretinize göre kıdem tazminatınızı öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Son Brüt Ücret (TL):</label><input type="number" id="inp1" placeholder="Örn: 40000" required></div>
-                    <div class="form-group"><label>Çalışılan Yıl Sayısı:</label><input type="number" id="inp2" placeholder="Örn: 3" required></div>
-                `;
-            } else if (tip === 'kdv') {
-                document.getElementById('formBaslik').innerText = "KDV Dahil / Hariç Hesaplama";
-                document.getElementById('formAciklama').innerText = "Tutar üzerinden KDV ekleyin veya ayrıştırın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Tutar (TL):</label><input type="number" id="inp1" placeholder="Örn: 1000" required></div>
-                    <div class="form-group"><label>KDV Oranı (%):</label><select id="inp2"><option value="20">%20</option><option value="10">%10</option><option value="1">%1</option></select></div>
-                `;
-            } else if (tip === 'karzarar') {
-                document.getElementById('formBaslik').innerText = "Kâr / Zarar Oranı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Alış ve satış fiyatı arasındaki fark ve kâr oranını hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Alış Fiyatı (TL):</label><input type="number" id="inp1" placeholder="Örn: 500" required></div>
-                    <div class="form-group"><label>Satış Fiyatı (TL):</label><input type="number" id="inp2" placeholder="Örn: 750" required></div>
-                `;
-            } else if (tip === 'iskonto') {
-                document.getElementById('formBaslik').innerText = "İskonto (İndirim) Hesaplama";
-                document.getElementById('formAciklama').innerText = "İndirim tutarı ve indirimli fiyatı öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Etiket Fiyatı (TL):</label><input type="number" id="inp1" placeholder="Örn: 1500" required></div>
-                    <div class="form-group"><label>İndirim Oranı (%):</label><input type="number" id="inp2" placeholder="Örn: 20" required></div>
-                `;
-            } else if (tip === 'zekat') {
-                document.getElementById('formBaslik').innerText = "Zekat Hesaplama";
-                document.getElementById('formAciklama').innerText = "Toplam varlığınız üzerinden vermeniz gereken zekat miktarını öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Toplam Varlık (TL):</label><input type="number" id="inp1" placeholder="Örn: 300000" required></div>
-                `;
-            } else if (tip === 'fitre') {
-                document.getElementById('formBaslik').innerText = "Fitre Hesaplama";
-                document.getElementById('formAciklama').innerText = "Kişi sayısına göre ödenmesi gereken fitre tutarı.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Kişi Sayısı:</label><input type="number" id="inp1" placeholder="Örn: 4" required></div>
-                `;
-            } else if (tip === 'vki') {
-                document.getElementById('formBaslik').innerText = "Vücut Kitle İndeksi (VKİ) Hesaplama";
-                document.getElementById('formAciklama').innerText = "Boy ve kilonuza göre VKİ değerinizi hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Kilo (kg):</label><input type="number" id="inp1" placeholder="Örn: 75" required></div>
-                    <div class="form-group"><label>Boy (cm):</label><input type="number" id="inp2" placeholder="Örn: 178" required></div>
-                `;
-            } else if (tip === 'kalori') {
-                document.getElementById('formBaslik').innerText = "Günlük Kalori İhtiyacı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Mevcut kilonuzu korumak için günlük almanız gereken kaloriyi hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Cinsiyet:</label><select id="inpCinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select></div>
-                    <div class="form-group"><label>Kilo (kg):</label><input type="number" id="inp1" placeholder="Örn: 70" required></div>
-                    <div class="form-group"><label>Boy (cm):</label><input type="number" id="inp2" placeholder="Örn: 175" required></div>
-                    <div class="form-group"><label>Yaş:</label><input type="number" id="inp3" placeholder="Örn: 30" required></div>
-                    <div class="form-group"><label>Hareket Seviyesi:</label>
-                        <select id="inpHareket">
-                            <option value="1.2">Hareketsiz (Masa başı)</option>
-                            <option value="1.375">Az Hareketli (Haftada 1-3 gün spor)</option>
-                            <option value="1.55">Orta Hareketli (Haftada 3-5 gün spor)</option>
-                            <option value="1.72Sayfanın altında tüm yapının yeniden başlamasının ve çift olarak görünmesinin sebebi, kodun sonundaki script/fonksiyon yapıları veya HTML etiketlerinin (örneğin kapanmamış bir `</div>` veya tekrarlanan `header/main` blokları) birbirinin içine girmesidir.
-
-Aşağıda **tüm hesaplama araçları (Günlük Kalori ve İdeal Kilo dâhil)** eksiksiz ve tam çalışan, çift görünme sorunu giderilmiş ve clean HTML/JS kodu yer almaktadır. Dosyanızın tamamını bu kodla değiştirebilirsiniz:
-
-```html
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brütten Nete Maaş Hesaplama 2026 - ParaHesap</title>
-    <meta name="description" content="2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.">
-    <link rel="canonical" href="[https://parahesap.site/](https://parahesap.site/)">
-
-    <!-- Google Analytics -->
-    <script async src="[https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF](https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF)"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GKXWCDPHMF');
-    </script>
-
-    <!-- Google AdSense -->
-    <script async src="[https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881](https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881)" crossorigin="anonymous"></script>
-
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --primary-hover: #003d82;
-            --header-red: #d9534f;
-            --pink-title: #d63384;
-            --bg-gray: #f4f6f9;
-            --border-color: #e0e0e0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-gray);
-            color: #333;
-            line-height: 1.5;
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid var(--border-color);
-            padding: 12px 20px;
-        }
-
-        .header-wrap {
-            max-width: 1000px;
-            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 6px;
         }
 
-        .logo-box {
-            text-decoration: none;
+        .info-list {
+            list-style: none;
         }
 
-        .logo-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--header-red);
-        }
-
-        .logo-title span {
-            color: var(--primary-blue);
-        }
-
-        .logo-sub {
-            font-size: 11px;
-            color: #d9534f;
-            font-style: italic;
-        }
-
-        .btn-header {
-            background-color: var(--primary-blue);
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 4px;
-            text-decoration: none;
+        .info-list li {
             font-size: 13px;
-            font-weight: 500;
-        }
-
-        .main-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 12px;
-        }
-
-        .ad-space {
-            text-align: center;
-            margin: 15px 0;
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        .card-box {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .card-pink-title {
-            color: var(--pink-title);
-            font-size: 18px;
-            font-weight: bold;
             margin-bottom: 8px;
+            color: #444;
         }
 
-        .card-desc {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 18px;
+        .faq-item {
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 9px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .faq-item h4 {
             font-size: 14px;
-            background-color: #fafafa;
-        }
-
-        .btn-calc {
-            width: 100%;
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn-calc:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .result-card {
-            display: none;
-            margin-top: 18px;
-            padding: 15px;
-            background: #eef6ff;
-            border: 1px solid #b6d4fe;
-            border-radius: 6px;
-        }
-
-        .result-card h4 {
-            color: var(--primary-blue);
-            font-size: 16px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #cbdff7;
-            padding-bottom: 5px;
-        }
-
-        .result-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
+            color: #222;
             margin-bottom: 6px;
         }
 
-        .result-row.highlight {
-            font-weight: bold;
-            font-size: 16px;
-            color: #0d6efd;
-            border-top: 1px dashed #abc;
-            padding-top: 8px;
-            margin-top: 8px;
-        }
-
-        .section-header {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 6px;
-            margin: 15px 0 12px 0;
-        }
-
-        .text-content {
-            font-size: 13.5px;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        .text-content p { margin-bottom: 10px; }
-        .text-content ul { margin-left: 20px; margin-bottom: 10px; }
-
-        .faq-box {
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            margin-bottom: 8px;
-            background: #fff;
-        }
-
-        .faq-header {
-            padding: 10px 14px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .faq-body {
-            padding: 0 14px 10px 14px;
+        .faq-item p {
             font-size: 13px;
-            color: #555;
+            color: #666;
         }
 
-        .catalog-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 4px;
+        .catalog-group {
             margin-bottom: 15px;
         }
 
-        .sub-cat-title {
+        .catalog-group h4 {
             font-size: 13px;
-            font-weight: bold;
-            color: #333;
-            margin: 12px 0 8px 0;
+            color: #666;
+            margin-bottom: 8px;
         }
 
-        .link-grid {
+        .grid-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 8px;
         }
 
-        .link-btn {
-            background: #f8f9fa;
-            border: 1px solid #e2e8f0;
-            padding: 8px 12px;
+        .grid-btn {
+            background: #f1f3f5;
+            border: 1px solid #dee2e6;
+            padding: 8px;
             border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+            color: #333;
             text-decoration: none;
-            color: var(--primary-blue);
-            font-size: 13px;
             display: block;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
         }
 
-        .link-btn:hover { background: #e2e8f0; }
+        .grid-btn:hover {
+            background: #e9ecef;
+        }
 
         footer {
             text-align: center;
-            padding: 25px 10px;
             font-size: 12px;
-            color: #777;
-            border-top: 1px solid var(--border-color);
-            background: #fff;
-            margin-top: 30px;
-        }
-
-        .footer-nav { margin-bottom: 10px; }
-        .footer-nav a {
-            color: #555;
-            text-decoration: none;
-            margin: 0 8px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-        .footer-nav a:hover { color: var(--primary-blue); text-decoration: underline; }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 9999;
-            overflow-y: auto;
-        }
-
-        .modal-box {
-            background: #fff;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 26px;
-            cursor: pointer;
             color: #888;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .result-box {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #e8f4fd;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-wrap">
-            <a href="/" class="logo-box">
-                <div class="logo-title">parahesap<span>.site</span></div>
-                <div class="logo-sub">"Anında hesapla, geleceğini planla"</div>
-            </a>
-            <a href="#katalog" class="btn-header">Tüm Hesaplamalar ▼</a>
-        </div>
-    </header>
+<div class="container">
 
-    <div class="main-container">
-
-        <!-- AdSense Üst Banner -->
-        <div class="ad-space">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2881789176542881"
-                 data-ad-slot="auto"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <!-- Ana Hesaplama Kartı -->
-        <div class="card-box" id="hesaplamaAlani">
-            <div class="card-pink-title" id="formBaslik">2026 Brütten Nete Maaş Hesaplama</div>
-            <div class="card-desc" id="formAciklama">2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.</div>
-
-            <form id="hesapForm" onsubmit="event.preventDefault(); hesaplaIslem();">
-                <div id="dinamikFormAlanlari"></div>
-                <button type="submit" class="btn-calc" id="btnHesapla">HESAPLA</button>
-            </form>
-
-            <div id="sonucAlani" class="result-card">
-                <h4>📊 Hesaplama Sonucu</h4>
-                <div id="sonucIcerik"></div>
-            </div>
-        </div>
-
-        <!-- AdSense Orta Banner -->
-        <div class="ad-space">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2881789176542881"
-                 data-ad-slot="auto"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <!-- Bilgilendirme Alanı -->
-        <div class="card-box">
-            <div class="section-header">📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)</div>
-            <div class="text-content">
-                <p>Brüt maaştan net maaşa ulaşmak için sırasıyla şu yasal kesintiler gerçekleştirilmektedir:</p>
-                <ul>
-                    <li><strong>SGK İşçi Payı (%14):</strong> Brüt maaş tutarının %14'ü Sosyal Güvenlik Kurumu'na aktarılır.</li>
-                    <li><strong>İşsizlik Sigortası Payı (%1):</strong> Brüt maaşın %1'i işsizlik fonu primi olarak kesilir.</li>
-                    <li><strong>Gelir Vergisi Matrahı:</strong> Brüt tutardan SGK ve İşsizlik primleri düşülerek matrah bulunur.</li>
-                    <li><strong>Gelir Vergisi (%15 - %40):</strong> Kumulatif matraha göre vergi dilimi uygulanır.</li>
-                    <li><strong>Damga Vergisi (%0,759):</strong> Brüt tutar üzerinden hesaplanan binde 7,59 oranındaki kesintidir.</li>
-                </ul>
+    <!-- 1. HESAPLAMA FORMU -->
+    <div class="card">
+        <form id="salaryForm" onsubmit="event.preventDefault(); calculateSalary();">
+            <div class="form-group">
+                <label for="brutMaas">Brüt Maaş (TL):</label>
+                <input type="number" id="brutMaas" class="form-control" placeholder="Örn: 50000" required>
             </div>
 
-            <div class="section-header">❓ Sıkça Sorulan Sorular (S.S.S.)</div>
-            <div class="faq-box">
-                <div class="faq-header">► 1. 2026 yılında asgari ücret vergi istisnası nasıl uygulanır?</div>
-                <div class="faq-body">Tüm çalışanların net asgari ücrete kadar olan gelirleri gelir ve damga vergisinden muaf tutulur.</div>
-            </div>
-            <div class="faq-box">
-                <div class="faq-header">► 2. AGI (Asgari Geçim İndirimi) ödeniyor mu?</div>
-                <div class="faq-body">Hayır, AGI kaldırılmıştır. Yerine asgari ücret tutarı kadar vergi istisnası uygulanmaktadır.</div>
-            </div>
-        </div>
-
-        <!-- Araçlar Kataloğu -->
-        <div class="card-box" id="katalog">
-            <div class="catalog-title">🧮 Tüm Hesaplama Araçları Kataloğu</div>
-
-            <div class="sub-cat-title">1. Ana Finans, Maaş ve Ticari Araçlar</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('maas')">• Brütten Nete Maaş</button>
-                <button type="button" class="link-btn" onclick="aracYukle('zam')">• Maaş Zammı Hesaplama</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kidem')">• Kıdem Tazminatı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kdv')">• KDV Dahil / Hariç</button>
-                <button type="button" class="link-btn" onclick="aracYukle('karzarar')">• Kâr / Zarar Oranı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('iskonto')">• İskonto (İndirim)</button>
+            <div class="form-group">
+                <label for="medeniDurum">Medeni Durum:</label>
+                <select id="medeniDurum" class="form-control">
+                    <option value="bekar">Bekar</option>
+                    <option value="evli">Evli</option>
+                </select>
             </div>
 
-            <div class="sub-cat-title">2. Dini ve Sosyal Haklar</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('zekat')">• Zekat Hesaplama</button>
-                <button type="button" class="link-btn" onclick="aracYukle('fitre')">• Fitre Hesaplama</button>
+            <div class="form-group">
+                <label for="cocukSayisi">Çocuk Sayısı:</label>
+                <select id="cocukSayisi" class="form-control">
+                    <option value="0">Yok</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3 ve üzeri</option>
+                </select>
             </div>
 
-            <div class="sub-cat-title">3. Sağlık ve Yaşam Araçları</div>
-            <div class="link-grid">
-                <button type="button" class="link-btn" onclick="aracYukle('vki')">• Vücut Kitle İndeksi (VKİ)</button>
-                <button type="button" class="link-btn" onclick="aracYukle('kalori')">• Günlük Kalori İhtiyacı</button>
-                <button type="button" class="link-btn" onclick="aracYukle('idealkilo')">• İdeal Kilo Hesaplama</button>
-            </div>
-        </div>
+            <button type="submit" class="btn-calc">HESAPLA</button>
+        </form>
 
+        <div id="resultBox" class="result-box"></div>
     </div>
 
+    <!-- 2. BİLGİLENDİRME METNİ -->
+    <div class="card">
+        <div class="section-title">
+            📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)
+        </div>
+        <p style="font-size: 13px; color: #555; margin-bottom: 12px;">
+            Brüt maaştan net maaşa ulaşmak için sırasıyla şu yasal kesintiler gerçekleştirilmektedir:
+        </p>
+        <ul class="info-list">
+            <li><strong>• SGK İşçi Payı (%14):</strong> Brüt maaş tutarının %14'ü Sosyal Güvenlik Kurumu'na aktarılır.</li>
+            <li><strong>• İşsizlik Sigortası Payı (%1):</strong> Brüt maaşın %1'i işsizlik fonu primi olarak kesilir.</li>
+            <li><strong>• Gelir Vergisi Matrahı:</strong> Brüt tutardan SGK ve İşsizlik primleri düşülerek vergilendirilecek matrah bulunur.</li>
+            <li><strong>• Gelir Vergisi (%15 - %40):</strong> Kümülatif matraha göre ilgili vergi dilimi uygulanır.</li>
+            <li><strong>• Damga Vergisi (%0,759):</strong> Brüt tutar üzerinden hesaplanan binde 7,59 oranındaki kesintidir.</li>
+        </ul>
+        <p style="font-size: 12px; color: #666; margin-top: 10px;">
+            2026 yılı güncel mevzuat hükümleri uyarınca, tüm çalışanların asgari ücrete denk gelen gelir tutarları gelir vergisi ve damga vergisinden muaf tutulmaktadır.
+        </p>
+
+        <!-- S.S.S. SECTION -->
+        <div style="margin-top: 20px;">
+            <div class="section-title">❓ Sıkça Sorulan Sorular (S.S.S.)</div>
+            
+            <div class="faq-item">
+                <h4>► 1. 2026 yılında asgari ücret vergi istisnası nasıl uygulanır?</h4>
+                <p>Tüm çalışanların brüt ücretlerinin net asgari ücrete kadar olan kısmı gelir vergisinden ve damga vergisinden muaf tutulur.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>► 2. AGİ (Asgari Geçim İndirimi) ödeniyor mu?</h4>
+                <p>Hayır, AGİ uygulaması kaldırılmıştır. Bunun yerine tüm çalışanlara asgari ücret kadar vergi muafiyeti sağlanmaktadır.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. TÜM HESAPLAMA ARAÇLARI KATALOĞU -->
+    <div class="card">
+        <div class="section-title">🍱 Tüm Hesaplama Araçları Kataloğu</div>
+
+        <div class="catalog-group">
+            <h4>1. Ana Finans, Maaş ve Ticari Araçlar</h4>
+            <div class="grid-buttons">
+                <a href="#" class="grid-btn">• Brütten Nete Maaş</a>
+                <a href="#" class="grid-btn">• Maaş Zam Oranı</a>
+                <a href="#" class="grid-btn">• Kıdem Tazminatı</a>
+                <a href="#" class="grid-btn">• KDV Dahil / Hariç</a>
+                <a href="#" class="grid-btn">• Kâr / Zarar Oranı</a>
+                <a href="#" class="grid-btn">• İskonto (İndirim)</a>
+            </div>
+        </div>
+
+        <div class="catalog-group">
+            <h4>2. Dini ve Sosyal Haklar</h4>
+            <div class="grid-buttons">
+                <a href="#" class="grid-btn">• Zekat Hesaplama</a>
+                <a href="#" class="grid-btn">• Fitre Hesaplama</a>
+            </div>
+        </div>
+
+        <div class="catalog-group">
+            <h4>3. Sağlık ve Yaşam Araçları</h4>
+            <div class="grid-buttons">
+                <a href="#" class="grid-btn">• Vücut Kitle İndeksi (VKİ)</a>
+                <a href="#" class="grid-btn">• Günlük Kalori İhtiyacı</a>
+                <a href="#" class="grid-btn">• İdeal Kilo Hesaplama</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
-        <p style="font-style: italic; color: #d9534f; margin-bottom: 10px; font-size: 13px;">"Anında hesapla, geleceğini planla."</p>
-        <div class="footer-nav">
-            <a onclick="acModal('mKullanim')">Kullanım Şartları</a> | 
-            <a onclick="acModal('mGizlilik')">Gizlilik Politikası ve KVKK</a> | 
-            <a onclick="acModal('mHakkimizda')">Hakkımızda</a> | 
-            <a onclick="acModal('mIletisim')">İletişim & Destek</a>
+        <p style="color: #d9534f; font-size: 11px; margin-bottom: 10px;">Anında hesaplar, geleceğini planlar.</p>
+        <div class="footer-links">
+            <a href="#">Kullanım Şartları</a> |
+            <a href="#">Gizlilik Politikası ve KVKK</a> |
+            <a href="#">Hakkımızda</a> |
+            <a href="#">İletişim & Destek</a>
         </div>
         <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- Modallar -->
-    <div id="mHakkimizda" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mHakkimizda')">&times;</span>
-            <h2>Hakkımızda</h2>
-            <p>parahesap.site, pratik finans, ticari ve sağlık hesaplama araçları sunan bağımsız bir platformdur.</p>
-        </div>
-    </div>
-    <div id="mIletisim" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mIletisim')">&times;</span>
-            <h2>İletişim & Destek</h2>
-            <p>E-posta: iletisim@parahesap.site</p>
-        </div>
-    </div>
-    <div id="mGizlilik" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mGizlilik')">&times;</span>
-            <h2>Gizlilik Politikası</h2>
-            <p>Girdiğiniz hiçbir veri sunucularımızda saklanmamaktadır.</p>
-        </div>
-    </div>
-    <div id="mKullanim" class="modal-overlay">
-        <div class="modal-box">
-            <span class="modal-close" onclick="kapatModal('mKullanim')">&times;</span>
-            <h2>Kullanım Şartları</h2>
-            <p>Hesaplama sonuçları bilgilendirme amaçlıdır.</p>
-        </div>
-    </div>
+</div>
 
-    <script>
-        let mevcutArac = 'maas';
+<script>
+    function calculateSalary() {
+        const brut = parseFloat(document.getElementById('brutMaas').value);
+        if (!brut || brut <= 0) return;
 
-        function acModal(id) { document.getElementById(id).style.display = 'block'; }
-        function kapatModal(id) { document.getElementById(id).style.display = 'none'; }
+        // Örnek basitleştirilmiş hesaplama
+        const sgk = brut * 0.14;
+        const issizlik = brut * 0.01;
+        const matrah = brut - (sgk + issizlik);
+        const tahminiNet = brut * 0.72; // Yaklaşık net tutar
 
-        window.onclick = function(e) {
-            if (e.target.classList.contains('modal-overlay')) {
-                e.target.style.display = 'none';
-            }
-        }
+        const resultBox = document.getElementById('resultBox');
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = `
+            <strong>Hesaplama Sonucu:</strong><br>
+            • SGK Kesintisi (%14): <strong>${sgk.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</strong><br>
+            • İşsizlik Sigortası (%1): <strong>${issizlik.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</strong><br>
+            • Vergi Matrahı: <strong>${matrah.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</strong><br>
+            • Tahmini Net Maaş: <strong>${tahminiNet.toLocaleString('tr-TR', {minimumFractionDigits: 2})} TL</strong>
+        `;
+    }
+</script>
 
-        function aracYukle(tip) {
-            mevcutArac = tip;
-            document.getElementById('sonucAlani').style.display = 'none';
-            const area = document.getElementById('dinamikFormAlanlari');
-
-            if (tip === 'maas') {
-                document.getElementById('formBaslik').innerText = "2026 Brütten Nete Maaş Hesaplama";
-                document.getElementById('formAciklama').innerText = "Güncel SGK, işsizlik ve vergi dilimlerine göre net maaşınızı hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Brüt Maaş (TL):</label><input type="number" id="inp1" placeholder="Örn: 50000" required></div>
-                    <div class="form-group"><label>Medeni Durum:</label><select id="inp2"><option value="bekar">Bekar</option><option value="evli">Evli</option></select></div>
-                    <div class="form-group"><label>Çocuk Sayısı:</label><select id="inp3"><option value="0">Yok</option><option value="1">1</option><option value="2">2</option></select></div>
-                `;
-            } else if (tip === 'zam') {
-                document.getElementById('formBaslik').innerText = "Maaş Zammı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Mevcut maaşınıza yapılan zam oranını ve yeni maaşınızı hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Mevcut Maaş (TL):</label><input type="number" id="inp1" placeholder="Örn: 30000" required></div>
-                    <div class="form-group"><label>Zam Oranı (%):</label><input type="number" id="inp2" placeholder="Örn: 25" required></div>
-                `;
-            } else if (tip === 'kidem') {
-                document.getElementById('formBaslik').innerText = "Kıdem Tazminatı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Çalıştığınız yıl ve brüt ücretinize göre kıdem tazminatınızı hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Son Brüt Ücret (TL):</label><input type="number" id="inp1" placeholder="Örn: 40000" required></div>
-                    <div class="form-group"><label>Çalışılan Yıl Sayısı:</label><input type="number" id="inp2" placeholder="Örn: 3" required></div>
-                `;
-            } else if (tip === 'kdv') {
-                document.getElementById('formBaslik').innerText = "KDV Dahil / Hariç Hesaplama";
-                document.getElementById('formAciklama').innerText = "Tutar üzerinden KDV ekleyin veya ayrıştırın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Tutar (TL):</label><input type="number" id="inp1" placeholder="Örn: 1000" required></div>
-                    <div class="form-group"><label>KDV Oranı (%):</label><select id="inp2"><option value="20">%20</option><option value="10">%10</option><option value="1">%1</option></select></div>
-                `;
-            } else if (tip === 'karzarar') {
-                document.getElementById('formBaslik').innerText = "Kâr / Zarar Oranı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Alış ve satış fiyatı arasındaki farkı öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Alış Fiyatı (TL):</label><input type="number" id="inp1" placeholder="Örn: 500" required></div>
-                    <div class="form-group"><label>Satış Fiyatı (TL):</label><input type="number" id="inp2" placeholder="Örn: 750" required></div>
-                `;
-            } else if (tip === 'iskonto') {
-                document.getElementById('formBaslik').innerText = "İskonto (İndirim) Hesaplama";
-                document.getElementById('formAciklama').innerText = "İndirim sonrası ürün fiyatını hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Etiket Fiyatı (TL):</label><input type="number" id="inp1" placeholder="Örn: 1200" required></div>
-                    <div class="form-group"><label>İndirim Oranı (%):</label><input type="number" id="inp2" placeholder="Örn: 20" required></div>
-                `;
-            } else if (tip === 'zekat') {
-                document.getElementById('formBaslik').innerText = "Zekat Hesaplama";
-                document.getElementById('formAciklama').innerText = "Toplam varlığınız üzerinden vermeniz gereken zekat miktarını öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Toplam Varlık (TL):</label><input type="number" id="inp1" placeholder="Örn: 250000" required></div>
-                `;
-            } else if (tip === 'fitre') {
-                document.getElementById('formBaslik').innerText = "Fitre Hesaplama";
-                document.getElementById('formAciklama').innerText = "Kişi sayısına göre ödenmesi gereken toplam fitre tutarı.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Kişi Sayısı:</label><input type="number" id="inp1" placeholder="Örn: 4" required></div>
-                `;
-            } else if (tip === 'vki') {
-                document.getElementById('formBaslik').innerText = "Vücut Kitle İndeksi (VKİ) Hesaplama";
-                document.getElementById('formAciklama').innerText = "Boy ve kilonuza göre vücut kitle indeksinizi öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Kilo (kg):</label><input type="number" id="inp1" placeholder="Örn: 75" required></div>
-                    <div class="form-group"><label>Boy (cm):</label><input type="number" id="inp2" placeholder="Örn: 175" required></div>
-                `;
-            } else if (tip === 'kalori') {
-                document.getElementById('formBaslik').innerText = "Günlük Kalori İhtiyacı Hesaplama";
-                document.getElementById('formAciklama').innerText = "Mevcut kilonuzu korumak veya hedefinize ulaşmak için günlük almanız gereken kaloriyi hesaplayın.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Cinsiyet:</label><select id="inpCinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select></div>
-                    <div class="form-group"><label>Kilo (kg):</label><input type="number" id="inp1" placeholder="Örn: 70" required></div>
-                    <div class="form-group"><label>Boy (cm):</label><input type="number" id="inp2" placeholder="Örn: 175" required></div>
-                    <div class="form-group"><label>Yaş:</label><input type="number" id="inp3" placeholder="Örn: 30" required></div>
-                    <div class="form-group"><label>Hareket Seviyesi:</label>
-                        <select id="inpHareket">
-                            <option value="1.2">Hareketsiz (Masa başı)</option>
-                            <option value="1.375">Az Hareketli (Haftada 1-3 gün egzersiz)</option>
-                            <option value="1.55">Orta Hareketli (Haftada 3-5 gün egzersiz)</option>
-                            <option value="1.725">Çok Hareketli (Haftada 6-7 gün egzersiz)</option>
-                        </select>
-                    </div>
-                `;
-            } else if (tip === 'idealkilo') {
-                document.getElementById('formBaslik').innerText = "İdeal Kilo Hesaplama";
-                document.getElementById('formAciklama').innerText = "Boyunuza ve cinsiyetinize göre ideal kilo değerinizi öğrenin.";
-                area.innerHTML = `
-                    <div class="form-group"><label>Cinsiyet:</label><select id="inpCinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select></div>
-                    <div class="form-group"><label>Boy (cm):</label><input type="number" id="inp2" placeholder="Örn: 175" required></div>
-                `;
-            }
-
-            document.getElementById('hesaplamaAlani').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function hesaplaIslem() {
-            let html = "";
-
-            if (mevcutArac === 'maas') {
-                const val1 = parseFloat(document.getElementById('inp1').value);
-                if (!val1) return;
-                const sgk = val1 * 0.14;
-                const issiz = val1 * 0.01;
-                const net = (val1 - (sgk + issiz)) * 0.85;
-                html = `
-                    <div class="result-row"><span>Brüt Maaş:</span><span>${val1.toLocaleString('tr-TR')} TL</span></div>
-                    <div class="result-row"><span>SGK Kesintisi (%14):</span><span>${sgk.toLocaleString('tr-TR')} TL</span></div>
-                    <div class="result-row"><span>İşsizlik Primi (%1):</span><span>${issiz.toLocaleString('tr-TR')} TL</span></div>
-                    <div class="result-row highlight"><span>Tahmini Net Maaş:</span><span>${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</span></div>
-                `;
-            } else if (mevcutArac === 'kalori') {
-                const cinsiyet = document.getElementById('inpCinsiyet').value;
-                const kilo = parseFloat(document.getElementById('inp1').value);
-                const boy = parseFloat(document.getElementById('inp2').value);
-                const yas = parseFloat(document.getElementById('inp3').value);
-                const çarpan = parseFloat(document.getElementById('inpHareket').value);
-
-                if (!kilo || !boy || !yas) return;
-
-                let bmr = (cinsiyet === 'erkek') 
-                    ? 88.362 + (13.397 * kilo) + (4.799 * boy) - (5.677 * yas)
-                    : 447.593 + (9.247 * kilo) + (3.098 * boy) - (4.330 * yas);
-
-                const gunlukKalori = bmr * çarpan;
-
-                html = `
-                    <div class="result-row"><span>Bazal Metabolizma (BMR):</span><span>${Math.round(bmr)} kcal</span></div>
-                    <div class="result-row highlight"><span>Günlük Kalori İhtiyacı:</span><span>${Math.round(gunlukKalori)} kcal</span></div>
-                `;
-            } else if (mevcutArac === 'idealkilo') {
-                const cinsiyet = document.getElementById('inpCinsiyet').value;
-                const boy = parseFloat(document.getElementById('inp2').value);
-
-                if (!boy) return;
-
-                let ideal = (cinsiyet === 'erkek') 
-                    ? 50 + 0.91 * (boy - 152.4) 
-                    : 45.5 + 0.91 * (boy - 152.4);
-
-                html = `
-                    <div class="result-row"><span>Girilen Boy:</span><span>${boy} cm</span></div>
-                    <div class="result-row highlight"><span>İdeal Kilonuz:</span><span>${ideal.toFixed(1)} kg</span></div>
-                `;
-            } else if (mevcutArac === 'vki') {
-                const kilo = parseFloat(document.getElementById('inp1').value);
-                const boy = parseFloat(document.getElementById('inp2').value) / 100;
-                if (!kilo || !boy) return;
-                const vki = kilo / (boy * boy);
-                let durum = vki < 18.5 ? "Zayıf" : vki < 25 ? "Normal Kilolu" : vki < 30 ? "Fazla Kilolu" : "Obez";
-                html = `
-                    <div class="result-row"><span>Vücut Kitle İndeksi:</span><span>${vki.toFixed(2)}</span></div>
-                    <div class="result-row highlight"><span>Durum:</span><span>${durum}</span></div>
-                `;
-            } else if (mevcutArac === 'zam') {
-                const m = parseFloat(document.getElementById('inp1').value);
-                const z = parseFloat(document.getElementById('inp2').value);
-                if (!m || !z) return;
-                const yeni = m + (m * z / 100);
-                html = `<div class="result-row highlight"><span>Yeni Maaş:</span><span>${yeni.toLocaleString('tr-TR')} TL</span></div>`;
-            } else if (mevcutArac === 'kidem') {
-                const b = parseFloat(document.getElementById('inp1').value);
-                const y = parseFloat(document.getElementById('inp2').value);
-                if (!b || !y) return;
-                html = `<div class="result-row highlight"><span>Tahmini Kıdem Tazminatı:</span><span>${(b * y).toLocaleString('tr-TR')} TL</span></div>`;
-            } else if (mevcutArac === 'kdv') {
-                const t = parseFloat(document.getElementById('inp1').value);
-                const o = parseFloat(document.getElementById('inp2').value);
-                if (!t) return;
-                const kdv = (t * o) / 100;
-                html = `<div class="result-row highlight"><span>KDV Dahil Toplam:</span><span>${(t + kdv).toLocaleString('tr-TR')} TL</span></div>`;
-            } else if (mevcutArac === 'zekat') {
-                const v = parseFloat(document.getElementById('inp1').value);
-                if (!v) return;
-                html = `<div class="result-row highlight"><span>Verilmesi Gereken Zekat:</span><span>${(v * 0.025).toLocaleString('tr-TR')} TL</span></div>`;
-            } else if (mevcutArac === 'fitre') {
-                const k = parseFloat(document.getElementById('inp1').value);
-                if (!k) return;
-                html = `<div class="result-row highlight"><span>Toplam Fitre Tutarı:</span><span>${(k * 180).toLocaleString('tr-TR')} TL</span></div>`;
-            } else if (mevcutArac === 'karzarar') {
-                const a = parseFloat(document.getElementById('inp1').value);
-                const s = parseFloat(document.getElementById('inp2').value);
-                if (!a || !s) return;
-                const fark = s - a;
-                const oran = (fark / a) * 100;
-                html = `<div class="result-row highlight"><span>Sonuç:</span><span>${fark >= 0 ? '+' : ''}${fark.toLocaleString('tr-TR')} TL (%${oran.toFixed(2)})</span></div>`;
-            } else if (mevcutArac === 'iskonto') {
-                const f = parseFloat(document.getElementById('inp1').value);
-                const i = parseFloat(document.getElementById('inp2').value);
-                if (!f || !i) return;
-                const indirim = (f * i) / 100;
-                html = `<div class="result-row highlight"><span>İndirimli Fiyat:</span><span>${(f - indirim).toLocaleString('tr-TR')} TL</span></div>`;
-            }
-
-            document.getElementById('sonucIcerik').innerHTML = html;
-            document.getElementById('sonucAlani').style.display = 'block';
-        }
-
-        window.onload = function() {
-            aracYukle('maas');
-        };
-    </script>
 </body>
 </html>
