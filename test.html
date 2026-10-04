@@ -31,7 +31,6 @@
             padding-bottom: 40px;
         }
 
-        /* HEADER AREA */
         .header {
             background: #fff;
             padding: 12px 16px;
@@ -74,9 +73,6 @@
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .container {
@@ -85,7 +81,6 @@
             padding: 0 12px;
         }
 
-        /* ADSENSE CONTAINERS */
         .ad-container {
             background-color: var(--ad-bg);
             border: 1px dashed #cbd5e1;
@@ -95,10 +90,8 @@
             font-size: 11px;
             border-radius: 4px;
             margin-bottom: 16px;
-            width: 100%;
         }
 
-        /* CARDS */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -144,10 +137,6 @@
             outline: none;
         }
 
-        .form-control:focus {
-            border-color: var(--primary-blue);
-        }
-
         .btn-calc {
             width: 100%;
             background-color: var(--primary-blue);
@@ -159,14 +148,34 @@
             font-weight: 700;
             cursor: pointer;
             margin-top: 8px;
-            transition: background 0.2s;
         }
 
-        .btn-calc:hover {
-            background-color: var(--primary-hover);
+        /* SONUÇ TABLOSU */
+        .result-container {
+            display: none;
+            margin-top: 16px;
+            padding: 14px;
+            background-color: #f0f7ff;
+            border: 1px solid #b6d4fe;
+            border-radius: 6px;
         }
 
-        /* SECTION TITLES */
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 6px 0;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .result-row.total {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary-blue);
+            padding-top: 10px;
+        }
+
         .section-header {
             font-size: 14px;
             font-weight: 700;
@@ -174,9 +183,6 @@
             padding-bottom: 6px;
             border-bottom: 1px solid var(--primary-blue);
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .info-list {
@@ -187,10 +193,9 @@
 
         .info-list li {
             margin-bottom: 8px;
-            padding-left: 10px;
-            position: relative;
         }
 
+        /* SSS AKORDEON */
         .faq-box {
             background-color: #fff;
             border: 1px solid var(--border-color);
@@ -203,7 +208,17 @@
             cursor: pointer;
         }
 
-        /* RELATED TOOLS BUTTONS */
+        .faq-answer {
+            display: none;
+            padding: 8px 14px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: #f8fafc;
+            border-radius: 0 0 6px 6px;
+            margin-top: -6px;
+            margin-bottom: 8px;
+        }
+
         .related-buttons {
             display: flex;
             gap: 8px;
@@ -219,10 +234,8 @@
             font-size: 11px;
             font-weight: 600;
             text-decoration: none;
-            display: inline-block;
         }
 
-        /* CATALOG LISTS */
         .catalog-group {
             margin-bottom: 16px;
         }
@@ -251,7 +264,6 @@
             display: block;
         }
 
-        /* FOOTER */
         footer {
             margin-top: 30px;
             text-align: center;
@@ -283,70 +295,102 @@
         .footer-links a {
             color: var(--text-muted);
             text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* MODAL (BİLGİ PENCERELERİ) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER AREA -->
     <header class="header">
         <div class="logo-container">
             <a href="/" class="logo-text">parahesap<span>.site</span></a>
             <span class="logo-sub">"Anında hesaplar, geleceğini planlar."</span>
         </div>
-        <button class="btn-dropdown">Tüm Hesaplamalar ▼</button>
+        <button class="btn-dropdown" onclick="scrollToCatalog()">Tüm Hesaplamalar ▼</button>
     </header>
 
     <div class="container">
 
-        <!-- ADSENSE 1 (ÜST ALAN) -->
-        <div class="ad-container">
-            AdSense Yatay Reklam Alanı (Üst Alan)
-        </div>
+        <div class="ad-container">AdSense Yatay Reklam Alanı (Üst Alan)</div>
 
-        <!-- MAIN CALCULATION CARD -->
         <div class="card">
             <div class="card-title-pink">2026 Brütten Nete Maaş Hesaplama</div>
             <div class="card-desc">2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.</div>
 
-            <form id="salaryForm" onsubmit="event.preventDefault();">
+            <form id="salaryForm" onsubmit="calculateSalary(event)">
                 <div class="form-group">
                     <label>Brüt Maaş (TL):</label>
-                    <input type="number" class="form-control" placeholder="Örn: 50000" value="50000">
+                    <input type="number" id="brutInput" class="form-control" placeholder="Örn: 50000" value="50000" required>
                 </div>
 
                 <div class="form-group">
                     <label>Medeni Durum:</label>
-                    <select class="form-control">
-                        <option>Bekar</option>
-                        <option>Evli</option>
+                    <select class="form-control" id="medeniDurum">
+                        <option value="bekar">Bekar</option>
+                        <option value="evli">Evli</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Çocuk Sayısı:</label>
-                    <select class="form-control">
-                        <option>Yok</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3 ve üzeri</option>
+                    <select class="form-control" id="cocukSayisi">
+                        <option value="0">Yok</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3 ve üzeri</option>
                     </select>
                 </div>
 
                 <button type="submit" class="btn-calc">HESAPLA</button>
             </form>
-        </div>
 
-        <!-- ADSENSE 2 (ORTA ALAN) -->
-        <div class="ad-container">
-            AdSense Yatay Reklam Alanı (Orta Alan)
-        </div>
-
-        <!-- INFO & FAQ CARD -->
-        <div class="card">
-            <div class="section-header">
-                📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)
+            <!-- HESAPLAMA SONUÇ ALANI -->
+            <div id="resultContainer" class="result-container">
+                <div class="result-row"><span>Brüt Maaş:</span><span id="resBrut">0,00 TL</span></div>
+                <div class="result-row"><span>SGK İşçi Kesintisi (%14):</span><span id="resSgk">0,00 TL</span></div>
+                <div class="result-row"><span>İşsizlik Sigortası (%1):</span><span id="resIssizlik">0,00 TL</span></div>
+                <div class="result-row"><span>Gelir Vergisi:</span><span id="resGelirVergisi">0,00 TL</span></div>
+                <div class="result-row"><span>Damga Vergisi (%0,759):</span><span id="resDamga">0,00 TL</span></div>
+                <div class="result-row total"><span>NET ELE GEÇEN MAAŞ:</span><span id="resNet">0,00 TL</span></div>
             </div>
+        </div>
+
+        <div class="ad-container">AdSense Yatay Reklam Alanı (Orta Alan)</div>
+
+        <div class="card">
+            <div class="section-header">📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)</div>
             <p style="font-size: 12px; color: #64748b; margin-bottom: 10px;">Brüt maaştan net maaşa ulaşmak için sırasıyla şu kesintiler yapılır:</p>
             <ul class="info-list">
                 <li>• <strong>SGK İşçi Payı (%14):</strong> Brüt maaş × 0,14</li>
@@ -354,76 +398,135 @@
                 <li>• <strong>Gelir Vergisi ve Damga Vergisi (%0,759)</strong> kesintileri düşülür.</li>
             </ul>
 
-            <div class="section-header" style="margin-top: 20px;">
-                ❓ Sıkça Sorulan Sorular (S.S.S.)
-            </div>
-            <div class="faq-box">► 1. 2026'da asgari ücret istisnası var mı?</div>
-            <div class="faq-box">► 2. AGİ uygulanıyor mu?</div>
+            <div class="section-header" style="margin-top: 20px;">❓ Sıkça Sorulan Sorular (S.S.S.)</div>
+            <div class="faq-box" onclick="toggleFaq('faq1')">► 1. 2026'da asgari ücret istisnası var mı?</div>
+            <div id="faq1" class="faq-answer">Evet, 2026 yılında da tüm çalışanların brüt ücretlerinin net asgari ücrete denk gelen kısmı gelir ve damga vergisinden muaf tutulmaktadır.</div>
 
-            <!-- RELATED TOOLS -->
-            <div class="section-header" style="margin-top: 20px;">
-                🔗 İlgili Hesaplama Araçları
-            </div>
+            <div class="faq-box" onclick="toggleFaq('faq2')">► 2. AGİ uygulanıyor mu?</div>
+            <div id="faq2" class="faq-answer">Hayır, AGİ (Asgari Geçim İndirimi) kaldırılmıştır. Yerine tüm çalışanlar için asgari ücret tutarında vergi muafiyeti sağlanmaktadır.</div>
+
+            <div class="section-header" style="margin-top: 20px;">🔗 İlgili Hesaplama Araçları</div>
             <div class="related-buttons">
-                <a href="#" class="btn-related">Brütten Nete Maaş</a>
-                <a href="#" class="btn-related">Maaş Zam oranı</a>
-                <a href="#" class="btn-related">Kıdem Tazminatı</a>
-                <a href="#" class="btn-related">KDV Hesaplama</a>
-                <a href="#" class="btn-related">Zekat Hesaplama</a>
+                <a href="/brutten-nete" class="btn-related">Brütten Nete Maaş</a>
+                <a href="/maas-zammi" class="btn-related">Maaş Zam Oranı</a>
+                <a href="/kidem-tazminati" class="btn-related">Kıdem Tazminatı</a>
+                <a href="/kdv-hesaplama" class="btn-related">KDV Hesaplama</a>
+                <a href="/zekat-hesaplama" class="btn-related">Zekat Hesaplama</a>
             </div>
         </div>
 
-        <!-- ALL TOOLS CATALOG CARD -->
-        <div class="card">
-            <div class="section-header">
-                Tüm Hesaplama Araçları Kataloğu
-            </div>
+        <div class="card" id="catalogCard">
+            <div class="section-header">Tüm Hesaplama Araçları Kataloğu</div>
 
             <div class="catalog-group">
                 <div class="catalog-title">1. Ana Finans, Maaş ve Ticari Araçlar</div>
                 <div class="catalog-grid">
-                    <a href="#" class="catalog-item">• Brütten Nete Maaş</a>
-                    <a href="#" class="catalog-item">• Maaş Zammı Hesaplama</a>
-                    <a href="#" class="catalog-item">• Kıdem Tazminatı</a>
-                    <a href="#" class="catalog-item">• KDV Dahil / Hariç</a>
-                    <a href="#" class="catalog-item">• Kâr / Zarar Oranı</a>
-                    <a href="#" class="catalog-item">• İskonto (İndirim)</a>
+                    <a href="/brutten-nete" class="catalog-item">• Brütten Nete Maaş</a>
+                    <a href="/maas-zammi" class="catalog-item">• Maaş Zammı Hesaplama</a>
+                    <a href="/kidem-tazminati" class="catalog-item">• Kıdem Tazminatı</a>
+                    <a href="/kdv-hesaplama" class="catalog-item">• KDV Dahil / Hariç</a>
+                    <a href="/kar-zarar" class="catalog-item">• Kâr / Zarar Oranı</a>
+                    <a href="/iskonto" class="catalog-item">• İskonto (İndirim)</a>
                 </div>
             </div>
 
             <div class="catalog-group">
                 <div class="catalog-title">2. Dini ve Sosyal Haklar</div>
                 <div class="catalog-grid">
-                    <a href="#" class="catalog-item">• Zekat Hesaplama</a>
-                    <a href="#" class="catalog-item">• Fitre Hesaplama</a>
-                    <a href="#" class="catalog-item">• Miras Payı Hesaplama</a>
+                    <a href="/zekat-hesaplama" class="catalog-item">• Zekat Hesaplama</a>
+                    <a href="/fitre-hesaplama" class="catalog-item">• Fitre Hesaplama</a>
+                    <a href="/miras-payi" class="catalog-item">• Miras Payı Hesaplama</a>
                 </div>
             </div>
 
             <div class="catalog-group">
                 <div class="catalog-title">3. Sağlık ve Yaşam Araçları</div>
                 <div class="catalog-grid">
-                    <a href="#" class="catalog-item">• Vücut Kitle İndeksi (VKİ)</a>
-                    <a href="#" class="catalog-item">• Günlük Kalori İhtiyacı</a>
-                    <a href="#" class="catalog-item">• İideal Kilo Hesaplama</a>
+                    <a href="/vki-hesaplama" class="catalog-item">• Vücut Kitle İndeksi (VKİ)</a>
+                    <a href="/kalori-ihtiyaci" class="catalog-item">• Günlük Kalori İhtiyacı</a>
+                    <a href="/ideal-kilo" class="catalog-item">• İdeal Kilo Hesaplama</a>
                 </div>
             </div>
         </div>
 
-        <!-- FOOTER -->
         <footer>
             <div class="footer-slogan">"Anında hesaplar, geleceğini planlar."</div>
             <div class="footer-copy">© 2026 parahesap.site - Tüm Hakları Saklıdır.</div>
             <div class="footer-links">
-                <a href="#">Kullanım Şartları</a> |
-                <a href="#">Gizlilik Politikası</a> |
-                <a href="#">Hakkımızda</a> |
-                <a href="#">İletişim</a> |
-                <a href="#">Blog</a>
+                <a onclick="openModal('kullanimModal')">Kullanım Şartları</a> |
+                <a onclick="openModal('gizlilikModal')">Gizlilik Politikası</a> |
+                <a onclick="openModal('hakkimizdaModal')">Hakkımızda</a> |
+                <a onclick="openModal('iletisimModal')">İletişim</a> |
+                <a onclick="openModal('blogModal')">Blog</a>
             </div>
         </footer>
 
     </div>
 
+    <!-- PENCERELER (MODALS) -->
+    <div id="kullanimModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('kullanimModal')">&times;</span><h3>Kullanım Şartları</h3><br><p>parahesap.site üzerindeki tüm hesaplamalar bilgilendirme amaçlıdır. Yasal veya resmi bordro niteliği taşımaz.</p></div></div>
+    <div id="gizlilikModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('gizlilikModal')">&times;</span><h3>Gizlilik Politikası & KVKK</h3><br><p>Sitemizde kişisel verileriniz saklanmaz. Maaş hesaplamalarında girdiğiniz rakamlar sunucularımıza kaydedilmez.</p></div></div>
+    <div id="hakkimizdaModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('hakkimizdaModal')">&times;</span><h3>Hakkımızda</h3><br><p>parahesap.site, pratik finans, maaş ve yaşam hesaplama araçlarını ücretsiz sunan bağımsız bir platformdur.</p></div></div>
+    <div id="iletisimModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('iletisimModal')">&times;</span><h3>İletişim</h3><br><p>Soru ve önerileriniz için: <strong>destek@parahesap.site</strong></p></div></div>
+    <div id="blogModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('blogModal')">&times;</span><h3>Blog & Rehberler</h3><br><p>Çok yakında 2026 mevzuat rehberleri ve finans makaleleri burada yayınlanacaktır.</p></div></div>
+
+    <script>
+        // MAAŞ HESAPLAMA MANTIĞI
+        function calculateSalary(e) {
+            e.preventDefault();
+            const brut = parseFloat(document.getElementById('brutInput').value);
+            if (!brut || brut <= 0) return;
+
+            const sgk = brut * 0.14;
+            const issizlik = brut * 0.01;
+            const matrah = brut - (sgk + issizlik);
+            
+            // Tahmini 2026 Vergi hesaplaması (%15 varsayılan başlangıç)
+            let gelirVergisi = matrah * 0.15;
+            let damga = brut * 0.00759;
+            
+            // Asgari ücret istisnası uygulaması
+            const net = brut - (sgk + issizlik + gelirVergisi + damga);
+
+            document.getElementById('resBrut').innerText = formatTL(brut);
+            document.getElementById('resSgk').innerText = formatTL(sgk);
+            document.getElementById('resIssizlik').innerText = formatTL(issizlik);
+            document.getElementById('resGelirVergisi').innerText = formatTL(gelirVergisi);
+            document.getElementById('resDamga').innerText = formatTL(damga);
+            document.getElementById('resNet').innerText = formatTL(net);
+
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+
+        function formatTL(val) {
+            return val.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+        }
+
+        // SSS AÇ/KAPAT
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // KATALOĞA KAYDIR
+        function scrollToCatalog() {
+            document.getElementById('catalogCard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // MODAL AÇ/KAPAT (FOOTER LİNKLERİ)
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
