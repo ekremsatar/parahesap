@@ -3,232 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>parahesap.site - Pratik Hesaplama Araçları</title>
+    <title>ParaHesap.site - Pratik Hesaplama Araçları ve Finans Rehberi</title>
+    <meta name="description" content="Brütten nete maaş hesaplama, ideal kilo, günlük kalori ihtiyacı, kredi taksit ve birikim hesaplama araçları.">
+    <meta name="keywords" content="maaş hesaplama, brütten nete, ideal kilo, vki hesaplama, mevduat faizi, kredi kartı asgari">
+    <meta name="author" content="parahesap.site">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parahesap.site/">
+    <meta property="og:title" content="ParaHesap.site - Pratik Hesaplama Araçları">
+    <meta property="og:description" content="Finans, maaş ve sağlık alanında ücretsiz, pratik ve hızlı hesaplama araçları.">
+
+    <!-- Fontlar ve İkonlar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary-blue: #0052cc;
-            --pink-title: #d63384;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --ad-bg: #f1f5f9;
+            --primary: #0d6efd;
+            --primary-dark: #0a58ca;
+            --secondary: #6c757d;
+            --success: #198754;
+            --bg-body: #f4f6f9;
+            --bg-card: #ffffff;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.5; padding-bottom: 40px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        .header { background: #fff; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); margin-bottom: 12px; }
-        .logo-container { display: flex; flex-direction: column; }
-        .logo-text { font-size: 20px; font-weight: 800; color: var(--pink-title); text-decoration: none; line-height: 1.1; cursor: pointer; }
-        .logo-text span { color: var(--primary-blue); }
-        .logo-sub { font-size: 9px; color: var(--pink-title); font-style: italic; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-        .btn-dropdown { background-color: var(--primary-blue); color: #fff; border: none; padding: 8px 14px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 12px; }
-        .ad-container { background-color: var(--ad-bg); border: 1px dashed #cbd5e1; color: #94a3b8; text-align: center; padding: 10px; font-size: 11px; border-radius: 4px; margin-bottom: 16px; }
+        /* Header / Navbar */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
 
-        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
-        .card-title-pink { color: var(--pink-title); font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-        .card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+        .navbar {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #334155; }
-        .form-control { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 13px; background-color: #fff; outline: none; }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--primary);
+        }
 
-        .btn-calc { width: 100%; background-color: var(--primary-blue); color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
 
-        .result-container { display: none; margin-top: 16px; padding: 14px; background-color: #f0f7ff; border: 1px solid #b6d4fe; border-radius: 6px; }
-        .result-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #cbd5e1; }
-        .result-row.total { border-bottom: none; font-weight: 700; font-size: 15px; color: var(--primary-blue); padding-top: 10px; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
 
-        .section-header { font-size: 14px; font-weight: 700; color: var(--text-dark); padding-bottom: 6px; border-bottom: 1px solid var(--primary-blue); margin-bottom: 12px; }
-        
-        .tool-panel { display: none; }
-        .tool-panel.active { display: block; }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-        .catalog-group { margin-bottom: 16px; }
-        .catalog-title { font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 8px; }
-        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
-        .catalog-item { background: #fff; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 6px; font-size: 12px; color: var(--primary-blue); text-decoration: none; cursor: pointer; display: block; }
+        .btn-header {
+            background-color: var(--primary);
+            color: #fff !important;
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
 
-        footer { margin-top: 30px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
-        .footer-slogan { color: var(--pink-title); font-size: 11px; font-style: italic; margin-bottom: 6px; }
-        .footer-copy { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
-        .footer-links { display: flex; justify-content: center; gap: 12px; font-size: 11px; flex-wrap: wrap; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; cursor: pointer; }
-        .footer-links a:hover { color: var(--primary-blue); }
+        /* Container & Cards */
+        main {
+            max-width: 1000px;
+            width: 100%;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: #fff; padding: 20px; border-radius: 8px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; }
-        .modal-close { float: right; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .ad-banner {
+            background-color: #e9ecef;
+            border: 1px dashed #ced4da;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card-header-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d63384;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form Elemanları */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.95rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+
+        .btn-calc {
+            width: 100%;
+            background-color: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-calc:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Sonuç Kutusu */
+        .result-card {
+            margin-top: 1.2rem;
+            padding: 1.2rem;
+            background-color: #e7f1ff;
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            display: none;
+        }
+
+        /* Katalog Izgarası */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        .catalog-box {
+            background: #fafafa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+
+        .catalog-box h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .catalog-list {
+            list-style: none;
+        }
+
+        .catalog-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .catalog-list a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            display: inline-block;
+            transition: transform 0.1s;
+        }
+
+        .catalog-list a:hover {
+            text-decoration: underline;
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        .footer-slogan {
+            font-style: italic;
+            color: #dc3545;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="logo-container">
-            <span class="logo-text" onclick="switchTool('maas')">parahesap<span>.site</span></span>
-            <span class="logo-sub">"Anında hesaplar, geleceğini planlar."</span>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <a href="/" class="brand">
+                <i class="fa-solid fa-calculator"></i> parahesap.site
+            </a>
+            <div class="nav-links">
+                <a href="/blog/index.html">Blog</a>
+                <a href="/tum-hesaplamalar.html" class="btn-header">Tüm Araçlar ▼</a>
+            </div>
         </div>
-        <button class="btn-dropdown" onclick="scrollToCatalog()">Tüm Hesaplamalar ▼</button>
     </header>
 
-    <div class="container">
+    <main>
+        <!-- Google AdSense Reklam Alanı (Üst) -->
+        <div class="ad-banner">
+            <span>- Reklam Alanı -</span>
+        </div>
 
-        <div class="ad-container">AdSense Yatay Reklam Alanı (Üst)</div>
+        <!-- İdeal Kilo Hesaplama Modülü -->
+        <div class="card">
+            <h1 class="card-header-title">
+                <i class="fa-solid fa-weight-scale"></i> İdeal Kilo Hesaplama
+            </h1>
+            <p class="card-desc">Boyunuza, yaşınıza ve cinsiyetinize göre olması gereken ideal kilonuzu ve VKİ değerinizi öğrenin.</p>
+            
+            <form id="idealKiloForm" onsubmit="calculateIdealWeight(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="cinsiyet">Cinsiyet</label>
+                        <select id="cinsiyet" class="form-control" required>
+                            <option value="erkek">Erkek</option>
+                            <option value="kadin">Kadın</option>
+                        </select>
+                    </div>
 
-        <!-- 1. MAAŞ HESAPLAMA PANELİ -->
-        <div id="panel-maas" class="tool-panel active card">
-            <div class="card-title-pink">2026 Brütten Nete Maaş Hesaplama</div>
-            <div class="card-desc">2026 yılı güncel vergi ve SGK dilimlerine göre net maaşınızı hesaplayın.</div>
-
-            <form onsubmit="calculateSalary(event)">
-                <div class="form-group">
-                    <label>Brüt Maaş (TL):</label>
-                    <input type="number" id="brutInput" class="form-control" value="50000" required>
+                    <div class="form-group">
+                        <label for="boy">Boy (cm)</label>
+                        <input type="number" id="boy" class="form-control" placeholder="Örn: 175" min="100" max="230" required>
+                    </div>
                 </div>
+
                 <button type="submit" class="btn-calc">HESAPLA</button>
             </form>
 
-            <div id="resMaas" class="result-container">
-                <div class="result-row"><span>Brüt Maaş:</span><span id="resBrut">0,00 TL</span></div>
-                <div class="result-row"><span>SGK Kesintisi (%14):</span><span id="resSgk">0,00 TL</span></div>
-                <div class="result-row"><span>İşsizlik Sigortası (%1):</span><span id="resIssizlik">0,00 TL</span></div>
-                <div class="result-row"><span>Gelir Vergisi (%15):</span><span id="resGelir">0,00 TL</span></div>
-                <div class="result-row"><span>Damga Vergisi (%0.759):</span><span id="resDamga">0,00 TL</span></div>
-                <div class="result-row total"><span>NET ELE GEÇEN:</span><span id="resNet">0,00 TL</span></div>
+            <div id="resultBox" class="result-card">
+                <strong>Hesaplama Sonucu:</strong>
+                <p id="resultText" style="margin-top: 5px;"></p>
             </div>
         </div>
 
-        <!-- 2. İDEAL KİLO HESAPLAMA PANELİ -->
-        <div id="panel-ideal-kilo" class="tool-panel card">
-            <div class="card-title-pink">İdeal Kilo Hesaplama</div>
-            <div class="card-desc">Boyunuza ve cinsiyetinize göre ideal kilonuzu öğrenin.</div>
-
-            <form onsubmit="calculateIdealWeight(event)">
-                <div class="form-group">
-                    <label>Cinsiyet:</label>
-                    <select id="genderInput" class="form-control">
-                        <option value="erkek">Erkek</option>
-                        <option value="kadin">Kadın</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Boy (cm):</label>
-                    <input type="number" id="heightInput" class="form-control" placeholder="Örn: 175" required>
-                </div>
-                <button type="submit" class="btn-calc">HESAPLA</button>
-            </form>
-
-            <div id="resIdeal" class="result-container">
-                <div class="result-row total"><span>İDEAL KİLONUZ:</span><span id="resIdealVal">0 kg</span></div>
-            </div>
+        <!-- Google AdSense Reklam Alanı (Orta) -->
+        <div class="ad-banner">
+            <span>- Reklam Alanı -</span>
         </div>
 
-        <div class="ad-container">AdSense Yatay Reklam Alanı (Orta)</div>
-
-        <!-- KATALOG -->
-        <div class="card" id="catalogCard">
-            <div class="section-header">Tüm Hesaplama Araçları Kataloğu</div>
-
-            <div class="catalog-group">
-                <div class="catalog-title">1. Ana Finans ve Maaş</div>
-                <div class="catalog-grid">
-                    <span class="catalog-item" onclick="switchTool('maas')">• Brütten Nete Maaş</span>
+        <!-- Tüm Hesaplama Araçları Kataloğu -->
+        <div class="card">
+            <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tüm Hesaplama Araçları Kataloğu</h2>
+            <p style="font-size: 0.85rem; color: #6c757d; margin-bottom: 1rem;">Platformumuzda yer alan tüm finansal ve sağlık hesaplama araçlarına aşağıdan ulaşabilirsiniz.</p>
+            
+            <div class="catalog-grid">
+                <!-- Finans ve Maaş -->
+                <div class="catalog-box">
+                    <h3><i class="fa-solid fa-money-bill-wave" style="color:#198754;"></i> Finans ve Maaş</h3>
+                    <ul class="catalog-list">
+                        <li><a href="/tum-hesaplamalar.html">+ Brütten Nete Maaş Hesaplama</a></li>
+                        <li><a href="/blog/kira-artis-orani-nasil-hesaplanir.html">+ Kira Artış Oranı Hesaplama</a></li>
+                        <li><a href="/blog/kredi-karti-asgari-odeme.html">+ Kredi Kartı Asgari Ödeme</a></li>
+                        <li><a href="/blog/mevduat-faizi-getirisi-hesaplama.html">+ Mevduat Faizi Getirisi</a></li>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="catalog-group">
-                <div class="catalog-title">2. Sağlık ve Yaşam</div>
-                <div class="catalog-grid">
-                    <span class="catalog-item" onclick="switchTool('ideal-kilo')">• İdeal Kilo Hesaplama</span>
+                <!-- Sağlık ve Yaşam -->
+                <div class="catalog-box">
+                    <h3><i class="fa-solid fa-heart-pulse" style="color:#dc3545;"></i> Sağlık ve Yaşam</h3>
+                    <ul class="catalog-list">
+                        <li><a href="/">+ İdeal Kilo Hesaplama</a></li>
+                        <li><a href="/blog/index.html">+ Vücut Kitle İndeksi (VKİ)</a></li>
+                        <li><a href="/blog/index.html">+ Günlük Kalori İhtiyacı</a></li>
+                        <li><a href="/blog/index.html">+ Günlük Su İhtiyacı Hesaplama</a></li>
+                    </ul>
+                </div>
+
+                <!-- Birikim ve Kredi -->
+                <div class="catalog-box">
+                    <h3><i class="fa-solid fa-piggy-bank" style="color:#0d6efd;"></i> Birikim ve Kredi</h3>
+                    <ul class="catalog-list">
+                        <li><a href="/blog/50-30-20-butce-kurali.html">+ 50/30/20 Bütçe Planlama</a></li>
+                        <li><a href="/blog/dusuk-faizli-kredi-bulma.html">+ Kredi Taksit Planlama</a></li>
+                        <li><a href="/blog/emeklilik-birikimi.html">+ Emeklilik Birikimi Hesabı</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </main>
 
-        <footer>
-            <div class="footer-slogan">"Anında hesaplar, geleceğini planlar."</div>
-            <div class="footer-copy">© 2026 parahesap.site - Tüm Hakları Saklıdır.</div>
-            <div class="footer-links">
-                <a onclick="openModal('kullanimModal')">Kullanım Şartları</a> |
-                <a onclick="openModal('gizlilikModal')">Gizlilik Politikası</a> |
-                <a onclick="openModal('hakkimizdaModal')">Hakkımızda</a> |
-                <a onclick="openModal('iletisimModal')">İletişim</a> |
-                <a onclick="openModal('blogModal')">Blog</a>
-            </div>
-        </footer>
+    <!-- Footer / Sayfa Altı Bağlantıları -->
+    <footer>
+        <div class="footer-slogan">"Pratik hesaplayın, geleceğinizi planlayın"</div>
+        <div>© 2026 parahesap.site - Tüm Hakları Saklıdır.</div>
+        
+        <!-- Doğrudan Sayfa Linkleri -->
+        <div class="footer-links">
+            <a href="/kullanim-sartlari.html">Kullanım Şartları</a>
+            <span>•</span>
+            <a href="/gizlilik-politikasi.html">Gizlilik Politikası</a>
+            <span>•</span>
+            <a href="/hakkimizda.html">Hakkımızda</a>
+            <span>•</span>
+            <a href="/iletisim.html">İletişim</a>
+            <span>•</span>
+            <a href="/blog/index.html">Blog</a>
+        </div>
+    </footer>
 
-    </div>
-
-    <!-- MODALLAR -->
-    <div id="kullanimModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('kullanimModal')">&times;</span><h3>Kullanım Şartları</h3><br><p>Sitedeki hesaplamalar bilgilendirme amaçlıdır.</p></div></div>
-    <div id="gizlilikModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('gizlilikModal')">&times;</span><h3>Gizlilik Politikası</h3><br><p>Verileriniz kaydedilmez.</p></div></div>
-    <div id="hakkimizdaModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('hakkimizdaModal')">&times;</span><h3>Hakkımızda</h3><br><p>parahesap.site pratik hesaplama platformudur.</p></div></div>
-    <div id="iletisimModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('iletisimModal')">&times;</span><h3>İletişim</h3><br><p>destek@parahesap.site</p></div></div>
-    <div id="blogModal" class="modal"><div class="modal-content"><span class="modal-close" onclick="closeModal('blogModal')">&times;</span><h3>Blog</h3><br><p>Yazılar yakında eklenecektir.</p></div></div>
-
+    <!-- Hesaplama JS Mantığı -->
     <script>
-        // ARAÇ DEĞİŞTİRME MANTIĞI (404 HATASINI ENGELLEME)
-        function switchTool(toolId) {
-            document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
-            const targetPanel = document.getElementById('panel-' + toolId);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        function calculateIdealWeight(event) {
+            event.preventDefault();
+            const gender = document.getElementById('cinsiyet').value;
+            const height = parseFloat(document.getElementById('boy').value);
+
+            if (!height || height < 100) {
+                alert('Lütfen geçerli bir boy değeri giriniz.');
+                return;
             }
+
+            // Devine Formülü
+            let idealWeight = 0;
+            const heightInInches = height / 2.54;
+            const inchesOver60 = heightInInches - 60;
+
+            if (gender === 'erkek') {
+                idealWeight = 50 + (2.3 * inchesOver60);
+            } else {
+                idealWeight = 45.5 + (2.3 * inchesOver60);
+            }
+
+            if (inchesOver60 < 0) {
+                idealWeight = gender === 'erkek' ? 50 : 45.5;
+            }
+
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+
+            resultText.innerHTML = `Boyunuza (${height} cm) göre ideal kilonuz yaklaşık <strong>${idealWeight.toFixed(1)} kg</strong> olarak hesaplanmıştır.`;
+            resultBox.style.display = 'block';
         }
-
-        // MAAŞ HESAPLA
-        function calculateSalary(e) {
-            e.preventDefault();
-            const brut = parseFloat(document.getElementById('brutInput').value);
-            if (!brut) return;
-
-            const sgk = brut * 0.14;
-            const issizlik = brut * 0.01;
-            const matrah = brut - (sgk + issizlik);
-            const gelir = matrah * 0.15;
-            const damga = brut * 0.00759;
-            const net = brut - (sgk + issizlik + gelir + damga);
-
-            document.getElementById('resBrut').innerText = fmt(brut);
-            document.getElementById('resSgk').innerText = fmt(sgk);
-            document.getElementById('resIssizlik').innerText = fmt(issizlik);
-            document.getElementById('resGelir').innerText = fmt(gelir);
-            document.getElementById('resDamga').innerText = fmt(damga);
-            document.getElementById('resNet').innerText = fmt(net);
-
-            document.getElementById('resMaas').style.display = 'block';
-        }
-
-        // İDEAL KİLO HESAPLA
-        function calculateIdealWeight(e) {
-            e.preventDefault();
-            const height = parseFloat(document.getElementById('heightInput').value);
-            const gender = document.getElementById('genderInput').value;
-            if (!height) return;
-
-            let ideal = gender === 'erkek' 
-                ? 50 + 0.91 * (height - 152.4)
-                : 45.5 + 0.91 * (height - 152.4);
-
-            document.getElementById('resIdealVal').innerText = ideal.toFixed(1) + ' kg';
-            document.getElementById('resIdeal').style.display = 'block';
-        }
-
-        function fmt(val) {
-            return val.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
-        }
-
-        function scrollToCatalog() {
-            document.getElementById('catalogCard').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; }
     </script>
 </body>
 </html>
