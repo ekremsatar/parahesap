@@ -362,7 +362,7 @@
                 <h4>3. Sağlık & Yaşam</h4>
                 <a href="javascript:void(0)" onclick="loadTool('vki')">• Vücut Kitle İndeksi (VKİ)</a>
                 <a href="javascript:void(0)" onclick="loadTool('kalori')">• Günlük Kalori İhtiyacı</a>
-                <a href="javascript:void(0)" onclick="loadTool('ideal-kilo')">• İideal Kilo Hesaplama</a>
+                <a href="javascript:void(0)" onclick="loadTool('ideal-kilo')">• İdeal Kilo Hesaplama</a>
             </div>
         </div>
     </div>
@@ -397,7 +397,7 @@
         <!-- Orta Reklam -->
         <div class="adsense-box">AdSense Yatay Reklam Alanı (Orta Alan)</div>
 
-        <!-- SEO İçeriği -->
+        <!-- SEO İçeriği ve Zengin Metin Alanı -->
         <div class="seo-content-block">
             <h2 id="infoTitle">Nasıl Hesaplanır?</h2>
             <div id="infoContent"></div>
@@ -464,7 +464,6 @@
 <script>
     let currentTip = 'brutten-nete';
 
-    // Sitedeki Hesaplama Araçlarının Liste Haritası
     const toolsList = [
         { key: 'brutten-nete', name: 'Brütten Nete Maaş Hesaplama', tags: ['maaş', 'maas', 'brüt', 'brut', 'net'] },
         { key: 'maas-zam', name: 'Maaş Zam Oranı Hesaplama', tags: ['zam', 'maaş', 'oran'] },
@@ -480,32 +479,130 @@
         { key: 'ideal-kilo', name: 'İdeal Kilo Hesaplama', tags: ['ideal', 'kilo', 'boy'] }
     ];
 
+    // Dinamik SEO İçerik Veritabanı (Google Düşük Değer Uyarısını Aşmak İçin)
+    const seoContentMap = {
+        'brutten-nete': {
+            title: 'Brütten Nete Maaş Nasıl Hesaplanır? (2026 Güncel Oranlar)',
+            html: `
+                <p>Brütten nete maaş hesaplaması, çalışanların brüt kazançlarından yasal kesintiler düşüldükten sonra eline geçecek net tutarı belirlemek için yapılır. 2026 yılı güncel yasal parametrelerine göre brüt maaş üzerinden yapılan başlıca kesintiler şunlardır:</p>
+                <ul>
+                    <li><strong>SGK İşçi Payı (%14):</strong> Brüt maaşın %14'ü oranında sosyal güvenlik primi kesintisi yapılır[span_0](start_span)[span_0](end_span).</li>
+                    <li><strong>İşsizlik Sigortası Primi (%1):</strong> Brüt tutar üzerinden %1 oranında işsizlik sigortası kesilir[span_1](start_span)[span_1](end_span).</li>
+                    <li><strong>Gelir Vergisi ve Damga Vergisi:</strong> Kümülatif matraha ve vergi dilimlerine (%15, %20, %27 vb.) göre gelir vergisi hesaplanır[span_2](start_span)[span_2](end_span). Asgari ücret istisnası yasal düzenlemelere göre net tutara yansıtılır.</li>
+                </ul>
+                <details><summary>1. 2026'da asgari ücret istisnası var mı?</summary><p>Evet, 2026 yılı boyunca da asgari ücrete kadar olan kazançlar gelir ve damga vergisinden istisna edilmeye devam etmektedir.</p></details>
+                <details><summary>2. AGI (Asgari Geçim İndirimi) uygulanıyor mu?</summary><p>Mevcut vergi sisteminde asgari ücret istisnası uygulamaya alındığından ayrı bir AGI ödemesi kaldırılmıştır.</p></details>
+            `
+        },
+        'maas-zam': {
+            title: 'Maaş Zammı Oranı Nasıl Hesaplanır?',
+            html: `
+                <p>Maaş zammı hesaplaması, mevcut maaşınıza yapılacak artış oranının (yüzdesel veya net tutar bazında) hesaplanarak yeni maaşınızın belirlenmesi işlemidir.</p>
+                <p>Enflasyon oranları, toplu sözleşme hükümleri veya şirket içi performans değerlendirmeleri zam oranlarını belirlemede temel etkendir. Formül olarak: <em>Yeni Maaş = Mevcut Maaş + (Mevcut Maaş × Zam Oranı / 100)</em> şeklinde hesaplanır.</p>
+                <details><summary>Net maaşa mı yoksa brüt maaşa mı zam yapılır?</summary><p>Anlaşmanıza bağlı olarak brüt veya net tutar üzerinden zam oranları uygulanabilir.</p></details>
+            `
+        },
+        'kidem': {
+            title: 'Kıdem Tazminatı Nasıl Hesaplanır? (2026)',
+            html: `
+                <p>Kıdem tazminatı, aynı iş yerinde en az bir yıl çalışmış işçinin iş sözleşmesinin kanunda belirtilen fesih hallerinden biriyle sona ermesi durumunda hak ettiği tazminat türüdür. Hesaplamada temel alınan kriterler:</p>
+                <ul>
+                    <li>Çalışılan brüt ücret ve düzenli ek ödemeler (ikramiye, prim vb.) giydirilmiş brüt ücret üzerinden değerlendirilir.</li>
+                    <li>Her tam yıl için 30 günlük brüt ücret tutarında tazminat ödenir; bir yıldan artan süreler de orantılı olarak hesaba katılır.</li>
+                    <li>Yasal tavan sınırlamaları dikkate alınarak net ödeme tutarına ulaşılır.</li>
+                </ul>
+            `
+        },
+        'kdv': {
+            title: 'KDV Dahil ve KDV Hariç Hesaplama Rehberi',
+            html: `
+                <p>Katma Değer Vergisi (KDV), mal ve hizmet teslimlerinde uygulanan bir dolaylı vergi türüdür. Ticari işlemlerde ve faturalandırmalarda KDV dahil ya da hariç tutarları bulmak oldukça önemlidir.</p>
+                <p>KDV hariç bir tutara KDV eklemek için tutar, vergi oranıyla çarpılıp 100'e bölünür ve ana tutara eklenir. KDV dahil tutardan hariç tutara ulaşmak için ise tutar (1 + KDV Oranı / 100) değerine bölünür.</p>
+            `
+        },
+        'kar-zarar': {
+            title: 'Kâr / Zarar Oranı Hesaplama Yöntemleri',
+            html: `
+                <p>Ticari faaliyetlerde maliyet ve satış fiyatı üzerinden elde edilen kârın yüzdesel oranını bulmak finansal kontrol açısından kritik önem taşır.</p>
+                <p>Kâr oranı hesaplanırken (Satış Fiyatı - Maliyet) / Maliyet formülü kullanılır ve sonuç 100 ile çarpılarak yüzde cinsinden ifade edilir.</p>
+            `
+        },
+        'iskonto': {
+            title: 'İskonto (İndirim) Hesaplaması Nasıl Yapılır?',
+            html: `
+                <p>İskonto, bir malın etiket veya liste fiyatı üzerinden yapılan indirim tutarını ifade eder. Alışverişlerde ve ticari iskonto takiplerinde yüzde indirim hesaplaması pratik bir şekilde yapılabilir.</p>
+                <p>İndirimli Tutar = Liste Fiyatı - (Liste Fiyatı × İndirim Oranı / 100) formülüyle kolayca hesaplanır.</p>
+            `
+        },
+        'zekat': {
+            title: 'Zekat Hesaplama ve Nisap Miktarı Rehberi',
+            html: `
+                <p>İslam dininde mali ibadetlerden biri olan zekat, nisap miktarı (80.18 gram altın veya dengi mal varlığı) üzerinde bir servete sahip ve üzerinden bir kameri yıl geçmiş müslümanların vermesi farz olan bir yardımdır.</p>
+                <p>Borçlar ve temel ihtiyaçlar düşüldükten sonra kalan biriken nakit, altın, ticari mallar ve yatırım araçlarının %2.5 (kırkta bir) oranı hesaplanarak zekat ödenir.</p>
+            `
+        },
+        'fitre': {
+            title: 'Fitre (Sadaka-i Fitr) Miktarı ve Kimlere Verilir?',
+            html: `
+                <p>Fitre, Ramazan ayında fakirlerin sevindirilmesi ve bayram namazına maddi imkansızlıkla girmemeleri amacıyla verilen vacip bir sadakadır.</p>
+                <p>Diyanet İşleri Başkanlığı tarafından her yıl belirlenen alt sınır günlük gıda ihtiyacı göz önüne alınarak nakdi veya ayni olarak ödenir.</p>
+            `
+        },
+        'miras': {
+            title: 'İslami Miras Payı ve Hisse Hesaplama Esasları',
+            html: `
+                <p>Miras hukuku, vefat eden bir kişinin geride bıraktığı mal varlığının yasal ve dini esaslara göre mirasçılara paylaştırılmasını inceleyen alandır.</p>
+                <p>Kuran-ı Kerim'deki Nisa suresi ayetleri ve fıkıh usulüne göre eş, çocuk, anne ve baba gibi pay sahiplerinin hisseleri oranlarına göre hesaplanır.</p>
+            `
+        },
+        'vki': {
+            title: 'Vücut Kitle İndeksi (VKİ) Nedir ve Nasıl Hesaplanır?',
+            html: `
+                <p>Vücut Kitle İndeksi, kişinin kilogram cinsinden ağırlığının, metre cinsinden boyunun karesine bölünmesiyle elde edilen bir referans değerdir.</p>
+                <p>Çıkan sonuca göre zayıf, normal ağırlıklı, kilolu veya obez sınıflandırması yapılarak genel sağlık durumu hakkında fikir edinilir.</p>
+            `
+        },
+        'kalori': {
+            title: 'Günlük Kalori İhtiyacı (BMR ve TDEE) Hesabı',
+            html: `
+                <p>Günlük kalori ihtiyacı; cinsiyet, yaş, boy, kilo ve fiziksel aktivite düzeyi parametreleri dikkate alınarak vücudun hayati fonksiyonlarını sürdürmesi ve günlük aktivitelerini yerine getirmesi için alması gereken enerjidir.</p>
+                <p>Kilo alma, verme veya mevcut kiloyu koruma hedeflerine göre günlük kalori planlaması yapılabilir.</p>
+            `
+        },
+        'ideal-kilo': {
+            title: 'İdeal Kilo Hesaplama Yöntemleri',
+            html: `
+                <p>İdeal kilo, kişinin boy uzunluğu ve yapısal özelliklerine göre sağlıklı yaşam sürdürebileceği en uygun ağırlık aralığını ifade eder.</p>
+                <p>Çeşitli bilimsel formüller (Devine, Robinson vb.) yardımıyla yaş ve cinsiyete göre ideal kilo aralığı pratikçe hesaplanabilir.</p>
+            `
+        }
+    };
+
     function toggleDropdown(event) {
         event.stopPropagation();
         document.getElementById('topDropdown').classList.toggle('show');
     }
 
-    // Arama Tahminlerini Canlı Getirme
     function handleSearchInput() {
-        const val = document.getElementById('searchInput').value.toLowerCase().trim();
-        const box = document.getElementById('suggestionsBox');
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        const suggestionsBox = document.getElementById('suggestionsBox');
         
-        if (val.length < 1) {
-            box.style.display = 'none';
+        if (query.length === 0) {
+            suggestionsBox.style.display = 'none';
             return;
         }
 
-        const matches = toolsList.filter(t => 
-            t.name.toLowerCase().includes(val) || t.tags.some(tag => tag.includes(val))
+        const filtered = toolsList.filter(t => 
+            t.name.toLowerCase().includes(query) || t.tags.some(tag => tag.includes(query))
         );
 
-        if (matches.length > 0) {
-            box.innerHTML = matches.map(m => 
-                `<div onclick="selectSuggestion('${m.key}')">${m.name}</div>`
+        if (filtered.length > 0) {
+            suggestionsBox.innerHTML = filtered.map(item => 
+                `<div onclick="selectSuggestion('${item.key}')">${item.name}</div>`
             ).join('');
-            box.style.display = 'block';
+            suggestionsBox.style.display = 'block';
         } else {
-            box.style.display = 'none';
+            suggestionsBox.style.display = 'none';
         }
     }
 
@@ -516,263 +613,372 @@
     }
 
     function executeSearch() {
-        const val = document.getElementById('searchInput').value.toLowerCase().trim();
-        if(!val) return;
-        const match = toolsList.find(t => t.name.toLowerCase().includes(val) || t.tags.some(tag => tag.includes(val)));
-        if (match) {
-            selectSuggestion(match.key);
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+        const found = toolsList.find(t => 
+            t.name.toLowerCase().includes(query) || t.tags.some(tag => tag.includes(query))
+        );
+        if (found) {
+            loadTool(found.key);
         } else {
-            alert('Aramanıza uygun araç bulunamadı.');
+            alert('Aradığınız kriterlere uygun hesaplama aracı bulunamadı.');
         }
+        document.getElementById('suggestionsBox').style.display = 'none';
     }
 
-    // Ekranın herhangi bir yerine tıklayınca açık menüleri kapat
-    window.onclick = function(event) {
-        if (!event.target.matches('.btn-tum')) {
-            var dropdowns = document.getElementsByClassName("dropdown-menu");
-            for (var i = 0; i < dropdowns.length; i++) {
-                dropdowns[i].classList.remove('show');
-            }
-        }
-        if (!event.target.matches('#searchInput')) {
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.search-container')) {
             document.getElementById('suggestionsBox').style.display = 'none';
         }
-    }
+        if (!e.target.closest('.nav-wrap')) {
+            document.getElementById('topDropdown').classList.remove('show');
+        }
+    });
 
-    function loadTool(tip) {
-        currentTip = tip;
-        const header = document.getElementById('calcTitle');
-        const desc = document.getElementById('calcDesc');
-        const form = document.getElementById('formContainer');
-        const title = document.getElementById('pageTitle');
-        const infoTitle = document.getElementById('infoTitle');
-        const infoContent = document.getElementById('infoContent');
-        const sonucAlani = document.getElementById('sonucAlani');
-        
-        sonucAlani.style.display = 'none';
+    function loadTool(toolKey) {
+        currentTip = toolKey;
         document.getElementById('topDropdown').classList.remove('show');
+        document.getElementById('sonucAlani.style.display') // Güvenlik önlemi
+        document.getElementById('sonucAlani').style.display = 'none';
+        document.getElementById('sonucAlani').innerHTML = '';
 
-        if (tip === 'brutten-nete') {
-            title.innerText = 'Brütten Nete Maaş Hesaplama 2026 - Para Hesap';
-            header.innerText = '2026 Brütten Nete Maaş Hesaplama';
-            desc.innerText = '2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.';
-            form.innerHTML = `
-                <div class="form-group"><label>Brüt Maaş (TL):</label><input type="number" id="brutMaas" placeholder="Örn: 50000"></div>
-                <div class="form-group"><label>Medeni Durum:</label><select id="medeniDurum"><option value="bekar">Bekar</option><option value="evli">Evli</option></select></div>
-                <div class="form-group"><label>Çocuk Sayısı:</label><select id="cocukSayisi"><option value="0">Yok</option><option value="1">1</option><option value="2">2+</option></select></div>
-            `;
-            infoTitle.innerText = '📌 Brütten Nete Maaş Nasıl Hesaplanır? (2026)';
-            infoContent.innerHTML = `
-                <p>Brüt maaştan net maaşa ulaşmak için sırasıyla şu kesintiler yapılır:</p>
-                <ul>
-                    <li><strong>SGK İşçi Payı (%14):</strong> Brüt maaş × 0,14</li>
-                    <li><strong>İşsizlik Sigortası Payı (%1):</strong> Brüt maaş × 0,01</li>
-                    <li><strong>Gelir Vergisi ve Damga Vergisi (%0,759)</strong> kesintileri düşülür.</li>
-                </ul>
-                <h3>❓ Sıkça Sorulan Sorular (S.S.S.)</h3>
-                <details><summary>1. 2026'da asgari ücret istisnası var mı?</summary><p>Evet, asgari ücret tutarına kadar olan kısım vergiden muaftır.</p></details>
-                <details><summary>2. AGİ uygulanıyor mu?</summary><p>2022'den itibaren AGİ yerine asgari ücret istisnası gelmiştir.</p></details>
-            `;
-        } else if (tip === 'maas-zam') {
-            title.innerText = 'Maaş Zam Oranı Hesaplama - Para Hesap';
-            header.innerText = 'Maaş Zam Oranı Hesaplama';
-            desc.innerText = 'Mevcut maaşınız ve aldığınız zam oranına göre yeni zamlı maaşınızı hızlıca hesaplayın.';
-            form.innerHTML = `
-                <div class="form-group"><label>Mevcut Maaş (TL):</label><input type="number" id="maasMevcut" placeholder="Örn: 25000"></div>
-                <div class="form-group"><label>Zam Oranı (%):</label><input type="number" id="maasZam" placeholder="Örn: 30"></div>
-            `;
-            infoTitle.innerText = 'Maaş Zammı Nasıl Hesaplanır?';
-            infoContent.innerHTML = 'Mevcut maaşınız belirlenen zam oranı ile çarpılıp 100’e bölünür ve bulunan tutar eski maaşınıza eklenir.';
-        } else if (tip === 'kidem') {
-            title.innerText = 'Kıdem Tazminatı Hesaplama - Para Hesap';
-            header.innerText = 'Kıdem Tazminatı Hesaplama';
-            desc.innerText = 'Çalıştığınız yıl ve son brüt maaşınıza göre alacağınız net kıdem tazminatını öğrenin.';
-            form.innerHTML = `
-                <div class="form-group"><label>Çalışılan Yıl Sayısı:</label><input type="number" id="kidemYil" placeholder="Örn: 5"></div>
-                <div class="form-group"><label>Son Brüt Maaş (TL):</label><input type="number" id="kidemMaas" placeholder="Örn: 35000"></div>
-            `;
-            infoTitle.innerText = 'Kıdem Tazminatı Mantığı';
-            infoContent.innerHTML = 'Çalışılan her tam yıl için bir brüt maaş tutarında hesaplanır. Yalnızca binde 7,59 damga vergisi kesintisi uygulanır.';
-        } else if (tip === 'kdv') {
-            title.innerText = 'KDV Hesaplama (Dahil / Hariç) - Para Hesap';
-            header.innerText = 'KDV Hesaplama (Dahil / Hariç)';
-            desc.innerText = 'Tutar ve KDV oranını girerek KDV dahil veya hariç tutarları anında görün.';
-            form.innerHTML = `
-                <div class="form-group"><label>Tutar (TL):</label><input type="number" id="kdvTutar" placeholder="Örn: 1000"></div>
-                <div class="form-group"><label>KDV Oranı (%):</label><select id="kdvOran"><option value="20">%20</option><option value="10">%10</option><option value="1">%1</option></select></div>
-                <div class="form-group"><label>İşlem Türü:</label><select id="kdvTur"><option value="haric">KDV Hariçten Ekle</option><option value="dahil">KDV Dahilden Çıkar</option></select></div>
-            `;
-            infoTitle.innerText = 'KDV Hesaplama';
-            infoContent.innerHTML = 'KDV hariç tutara belirlenen oran eklenir. Dahil tutarda ise oran matrahtan ayrılarak net tutar bulunur.';
-        } else if (tip === 'kar-zarar') {
-            title.innerText = 'Kâr / Zarar Oranı Hesaplama - Para Hesap';
-            header.innerText = 'Kâr / Zarar Oranı Hesaplama';
-            desc.innerText = 'Alış ve satış fiyatına göre elde ettiğiniz kâr tutarını ve oranını öğrenin.';
-            form.innerHTML = `
-                <div class="form-group"><label>Alış Fiyatı (TL):</label><input type="number" id="alisFiyat" placeholder="Örn: 100"></div>
-                <div class="form-group"><label>Satış Fiyatı (TL):</label><input type="number" id="satisFiyat" placeholder="Örn: 130"></div>
-            `;
-            infoTitle.innerText = 'Kâr/Zarar Mantığı';
-            infoContent.innerHTML = 'Satış fiyatından alış fiyatı çıkarılır. Kalan fark alış fiyatına oranlanarak kâr yüzdesi bulunur.';
-        } else if (tip === 'iskonto') {
-            title.innerText = 'İskonto (İndirim) Hesaplama - Para Hesap';
-            header.innerText = 'İskonto (İndirim) Hesaplama';
-            desc.innerText = 'Ürün etiketi ve indirim oranına göre ödenecek net tutarı bulun.';
-            form.innerHTML = `
-                <div class="form-group"><label>Etiket Fiyatı (TL):</label><input type="number" id="etiketFiyat" placeholder="Örn: 500"></div>
-                <div class="form-group"><label>İndirim Oranı (%):</label><input type="number" id="indirimOran" placeholder="Örn: 20"></div>
-            `;
-            infoTitle.innerText = 'İskonto Hesaplama';
-            infoContent.innerHTML = 'Etiket fiyatına indirim yüzdesi uygulanarak düşülecek tutar hesaplanır.';
-        } else if (tip === 'zekat') {
-            title.innerText = 'Zekat Hesaplama - Para Hesap';
-            header.innerText = 'Zekat Hesaplama (40’ta 1)';
-            desc.innerText = 'Nakit birikim, altın ve borçlarınızı yazarak vermeniz gereken zekat miktarını hesaplayın.';
-            form.innerHTML = `
-                <div class="form-group"><label>Nakit ve Banka Birikimi (TL):</label><input type="number" id="zekatNakit" placeholder="Örn: 100000"></div>
-                <div class="form-group"><label>Altın ve Ziynet Değeri (TL):</label><input type="number" id="zekatAltin" placeholder="Örn: 50000"></div>
-                <div class="form-group"><label>Borçlar (TL):</label><input type="number" id="zekatBorc" placeholder="Örn: 10000"></div>
-            `;
-            infoTitle.innerText = 'Zekat Nasıl Hesaplanır?';
-            infoContent.innerHTML = 'Nisap miktarını geçen varlıklarınızdan borçlar düşüldükten sonra kalan net varlığın kırkta biri (%2,5) zekat olarak verilir.';
-        } else if (tip === 'fitre') {
-            title.innerText = 'Fitre (Sadaka-i Fıtır) Hesaplama - Para Hesap';
-            header.innerText = 'Fitre (Sadaka-i Fıtır) Hesaplama';
-            desc.innerText = 'Ailenizdeki kişi sayısına göre diyanet standartlarına uygun toplam fitre miktarını görün.';
-            form.innerHTML = `
-                <div class="form-group"><label>Kişi Sayısı:</label><input type="number" id="fitreKisi" placeholder="Örn: 4"></div>
-                <div class="form-group"><label>Kişi Başı Fitre Tutarı (TL):</label><input type="number" id="fitreTutar" value="180"></div>
-            `;
-            infoTitle.innerText = 'Fitre Mantığı';
-            infoContent.innerHTML = 'Fitre, Ramazan ayında aile bireyleri sayısınca ihtiyaç sahiplerine verilen vacip bir sadakadır.';
-        } else if (tip === 'miras') {
-            title.innerText = 'Miras Payı Hesaplama - Para Hesap';
-            header.innerText = 'Miras Payı Hesaplama';
-            desc.innerText = 'Toplam miras tutarını ve mirasçı sayılarını girerek pay dağılımını görün.';
-            form.innerHTML = `
-                <div class="form-group"><label>Toplam Miras Tutarı (TL):</label><input type="number" id="mirasTutar" placeholder="Örn: 600000"></div>
-                <div class="form-group"><label>Erkek Çocuk Sayısı:</label><input type="number" id="erkekCocuk" value="1"></div>
-                <div class="form-group"><label>Kız Çocuk Sayısı:</label><input type="number" id="kizCocuk" value="1"></div>
-            `;
-            infoTitle.innerText = 'İslami Miras Hukuku';
-            infoContent.innerHTML = 'İslami esaslara göre erkek çocuk kız çocuğun iki katı pay alır.';
-        } else if (tip === 'vki') {
-            title.innerText = 'Vücut Kitle İndeksi (VKİ) Hesaplama - Para Hesap';
-            header.innerText = 'Vücut Kitle İndeksi (VKİ) Hesaplama';
-            desc.innerText = 'Boy ve kilo değerlerinizi girerek ideal kilonuzda olup olmadığınızı öğrenin.';
-            form.innerHTML = `
-                <div class="form-group"><label>Boyunuz (cm):</label><input type="number" id="vkiBoy" placeholder="Örn: 175"></div>
-                <div class="form-group"><label>Kilonuz (kg):</label><input type="number" id="vkiKilo" placeholder="Örn: 70"></div>
-            `;
-            infoTitle.innerText = 'VKİ Değerlendirmesi';
-            infoContent.innerHTML = 'VKİ = Kilo / (Boy x Boy) formülüyle hesaplanır. 18.5 - 24.9 arası ideal kilodur.';
-        } else if (tip === 'kalori') {
-            title.innerText = 'Günlük Kalori İhtiyacı Hesaplama - Para Hesap';
-            header.innerText = 'Günlük Kalori İhtiyacı Hesaplama';
-            desc.innerText = 'Kilonuz ve hareket durumunuza göre günlük almanız gereken kaloriyi öğrenin.';
-            form.innerHTML = `
-                <div class="form-group"><label>Kilo (kg):</label><input type="number" id="kaloriKilo" placeholder="Örn: 75"></div>
-                <div class="form-group"><label>Hareket Seviyesi:</label><select id="hareket"><option value="1.2">Masabaşı / Az Hareketli</option><option value="1.5">Orta Hareketli</option><option value="1.8">Çok Hareketli</option></select></div>
-            `;
-            infoTitle.innerText = 'Kalori İhtiyacı';
-            infoContent.innerHTML = 'Bazal metabolizma hızınız günlük fiziksel aktivite katsayınız ile çarpılarak bulunur.';
-        } else if (tip === 'ideal-kilo') {
-            title.innerText = 'İdeal Kilo Hesaplama - Para Hesap';
-            header.innerText = 'İdeal Kilo Hesaplama';
-            desc.innerText = 'Boyunuza göre medikal standartlara uygun ideal kilonuzu hesaplayın.';
-            form.innerHTML = `
-                <div class="form-group"><label>Boy (cm):</label><input type="number" id="idealBoy" placeholder="Örn: 170"></div>
-                <div class="form-group"><label>Cinsiyet:</label><select id="cinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select></div>
-            `;
-            infoTitle.innerText = 'İdeal Kilo Standartları';
-            infoContent.innerHTML = 'Lorentz formülü temel alınarak boy ve cinsiyete göre ideal kilo aralığı belirlenir.';
+        const titleElem = document.getElementById('calcTitle');
+        const descElem = document.getElementById('calcDesc');
+        const formElem = document.getElementById('formContainer');
+        const pageTitleElem = document.getElementById('pageTitle');
+
+        // SEO İçerik Güncellemesi
+        if (seoContentMap[toolKey]) {
+            document.getElementById('infoTitle').innerText = seoContentMap[toolKey].title;
+            document.getElementById('infoContent').innerHTML = seoContentMap[toolKey].html;
         }
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (toolKey === 'brutten-nete') {
+            pageTitleElem.innerText = 'Brütten Nete Maaş Hesaplama 2026 | Para Hesap';
+            titleElem.innerText = '2026 Brütten Nete Maaş Hesaplama';
+            descElem.innerText = '2026 yılı güncel SGK, işsizlik sigortası ve gelir vergisi dilimlerine göre brüt maaşınızın net tutarını anında hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Brüt Maaş (TL):</label>
+                    <input type="number" id="brutMaas" placeholder="Örn: 50000">
+                </div>
+                <div class="form-group">
+                    <label>Medeni Durum:</label>
+                    <select id="medeniDurum">
+                        <option value="bekar">Bekar</option>
+                        <option value="evli">Evli (Eşi Çalışmıyor)</option>
+                        <option value="evli-calisan">Evli (Eşi Çalışıyor)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Çocuk Sayısı:</label>
+                    <select id="cocukSayisi">
+                        <option value="0">Yok</option>
+                        <option value="1">1 Çocuk</option>
+                        <option value="2">2 Çocuk</option>
+                        <option value="3">3 ve Üzeri</option>
+                    </select>
+                </div>
+            `;
+        } else if (toolKey === 'maas-zam') {
+            pageTitleElem.innerText = 'Maaş Zam Oranı Hesaplama | Para Hesap';
+            titleElem.innerText = 'Maaş Zam Oranı Hesaplama';
+            descElem.innerText = 'Mevcut maaşınıza yapılacak zam oranını veya tutarını kolayca hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Mevcut Maaş (TL):</label>
+                    <input type="number" id="mevcutMaas" placeholder="Örn: 30000">
+                </div>
+                <div class="form-group">
+                    <label>Zam Oranı (%):</label>
+                    <input type="number" id="zamOrani" placeholder="Örn: 25">
+                </div>
+            `;
+        } else if (toolKey === 'kidem') {
+            pageTitleElem.innerText = 'Kıdem Tazminatı Hesaplama | Para Hesap';
+            titleElem.innerText = 'Kıdem Tazminatı Hesaplama';
+            descElem.innerText = 'Çalışma sürenize ve brüt ücretinize göre kıdem tazminatınızı hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Giydirilmiş Brüt Ücret (TL):</label>
+                    <input type="number" id="brutUcret" placeholder="Örn: 40000">
+                </div>
+                <div class="form-group">
+                    <label>İşe Giriş Tarihi:</label>
+                    <input type="date" id="girisTarihi">
+                </div>
+                <div class="form-group">
+                    <label>İşten Çıkış Tarihi:</label>
+                    <input type="date" id="cikisTarihi">
+                </div>
+            `;
+        } else if (toolKey === 'kdv') {
+            pageTitleElem.innerText = 'KDV Hesaplama (Dahil / Hariç) | Para Hesap';
+            titleElem.innerText = 'KDV Dahil / Hariç Hesaplama';
+            descElem.innerText = 'Belirlediğiniz tutar üzerinden KDV ekleyin veya KDV hariç tutarı hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Tutar (TL):</label>
+                    <input type="number" id="kdvTutar" placeholder="Örn: 1000">
+                </div>
+                <div class="form-group">
+                    <label>KDV Oranı:</label>
+                    <select id="kdvOrani">
+                        <option value="20">%20 KDV</option>
+                        <option value="10">%10 KDV</option>
+                        <option value="1">%1 KDV</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>İşlem Türü:</label>
+                    <select id="kdvTip">
+                        <option value="haric-dahil">KDV Hariçten Dahile</option>
+                        <option value="dahil-haric">KDV Dahilden Hariçe</option>
+                    </select>
+                </div>
+            `;
+        } else if (toolKey === 'kar-zarar') {
+            pageTitleElem.innerText = 'Kâr / Zarar Oranı Hesaplama | Para Hesap';
+            titleElem.innerText = 'Kâr / Zarar Oranı Hesaplama';
+            descElem.innerText = 'Maliyet ve satış fiyatı üzerinden kâr veya zarar yüzdesini hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Maliyet Fiyatı (TL):</label>
+                    <input type="number" id="maliyet" placeholder="Örn: 500">
+                </div>
+                <div class="form-group">
+                    <label>Satış Fiyatı (TL):</label>
+                    <input type="number" id="satis" placeholder="Örn: 750">
+                </div>
+            `;
+        } else if (toolKey === 'iskonto') {
+            pageTitleElem.innerText = 'İskonto (İndirim) Hesaplama | Para Hesap';
+            titleElem.innerText = 'İskonto (İndirim) Hesaplama';
+            descElem.innerText = 'Liste fiyatı üzerinden yapılacak indirim miktarını ve net tutarı hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Liste Fiyatı (TL):</label>
+                    <input type="number" id="listeFiyat" placeholder="Örn: 1200">
+                </div>
+                <div class="form-group">
+                    <label>İndirim Oranı (%):</label>
+                    <input type="number" id="indirimOran" placeholder="Örn: 15">
+                </div>
+            `;
+        } else if (toolKey === 'zekat') {
+            pageTitleElem.innerText = 'Zekat Hesaplama | Para Hesap';
+            titleElem.innerText = 'Zekat Hesaplama Aracı';
+            descElem.innerText = 'Nisap miktarı ve mal varlıklarınıza göre vermeniz gereken zekat tutarını hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Nakit ve Altın Değeri Toplamı (TL):</label>
+                    <input type="number" id="servet" placeholder="Örn: 200000">
+                </div>
+                <div class="form-group">
+                    <label>Ticari Mal ve Alacaklar (TL):</label>
+                    <input type="number" id="ticariMal" placeholder="Örn: 50000">
+                </div>
+                <div class="form-group">
+                    <label>Toplam Borçlar (TL):</label>
+                    <input type="number" id="borclar" placeholder="Örn: 30000">
+                </div>
+            `;
+        } else if (toolKey === 'fitre') {
+            pageTitleElem.innerText = 'Fitre Hesaplama | Para Hesap';
+            titleElem.innerText = 'Fitre Hesaplama Aracı';
+            descElem.innerText = 'Aile bireyi sayısına göre güncel yıl fitre bağış tutarını hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Aile Bireyi Sayısı:</label>
+                    <input type="number" id="kisiSayisi" value="1" placeholder="Örn: 4">
+                </div>
+                <div class="form-group">
+                    <label>Günlük Fitre Bedeli (TL) [Diyanet Bazlı]:</label>
+                    <input type="number" id="fitreBedeli" value="130" placeholder="Örn: 130">
+                </div>
+            `;
+        } else if (toolKey === 'miras') {
+            pageTitleElem.innerText = 'Miras Payı Hesaplama | Para Hesap';
+            titleElem.innerText = 'Miras Payı Hesaplama';
+            descElem.innerText = 'Tereke varlığı üzerinden yasal mirasçı pay dağılımını hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Toplam Tereke (Miras) Değeri (TL):</label>
+                    <input type="number" id="tereke" placeholder="Örn: 1000000">
+                </div>
+                <div class="form-group">
+                    <label>Çocuk Sayısı:</label>
+                    <input type="number" id="mirasciCocuk" value="2">
+                </div>
+            `;
+        } else if (toolKey === 'vki') {
+            pageTitleElem.innerText = 'Vücut Kitle İndeksi (VKİ) Hesaplama | Para Hesap';
+            titleElem.innerText = 'Vücut Kitle İndeksi (VKİ)';
+            descElem.innerText = 'Boy ve kilo değerlerinize göre vücut kitle indeksinizi ve kilo durumunuzu öğrenin.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Boy (cm):</label>
+                    <input type="number" id="boy" placeholder="Örn: 175">
+                </div>
+                <div class="form-group">
+                    <label>Kilo (kg):</label>
+                    <input type="number" id="kilo" placeholder="Örn: 75">
+                </div>
+            `;
+        } else if (toolKey === 'kalori') {
+            pageTitleElem.innerText = 'Günlük Kalori İhtiyacı Hesaplama | Para Hesap';
+            titleElem.innerText = 'Günlük Kalori İhtiyacı';
+            descElem.innerText = 'Yaş, boy, kilo ve aktivite düzeyinize göre günlük alman gereken kalori miktarını hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Cinsiyet:</label>
+                    <select id="cinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select>
+                </div>
+                <div class="form-group">
+                    <label>Kilo (kg):</label>
+                    <input type="number" id="kaloriKilo" placeholder="Örn: 75">
+                </div>
+                <div class="form-group">
+                    <label>Boy (cm):</label>
+                    <input type="number" id="kaloriBoy" placeholder="Örn: 175">
+                </div>
+                <div class="form-group">
+                    <label>Yaş:</label>
+                    <input type="number" id="kaloriYas" placeholder="Örn: 30">
+                </div>
+            `;
+        } else if (toolKey === 'ideal-kilo') {
+            pageTitleElem.innerText = 'İdeal Kilo Hesaplama | Para Hesap';
+            titleElem.innerText = 'İdeal Kilo Hesaplama';
+            descElem.innerText = 'Boy ve cinsiyetinize göre en uygun ideal kilonuzu hesaplayın.';
+            formElem.innerHTML = `
+                <div class="form-group">
+                    <label>Cinsiyet:</label>
+                    <select id="idealCinsiyet"><option value="erkek">Erkek</option><option value="kadin">Kadın</option></select>
+                </div>
+                <div class="form-group">
+                    <label>Boy (cm):</label>
+                    <input type="number" id="idealBoy" placeholder="Örn: 175">
+                </div>
+            `;
+        }
+        window.scrollTo({ top: 250, behavior: 'smooth' });
     }
 
     function hesapla() {
-        const sonucAlani = document.getElementById('sonucAlani');
-        sonucAlani.style.display = 'block';
+        const sonucDiv = document.getElementById('sonucAlani');
+        sonucDiv.style.display = 'block';
+        let sonucMetni = '';
 
         if (currentTip === 'brutten-nete') {
-            let brut = parseFloat(document.getElementById('brutMaas').value) || 0;
-            let net = brut * 0.71; 
-            sonucAlani.innerHTML = `Tahmini Net Ele Geçen Maaş: <b style="color:#0056b3; font-size:18px;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
+            const brut = parseFloat(document.getElementById('brutMaas').value) || 0;
+            if (brut <= 0) {
+                sonucDiv.innerHTML = 'Lütfen geçerli bir brüt maaş tutarı giriniz.';
+                return;
+            }
+            const sgk = brut * 0.14;
+            const issizlik = brut * 0.01;
+            const vergiMatrahi = brut - (sgk + issizlik);
+            const gelirVergisi = vergiMatrahi * 0.15;
+            const damgaVergisi = brut * 0.00759;
+            const net = brut - (sgk + issizlik + gelirVergisi + damgaVergisi);
+            sonucMetni = `<strong>Hesaplama Sonucu:</strong><br>
+                Brüt Maaş: ${brut.toLocaleString('tr-TR')} TL<br>
+                SGK İşçi Payı: ${sgk.toLocaleString('tr-TR')} TL<br>
+                İşsizlik Primi: ${issizlik.toLocaleString('tr-TR')} TL<br>
+                Tahmini Net Maaş: <strong>${net.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'maas-zam') {
-            let maas = parseFloat(document.getElementById('maasMevcut').value) || 0;
-            let zam = parseFloat(document.getElementById('maasZam').value) || 0;
-            let zamMiktar = (maas * zam) / 100;
-            sonucAlani.innerHTML = `Zam Miktarı: <b>${zamMiktar.toLocaleString('tr-TR')} TL</b><br>Yeni Maaş: <b style="color:#0056b3;">${(maas + zamMiktar).toLocaleString('tr-TR')} TL</b>`;
+            const mevcut = parseFloat(document.getElementById('mevcutMaas').value) || 0;
+            const oran = parseFloat(document.getElementById('zamOrani').value) || 0;
+            const fark = mevcut * (oran / 100);
+            const yeni = mevcut + fark;
+            sonucMetni = `<strong>Zam Hesaplama Sonucu:</strong><br>
+                Zam Tutarı: ${fark.toLocaleString('tr-TR')} TL<br>
+                Yeni Maaşınız: <strong>${yeni.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'kidem') {
-            let yil = parseFloat(document.getElementById('kidemYil').value) || 0;
-            let maas = parseFloat(document.getElementById('kidemMaas').value) || 0;
-            let net = (yil * maas) * 0.99241;
-            sonucAlani.innerHTML = `Net Kıdem Tazminatı: <b style="color:#0056b3;">${net.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
+            const ucret = parseFloat(document.getElementById('brutUcret').value) || 0;
+            const giris = new Date(document.getElementById('girisTarihi').value);
+            const cikis = new Date(document.getElementById('cikisTarihi').value);
+            if (!giris || !cikis || isNaN(giris) || isNaN(cikis)) {
+                sonucDiv.innerHTML = 'Lütfen geçerli tarih bilgileri giriniz.';
+                return;
+            }
+            const diffTime = Math.abs(cikis - giris);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const yillar = diffDays / 365;
+            const tazminat = ucret * yillar;
+            sonucMetni = `<strong>Kıdem Tazminatı Sonucu:</strong><br>
+                Toplam Çalışma Süresi: ${yillar.toFixed(2)} Yıl<br>
+                Brüt Kıdem Tazminatı: <strong>${tazminat.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'kdv') {
-            let tutar = parseFloat(document.getElementById('kdvTutar').value) || 0;
-            let oran = parseFloat(document.getElementById('kdvOran').value);
-            let tur = document.getElementById('kdvTur').value;
-            if (tur === 'haric') {
-                let kdv = (tutar * oran) / 100;
-                sonucAlani.innerHTML = `KDV Tutarı: <b>${kdv.toFixed(2)} TL</b><br>KDV Dahil Toplam: <b style="color:#0056b3;">${(tutar + kdv).toFixed(2)} TL</b>`;
+            const tutar = parseFloat(document.getElementById('kdvTutar').value) || 0;
+            const oran = parseFloat(document.getElementById('kdvOrani').value) || 20;
+            const tip = document.getElementById('kdvTip').value;
+            if (tip === 'haric-dahil') {
+                const kdvTutar = tutar * (oran / 100);
+                sonucMetni = `KDV Dahil Tutar: <strong>${(tutar + kdvTutar).toLocaleString('tr-TR')} TL</strong> (KDV: ${kdvTutar.toLocaleString('tr-TR')} TL)`;
             } else {
-                let matrah = tutar / (1 + (oran/100));
-                let kdv = tutar - matrah;
-                sonucAlani.innerHTML = `KDV Hariç Matrah: <b>${matrah.toFixed(2)} TL</b><br>KDV Tutarı: <b style="color:#0056b3;">${kdv.toFixed(2)} TL</b>`;
+                const haricTutar = tutar / (1 + oran / 100);
+                const kdvTutar = tutar - haricTutar;
+                sonucMetni = `KDV Hariç Tutar: <strong>${haricTutar.toLocaleString('tr-TR')} TL</strong> (KDV: ${kdvTutar.toLocaleString('tr-TR')} TL)`;
             }
         } else if (currentTip === 'kar-zarar') {
-            let alis = parseFloat(document.getElementById('alisFiyat').value) || 0;
-            let satis = parseFloat(document.getElementById('satisFiyat').value) || 0;
-            let fark = satis - alis;
-            let oran = (fark / alis) * 100;
-            sonucAlani.innerHTML = `Net Fark: <b>${fark.toLocaleString('tr-TR')} TL</b><br>Kâr/Zarar Oranı: <b style="color:#0056b3;">%${oran.toFixed(2)}</b>`;
+            const maliyet = parseFloat(document.getElementById('maliyet').value) || 0;
+            const satis = parseFloat(document.getElementById('satis').value) || 0;
+            const fark = satis - maliyet;
+            const oran = maliyet > 0 ? (fark / maliyet) * 100 : 0;
+            sonucMetni = `Kâr/Zarar Tutarı: ${fark.toLocaleString('tr-TR')} TL<br>Oran: <strong>%${oran.toFixed(2)}</strong>`;
         } else if (currentTip === 'iskonto') {
-            let etiket = parseFloat(document.getElementById('etiketFiyat').value) || 0;
-            let indirim = parseFloat(document.getElementById('indirimOran').value) || 0;
-            let tutar = (etiket * indirim) / 100;
-            sonucAlani.innerHTML = `İndirim Tutarı: <b>${tutar.toLocaleString('tr-TR')} TL</b><br>Ödenecek Tutar: <b style="color:#0056b3;">${(etiket - tutar).toLocaleString('tr-TR')} TL</b>`;
+            const liste = parseFloat(document.getElementById('listeFiyat').value) || 0;
+            const indOran = parseFloat(document.getElementById('indirimOran').value) || 0;
+            const indirimTutar = liste * (indOran / 100);
+            const netFiyat = liste - indirimTutar;
+            sonucMetni = `İndirim Tutarı: ${indirimTutar.toLocaleString('tr-TR')} TL<br>İndirimli Net Fiyat: <strong>${netFiyat.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'zekat') {
-            let nakit = parseFloat(document.getElementById('zekatNakit').value) || 0;
-            let altin = parseFloat(document.getElementById('zekatAltin').value) || 0;
-            let borc = parseFloat(document.getElementById('zekatBorc').value) || 0;
-            let netVarlik = (nakit + altin) - borc;
-            let zekat = netVarlik > 0 ? netVarlik * 0.025 : 0;
-            sonucAlani.innerHTML = `Net Varlık: <b>${netVarlik.toLocaleString('tr-TR')} TL</b><br>Verilmesi Gereken Zekat (1/40): <b style="color:#0056b3;">${zekat.toLocaleString('tr-TR', {maximumFractionDigits:2})} TL</b>`;
+            const servet = parseFloat(document.getElementById('servet').value) || 0;
+            const ticari = parseFloat(document.getElementById('ticariMal').value) || 0;
+            const borc = parseFloat(document.getElementById('borclar').value) || 0;
+            const netServet = Math.max(0, (servet + ticari) - borc);
+            const zekatTutari = netServet >= 80180 ? netServet * 0.025 : 0; // Temsili nisap sınırı
+            sonucMetni = `Net Zekat Matrahı: ${netServet.toLocaleString('tr-TR')} TL<br>Ödenmesi Gereken Zekat: <strong>${zekatTutari.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'fitre') {
-            let kisi = parseFloat(document.getElementById('fitreKisi').value) || 0;
-            let tutar = parseFloat(document.getElementById('fitreTutar').value) || 180;
-            sonucAlani.innerHTML = `Toplam Fitre Tutarı: <b style="color:#0056b3;">${(kisi * tutar).toLocaleString('tr-TR')} TL</b>`;
+            const kisi = parseInt(document.getElementById('kisiSayisi').value) || 1;
+            const bedel = parseFloat(document.getElementById('fitreBedeli').value) || 130;
+            const toplam = kisi * bedel;
+            sonucMetni = `Toplam Fitre Bedeli: <strong>${toplam.toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'miras') {
-            let toplam = parseFloat(document.getElementById('mirasTutar').value) || 0;
-            let erkek = parseFloat(document.getElementById('erkekCocuk').value) || 0;
-            let kiz = parseFloat(document.getElementById('kizCocuk').value) || 0;
-            let hisse = (erkek * 2) + kiz;
-            let birHisse = hisse > 0 ? toplam / hisse : 0;
-            sonucAlani.innerHTML = `Erkek Çocuk Başına Pay: <b>${(birHisse * 2).toLocaleString('tr-TR')} TL</b><br>Kız Çocuk Başına Pay: <b>${birHisse.toLocaleString('tr-TR')} TL</b>`;
+            const tereke = parseFloat(document.getElementById('tereke').value) || 0;
+            const cocuk = parseInt(document.getElementById('mirasciCocuk').value) || 1;
+            sonucMetni = `Tereke Toplamı: ${tereke.toLocaleString('tr-TR')} TL<br>Çocuk Başına Düşen Tahmini Pay: <strong>${(tereke / (cocuk + 1)).toLocaleString('tr-TR')} TL</strong>`;
         } else if (currentTip === 'vki') {
-            let boy = parseFloat(document.getElementById('vkiBoy').value) / 100 || 0;
-            let kilo = parseFloat(document.getElementById('vkiKilo').value) || 0;
-            let vki = (boy > 0) ? kilo / (boy * boy) : 0;
-            sonucAlani.innerHTML = `Vücut Kitle İndeksiniz: <b style="color:#0056b3;">${vki.toFixed(1)}</b>`;
+            const boy = (parseFloat(document.getElementById('boy').value) || 0) / 100;
+            const kilo = parseFloat(document.getElementById('kilo').value) || 0;
+            if (boy <= 0 || kilo <= 0) { sonucDiv.innerHTML = 'Lütfen geçerli boy ve kilo giriniz.'; return; }
+            const vki = kilo / (boy * boy);
+            let durum = 'Normal';
+            if (vki < 18.5) durum = 'Zayıf';
+            else if (vki >= 25 && vki < 30) durum = 'Kilolu';
+            else if (vki >= 30) durum = 'Obez';
+            sonucMetni = `Vücut Kitle İndeksiniz: <strong>${vki.toFixed(2)}</strong> (${durum})`;
         } else if (currentTip === 'kalori') {
-            let kilo = parseFloat(document.getElementById('kaloriKilo').value) || 0;
-            let har = parseFloat(document.getElementById('hareket').value) || 1.2;
-            let kalori = kilo * 24 * har;
-            sonucAlani.innerHTML = `Tahmini Günlük Kalori İhtiyacı: <b style="color:#0056b3;">${kalori.toFixed(0)} kcal</b>`;
+            const kilo = parseFloat(document.getElementById('kaloriKilo').value) || 75;
+            const boy = parseFloat(document.getElementById('kaloriBoy').value) || 175;
+            const yas = parseFloat(document.getElementById('kaloriYas').value) || 30;
+            const cinsiyet = document.getElementById('cinsiyet').value;
+            let bmr = (10 * kilo) + (6.25 * boy) - (5 * yas);
+            bmr = cinsiyet === 'erkek' ? bmr + 5 : bmr - 161;
+            sonucMetni = `Bazal Metabolizma Hızınız (BMR): <strong>${bmr.toFixed(0)} kcal</strong><br>Günlük Kalori İhtiyacı (Orta Aktivite): <strong>${(bmr * 1.55).toFixed(0)} kcal</strong>`;
         } else if (currentTip === 'ideal-kilo') {
-            let boy = parseFloat(document.getElementById('idealBoy').value) || 0;
-            let cins = document.getElementById('cinsiyet').value;
-            let ideal = cins === 'erkek' ? 50 + 0.91 * (boy - 152.4) : 45.5 + 0.91 * (boy - 152.4);
-            sonucAlani.innerHTML = `Tahmini İdeal Kilonuz: <b style="color:#0056b3;">${ideal.toFixed(1)} kg</b>`;
+            const boy = parseFloat(document.getElementById('idealBoy').value) || 175;
+            const cinsiyet = document.getElementById('idealCinsiyet').value;
+            const ideal = cinsiyet === 'erkek' ? 50 + 0.91 * (boy - 152.4) : 45.5 + 0.91 * (boy - 152.4);
+            sonucMetni = `Hesaplanan İdeal Kilonuz: <strong>${ideal.toFixed(1)} kg</strong>`;
         }
+
+        sonucDiv.innerHTML = sonucMetni;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const tip = urlParams.get('tip') || 'brutten-nete';
-        loadTool(tip);
-    });
+    // İlk açılışta varsayılan aracı yükle
+    loadTool('brutten-nete');
 </script>
 
 </body>
