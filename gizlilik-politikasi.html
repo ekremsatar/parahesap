@@ -1,179 +1,307 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gizlilik Politikası - Para Hesap</title>
-    <style>
-        :root {
-            --primary: #0056b3;
-            --primary-dark: #003d82;
-            --pink-title: #d63384;
-            --bg-light: #f8f9fa;
-            --text-main: #333333;
-            --text-muted: #666666;
-            --border: #dee2e6;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f6f9;
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-        }
-        header.site {
-            background: #ffffff;
-            border-bottom: 1px solid var(--border);
-            padding: 12px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .brand {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
-        .brand span {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-style: italic;
-            font-weight: normal;
-        }
-        .btn-tum {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .main-container {
-            max-width: 800px;
-            margin: 24px auto;
-            padding: 0 16px;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
-        }
-        .card-header {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: var(--primary-dark);
-            font-size: 24px;
-            margin: 0 0 6px 0;
-        }
-        .subtitle {
-            color: var(--pink-title);
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .content-text {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #444444;
-        }
-        h2 {
-            font-size: 17px;
-            color: var(--primary-dark);
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 30px 16px;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-            background-color: #ffffff;
-        }
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-    </style>
-</head>
-<body>
 
-<header class="site">
-    <div class="nav-wrap">
-        <a href="index.html" class="brand">
-            parahesap.site
-            <span>Anında hesapla, geleceğini planla</span>
-        </a>
-        <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
+<!-- GİZLİLİK POLİTİKASI, ÇEREZLER VE KVKK -->
+<div id="gizlilik" class="main-card policy-text">
+    <div class="card-header">
+        <h2>🔒 Gizlilik Politikası, Çerezler ve KVKK Aydınlatma Metni</h2>
     </div>
-</header>
 
-<main class="main-container">
-    <div class="card">
-        <div class="card-header">
-            <h1>Gizlilik Politikası</h1>
-            <div class="subtitle">Kişisel Verilerinizin Korunması Hakkında Bilgilendirme</div>
-        </div>
-        
-        <div class="content-text">
-            <p><strong>parahesap.site</strong> olarak ziyaretçilerimizin gizliliğine ve kişisel verilerinin korunmasına büyük önem veriyoruz. Bu gizlilik politikası belgesi, sitemizde toplanan ve işlenen verilerin kapsamını ve kullanım şartlarını açıklamaktadır.</p>
+    <p><strong>Son Güncelleme:</strong> 27 Ekim 2026</p>
 
-            <h2>1. Kişisel Verilerin Toplanması ve Kullanımı</h2>
-            <p>Sitemizde yer alan hesaplama araçlarına girdiğiniz maaş, tutar, oran, kilo veya boy gibi veriler hiçbir şekilde sunucularımıza kaydedilmez. Tüm hesaplama işlemleri tarayıcınız (browser) üzerinde anlık olarak istemci tarafında (Client-Side) gerçekleştirilir.</p>
-
-            <h2>2. Google AdSense ve Çerezler (Cookies)</h2>
-            <p>Sitemizde reklam gösterimi amacıyla üçüncü taraf tedarikçi olarak Google kullanılmaktadır. Google, çerezleri (DoubleClick çerezi dahil) kullanarak kullanıcılarımızın sitemize ve internetteki diğer sitelere yaptıkları ziyaretlere dayalı reklamlar sunar.</p>
-            <p>Ziyaretçilerimiz, Google Reklam ve İçerik Ağı gizlilik politikasını ziyaret ederek kişiselleştirilmiş reklamcılık çerezlerinin kullanımını devre dışı bırakabilirler.</p>
-
-            <h2>3. Analiz ve Log Dosyaları</h2>
-            <p>Standart web sunucularında olduğu gibi sitemizde de genel site trafiğini analiz etmek ve güvenliği sağlamak amacıyla anonim erişim log kayıtları (IP adresi, tarayıcı türü, ziyaret zamanı) tutulabilir.</p>
-        </div>
-
-        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
-    </div>
-</main>
-
-<footer>
-    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
-    <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     <p>
-        <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
-        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
-        <a href="hakkimizda.html">Hakkımızda</a> | 
-        <a href="iletisim.html">İletişim</a> | 
-        <a href="blog/index.html">Blog</a>
+        parahesap.site olarak ziyaretçilerimizin gizliliğine, kişisel
+        verilerinin korunmasına ve dijital güvenliğine önem veriyoruz.
+        Bu metin; internet sitemizi ziyaret ettiğinizde hangi bilgilerin
+        işlenebileceğini, bu bilgilerin hangi amaçlarla kullanılabileceğini,
+        çerezlerin çalışma biçimini ve kişisel verilerinizle ilgili haklarınızı
+        açıklamak amacıyla hazırlanmıştır.
     </p>
-</footer>
 
-</body>
-</html>
+    <p>
+        Bu açıklamalar 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK)
+        ve uygulanabilir diğer mevzuat dikkate alınarak hazırlanmıştır.
+        Gerçek veri işleme faaliyetlerimiz, kullandığımız hizmetler ve
+        yürürlükteki hukuki yükümlülüklerimiz esas alınır.
+    </p>
+
+    <h3>1. Veri Sorumlusu ve İletişim</h3>
+
+    <p>
+        parahesap.site internet sitesinin işletilmesinden sorumlu kişi veya
+        kuruluş, yürürlükteki mevzuat kapsamında veri sorumlusu sıfatını
+        taşıdığı ölçüde kişisel veri işleme faaliyetlerinden sorumludur.
+    </p>
+
+    <p>
+        Gizlilik, kişisel verilerin korunması, çerezler ve veri güvenliği
+        hakkındaki sorularınız için sitede belirtilen iletişim kanallarını
+        kullanabilirsiniz. Başvurularınızın doğru şekilde değerlendirilebilmesi
+        için talebinizin konusu hakkında yeterli bilgi vermeniz önerilir.
+    </p>
+
+    <h3>2. İşlenebilecek Bilgiler</h3>
+
+    <p>
+        Sitemizin kullanımı sırasında, kullanılan teknik altyapıya ve
+        tercih ettiğiniz özelliklere bağlı olarak aşağıdaki bilgi
+        kategorileri işlenebilir:
+    </p>
+
+    <ul>
+        <li>
+            <strong>Teknik kullanım verileri:</strong> IP adresi,
+            erişim tarihi ve saati, talep edilen sayfalar, tarayıcı türü,
+            işletim sistemi ve hata kayıtları.
+        </li>
+        <li>
+            <strong>İletişim bilgileri:</strong> İletişim formunu
+            kullanmanız hâlinde adınız, e-posta adresiniz ve mesajınızda
+            kendi isteğinizle paylaştığınız bilgiler.
+        </li>
+        <li>
+            <strong>Çerez ve tercih bilgileri:</strong> Kullanılan
+            çerezlerin türüne ve izin tercihlerinize bağlı olarak
+            elde edilebilen bilgiler.
+        </li>
+        <li>
+            <strong>Reklam ve ölçüm bilgileri:</strong> İlgili
+            hizmetlerin ayarlarına, kullanılan teknolojilere ve
+            verdiğiniz izinlere bağlı olarak reklam gösterimi,
+            reklam performansı ve site kullanımına ilişkin veriler.
+        </li>
+    </ul>
+
+    <p>
+        Ziyaretçilerden ihtiyaç duyulmayan kişisel bilgileri talep
+        etmemeye özen gösteriyoruz. İletişim formunu kullanırken
+        banka hesap bilgileri, şifreler, kimlik numaraları veya
+        benzeri hassas bilgileri mesajınıza eklemeyiniz.
+    </p>
+
+    <h3>3. Hesaplama Araçları ve Finansal Veriler</h3>
+
+    <p>
+        Sitemizde döviz ve altın dönüştürme, zekât hesaplama,
+        fitre ve nisap hesaplama, kâr payı simülasyonu ve finansman
+        hesaplama gibi araçlar bulunmaktadır.
+    </p>
+
+    <p>
+        Bu araçların mevcut sürümünde kullanılan hesaplama
+        fonksiyonları, ilgili alanlara girilen değerleri tarayıcıda
+        JavaScript aracılığıyla işler. Bu işlemler için girilen
+        finansal tutarların hesaplama sonucunu oluşturmak üzere
+        ayrıca sunucuya gönderilmesi gerekmeyebilir.
+    </p>
+
+    <p>
+        Bununla birlikte, barındırma sağlayıcısı kayıtları,
+        üçüncü taraf betikleri, reklam hizmetleri, güvenlik araçları
+        veya başka entegrasyonlar farklı teknik veriler işleyebilir.
+        Bu nedenle, bütün site kullanımının hiçbir veriyi sunucuya
+        ya da üçüncü taraflara aktarmadığı yönünde genel bir garanti
+        verilmez. Veri akışları, fiilen kullanılan altyapıya göre
+        değerlendirilmelidir.
+    </p>
+
+    <h3>4. Kişisel Verilerin İşlenme Amaçları</h3>
+
+    <p>
+        Kişisel veriler, somut faaliyetimize ve uygulanabilir hukuki
+        şartlara bağlı olarak aşağıdaki amaçlarla işlenebilir:
+    </p>
+
+    <ul>
+        <li>İnternet sitesinin çalışmasını ve erişilebilirliğini sağlamak.</li>
+        <li>Teknik hataları tespit etmek ve gidermek.</li>
+        <li>İletişim taleplerini değerlendirmek ve yanıtlamak.</li>
+        <li>Bilgi güvenliğini ve kötüye kullanımın önlenmesini desteklemek.</li>
+        <li>Site kullanımını anlamak ve hizmet kalitesini geliştirmek.</li>
+        <li>Geçerli tercihler ve izinler kapsamında reklam göstermek.</li>
+        <li>Mevzuattan doğan yükümlülükleri yerine getirmek.</li>
+    </ul>
+
+    <h3>5. Kişisel Verilerin İşlenmesinin Hukuki Sebepleri</h3>
+
+    <p>
+        KVKK kapsamında kişisel verilerin işlenmesi, her işlem
+        bakımından geçerli olan hukuki işleme şartına dayanmalıdır.
+        Somut duruma göre bir hakkın tesisi, kullanılması veya
+        korunması, hukuki yükümlülüğün yerine getirilmesi, sözleşmenin
+        kurulması veya ifası ya da kanunda öngörülen diğer şartlar
+        uygulanabilir.
+    </p>
+
+    <p>
+        Açık rıza gerektiren işlemlerde, ilgili mevzuata uygun
+        izin mekanizmaları kullanılmalıdır. Açık rıza gerektirmeyen
+        bir hukuki şartın bulunduğu durumlarla rızaya dayalı işlemler
+        birbirinden ayrı değerlendirilir.
+    </p>
+
+    <h3>6. Çerezler ve Benzer Teknolojiler</h3>
+
+    <p>
+        Çerezler, internet sitelerinin tarayıcınızda saklayabildiği
+        küçük veri dosyalarıdır. Bazı çerezler sitenin temel
+        işlevlerinin çalışmasına yardımcı olurken bazıları tercihlerin
+        hatırlanması, istatistik oluşturulması veya reklam hizmetlerinin
+        sunulması amacıyla kullanılabilir.
+    </p>
+
+    <p>Çerezler genel olarak şu kategorilerde değerlendirilebilir:</p>
+
+    <ul>
+        <li>
+            <strong>Zorunlu çerezler:</strong> Güvenlik, temel
+            işlevler veya talep edilen hizmetin sunulması için
+            gerekli olabilen çerezler.
+        </li>
+        <li>
+            <strong>Tercih çerezleri:</strong> Kullanıcının tema
+            veya benzeri tercihlerini hatırlamaya yardımcı olan çerezler.
+        </li>
+        <li>
+            <strong>Analitik çerezler:</strong> Site kullanımını
+            anlamak ve performansı değerlendirmek için kullanılabilen
+            çerezler.
+        </li>
+        <li>
+            <strong>Reklam çerezleri:</strong> Reklam sunumu,
+            reklam ölçümü veya kişiselleştirme amacıyla kullanılabilen
+            çerezler.
+        </li>
+    </ul>
+
+    <p>
+        Kullanılan çerezlerin gerçek listesi, amaçları, sağlayıcıları
+        ve saklama süreleri site üzerinde fiilen etkin olan hizmetlere
+        göre belirlenmelidir. Tarayıcı ayarlarından çerezleri
+        görüntüleyebilir veya silebilirsiniz. Bazı çerezleri
+        engellemek sitenin belirli özelliklerini etkileyebilir.
+    </p>
+
+    <h3>7. Google AdSense ve Üçüncü Taraf Hizmetleri</h3>
+
+    <p>
+        Sitemizde Google AdSense veya başka reklam hizmetleri
+        kullanılması durumunda, bu hizmetlerin sağlayıcıları reklam
+        sunumu, ölçümü, güvenliği ve ilgili tercihlerin uygulanması
+        için belirli teknik verileri işleyebilir.
+    </p>
+
+    <p>
+        Kullanılan hizmetin ayarlarına ve geçerli izinlere bağlı
+        olarak üçüncü taraf çerezleri veya benzer teknolojiler
+        devreye girebilir. Bu sağlayıcıların veri işleme faaliyetleri
+        kendi gizlilik belgelerine ve ilgili mevzuata tabidir.
+    </p>
+
+    <p>
+        Reklam kişiselleştirme tercihleri, kullanılabilir oldukları
+        ölçüde ilgili reklam veya gizlilik ayarlarından yönetilebilir.
+        Kişiselleştirilmiş reklamları kapatmak, bütün reklamların
+        tamamen ortadan kalkacağı anlamına gelmeyebilir.
+    </p>
+
+    <p>
+        Avrupa Ekonomik Alanı, Birleşik Krallık veya diğer bölgelerde
+        geçerli olabilecek izin ve rıza gereklilikleri, ilgili
+        ziyaretçilerin durumuna ve kullanılan reklam teknolojilerine
+        göre ayrıca değerlendirilmelidir.
+    </p>
+
+    <h3>8. Kişisel Verilerin Aktarılması</h3>
+
+    <p>
+        Kişisel veriler, yalnızca ilgili faaliyet için gerekli
+        olduğu ve uygun hukuki şartların bulunduğu durumlarda;
+        barındırma, teknik destek, güvenlik, iletişim veya reklam
+        hizmeti sağlayıcıları gibi ilgili alıcılara aktarılabilir.
+    </p>
+
+    <p>
+        Bazı hizmet sağlayıcıların yurt dışında bulunması veya
+        verileri yurt dışında işlemesi söz konusu olabilir.
+        Böyle bir durumda kişisel verilerin yurt dışına aktarılması,
+        KVKK'nın yürürlükteki hükümlerine uygun şekilde
+        değerlendirilmelidir.
+    </p>
+
+    <h3>9. Saklama Süreleri ve Veri Güvenliği</h3>
+
+    <p>
+        Kişisel veriler, işleme amacının gerektirdiği süre boyunca
+        ve ilgili mevzuatta öngörülen saklama yükümlülükleri
+        dikkate alınarak muhafaza edilmelidir. Süresi dolan ve
+        saklanmasını gerektiren başka bir hukuki sebep bulunmayan
+        veriler, uygulanabilir usullere göre silinir, yok edilir
+        veya anonim hâle getirilir.
+    </p>
+
+    <p>
+        Verilerin yetkisiz erişime, kayba, değiştirilmeye ve
+        hukuka aykırı işlenmeye karşı korunması için uygun
+        teknik ve idari tedbirlerin alınması hedeflenir.
+        İnternet üzerinden yapılan veri aktarımının veya
+        elektronik saklamanın mutlak güvenli olduğu garanti edilemez.
+    </p>
+
+    <h3>10. KVKK Kapsamındaki Haklarınız</h3>
+
+    <p>
+        KVKK'nın 11. maddesi ve uygulanabilir diğer hükümler
+        çerçevesinde, şartları oluştuğunda kişisel verilerinizin
+        işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme,
+        işleme amacını ve amaca uygun kullanılıp kullanılmadığını
+        öğrenme, aktarım yapılan üçüncü kişileri bilme,
+        eksik veya yanlış verilerin düzeltilmesini isteme ve
+        kanuni şartlar dâhilinde silme veya yok etme talebinde
+        bulunma haklarına sahip olabilirsiniz.
+    </p>
+
+    <p>
+        Ayrıca ilgili mevzuattaki koşullar kapsamında otomatik
+        analiz sonuçlarına itiraz etme, kanuna aykırı işleme
+        nedeniyle zarara uğranması hâlinde giderim talep etme
+        ve diğer uygulanabilir haklarınızı kullanma imkânınız
+        bulunabilir.
+    </p>
+
+    <p>
+        Başvurularınızı, veri sorumlusunun kimliği ve iletişim
+        bilgileri netleştirilmiş uygun başvuru kanalı üzerinden
+        iletebilirsiniz. Başvurular, mevzuatta belirtilen usul
+        ve süreler çerçevesinde değerlendirilir. Kimlik doğrulama
+        için gerekli olmayan hassas bilgileri başvurunuza eklemeyiniz.
+    </p>
+
+    <h3>11. Çocukların Gizliliği</h3>
+
+    <p>
+        Sitemizdeki içerikler genel bilgilendirme amacı taşır.
+        Çocuklara ait kişisel verilerin işlenmesi söz konusu
+        olduğunda, uygulanabilir mevzuat ve gerekli koruma
+        tedbirleri dikkate alınmalıdır. Çocukların kişisel
+        bilgilerinin gereksiz yere paylaşılmamasını öneriyoruz.
+    </p>
+
+    <h3>12. Politika Değişiklikleri</h3>
+
+    <p>
+        Hizmetlerimizde, kullanılan teknolojilerde veya mevzuatta
+        değişiklik olması durumunda bu metin güncellenebilir.
+        Güncel sürüm bu sayfada yayımlanır. Önemli değişiklikler
+        bakımından, gerektiğinde ilgili kişilere ayrıca bilgi
+        verilir veya yeni izinler alınır.
+    </p>
+
+    <h3>13. İletişim</h3>
+
+    <p>
+        Gizlilik politikası ve kişisel verilerle ilgili sorularınız
+        için sitemizdeki İletişim Formu üzerinden bize ulaşabilirsiniz.
+        Veri sorumlusunun açık kimliği, iletişim adresi ve gerekli
+        başvuru bilgileri, site işletmecisinin gerçek bilgileriyle
+        tamamlanmalıdır.
+    </p>
+</div>
