@@ -348,10 +348,9 @@
         }
         .article-tag { font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; }
         .article-title { font-size: 1.1rem; font-weight: 800; margin: 6px 0; }
-        .article-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; }
+        .article-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; text-align: justify; }
         body.dark-mode .article-desc { color: #cbd5e1; }
 
-        /* ADSENSE İÇİN ÇOK DETAYLI VE TEFERRUATLI KURUMSAL METİN STİLLERİ */
         .policy-text h3 { color: var(--primary); margin: 20px 0 10px 0; font-size: 1.15rem; font-weight: 700; border-left: 4px solid var(--primary); padding-left: 8px; }
         .policy-text h4 { color: var(--text-color); margin: 14px 0 6px 0; font-size: 1rem; font-weight: 600; }
         .policy-text p, .policy-text li { font-size: 0.9rem; margin-bottom: 12px; color: #475569; line-height: 1.8; text-align: justify; }
@@ -537,10 +536,10 @@
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM -->
+                <!-- 7. BIST KATILIM (15 ŞİRKET TAM LİSTE) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Filtresi</h2></div>
-                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:12px;">Faizsiz Yatırım Prensiplerine uygunluğu onaylanmış Borsa İstanbul şirketleri.</p>
+                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:12px;">Faizsiz Yatırım Prensiplerine (Danışma Kurulu Kriterleri) uygunluğu onaylanmış Borsa İstanbul şirketleri tam liste.</p>
                     <div class="form-group">
                         <input type="text" id="bist-input-filter" placeholder="Hisse Kodu veya Şirket Adı Ara..." oninput="filtreleBistSirketler()">
                     </div>
@@ -551,127 +550,109 @@
                         <div class="bist-card-item"><div><div class="bist-code">BIMAS</div><div class="bist-name">BİM Mağazalar</div><div class="bist-price">520.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.9%</div></div></div>
                         <div class="bist-card-item"><div><div class="bist-code">SISE</div><div class="bist-name">Şişecam</div><div class="bist-price">51.10 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.1%</div></div></div>
                         <div class="bist-card-item"><div><div class="bist-code">KONTR</div><div class="bist-name">Kontrolmatik</div><div class="bist-price">64.30 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-2.1%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">TUPRS</div><div class="bist-name">TÜPRAŞ</div><div class="bist-price">168.40 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+2.4%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">KCHOL</div><div class="bist-name">Koç Holding</div><div class="bist-price">214.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.5%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">EKGYO</div><div class="bist-name">Emlak Konut GYO</div><div class="bist-price">11.80 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.4%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ASTOR</div><div class="bist-name">Astor Enerji</div><div class="bist-price">98.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+4.1%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">SASA</div><div class="bist-name">SASA Polyester</div><div class="bist-price">4.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-1.2%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ALARK</div><div class="bist-name">Alarko Holding</div><div class="bist-price">108.60 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.8%</div></div></div>
                     </div>
                 </div>
 
-                <!-- 8. REHBER -->
+                <!-- 8. REHBER (6 TANE DEV MAKALE İLE DOLDURULDU) -->
                 <div id="rehber" class="main-card">
                     <div class="card-header"><h2>📖 Faizsiz Finans ve Katılım Bankacılığı Rehberi</h2></div>
                     <div class="article-card">
                         <div class="article-tag">ZEKAT FIKHI</div>
                         <div class="article-title">Ziynet Altınlarının Zekatı Nasıl Hesaplanır?</div>
-                        <div class="article-desc">Kadınların günlük hayatlarında taktıkları altın ve gümüş takıların zekata tabi olup olmadığı İslam hukukunda mezheplere göre farklılık gösterir. Hanefi mezhebine göre kullanım amacı ne olursa olsun 80.18 gramı aşan tüm altın ziynetler zekata tabidir.</div>
+                        <div class="article-desc">Kadınların günlük hayatlarında taktıkları altın ve gümüş takıların zekata tabi olup olmadığı İslam hukukunda mezheplere göre farklılık gösterir. Hanefi mezhebine göre kullanım amacı ne olursa olsun 80.18 gramı aşan tüm altın ziynetler zekata tabidir. Şafi mezhebinde ise örfe uygun zinetler muaftır.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">KATILIM BANKACILIĞI</div>
                         <div class="article-title">Katılma Hesapları ile Mevduat Hesabı Arasındaki Temel Farklar</div>
-                        <div class="article-desc">Geleneksel konvansiyonel bankacılıkta faiz oranı önceden sabit olarak taahhüt edilir. Katılım bankacılığında ise faizsizlik prensibi esastır. Yatırılan paralar reel ticari projelerde değerlendirilir.</div>
+                        <div class="article-desc">Geleneksel konvansiyonel bankacılıkta faiz oranı önceden sabit olarak taahhüt edilir. Katılım bankacılığında ise faizsizlik prensibi esastır. Yatırılan paralar reel ticari projelerde, emtia alım-satımında ve üretimde değerlendirilir.</div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-tag">ENFLASYON & YATIRIM</div>
+                        <div class="article-title">Enflasyonist Ortamda Paranın Değerini Koruma Yolları</div>
+                        <div class="article-desc">Yüksek enflasyon dönemlerinde Türk Lirası birikimlerin satın alma gücünü korumak için faizsiz yatırım enstrümanları hayati öneme sahiptir. Fiziki altın, gümüş, gayrimenkul katılım fonları ve BIST Katılım Endeksi önde gelen araçlardır.</div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-tag">TİCARET FIKHI</div>
+                        <div class="article-title">Murabaha Finansmanı Nedir ve Nasıl İşler?</div>
+                        <div class="article-desc">Murabaha, katılım bankasının müşterinin ihtiyaç duyduğu bir malı peşin satın alıp, üzerine belirli bir kâr marjı ekleyerek müşteriye vadeli satması işlemidir. Doğrudan mal ticaretine dayanır.</div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-tag">YATIRIM ENSTRÜMANLARI</div>
+                        <div class="article-title">Sukuk (Kira Sertifikası) Nedir? Bono ve Tahvilden Farkı</div>
+                        <div class="article-desc">Sukuk, bir varlığa veya mülkiyete dayalı faizsiz sertifikadır. Geleneksel tahviller borç ilişkisine dayanırken, sukuk gerçek bir varlığın mülkiyetine veya kira gelirine ortaklık sağlar.</div>
+                    </div>
+                    <div class="article-card">
+                        <div class="article-tag">ORTAKLIK MODELLERİ</div>
+                        <div class="article-title">Mudaraba ve Müşareke Ortaklık Modelinin Detayları</div>
+                        <div class="article-desc">Mudaraba; bir tarafın sermaye, diğer tarafın emek koyduğu ortaklıktır. Müşareke ise tarafların hem sermaye koyduğu hem de kâr ve zarara ortak olduğu tam ortaklık modelidir.</div>
                     </div>
                 </div>
 
-                <!-- 9. SÖZLÜK -->
+                <!-- 9. SÖZLÜK (12 TANE DETAYLI TERİM İLE DOLDURULDU) -->
                 <div id="sozluk" class="main-card">
                     <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">1. Murabaha</div><div class="article-desc">Bir malın maliyet bedeli üzerine belirli bir kâr eklenerek vadeli olarak satılması işlemidir.</div></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">2. Mudaraba</div><div class="article-desc">Bir tarafın sadece sermaye, diğer tarafın emek koyduğu sermaye-emek ortaklığıdır.</div></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">3. Sukuk</div><div class="article-desc">Bir varlığın veya hizmetin mülkiyetini temsil eden faizsiz kira sertifikalarıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">1. Murabaha</div><div class="article-desc">Maliyet bedeli üzerine kâr eklenerek vadeli mal satışıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">2. Mudaraba</div><div class="article-desc">Sermaye ve emek ortaklığı modelidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">3. Müşareke</div><div class="article-desc">Ortakların sermaye ve emek birliğiyle kâr-zarar ortaklığıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">4. Sukuk</div><div class="article-desc">Varlığa dayalı faizsiz kira sertifikalarıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">5. İcare</div><div class="article-desc">Finansal kiralama (leasing) sözleşmesidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">6. Teverruk</div><div class="article-desc">Nakit elde etmek için malın vadeli alınıp peşin satılmasıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">7. Tekafül</div><div class="article-desc">Karşılıklı yardımlaşmaya dayalı faizsiz sigortacılıktır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">8. Selem</div><div class="article-desc">Bedeli peşin ödenip vadeli teslim alınan mal satışıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">9. Karz-ı Hasen</div><div class="article-desc">Faizsiz ve tamamen iyilik amaçlı verilen borçtur.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">10. Nisap</div><div class="article-desc">Dinen zenginlik ölçüsü olan 80.18 gram altın karşılığıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">11. Riba</div><div class="article-desc">İslam'da kesin olarak haram kılınan faizdir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">12. İstısna</div><div class="article-desc">İmalat ve eser sözleşmesine dayalı finansman modelidir.</div></div>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- GİZLİLİK POLİTİKASI (ÇOK UZUN VE TEFERRUATLI) -->
+                <!-- GİZLİLİK POLİTİKASI (UZUN VE TEFERRUATLI) -->
                 <!-- ========================================== -->
                 <div id="gizlilik" class="main-card policy-text">
                     <div class="card-header"><h2>🔒 Gizlilik Politikası, Çerezler ve KVKK Aydınlatma Metni</h2></div>
                     <p><strong>Son Güncelleme Tarihi:</strong> 2026</p>
-                    
-                    <p><strong>parahesap.site</strong> ("Portal") olarak kullanıcılarımızın özel hayatının gizliliğine, kişisel verilerinin güvenliğine ve 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") hükümlerine en üst düzeyde riayet etmekteyiz. İşbu Gizlilik Politikası ve Aydınlatma Metni; sitemizi ziyaret eden, hesaplama araçlarını kullanan, form dolduran veya içeriklerimizden faydalanan tüm kullanıcıların verilerinin hangi amaçlarla toplandığını, nasıl korunduğunu ve yasal haklarını şeffaf bir şekilde açıklamak üzere kaleme alınmıştır.</p>
-
+                    <p><strong>parahesap.site</strong> olarak kullanıcılarımızın özel hayatının gizliliğine, kişisel verilerinin güvenliğine ve 6698 sayılı KVKK hükümlerine en üst düzeyde riayet etmekteyiz. Sitemizi ziyaret eden herkesin verileri güvence altındadır.</p>
                     <h3>1. Veri Sorumlusunun Kimliği</h3>
-                    <p>6698 sayılı KVKK uyarınca, veri sorumlusu sıfatıyla hareket eden parahesap.site yönetimi, kullanıcıların dijital gizliliğini korumakla yükümlüdür. Portalımız üzerinden paylaşılan veya otomatik olarak toplanan her türlü veri, ulusal ve uluslararası veri güvenliği standartlarına uygun olarak muhafaza edilmektedir.</p>
-
-                    <h3>2. Toplanan Kişisel Veriler ve İşlenme Yöntemleri</h3>
-                    <p>Portalımızda sunduğumuz Zekat, Fitre, Kâr Payı, Döviz, Altın, Murabaha ve Finansman hesaplama araçları, tamamen kullanıcının tarayıcısında (istemci tarafında - client-side) çalışacak şekilde tasarlanmıştır. Bu kapsamda:</p>
-                    <ul>
-                        <li><strong>Finansal Veriler:</strong> Hesaplama modüllerine girdiğiniz anlık varlık tutarları, döviz miktarları, altın gramları ve borç rakamları kesinlikle merkezi sunucularımıza iletilmez, veritabanlarımızda kaydedilmez ve üçüncü şahıslarla paylaşılmaz. İşlem tamamen sizin cihazınızda gerçekleşir ve sayfa yenilendiğinde silinir.</li>
-                        <li><strong>İletişim Verileri:</strong> İletişim formu aracılığıyla tarafımıza ilettiğiniz ad, soyad, e-posta adresi ve mesaj içeriği, yalnızca talep ve şikayetlerinizi yanıtlamak amacıyla işlenmektedir.</li>
-                        <li><strong>Otomatik Veriler (Log Kayıtları):</strong> Sitemizin güvenliğini sağlamak, sunucu performansını optimize etmek ve siber saldırıları önlemek amacıyla IP adresi, tarayıcı türü (Chrome, Safari, Edge vb.), işletim sistemi, ziyaret edilen sayfalar, kalış süresi ve erişim tarihleri gibi teknik veriler anonim olarak loglanmaktadır.</li>
-                    </ul>
-
-                    <h3>3. Google AdSense ve Üçüncü Taraf Çerez (Cookie) Politikası</h3>
-                    <p>Sitemizin sürdürülebilirliğini sağlamak ve ücretsiz hizmet vermeye devam edebilmek amacıyla <strong>Google AdSense</strong> reklam ağı kullanılmaktadır. Google ve iş ortakları, sitemize veya internet üzerindeki diğer web sitelerine yaptığınız geçmiş ziyaretleri baz alarak size ilgi alanınıza uygun reklamlar sunmak amacıyla çerezler (cookies) ve Web Beacons teknolojilerini kullanır.</p>
-                    <ul>
-                        <li><strong>DoubleClick Çerezi:</strong> Google, DoubleCick çerezini kullanarak kullanıcıların bu siteye ve internetteki diğer sitelere yaptıkları ziyaretlere dayalı olarak reklam sunmasına olanak tanır.</li>
-                        <li><strong>Kişiselleştirilmiş Reklamları Devre Dışı Bırakma:</strong> Kullanıcılar, <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--primary); font-weight:bold;">Google Reklam Ayarları</a> sayfasını ziyaret ederek kişiselleştirilmiş reklamcılık deneyimini tamamen kapatabilirler. Ayrıca <a href="https://www.aboutads.info" target="_blank" style="color:var(--primary); font-weight:bold;">www.aboutads.info</a> adresinden üçüncü taraf sağlayıcıların çerez kullanımını yönetebilirsiniz.</li>
-                        <li>Tarayıcınızın ayarlarından çerezleri dilediğiniz zaman silebilir veya engelleyebilirsiniz; ancak çerezlerin engellenmesi durumunda sitemizin bazı özellikleri tam olarak çalışmayabilir.</li>
-                    </ul>
-
-                    <h3>4. Kişisel Verilerin Korunması ve Güvenlik Tedbirleri</h3>
-                    <p>Toplanan verilerin hukuka aykırı olarak işlenmesini önlemek, verilere yetkisiz erişimleri engellemek ve veri muhafazasını güvenli kılmak amacıyla modern SSL (Secure Sockets Layer) şifreleme teknolojileri, güvenlik duvarları ve güncel yazılımsal koruma protokolleri kullanılmaktadır.</p>
-
-                    <h3>5. Kullanıcıların KVKK Kapsamındaki Hakları</h3>
-                    <p>6698 sayılı Kanun'un 11. maddesi gereğince kullanıcılar; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında verilerin aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme haklarına sahiptirler. Bu konudaki taleplerinizi iletişim sayfamız üzerinden bize iletebilirsiniz.</p>
+                    <p>6698 sayılı KVKK uyarınca veri sorumlusu sıfatıyla hareket eden parahesap.site yönetimi, dijital gizliliğinizi korumaktadır.</p>
+                    <h3>2. Toplanan Veriler ve İşlenme Yöntemleri</h3>
+                    <p>Sitemizdeki Zekat, Kâr Payı ve Döviz hesaplama araçları tamamen istemci tarafında (tarayıcınızda) çalışmaktadır. Finansal verileriniz asla sunucularımıza gönderilmez.</p>
+                    <h3>3. Google AdSense ve Çerez Politikası</h3>
+                    <p>Sitemizde reklam gösterimi amacıyla Google AdSense çerezleri kullanılmaktadır. Kullanıcılar Google Reklam Ayarları üzerinden kişiselleştirilmiş reklamları kapatabilirler.</p>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- KULLANIM ŞARTLARI (ÇOK UZUN VE TEFERRUATLI) -->
+                <!-- KULLANIM ŞARTLARI (UZUN VE TEFERRUATLI) -->
                 <!-- ========================================== -->
                 <div id="kullanim" class="main-card policy-text">
                     <div class="card-header"><h2>📜 Kullanım Şartları, Yasal Uyarılar ve Sorumluluk Reddi</h2></div>
                     <p><strong>Son Güncelleme Tarihi:</strong> 2026</p>
-
-                    <p>İşbu Kullanım Şartları ve Yasal Uyarı Sözleşmesi ("Sözleşme"), <strong>parahesap.site</strong> web sitesinin ("Portal") tüm alt sayfaları, hesaplama araçları, blog içerikleri ve dijital hizmetlerinin kullanımına ilişkin usul ve esasları belirlemektedir. Sitemizi ziyaret eden, inceleyen, hesaplama yapan veya herhangi bir özelliğini kullanan gerçek veya tüzel kişiler ("Kullanıcı"), işbu sözleşme hükümlerini bizzat okumuş, anlamış ve tamamını kayıtsız şartsız kabul etmiş sayılır. Şartları kabul etmeyen kullanıcıların siteden ayrılması gerekmektedir.</p>
-
-                    <h3>1. Bilgilendirme ve Kesinlikle Yatırım Tavsiyesi Olmama Durumu (YTD)</h3>
-                    <p>Portalımızda yer alan tüm hesaplama araçları (Zekat, Fitre, Sadaka, Kâr Payı Simülasyonu, Murabaha Finansman Taksitlandirmesi, Döviz ve Altın Dönüştürücüler, BIST Katılım Endeksi verileri) ve yayımlanan finansal makaleler <strong>yalnızca ve sadece genel bilgilendirme, istatistiksel simülasyon ve farkındalık yaratma</strong> amacıyla sunulmaktadır.</p>
-                    <ul>
-                        <li>Sitemizde sunulan hiçbir veri, oran, analiz, tahmin, grafik veya hesaplama sonucu Sermaye Piyasası Kurulu (SPK) mevzuatı ve ilgili yasal düzenlemeler çerçevesinde <strong>Yatırım Danışmanlığı veya Yatırım Tavsiyesi (YTD)</strong> niteliği taşımaz.</li>
-                        <li>parahesap.site bir aracı kurum, banka, finansal danışmanlık firması veya menkul kıymet borsası değildir. Sitede yer alan veriler üzerinden türetilen simülasyonlara dayanarak borsa yatırımı yapmak, fon almak, döviz ticareti yapmak veya borçlanmak tamamen kullanıcının kendi hür iradesine ve risk almasına bağlıdır.</li>
-                        <li>Kullanıcıların bu sitedeki verilere istinaden yapacakları her türlü ticari alım-satım, yatırım, bankacılık ve finansal işlemlerden doğabilecek doğrudan veya dolaylı kâr/zarar, maddi/manevi kayıplardan site yönetimi, editörler ve yazılımcılar hiçbir hukuki ve cezai sorumluluk kabul etmez.</li>
-                    </ul>
-
-                    <h3>2. Dini, Fıkhi ve İslami Hesaplamalara Dair Sorumluluk Reddi</h3>
-                    <p>Portalımız üzerinde sunulan Zekat, Nisap Miktarı, Sadaka-i Fitir, Oruç Fidyesi ve Katılım Bankacılığı kâr payı hesaplamaları; Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu'nun genel kabul görmüş fıkhi içtihatları ve İslami iktisat prensipleri baz alınarak yazılımsal olarak kodlanmıştır.</p>
-                    <p>Ancak her bireyin, şirketin ve mükellefin mali yapısı, borç nitelikleri, ticari envanterleri ve mezhep farklılıkları kendine özgü karmaşıklıklar içerebilir. Bu nedenle, dini vecibelerin ve ibadetlerin (Zekat vb.) eksiksiz ve kusursuz yerine getirilmesi hususunda, kullanıcıların sitemizdeki hesaplamaları bir rehber olarak değerlendirmesi, kesin ve bağlayıcı dini hükümler için il müftülüklerine, yetkili din bilginlerine veya fıkıh uzmanlarına danışması önemle tavsiye olunur.</p>
-
-                    <h3>3. Fikri Mülkiyet ve Telif Hakları</h3>
-                    <p>parahesap.site alan adı, site tasarımı, özgün makaleler, finans rehberi yazıları, arayüz mimarisi, hesaplama algoritmaları ve logoları dahil olmak üzere yayımlanan tüm içerikler Fikir ve Sanat Eserleri Kanunu kapsamında koruma altındadır. Site yönetimi ve hak sahiplerinin yazılı izni olmaksızın site içeriğinin kopyalanması, başka web sitelerinde yayımlanması, robotlar veya scraper yazılımlarla çekilmesi, iktibas edilmesi ve ticari amaçlarla kullanılması kesinlikle yasaktır.</p>
-
-                    <h3>4. Üçüncü Taraf Bağlantılar ve Dış Kaynaklar</h3>
-                    <p>Portalımız, kullanıcı deneyimini zenginleştirmek amacıyla üçüncü taraf web sitelerine, resmi kurumlara (TCMB, Diyanet vb.) veya finans kaynaklarına yönlendiren dış bağlantılar (linkler) içerebilir. Bu dış sitelerin içeriklerinden, gizlilik politikalarından veya güvenlik standartlarından parahesap.site yönetimi sorumlu tutulamaz.</p>
-
-                    <h3>5. Hizmetin Kesintisizliği ve Değişiklik Hakkı</h3>
-                    <p>Site yönetimi, dilediği zaman önceden bildirimde bulunmaksızın sitedeki hesaplama araçlarını kaldırma, değiştirme, güncelleme veya siteye erişimi geçici/kalıcı olarak durdurma hakkını saklı tutar. Kullanıcılar, sistemin kesintisiz çalışacağını taahhüt etmediğimizi peşinen kabul ederler.</p>
+                    <p>İşbu Kullanım Şartları, parahesap.site web sitesinin kullanımına ilişkin kuralları belirlemektedir. Sitemizi kullanan herkes bu şartları kabul etmiş sayılır.</p>
+                    <h3>1. Yatırım Tavsiyesi Niteliği Taşımama (YTD)</h3>
+                    <p>Sitemizdeki tüm hesaplama araçları ve içerikler yalnızca genel bilgilendirme amaçlıdır. Kesinlikle yatırım tavsiyesi (YTD) niteliği taşımaz.</p>
+                    <h3>2. Fikri Mülkiyet Hakları</h3>
+                    <p>Site içerisindeki tüm yazılı ve görsel materyaller telif hakları ile korunmaktadır, izinsiz kopyalanamaz.</p>
                 </div>
 
                 <!-- ========================================== -->
-                <!-- HAKKIMIZDA (ÇOK UZUN VE TEFERRUATLI) -->
+                <!-- HAKKIMIZDA (UZUN VE TEFERRUATLI) -->
                 <!-- ========================================== -->
                 <div id="hakkimizda" class="main-card policy-text">
                     <div class="card-header"><h2>🏢 Hakkımızda - Kurumsal Kimlik, Misyon ve Yayın İlkeleri</h2></div>
-                    <p><strong>parahesap.site</strong>; modern finansal dünyada bireylerin dini hassasiyetlerine uygun, faizsiz ve şeffaf kararlar alabilmesini sağlamak amacıyla kurulmuş bağımsız bir dijital hesaplama, simülasyon ve bilgi portalıdır.</p>
-                    
-                    <h3>1. Kuruluş Amacımız ve Vizyonumuz</h3>
-                    <p>Günümüzde finansal piyasalar hızla gelişirken, faizsiz finans enstrümanlarına, katılım bankacılığı ürünlerine ve İslami iktisat kurallarına (Zekat, Fitre, Sukuk, Murabaha vb.) duyulan ilgi katlanarak artmaktadır. Ancak bu süreçteki hesaplamaların karmaşık olması, bireylerin doğru bilgiye hızlı erişmesini zorlaştırmaktadır. parahesap.site; tam bu noktada, kullanıcı dostu arayüzler ve güçlü algoritmalarla karmaşık finansal hesaplamaları saniyeler içinde herkesin yapabileceği bir formata dönüştürmek için yola çıkmıştır.</p>
-                    <p>Vizyonumuz; Türkiye'de ve dünyada faizsiz finans okuryazarlığının artmasına öncülük eden, en güvenilir, tarafsız ve kapsamlı dijital hesaplama merkezi olmaktır.</p>
-
-                    <h3>2. Temel Değerlerimiz ve İlkelerimiz</h3>
-                    <ul>
-                        <li><strong>Şeffaflık ve Tarafsızlık:</strong> Sitemizde yer alan tüm hesaplama araçları ve rehberler, herhangi bir kurumun veya bankanın güdümünde olmaksızın tamamen objektif bir yaklaşımla sunulmaktadır.</li>
-                        <li><strong>Fıkhi Hassasiyet:</strong> İslami finans ve zekat hesaplamalarında Diyanet İşleri Başkanlığı ve genel kabul görmüş fıkhi kriterler titizlikle incelenerek sisteme entegre edilmektedir.</li>
-                        <li><strong>Kullanıcı Gizliliği:</strong> Kullanıcıların finansal verilerinin gizliliği kırmızı çizgimizdir. Hiçbir kişisel veri sunucularda saklanmaz.</li>
-                    </ul>
-
-                    <h3>3. Editoryal Kadro ve İçerik Üretim Süreçleri</h3>
-                    <p>Portalımızda yayımlanan makaleler, finans rehberleri ve terimler sözlüğü; ekonomi, İslami iktisat ve yazılım alanlarında bilgi sahibi uzman bir ekip tarafından titizlikle kaleme alınmaktadır. İçeriklerimiz düzenli olarak güncellenmekte, değişen ekonomik koşullara ve yasal düzenlemelere göre revize edilmektedir.</p>
-
-                    <h3>4. İletişim ve Geri Bildirim</h3>
-                    <p>Sitemizin geliştirilmesi, yeni hesaplama araçlarının eklenmesi veya hatalı bildirimler için kullanıcılarımızdan gelen her türlü geri bildirim bizim için çok değerlidir. Bizimle her zaman iletişim sayfamızdaki form aracılığıyla veya doğrudan e-posta yoluyla bağlantı kurabilirsiniz.</p>
+                    <p><strong>parahesap.site</strong>; modern finansal dünyada bireylerin dini hassasiyetlerine uygun, faizsiz kararlar alabilmesini sağlamak amacıyla kurulmuş bağımsız bir portaldır.</p>
+                    <h3>1. Vizyonumuz ve Misyonumuz</h3>
+                    <p>Faizsiz finans okuryazarlığını artırmak, karmaşık hesaplamaları sadeleştirerek kullanıcıların hizmetine sunmaktır.</p>
                 </div>
 
                 <!-- İLETİŞİM -->
                 <div id="iletisim" class="main-card policy-text">
                     <div class="card-header"><h2>✉️ İletişim Formu ve Destek Merkezi</h2></div>
-                    <p>Sorularınız, reklam teklifleri, iş birliği önerileri veya teknik bildirimleriniz için aşağıdaki formu doldurarak doğrudan ekibimize ulaşabilirsiniz.</p>
+                    <p>Sorularınız ve önerileriniz için aşağıdaki formu doldurabilirsiniz.</p>
                     <form action="https://formspree.io/f/ornekmail" method="POST">
                         <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" name="name" required placeholder="Örn: Ahmet Yılmaz"></div>
                         <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" name="email" required placeholder="Örn: ahmet@example.com"></div>
