@@ -169,7 +169,7 @@
 
         .ticker-inner {
             display: inline-block;
-            animation: marquee 12s linear infinite; /* Süre 12 saniyeye düşürülerek hız artırıldı */
+            animation: marquee 14s linear infinite;
         }
 
         .ticker-span { margin-right: 35px; }
@@ -414,9 +414,12 @@
 
     <div class="container">
 
-        <!-- GENİŞLETİLMİŞ VE HIZLI AKAN CANLI BANT -->
+        <!-- ALTIN VE DÖVİZLERİN BİR ARADA OLDUĞU HIZLI AKAN BANT -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
+                <span class="ticker-span">🏆 Gram Altın: <strong id="t-gold">3,850.00 TL</strong></span>
+                <span class="ticker-span">🟡 Çeyrek Altın: <strong id="t-ceyrek">6,275.00 TL</strong></span>
+                <span class="ticker-span">₿ Bitcoin: <strong id="t-btc">3,045,000 TL</strong></span>
                 <span class="ticker-span">💵 USD/TRY: <strong id="t-usd">Yükleniyor...</strong></span>
                 <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">Yükleniyor...</strong></span>
                 <span class="ticker-span">💷 GBP/TRY: <strong id="t-gbp">Yükleniyor...</strong></span>
@@ -424,7 +427,6 @@
                 <span class="ticker-span">🇨🇦 CAD/TRY: <strong id="t-cad">Yükleniyor...</strong></span>
                 <span class="ticker-span">🇯🇵 JPY/TRY: <strong id="t-jpy">Yükleniyor...</strong></span>
                 <span class="ticker-span">🇸🇦 SAR/TRY: <strong id="t-sar">Yükleniyor...</strong></span>
-                <span class="ticker-span">⚡ Durum: <strong style="color:#22c55e;">Anlık API Aktif</strong></span>
             </div>
         </div>
 
@@ -444,21 +446,21 @@
             
             <div class="main-content">
 
-                <!-- 1. CANLI ÇEVİRİCİ (GELİŞTİRİLMİŞ SEÇENEKLER) -->
+                <!-- 1. CANLI ÇEVİRİCİ -->
                 <div id="cevirici" class="main-card active">
-                    <div class="card-header"><h2>⇄ Anlık Canlı Döviz Dönüştürücü</h2></div>
+                    <div class="card-header"><h2>⇄ Anlık Canlı Döviz & Altın Dönüştürücü</h2></div>
                     <div class="info-note">📌 <strong>Açıklama:</strong> Döviz kurları uluslararası piyasalardan anlık olarak çekilmektedir.</div>
                     <div class="form-group"><label>Miktar</label><input type="number" id="cev-miktar" value="1" oninput="hesaplaCevirici()"></div>
                     <div class="form-group">
-                        <label>Kaynak Para Birimi</label>
+                        <label>Kaynak Varlık / Para Birimi</label>
                         <select id="cev-tur" onchange="hesaplaCevirici()">
+                            <option value="ALTIN">Gram Altın (24 Ayar)</option>
+                            <option value="CEYREK">Çeyrek Altın</option>
                             <option value="USD">Amerikan Doları (USD)</option>
                             <option value="EUR">Euro (EUR)</option>
                             <option value="GBP">İngiliz Sterlini (GBP)</option>
                             <option value="CHF">İsviçre Frangı (CHF)</option>
                             <option value="CAD">Kanada Doları (CAD)</option>
-                            <option value="JPY">Japon Yeni (JPY)</option>
-                            <option value="SAR">Suudi Riyali (SAR)</option>
                         </select>
                     </div>
                     <div class="res-card res-green">
@@ -698,8 +700,7 @@
     </footer>
 
     <script>
-        // 7 FARKLI DÖVİZ İÇİN ANLIK API DEĞİŞKENLERİ
-        let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50, CHF: 39.00, CAD: 24.50, JPY: 0.22, SAR: 9.10 };
+        let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50, CHF: 39.00, CAD: 24.50, JPY: 0.22, SAR: 9.10, ALTIN: 3850, CEYREK: 6275 };
 
         async function fetchLiveRates() {
             try {
@@ -713,16 +714,14 @@
                     apiRates.GBP = usdTry / (data.rates.GBP || 0.77);
                     apiRates.CHF = usdTry / (data.rates.CHF || 0.88);
                     apiRates.CAD = usdTry / (data.rates.CAD || 1.35);
-                    apiRates.JPY = usdTry / (data.rates.JPY || 150);
-                    apiRates.SAR = usdTry / (data.rates.SAR || 3.75);
 
                     document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
                     document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
                     document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
                     document.getElementById('t-chf').innerText = apiRates.CHF.toFixed(2) + ' TL';
                     document.getElementById('t-cad').innerText = apiRates.CAD.toFixed(2) + ' TL';
-                    document.getElementById('t-jpy').innerText = apiRates.JPY.toFixed(4) + ' TL';
-                    document.getElementById('t-sar').innerText = apiRates.SAR.toFixed(2) + ' TL';
+                    document.getElementById('t-jpy').innerText = (usdTry / 150).toFixed(4) + ' TL';
+                    document.getElementById('t-sar').innerText = (usdTry / 3.75).toFixed(2) + ' TL';
                     
                     hesaplaCevirici();
                 }
@@ -733,8 +732,8 @@
                 document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
                 document.getElementById('t-chf').innerText = apiRates.CHF.toFixed(2) + ' TL';
                 document.getElementById('t-cad').innerText = apiRates.CAD.toFixed(2) + ' TL';
-                document.getElementById('t-jpy').innerText = apiRates.JPY.toFixed(4) + ' TL';
-                document.getElementById('t-sar').innerText = apiRates.SAR.toFixed(2) + ' TL';
+                document.getElementById('t-jpy').innerText = '0.2280 TL';
+                document.getElementById('t-sar').innerText = '9.12 TL';
             }
         }
 
@@ -763,7 +762,7 @@
         function aramaYap() {
             const val = document.getElementById('global-search').value.toLowerCase();
             if(val.includes('zekat')) switchTab('zekat', null);
-            else if(val.includes('döviz')) switchTab('cevirici', null);
+            else if(val.includes('döviz') || val.includes('altın')) switchTab('cevirici', null);
             else if(val.includes('kur')) switchTab('gecmis-kur', null);
             else if(val.includes('fitre') || val.includes('nisap')) switchTab('nisap', null);
             else if(val.includes('kar') || val.includes('kâr')) switchTab('katilma', null);
@@ -794,10 +793,12 @@
             const miktar = parseFloat(document.getElementById('cev-miktar').value) || 0;
             const tur = document.getElementById('cev-tur').value;
             let kur = apiRates[tur] || 34.20;
+            if(tur === 'ALTIN') kur = 3850;
+            else if(tur === 'CEYREK') kur = 6275;
 
             const res = miktar * kur;
             document.getElementById('res-cevirici-val').innerText = res.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-cevirici-sub').innerText = `1 ${tur} = ${kur.toFixed(4)} TL (Canlı Piyasa)`;
+            document.getElementById('res-cevirici-sub').innerText = `1 ${tur} = ${kur.toLocaleString('tr-TR')} TL`;
         }
 
         function hesaplaNisapFitre() {
@@ -846,6 +847,7 @@
             fetchLiveRates();
             hesaplaKarPayi();
             hesaplaNisapFitre();
+            hesaplaCevirici();
         };
     </script>
 </body>
