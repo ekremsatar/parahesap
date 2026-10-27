@@ -53,13 +53,23 @@ function aramaYap() {
     const val = document.getElementById('global-search').value.toLowerCase();
     if(val.includes('zekat')) switchTab('zekat', null);
     else if(val.includes('döviz') || val.includes('altın')) switchTab('cevirici', null);
+    else if(val.includes('kur')) switchTab('gecmis-kur', null);
+    else if(val.includes('fitre') || val.includes('nisap')) switchTab('nisap', null);
+    else if(val.includes('kar') || val.includes('kâr')) switchTab('katilma', null);
+    else if(val.includes('bist') || val.includes('hisse')) switchTab('katilim-endeks', null);
+    else if(val.includes('rehber')) switchTab('rehber', null);
+    else if(val.includes('sözlük')) switchTab('sozluk', null);
+    else if(val.includes('gizlilik')) switchTab('gizlilik', null);
+    else if(val.includes('iletişim')) switchTab('iletisim', null);
+    else if(val.includes('hakkımızda')) switchTab('hakkimizda', null);
 }
 
 function filtreleBistSirketler() {
     const input = document.getElementById('bist-input-filter').value.toLowerCase();
     const items = document.querySelectorAll('#bist-sirket-container .bist-card-item');
     items.forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(input) ? 'flex' : 'none';
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'flex' : 'none';
     });
 }
 
@@ -93,7 +103,7 @@ function hesaplaGecmisKur() {
     document.getElementById('res-gecmis-val').innerText = (miktar * kur).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
     document.getElementById('gecmis-sonuc').style.display = 'block';
 }
-function sifirlaGecmisKur() { document.getElementById('gecmis-sonuc').style.display = 'none'; }
+function sifirlaGecmisKur() { document.getElementById('gecmis-miktar').value = ''; document.getElementById('gecmis-sonuc').style.display = 'none'; }
 
 function hesaplaZekatYeni() {
     const tl = parseFloat(document.getElementById('z-tl').value) || 0;
@@ -104,7 +114,7 @@ function hesaplaZekatYeni() {
     document.getElementById('res-net').innerText = `Net Matrah: ${net.toLocaleString('tr-TR')} TL`;
     document.getElementById('zekat-sonuc').style.display = 'block';
 }
-function sifirlaZekat() { document.getElementById('zekat-sonuc').style.display = 'none'; }
+function sifirlaZekat() { document.querySelectorAll('#zekat input').forEach(i => i.value = '0'); document.getElementById('zekat-sonuc').style.display = 'none'; }
 
 function hesaplaKarPayi() {
     const ap = parseFloat(document.getElementById('anapara').value) || 0;
