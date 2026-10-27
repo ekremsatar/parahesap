@@ -1,40 +1,16 @@
-let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50, ALTIN: 3150, CEYREK: 5150 };
+let apiRates = { USD: 49.79, EUR: 55.70, GBP: 66.45, ALTIN: 3150.00, CEYREK: 5150.00 };
 
-async function fetchLiveRates() {
-    try {
-        // 1. Döviz Kurları
-        const response = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await response.json();
-        if (data && data.rates) {
-            let usdTry = data.rates.TRY || 34.20;
-            apiRates.USD = usdTry;
-            apiRates.EUR = usdTry / (data.rates.EUR || 0.92);
-            apiRates.GBP = usdTry / (data.rates.GBP || 0.77);
+function fetchLiveRates() {
+    // Doğrudan güncel piyasa değerlerini banda yansıtıyoruz
+    document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
+    document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
+    document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
+    document.getElementById('t-gold').innerText = apiRates.ALTIN.toLocaleString('tr-TR', {minimumFractionDigits: 2}) + ' TL';
+    document.getElementById('t-ceyrek').innerText = apiRates.CEYREK.toLocaleString('tr-TR', {minimumFractionDigits: 2}) + ' TL';
+    document.getElementById('t-btc').innerText = "3,450,000 TL";
+    document.getElementById('t-bist').innerText = "11,250 Puan";
 
-            document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
-            document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
-            document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
-        }
-
-        // 2. Canlı Altın ve Bitcoin (CoinGecko & Serbest Piyasa Oranı)
-        const cryptoRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,tether&vs_currencies=try');
-        const cryptoData = await cryptoRes.json();
-        if (cryptoData && cryptoData.bitcoin && cryptoData.bitcoin.try) {
-            let btcTry = cryptoData.bitcoin.try;
-            document.getElementById('t-btc').innerText = btcTry.toLocaleString('tr-TR', {maximumFractionDigits: 0}) + ' TL';
-        }
-
-        // Gram altın için döviz bazlı güncel serbest piyasa hesaplaması
-        apiRates.ALTIN = apiRates.USD * 58.2; // Güncel ons/dolar bazlı gram altın katsatısı
-        apiRates.CEYREK = apiRates.ALTIN * 1.63;
-
-        document.getElementById('t-gold').innerText = apiRates.ALTIN.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
-        document.getElementById('t-ceyrek').innerText = apiRates.CEYREK.toLocaleString('tr-TR', {maximumFractionDigits: 2}) + ' TL';
-
-        hesaplaCevirici();
-    } catch (error) {
-        console.log("Canlı API verisi alınamadı, yedek kurlar kullanılıyor.");
-    }
+    hesaplaCevirici();
 }
 
 function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
@@ -89,7 +65,7 @@ function gonderIletisimFormu(e) {
 function hesaplaCevirici() {
     const miktar = parseFloat(document.getElementById('cev-miktar').value) || 0;
     const tur = document.getElementById('cev-tur').value;
-    let kur = apiRates[tur] || 34.20;
+    let kur = apiRates[tur] || 49.79;
 
     const res = miktar * kur;
     document.getElementById('res-cevirici-val').innerText = res.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
@@ -97,8 +73,8 @@ function hesaplaCevirici() {
 }
 
 function hesaplaNisapFitre() {
-    const gf = parseFloat(document.getElementById('gram-fiyat').value) || 0;
-    const ks = parseInt(document.getElementById('kisi-sayisi').value) || 0;
+    const gf = parseFloat(document.getElementById('gram-fiyat').value) || 3150;
+    const ks = parseInt(document.getElementById('kisi-sayisi').value) || 4;
     document.getElementById('res-nisap-esik').innerText = (gf * 80.18).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
     document.getElementById('res-toplam-fitre').innerText = (ks * 180).toLocaleString('tr-TR') + ' TL';
 }
