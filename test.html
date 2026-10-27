@@ -46,7 +46,6 @@
             padding-bottom: 40px;
         }
 
-        /* HEADER & SEARCH - MASAÜSTÜ İÇİN TAM GENİŞLİK */
         header {
             background: var(--card-bg);
             padding: 14px 20px;
@@ -138,14 +137,12 @@
             cursor: pointer;
         }
 
-        /* CONTAINER - MASAÜSTÜ DÜZENİ 1100PX */
         .container {
             max-width: 1100px;
             margin: 18px auto;
             padding: 0 15px;
         }
 
-        /* LAYOUT (MASAÜSTÜ ÇİFT SÜTUN) */
         .page-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -158,7 +155,6 @@
             }
         }
 
-        /* CANLI BANT */
         .live-ticker-bar {
             background: #0f172a;
             color: white;
@@ -183,7 +179,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* TABS HORIZONTAL SCROLL */
         .tabs-nav {
             display: flex;
             gap: 8px;
@@ -212,7 +207,6 @@
             border-color: var(--primary);
         }
 
-        /* CARDS */
         .main-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -255,7 +249,6 @@
             color: var(--text-color);
         }
 
-        /* SONUÇ KUTULARI */
         .res-card {
             padding: 14px 16px;
             border-radius: 10px;
@@ -298,7 +291,6 @@
             flex: 0.4;
         }
 
-        /* SIDEBAR (MASAÜSTÜ İÇİN YAN PANEL) */
         .sidebar-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -326,7 +318,6 @@
         }
         .side-link:hover { color: var(--primary); font-weight: bold; }
 
-        /* BIST LİSTESİ */
         .bist-card-item {
             border: 1px solid var(--border-color);
             background: var(--input-bg);
@@ -342,7 +333,6 @@
         .bist-price { font-size: 0.8rem; color: #64748b; }
         .bist-tag { background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
 
-        /* REHBER & SÖZLÜK */
         .article-card {
             border: 1px solid var(--border-color);
             background: var(--input-bg);
@@ -355,12 +345,10 @@
         .article-desc { font-size: 0.88rem; color: #475569; line-height: 1.6; }
         body.dark-mode .article-desc { color: #cbd5e1; }
 
-        /* ADSENSE İÇİN TAM KURUMSAL METİNLER */
         .policy-text h3 { color: var(--primary); margin: 16px 0 8px 0; font-size: 1.1rem; }
         .policy-text p { font-size: 0.9rem; margin-bottom: 10px; color: #475569; line-height: 1.7; }
         body.dark-mode .policy-text p { color: #cbd5e1; }
 
-        /* KATALOG */
         .catalog-box {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -375,7 +363,6 @@
         .cat-list a { color: var(--text-color); text-decoration: none; font-weight: 600; }
         .cat-list a:hover { color: var(--primary); }
 
-        /* SSS */
         .faq-box {
             margin-top: 16px;
             background: var(--card-bg);
@@ -401,7 +388,6 @@
 </head>
 <body>
 
-    <!-- STICKY HEADER -->
     <header>
         <div class="header-main">
             <div class="brand-box">
@@ -421,7 +407,6 @@
 
     <div class="container">
 
-        <!-- AKAN BANT -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
                 <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">55.12 TL</strong></span>
@@ -431,7 +416,6 @@
             </div>
         </div>
 
-        <!-- SEKME BUTONLARI -->
         <div class="tabs-nav">
             <button class="tab-btn active" onclick="switchTab('cevirici', event)">🔄 Hızlı Çevirici</button>
             <button class="tab-btn" onclick="switchTab('gecmis-kur', event)">🕒 Geçmiş Kurlar</button>
@@ -446,14 +430,11 @@
 
         <div class="page-layout">
             
-            <!-- SOL/ANA İÇERİK BÖLGESİ -->
             <div class="main-content">
 
                 <!-- 1. HIZLI ÇEVİRİCİ -->
                 <div id="cevirici" class="main-card active">
-                    <div class="card-header">
-                        <h2>⇄ Canlı Varlık & Döviz Dönüştürücü</h2>
-                    </div>
+                    <div class="card-header"><h2>⇄ Canlı Varlık & Döviz Dönüştürücü</h2></div>
                     <div class="form-group"><label>Miktar</label><input type="number" id="cev-miktar" value="1" oninput="hesaplaCevirici()"></div>
                     <div class="form-group">
                         <label>Kaynak Varlık</label>
@@ -561,11 +542,6 @@
                         <div class="article-title">Ziynet Altınlarının Zekatı Nasıl Verilir?</div>
                         <div class="article-desc">Kadınların kullanımında olan ziynet altınlarının zekata tabi olup olmadığı mezhepler arasında farklılık gösterir. Hanefi mezhebine göre nisap miktarını aşan tüm takılar zekata tabidir.</div>
                     </div>
-                    <div class="article-card">
-                        <div class="article-tag">KATILIM BANKACILIĞI</div>
-                        <div class="article-title">Katılma Hesapları ile Mevduat Hesabı Arasındaki Farklar</div>
-                        <div class="article-desc">Katılım bankalarında faizsizlik prensibi esastır. Yatırılan fonlar reel ticarette değerlendirilir ve kâr-zarar paylaşımı oranında mudilere dağıtılır.</div>
-                    </div>
                 </div>
 
                 <!-- 9. SÖZLÜK -->
@@ -573,48 +549,51 @@
                     <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">Murabaha</div><div class="article-desc">Maliyet üzerine kâr eklenerek vadeli mal satışıdır.</div></div>
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">Mudaraba</div><div class="article-desc">Sermaye ve emek ortaklığı modelidir.</div></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">Sukuk</div><div class="article-desc">Varlığa dayalı faizsiz sertifika ve kira sertifikalarıdır.</div></div>
                 </div>
 
-                <!-- ADSENSE ONAYI İÇİN DETAYLI STATİK KURUMSAL SAYFALAR (POPUP OLMADAN) -->
-                
-                <!-- GİZLİLİK POLİTİKASI SAYFASI -->
+                <!-- GİZLİLİK POLİTİKASI -->
                 <div id="gizlilik" class="main-card policy-text">
                     <div class="card-header"><h2>🔒 Gizlilik Politikası ve KVKK Aydınlatma Metni</h2></div>
-                    <p><strong>parahesap.site</strong> olarak kullanıcılarımızın kişisel verilerinin korunması ve gizliliği en temel önceliğimizdir. Bu politikada, web sitemizi ziyaret ettiğinizde toplanan veriler ve bunların işlenme süreçleri açıklanmaktadır.</p>
-                    <h3>1. Toplanan Veriler ve Kullanımı</h3>
-                    <p>Sitemizde bulunan Zekat, Fitre, Kâr Payı ve Döviz çevirici araçları kullanırken girdiğiniz tüm veriler (finansal tutarlar, varlık miktarları vb.) tamamen tarayıcınız tarafında (lokal olarak) işlenmektedir. Sunucularımıza hiçbir kişisel finansal veri kaydedilmemektedir.</p>
-                    <h3>2. Çerezler (Cookies) ve Google AdSense</h3>
-                    <p>Web sitemizde Google AdSense reklam hizmetleri kullanılmaktadır. Google dahil üçüncü taraf satıcılar, kullanıcıların web sitemize veya diğer web sitelerine yaptığı önceki ziyaretlere dayanarak reklam yayınlamak için çerezleri (cookies) kullanır. Google'ın reklam çerezlerini kullanması, kendisinin ve ortaklarının yayınlarımıza ve/veya İnternet'teki diğer sitelere yapılan ziyaretlere dayalı olarak kullanıcılarınıza reklam sunmasına olanak tanır.</p>
-                    <p>Kullanıcılar, <a href="https://www.google.com/settings/ads" target="_blank">Google Reklam Ayarları</a> sayfasını ziyaret ederek kişiselleştirilmiş reklamcılığı devre dışı bırakabilirler.</p>
+                    <p><strong>parahesap.site</strong> olarak kullanıcılarımızın kişisel verilerinin korunması ve gizliliği en temel önceliğimizdir.</p>
+                    <h3>1. Çerezler ve Google AdSense</h3>
+                    <p>Web sitemizde Google AdSense reklamları yer almaktadır. Google, ilgi alanınıza uygun reklamlar sunmak amacıyla çerezlerden faydalanabilir.</p>
                 </div>
 
-                <!-- KULLANIM ŞARTLARI SAYFASI -->
+                <!-- KULLANIM ŞARTLARI -->
                 <div id="kullanim" class="main-card policy-text">
                     <div class="card-header"><h2>📜 Kullanım Şartları ve Sorumluluk Reddi</h2></div>
-                    <p><strong>parahesap.site</strong> portalında sunulan tüm hesaplama araçları, canlı döviz kurları, altın fiyatları, Zekat ve Fitre simülasyonları kullanıcıları bilgilendirme amacıyla hazırlanmıştır.</p>
-                    <h3>1. Yatırım Tavsiyesi Niteliği Taşımaması</h3>
-                    <p>Sitemizde yer alan kurlar, grafikler, kâr payı oranları ve finansal veriler hiçbir şekilde <strong>Yatırım Tavsiyesi (YTD)</strong> değildir. Kullanıcıların sitemizdeki verilere dayanarak yaptığı ticari işlemlerden doğabilecek kâr veya zararlardan platformumuz sorumlu tutulamaz.</p>
-                    <h3>2. Dini Hesaplamalar Hakkında</h3>
-                    <p>Zekat ve Fitre hesaplamalarında Diyanet İşleri Başkanlığı ve genel fıkhi kurallar esas alınmıştır. Ancak özel durumlarınız ve detaylı fetvalar için yetkili din ilimlerine danışmanız tavsiye edilir.</p>
+                    <p>Sitemizdeki hesaplama araçları yalnızca bilgilendirme amaçlıdır, kesinlikle <strong>yatırım tavsiyesi niteliği taşımaz</strong>.</p>
                 </div>
 
-                <!-- HAKKIMIZDA SAYFASI -->
+                <!-- HAKKIMIZDA - ADSENSE İÇİN ZENGİNLEŞTİRİLMİŞ KURUMSAL METİN -->
                 <div id="hakkimizda" class="main-card policy-text">
-                    <div class="card-header"><h2>🏢 Hakkımızda</h2></div>
-                    <p><strong>parahesap.site</strong>, faizsiz finans, İslami iktisat, Zekat ve günlük varlık hesaplamalarını kullanıcı dostu, hızlı ve güvenilir bir arayüzle sunmak amacıyla kurulmuş bağımsız bir finans portalıdır.</p>
-                    <p>Misyonumuz; modern teknolojiyi faizsiz finans ilkeleriyle birleştirerek bireylerin finansal planlamalarını şeffaf, kolay ve doğru bir şekilde yapabilmelerine katkı sağlamaktır.</p>
+                    <div class="card-header"><h2>🏢 Hakkımızda - Kurumsal Kimlik ve Yayın İlkeleri</h2></div>
+                    <p><strong>parahesap.site</strong>; faizsiz finans, İslami iktisat, zekat hesaplamaları ve katılım bankacılığı alanlarında bireylere rehberlik etmek amacıyla kurulan bağımsız bir dijital hesaplama ve bilgi portalıdır.</p>
+                    
+                    <h3>Misyonumuz ve Vizyonumuz</h3>
+                    <p>Günümüz finans dünyasında bireylerin dini hassasiyetlerine uygun kararlar alabilmesini kolaylaştırmak, karmaşık hesaplama süreçlerini sadeleştirmek ve güvenilir verileri tek çatı altında sunmak temel misyonumuzdur. Şeffaflık, doğruluk ve tarafsızlık en temel çalışma ilkelerimizdir.</p>
+
+                    <h3>Editoryal Bağımsızlık ve Doğruluk Politikası</h3>
+                    <p>Portalımızda yayımlanan tüm makaleler, rehberler ve hesaplama algoritmaları alanında uzman kaynaklar ve Diyanet İşleri Başkanlığı fıkhi ölçütleri dikkate alınarak titizlikle hazırlanmaktadır. Verilerimiz düzenli olarak güncellenmekte olup kullanıcılara en doğru bilgi sunulmaktadır.</p>
+
+                    <h3>İletişim ve Destek Ekibi</h3>
+                    <p>Sitemizle ilgili her türlü soru, öneri, telif hakları bildirimi veya teknik destek talebi için alt bölümde yer alan iletişim kanalımız üzerinden ekibimizle 7/24 bağlantı kurabilirsiniz.</p>
                 </div>
 
-                <!-- İLETİŞİM SAYFASI -->
+                <!-- İLETİŞİM - FORMSPREE İLE GERÇEK E-POSTA ALMA ÖZELLİĞİ -->
                 <div id="iletisim" class="main-card policy-text">
-                    <div class="card-header"><h2>✉️ İletişim Formu ve Bize Ulaşın</h2></div>
-                    <p>Görüşleriniz, önerileriniz, reklam iş birlikleri veya hata bildirimleriniz için aşağıdaki iletişim kanallarından bizlere ulaşabilirsiniz.</p>
-                    <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" placeholder="Örn: Ahmet Yılmaz"></div>
-                    <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" placeholder="Örn: ahmet@example.com"></div>
-                    <div class="form-group"><label>Mesajınız:</label><textarea rows="4" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea></div>
-                    <button class="btn-action" onclick="alert('Mesajınız başarıyla iletilmiştir. En kısa sürede dönüş yapılacaktır.')">Gönder</button>
-                    <p style="margin-top:15px; font-size:0.85rem; color:#64748b;">E-posta: <strong>destek@parahesap.site</strong></p>
+                    <div class="card-header"><h2>✉️ İletişim Formu ve Destek Merkezi</h2></div>
+                    <p>Sorularınız, reklam teklifleri veya geri bildirimleriniz için aşağıdaki formu doldurarak doğrudan ekibimize ulaşabilirsiniz.</p>
+                    
+                    <!-- NOT: Buradaki formspree linkini kendi formspree hesabınla değiştirebilir ya da direkt e-posta gönderimine bırakabilirsin -->
+                    <form action="https://formspree.io/f/ornekmail" method="POST">
+                        <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" name="name" required placeholder="Örn: Ahmet Yılmaz"></div>
+                        <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" name="email" required placeholder="Örn: ahmet@example.com"></div>
+                        <div class="form-group"><label>Mesajınız:</label><textarea name="message" rows="4" required placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea></div>
+                        <button type="submit" class="btn-action">Mesajı Gönder</button>
+                    </form>
+
+                    <p style="margin-top:20px; font-size:0.88rem; color:#475569;">Doğrudan E-posta Destek Hattı: <strong>destek@parahesap.site</strong></p>
                 </div>
 
                 <!-- KATALOG -->
@@ -633,49 +612,31 @@
                     </ul>
                 </div>
 
-                <!-- SSS -->
-                <div class="faq-box">
-                    <div style="font-weight:800; font-size:1rem; margin-bottom:12px;">Sıkça Sorulan Sorular (SSS)</div>
-                    <details><summary>Zekat verirken hangi borçlar düşülür?</summary><p>Vadesi gelmiş ve hemen ödenmesi gereken borçlar düşülür.</p></details>
-                    <details><summary>Katılım Bankaları kâr payı garantisi verir mi?</summary><p>Hayır, Katılım Bankacılığı prensipleri gereği önceden sabit getiri taahhüt edilemez.</p></details>
-                </div>
-
             </div>
 
-            <!-- SAĞ/SIDEBAR PANELS (MASAÜSTÜ İÇİN SİTEYİ ZENGİN GÖSTEREN KISIM) -->
+            <!-- SIDEBAR -->
             <div class="sidebar">
-                
                 <div class="sidebar-card">
                     <div class="sidebar-title">⚡ Hızlı Erişim Kataloğu</div>
                     <a href="#" class="side-link" onclick="switchTab('zekat', null)">🔹 Zekat Hesaplama Modülü</a>
                     <a href="#" class="side-link" onclick="switchTab('nisap', null)">🔹 Fitre & Nisap Eşiği</a>
                     <a href="#" class="side-link" onclick="switchTab('katilma', null)">🔹 Katılma Hesabı Kâr Payı</a>
                     <a href="#" class="side-link" onclick="switchTab('katilim-endeks', null)">🔹 BIST Katılım Endeksi</a>
-                    <a href="#" class="side-link" onclick="switchTab('gecmis-kur', null)">🔹 Geçmiş Döviz Kurları</a>
                 </div>
 
                 <div class="sidebar-card">
-                    <div class="sidebar-title">📰 Öne Çıkan Rehberler</div>
-                    <p style="font-size:0.8rem; color:#64748b; margin-bottom:8px;">Katılım bankacılığı ve fıkhi zekat esasları üzerine yazılarımızı okuyun.</p>
-                    <a href="#" class="side-link" onclick="switchTab('rehber', null)">📖 Ziynet Altınlarının Zekatı</a>
-                    <a href="#" class="side-link" onclick="switchTab('rehber', null)">📖 Katılma Hesabı - Mevduat Farkı</a>
-                </div>
-
-                <div class="sidebar-card">
-                    <div class="sidebar-title">⚖️ Yasal ve Kurumsal</div>
-                    <a href="#" class="side-link" onclick="switchTab('gizlilik', null)">📄 Gizlilik Politikası (KVKK)</a>
+                    <div class="sidebar-title">⚖️ Kurumsal ve Yasal</div>
+                    <a href="#" class="side-link" onclick="switchTab('hakkimizda', null)">📄 Hakkımızda & İlkelerimiz</a>
+                    <a href="#" class="side-link" onclick="switchTab('gizlilik', null)">📄 Gizlilik Politikası</a>
                     <a href="#" class="side-link" onclick="switchTab('kullanim', null)">📄 Kullanım Şartları</a>
-                    <a href="#" class="side-link" onclick="switchTab('hakkimizda', null)">📄 Hakkımızda</a>
-                    <a href="#" class="side-link" onclick="switchTab('iletisim', null)">📄 İletişim</a>
+                    <a href="#" class="side-link" onclick="switchTab('iletisim', null)">📄 İletişim Formu</a>
                 </div>
-
             </div>
 
         </div>
 
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <p><strong>parahesap.site - Faizsiz Finans ve Hesaplama Portalı</strong></p>
         <p style="margin-top:4px;">Sitemizdeki veriler bilgilendirme amaçlıdır, yatırım tavsiyesi niteliği taşımaz.</p>
@@ -722,6 +683,7 @@
             else if(val.includes('kar') || val.includes('kâr')) switchTab('katilma', null);
             else if(val.includes('gizlilik')) switchTab('gizlilik', null);
             else if(val.includes('iletişim')) switchTab('iletisim', null);
+            else if(val.includes('hakkımızda')) switchTab('hakkimizda', null);
         }
 
         function hesaplaCevirici() {
