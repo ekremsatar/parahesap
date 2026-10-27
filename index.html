@@ -13,6 +13,15 @@
     <!-- GOOGLE ADSENSE -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2881789176542881" crossorigin="anonymous"></script>
 
+    <!-- GOOGLE ANALYTICS (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKXWCDPHMF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GKXWCDPHMF');
+    </script>
+
     <!-- HARİCİ CSS BAĞLANTISI -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -37,7 +46,7 @@
 
     <div class="container">
 
-        <!-- ZENGİN VE CANLI AKAN BANT -->
+        <!-- CANLI BANT -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
                 <span class="ticker-span">🏆 Gram Altın: <strong id="t-gold">Yükleniyor...</strong></span>
@@ -153,7 +162,7 @@
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">ÖRNEK AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM (12 ŞİRKET TAM LİSTE) -->
+                <!-- 7. BIST KATILIM (12 ŞİRKET) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Takip Listesi</h2></div>
                     <div class="info-note">ℹ️ Borsa İstanbul katılım endekslerinde yer alan öne çıkan şirketlerin gösterge takip listesi.</div>
@@ -226,44 +235,7 @@
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">12. İstısna</div><div class="article-desc">İmalat ve eser sözleşmesine dayalı finansman modelidir.</div></div>
                 </div>
 
-                <!-- GİZLİLİK -->
-                <div id="gizlilik" class="main-card policy-text">
-                    <div class="card-header"><h2>🔒 Gizlilik Politikası, Çerezler ve KVKK Aydınlatma Metni</h2></div>
-                    <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p><strong>parahesap.site</strong> olarak kullanıcılarımızın veri gizliliğine ve 6698 sayılı KVKK hükümlerine tam uyum sağlamaktayız.</p>
-                </div>
-
-                <!-- KULLANIM ŞARTLARI -->
-                <div id="kullanim" class="main-card policy-text">
-                    <div class="card-header"><h2>📜 Kullanım Şartları, Yasal Uyarılar ve Sorumluluk Reddi</h2></div>
-                    <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p>Sitemizi kullanan tüm ziyaretçiler kullanım şartlarını kabul etmiş sayılır.</p>
-                </div>
-
-                <!-- HAKKIMIZDA -->
-                <div id="hakkimizda" class="main-card policy-text">
-                    <div class="card-header"><h2>🏢 Hakkımızda - Yayın İlkelerimiz</h2></div>
-                    <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p><strong>parahesap.site</strong>; faizsiz finans, zekat hesaplamaları ve katılım bankacılığı alanında gösterge niteliğinde simülasyonlar sunan bağımsız bir dijital web portalıdır.</p>
-                </div>
-
-                <!-- İLETİŞİM -->
-                <div id="iletisim" class="main-card policy-text">
-                    <div class="card-header"><h2>✉️ İletişim Formu ve Destek Merkezi</h2></div>
-                    <p>Görüş, öneri veya hata bildirimleriniz için formu doldurabilirsiniz.</p>
-                    <form id="contactForm" onsubmit="gonderIletisimFormu(event)">
-                        <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" id="c-name" required placeholder="Örn: Ahmet Yılmaz"></div>
-                        <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" id="c-email" required placeholder="Örn: ahmet@example.com"></div>
-                        <div class="form-group"><label>Mesajınız:</label><textarea id="c-msg" rows="4" required placeholder="Mesajınızı yazabilirsiniz..."></textarea></div>
-                        <button type="submit" class="btn-action">Mesajı Gönder</button>
-                    </form>
-                    <div id="form-result" class="res-card res-green" style="display:none; margin-top:12px;">
-                        <div class="res-title">BİLDİRİM</div>
-                        <div class="res-sub">Mesajınız başarıyla alınmıştır. En kısa sürede dönüş yapılacaktır.</div>
-                    </div>
-                </div>
-
-                <!-- KATALOG (ZENGİN LİNKLER) -->
+                <!-- KATALOG -->
                 <div class="catalog-box">
                     <div class="catalog-head">📚 Tüm Hesaplama Araçları Kataloğu</div>
                     <div class="cat-group-title">1. ANA FİNANS VE TİCARİ ARAÇLAR</div>
@@ -295,10 +267,10 @@
 
                 <div class="sidebar-card">
                     <div class="sidebar-title">⚖️ Kurumsal ve Yasal</div>
-                    <a href="#" class="side-link" onclick="switchTab('hakkimizda', null)">📄 Hakkımızda & İlkelerimiz</a>
-                    <a href="#" class="side-link" onclick="switchTab('gizlilik', null)">📄 Gizlilik Politikası (KVKK)</a>
-                    <a href="#" class="side-link" onclick="switchTab('kullanim', null)">📄 Kullanım Şartları</a>
-                    <a href="#" class="side-link" onclick="switchTab('iletisim', null)">📄 İletişim Formu</a>
+                    <a href="hakkimizda.html" class="side-link">📄 Hakkımızda & İlkelerimiz</a>
+                    <a href="gizlilik-politikasi.html" class="side-link">📄 Gizlilik Politikası (KVKK)</a>
+                    <a href="kullanim-sartlari.html" class="side-link">📄 Kullanım Şartları</a>
+                    <a href="iletisim.html" class="side-link">📄 İletişim Formu</a>
                 </div>
             </div>
 
@@ -310,10 +282,10 @@
         <p><strong>parahesap.site - Faizsiz Finans ve Canlı Finans Portalı</strong></p>
         <p style="margin-top:4px;">Veriler anlık API servisleriyle sağlanmaktadır, yatırım tavsiyesi değildir.</p>
         <p style="margin-top:10px;">
-            <a onclick="switchTab('gizlilik', null)">Gizlilik Politikası</a> • 
-            <a onclick="switchTab('kullanim', null)">Kullanım Şartları</a> • 
-            <a onclick="switchTab('hakkimizda', null)">Hakkımızda</a> • 
-            <a onclick="switchTab('iletisim', null)">İletişim</a>
+            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> • 
+            <a href="kullanim-sartlari.html">Kullanım Şartları</a> • 
+            <a href="hakkimizda.html">Hakkımızda</a> • 
+            <a href="iletisim.html">İletişim</a>
         </p>
         <p style="margin-top:10px;">&copy; 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     </footer>
