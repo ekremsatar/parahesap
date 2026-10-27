@@ -1,179 +1,337 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kullanım Şartları - Para Hesap</title>
-    <style>
-        :root {
-            --primary: #0056b3;
-            --primary-dark: #003d82;
-            --pink-title: #d63384;
-            --bg-light: #f8f9fa;
-            --text-main: #333333;
-            --text-muted: #666666;
-            --border: #dee2e6;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f6f9;
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-        }
-        header.site {
-            background: #ffffff;
-            border-bottom: 1px solid var(--border);
-            padding: 12px 16px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .brand {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
-        .brand span {
-            font-size: 11px;
-            color: var(--text-muted);
-            font-style: italic;
-            font-weight: normal;
-        }
-        .btn-tum {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .main-container {
-            max-width: 800px;
-            margin: 24px auto;
-            padding: 0 16px;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
-        }
-        .card-header {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: var(--primary-dark);
-            font-size: 24px;
-            margin: 0 0 6px 0;
-        }
-        .subtitle {
-            color: var(--pink-title);
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .content-text {
-            font-size: 15px;
-            line-height: 1.8;
-            color: #444444;
-        }
-        h2 {
-            font-size: 17px;
-            color: var(--primary-dark);
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 30px 16px;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
-            background-color: #ffffff;
-        }
-        footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-    </style>
-</head>
-<body>
 
-<header class="site">
-    <div class="nav-wrap">
-        <a href="index.html" class="brand">
-            parahesap.site
-            <span>Anında hesapla, geleceğini planla</span>
-        </a>
-        <a href="tum-hesaplamalar.html" class="btn-tum">Tüm Hesaplamalar ▼</a>
+<!-- KULLANIM ŞARTLARI VE YASAL UYARILAR -->
+<div id="kullanim" class="main-card policy-text">
+    <div class="card-header">
+        <h2>📜 Kullanım Şartları, Yasal Uyarılar ve Sorumluluk Reddi</h2>
     </div>
-</header>
 
-<main class="main-container">
-    <div class="card">
-        <div class="card-header">
-            <h1>Kullanım Şartları ve Sorumluluk Reddi</h1>
-            <div class="subtitle">Yasal Bilgilendirme ve Hizmet Koşulları</div>
-        </div>
-        
-        <div class="content-text">
-            <p>Bu internet sitesini (<strong>parahesap.site</strong>) ziyaret ederek veya kullanarak aşağıdaki kullanım koşullarını kabul etmiş sayılırsınız.</p>
+    <p><strong>Son Güncelleme:</strong> 27 Ekim 2026</p>
 
-            <h2>1. Sorumluluk Beyanı ve Bilgilendirme Amacı</h2>
-            <p>Sitemizde yer alan tüm hesaplama araçları, sonuçlar ve rehber yazılar yalnızca bilgilendirme, öngörü ve tahmin amacı taşır. Resmi kurumların (SGK, Gelir İdaresi Başkanlığı, Diyanet İşleri Başkanlığı vb.), bankaların veya yasal mercilerin nihai hesaplamalarıyla küçük tutarsızlıklar gösterebilir.</p>
-            <p>Bu araçların kullanımından doğabilecek dolaylı veya doğrudan maddi/manevi zararlardan site yönetimi sorumlu tutulamaz.</p>
-
-            <h2>2. Fikri Mülkiyet Hakları</h2>
-            <p>Sitemizde yer alan özel tasarım öğeleri, yazılım kodları, logo ve özgün içerikler <strong>parahesap.site</strong> yönetimine aittir. İzin alınmaksızın kopyalanması veya ticari amaçla kullanılması yasaktır.</p>
-
-            <h2>3. Koşullarda Değişiklik Yapma Hakkı</h2>
-            <p>Site yönetimi, sitemizde sunulan hizmetleri, araçları ve kullanım koşullarını önceden bildirmeksizin değiştirme veya yayından kaldırma hakkını saklı tutar.</p>
-        </div>
-
-        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
-    </div>
-</main>
-
-<footer>
-    <p style="color: #e83e8c; font-style: italic; font-weight: 600; margin-bottom: 10px;">"Anında hesapla, geleceğini planla"</p>
-    <p>© 2026 parahesap.site - Tüm Hakları Saklıdır.</p>
     <p>
-        <a href="kullanim-sartlari.html">Kullanım Şartları</a> | 
-        <a href="gizlilik-politikasi.html">Gizlilik Politikası</a> | 
-        <a href="hakkimizda.html">Hakkımızda</a> | 
-        <a href="iletisim.html">İletişim</a> | 
-        <a href="blog/index.html">Blog</a>
+        Bu kullanım şartları, parahesap.site internet sitesinde
+        sunulan hesaplama araçlarının, bilgilendirici yazıların,
+        finansal içeriklerin ve diğer hizmetlerin kullanımına
+        ilişkin temel koşulları açıklar. Siteyi ziyaret ederek
+        veya sunduğumuz araçları kullanarak yürürlükteki mevzuata
+        uygun hareket etmeyi kabul etmiş olursunuz.
     </p>
-</footer>
 
-</body>
-</html>
+    <p>
+        Bu metin, kanunlardan doğan ve sözleşmeyle ortadan
+        kaldırılamayan haklarınızı sınırlamak amacıyla
+        hazırlanmış değildir.
+    </p>
+
+    <h3>1. Sitenin Amacı ve Hizmet Kapsamı</h3>
+
+    <p>
+        parahesap.site; finansal hesaplamaları anlaşılır hâle
+        getirmek, faizsiz finans kavramları hakkında genel
+        bilgi sunmak ve ziyaretçilerin farklı hesaplama
+        senaryolarını değerlendirmesine yardımcı olmak amacıyla
+        oluşturulmuş bir bilgilendirme portalıdır.
+    </p>
+
+    <p>
+        Sitede döviz ve altın dönüştürme, geçmiş kur senaryoları,
+        zekât hesaplama, fitre ve nisap hesaplama, kâr payı
+        simülasyonu, finansman hesaplaması ve BIST Katılım
+        şirketleri hakkında içerikler bulunabilir.
+    </p>
+
+    <p>
+        Sunulan araçlar, finansal kuruluşların resmî hizmetlerinin,
+        yetkili kurum açıklamalarının veya profesyonel danışmanlığın
+        yerine geçmez. Her aracın çalışma yöntemi ve veri kaynağı,
+        ilgili sayfada mümkün olduğunca açık biçimde belirtilmelidir.
+    </p>
+
+    <h3>2. Yatırım Tavsiyesi Değildir</h3>
+
+    <p>
+        Sitedeki içerikler ve hesaplama sonuçları genel
+        bilgilendirme amacı taşır; kişiye özel yatırım
+        danışmanlığı, portföy yönetimi veya alım-satım
+        tavsiyesi olarak değerlendirilmemelidir.
+    </p>
+
+    <p>
+        Döviz, altın, kripto varlık, hisse senedi, fon,
+        katılım hesabı veya başka bir finansal ürün hakkında
+        verilen bilgiler, herhangi bir varlığın alınması,
+        satılması ya da elde tutulması yönünde kişisel
+        öneri anlamına gelmez.
+    </p>
+
+    <p>
+        Finansal kararlar almadan önce kendi mali durumunuzu,
+        risk toleransınızı, yatırım sürenizi, işlem maliyetlerini
+        ve ilgili ürünün koşullarını değerlendirmeniz gerekir.
+        Gerektiğinde yetkili ve lisanslı bir uzmandan
+        profesyonel destek alınız.
+    </p>
+
+    <h3>3. Bilgilerin Doğruluğu ve Güncelliği</h3>
+
+    <p>
+        Finansal piyasalardaki fiyatlar ve oranlar zaman içinde
+        değişebilir. Sitede görünen bir değer, her zaman
+        güncel piyasa fiyatını temsil etmeyebilir.
+    </p>
+
+    <p>
+        Bir değerin yanında "canlı", "güncel" veya benzeri
+        bir ifade kullanılması hâlinde, bunun gerçek bir
+        veri kaynağına ve uygun güncelleme mekanizmasına
+        dayanması gerekir. Sabit, örnek veya varsayımsal
+        değerler kullanılıyorsa bunlar açıkça belirtilmelidir.
+    </p>
+
+    <p>
+        Teknik hata, veri kaynağındaki gecikme, yanlış giriş,
+        piyasa hareketleri veya hesaplama yöntemindeki
+        sınırlamalar nedeniyle sonuçlar değişebilir.
+        Önemli kararlar öncesinde ilgili değerleri güvenilir
+        ve mümkün olduğunda birincil kaynaklardan doğrulayınız.
+    </p>
+
+    <h3>4. Hesaplama Araçlarının Sınırlamaları</h3>
+
+    <p>
+        Hesaplama araçları, kullanıcının girdiği değerler
+        ve yazılımda tanımlanan formüller üzerinden sonuç üretir.
+        Sonucun doğru olması, hem girilen bilgilerin doğruluğuna
+        hem de kullanılan yöntemin ilgili duruma uygunluğuna bağlıdır.
+    </p>
+
+    <p>
+        Hesaplama araçları; bütün vergi yükümlülüklerini,
+        komisyonları, işlem masraflarını, sözleşme koşullarını,
+        kişisel durumları veya istisnaları her zaman kapsamayabilir.
+        Elde edilen sonuçları kesin ödeme tutarı ya da bağlayıcı
+        bir finansal teklif olarak kabul etmeyiniz.
+    </p>
+
+    <h3>5. Döviz, Altın ve Kripto Varlık Hesaplamaları</h3>
+
+    <p>
+        Döviz ve altın dönüştürücülerinde kullanılan fiyatlar,
+        alış-satış farklarını, banka veya kuyumcu marjlarını,
+        komisyonları ve işlem saatlerinden kaynaklanan
+        farklılıkları yansıtmayabilir.
+    </p>
+
+    <p>
+        Kripto varlık hesaplamaları yapılması durumunda,
+        fiyatların platformlar arasında farklılaşabileceği,
+        yüksek oynaklık ve kayıp riski bulunduğu dikkate alınmalıdır.
+        Geçmiş fiyat hareketleri gelecekteki performansı garanti etmez.
+    </p>
+
+    <h3>6. Geçmiş Kur Hesaplamaları</h3>
+
+    <p>
+        Geçmiş kur hesaplamalarının anlamlı olabilmesi için
+        kullanılan tarih, para birimi, kur türü ve veri kaynağı
+        önemlidir. Yıllık yaklaşık bir değer, belirli bir günün
+        resmî kuruyla aynı değildir.
+    </p>
+
+    <p>
+        Geçmiş dönemlere ait sonuçlar, tarihsel karşılaştırma
+        amacıyla kullanılmalıdır. Kesin muhasebe, vergi veya
+        hukuki hesaplamalarda ilgili tarih için geçerli resmî
+        veriler ve uzman görüşü esas alınmalıdır.
+    </p>
+
+    <h3>7. Zekât, Fitre, Fidye ve Nisap Hesaplamaları</h3>
+
+    <p>
+        Zekât, fitre, fidye ve nisap hesaplamaları bilgilendirme
+        amaçlıdır. Dinî yükümlülüklerin değerlendirilmesi;
+        malın niteliği, borçlar, mülkiyet durumu, süre şartları,
+        mezhep görüşleri ve yetkili dinî kurumların açıklamaları
+        gibi unsurlara bağlı olabilir.
+    </p>
+
+    <p>
+        Zekât hesaplamasında kullanılan varlık türleri, borçların
+        nasıl dikkate alındığı, nisap ölçüsü ve uygulanan oran
+        açıkça belirtilmelidir. Tek bir otomatik hesaplama
+        bütün kişisel durumlar için kesin dinî hüküm oluşturmaz.
+    </p>
+
+    <p>
+        Güncel fitre ve fidye tutarları dönemsel olarak
+        değişebilir. Bu tutarları yayımlarken ilgili dönem
+        ve güvenilir kaynak belirtilmelidir. Kişisel durumunuz
+        için gerektiğinde yetkili dinî mercilere danışınız.
+    </p>
+
+    <h3>8. Katılma Hesabı ve Kâr Payı Simülasyonları</h3>
+
+    <p>
+        Katılma hesabı hesaplayıcıları, girilen tutar ve oranlar
+        üzerinden varsayımsal sonuçlar oluşturabilir. Simülasyonda
+        kullanılan oran, süre, vergi veya kesinti varsayımları
+        gerçek bir finansal kuruluşun sunduğu koşullarla
+        aynı olmayabilir.
+    </p>
+
+    <p>
+        Katılma hesaplarında gerçekleşen kâr payı; ilgili
+        sözleşmeye, yatırım sonuçlarına, dağıtım yöntemine
+        ve kuruluşun uygulamalarına bağlıdır. Simülasyonda
+        gösterilen bir tutar, kesin veya garanti edilmiş
+        getiri vaadi olarak değerlendirilmemelidir.
+    </p>
+
+    <h3>9. Finansman Hesaplamaları</h3>
+
+    <p>
+        Finansman hesaplama aracı, seçilen tutar, vade ve
+        varsayımsal maliyet üzerinden yaklaşık taksit
+        gösterebilir. Gerçek bir teklif; kâr oranı, tahsis
+        ücreti, sigorta, vergiler, ödeme planı, ürün koşulları
+        ve finansman sağlayıcısının değerlendirmesine göre
+        farklılık gösterebilir.
+    </p>
+
+    <p>
+        Sitedeki hesaplamalar herhangi bir banka veya finansman
+        kuruluşu adına verilmiş teklif değildir. Başvuru öncesinde
+        ilgili kuruluşun resmî ödeme planını ve sözleşmesini
+        inceleyiniz.
+    </p>
+
+    <h3>10. BIST Katılım ve Şirket Bilgileri</h3>
+
+    <p>
+        Şirketlerin katılım finans ilkelerine uygunluğu,
+        ilgili endeksin yürürlükteki kurallarına, dönemsel
+        değerlendirmelere ve yetkili kurumların yayımladığı
+        listelere göre değişebilir.
+    </p>
+
+    <p>
+        Sitede bir şirketin katılıma uygun olarak gösterilmesi,
+        bu durumun her zaman geçerli olduğu veya söz konusu
+        şirketin yatırım açısından uygun olduğu anlamına gelmez.
+        Güncel durum, ilgili endeksin ve yetkili kurumların
+        resmî kaynaklarından doğrulanmalıdır.
+    </p>
+
+    <h3>11. Dinî ve Finansal İçeriklerin Niteliği</h3>
+
+    <p>
+        Rehber yazıları ve terimler sözlüğü, okuyucuların
+        temel kavramları anlamasına yardımcı olmak amacıyla
+        hazırlanır. Bu içerikler kişiye özel dinî fetva,
+        hukuk görüşü veya profesyonel finansal danışmanlık
+        yerine geçmez.
+    </p>
+
+    <p>
+        Görüş ayrılıklarının bulunduğu konularda farklı
+        yaklaşımların açıklanması, ilgili kaynakların
+        belirtilmesi ve kesinlik içermeyen konuların
+        kesin hüküm gibi sunulmaması esastır.
+    </p>
+
+    <h3>12. Kullanıcının Sorumlulukları</h3>
+
+    <ul>
+        <li>Siteyi hukuka ve dürüstlük kurallarına uygun kullanmak.</li>
+        <li>Hesaplamalarda doğru ve tutarlı bilgiler girmek.</li>
+        <li>Site güvenliğini bozacak veya hizmeti aksatacak faaliyetlerden kaçınmak.</li>
+        <li>İzinsiz erişim, kötü amaçlı yazılım veya otomatik kötüye kullanım girişimlerinde bulunmamak.</li>
+        <li>Önemli kararlar öncesinde gerekli bilgileri doğrulamak.</li>
+    </ul>
+
+    <h3>13. Fikrî Mülkiyet Hakları</h3>
+
+    <p>
+        Sitede yer alan özgün metinler, tasarım unsurları,
+        grafikler, yazılım düzenlemeleri ve diğer materyaller,
+        ilgili hak sahiplerinin hakları saklı kalmak kaydıyla
+        yürürlükteki fikrî mülkiyet mevzuatı kapsamında korunabilir.
+    </p>
+
+    <p>
+        Kanunen izin verilen kullanımlar dışında, içeriklerin
+        tamamının veya önemli bir bölümünün izinsiz kopyalanması,
+        yeniden yayımlanması ya da ticari amaçla kullanılması
+        yasaktır. Üçüncü taraflara ait materyallerin hakları
+        ilgili hak sahiplerine aittir.
+    </p>
+
+    <h3>14. Üçüncü Taraf Bağlantıları ve Hizmetleri</h3>
+
+    <p>
+        Sitemizde üçüncü taraf internet sitelerine, veri
+        sağlayıcılarına veya reklam hizmetlerine bağlantılar
+        bulunabilir. Bu kaynakların içeriği, güvenliği,
+        kullanılabilirliği ve gizlilik uygulamaları kendi
+        sağlayıcılarının sorumluluğundadır.
+    </p>
+
+    <p>
+        Harici bir bağlantının verilmesi, ilgili hizmetin
+        bütün içeriklerinin onaylandığı veya garanti edildiği
+        anlamına gelmez. Bağlantı verilen sitelerin kullanım
+        koşullarını ve gizlilik politikalarını ayrıca inceleyiniz.
+    </p>
+
+    <h3>15. Teknik Kesintiler ve Güncellemeler</h3>
+
+    <p>
+        Bakım, teknik arıza, barındırma hizmetindeki sorunlar
+        veya üçüncü taraf hizmetlerdeki kesintiler nedeniyle
+        sitenin bazı bölümlerine geçici olarak erişilemeyebilir.
+        Hizmetlerin sürekliliğini sağlamak için makul çaba
+        gösterilmekle birlikte kesintisiz erişim garanti edilmez.
+    </p>
+
+    <p>
+        İçerikler, hesaplama yöntemleri ve site özellikleri
+        doğruluk, güvenlik veya kullanılabilirlik amacıyla
+        güncellenebilir. Değişiklikler yürürlükteki mevzuata
+        ve kullanıcıların sahip olduğu haklara uygun olmalıdır.
+    </p>
+
+    <h3>16. Sorumluluk ve Uygulanacak Mevzuat</h3>
+
+    <p>
+        Sitedeki bilgilerin kullanımından kaynaklanabilecek
+        sonuçlar, uygulanabilir mevzuat ve olayın koşulları
+        çerçevesinde değerlendirilir. Bu metin, kanunen
+        kaldırılamayan sorumlulukları veya tüketicilerin
+        zorunlu haklarını ortadan kaldıracak biçimde yorumlanamaz.
+    </p>
+
+    <p>
+        Türkiye'de yürürlükte bulunan ilgili mevzuat,
+        somut olaya uygulanabildiği ölçüde dikkate alınır.
+        Uyuşmazlıkların çözümünde kanunen yetkili mercilere
+        başvuru hakları saklıdır.
+    </p>
+
+    <h3>17. İletişim ve Geri Bildirim</h3>
+
+    <p>
+        Hesaplamalarda hata, güncelliğini yitirmiş bilgi,
+        erişilebilirlik sorunu veya içerik düzeltme ihtiyacı
+        fark ederseniz İletişim Formu üzerinden bildirimde
+        bulunabilirsiniz. Bildiriminizde ilgili sayfayı ve
+        sorunu açıklamanız, inceleme sürecini kolaylaştırır.
+    </p>
+
+    <h3>18. Şartların Güncellenmesi</h3>
+
+    <p>
+        Bu kullanım şartları, hizmetlerde veya mevzuatta
+        meydana gelen değişikliklere göre güncellenebilir.
+        Güncel metin bu sayfada yayımlanır. Önemli değişiklikler
+        gerektiğinde uygun yöntemlerle duyurulur.
+    </p>
+</div>
