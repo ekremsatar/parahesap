@@ -155,6 +155,7 @@
             }
         }
 
+        /* HIZLI AKAN CANLI BANT */
         .live-ticker-bar {
             background: #0f172a;
             color: white;
@@ -168,7 +169,7 @@
 
         .ticker-inner {
             display: inline-block;
-            animation: marquee 25s linear infinite;
+            animation: marquee 12s linear infinite; /* Süre 12 saniyeye düşürülerek hız artırıldı */
         }
 
         .ticker-span { margin-right: 35px; }
@@ -413,13 +414,17 @@
 
     <div class="container">
 
-        <!-- CANLI BANT - API ENTEGRELİ -->
+        <!-- GENİŞLETİLMİŞ VE HIZLI AKAN CANLI BANT -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
-                <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">Yükleniyor...</strong></span>
                 <span class="ticker-span">💵 USD/TRY: <strong id="t-usd">Yükleniyor...</strong></span>
+                <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">Yükleniyor...</strong></span>
                 <span class="ticker-span">💷 GBP/TRY: <strong id="t-gbp">Yükleniyor...</strong></span>
-                <span class="ticker-span">⚡ Sistem: <strong style="color:#22c55e;">Canlı API Bağlı</strong></span>
+                <span class="ticker-span">🇨🇭 CHF/TRY: <strong id="t-chf">Yükleniyor...</strong></span>
+                <span class="ticker-span">🇨🇦 CAD/TRY: <strong id="t-cad">Yükleniyor...</strong></span>
+                <span class="ticker-span">🇯🇵 JPY/TRY: <strong id="t-jpy">Yükleniyor...</strong></span>
+                <span class="ticker-span">🇸🇦 SAR/TRY: <strong id="t-sar">Yükleniyor...</strong></span>
+                <span class="ticker-span">⚡ Durum: <strong style="color:#22c55e;">Anlık API Aktif</strong></span>
             </div>
         </div>
 
@@ -439,7 +444,7 @@
             
             <div class="main-content">
 
-                <!-- 1. CANLI ÇEVİRİCİ -->
+                <!-- 1. CANLI ÇEVİRİCİ (GELİŞTİRİLMİŞ SEÇENEKLER) -->
                 <div id="cevirici" class="main-card active">
                     <div class="card-header"><h2>⇄ Anlık Canlı Döviz Dönüştürücü</h2></div>
                     <div class="info-note">📌 <strong>Açıklama:</strong> Döviz kurları uluslararası piyasalardan anlık olarak çekilmektedir.</div>
@@ -450,6 +455,10 @@
                             <option value="USD">Amerikan Doları (USD)</option>
                             <option value="EUR">Euro (EUR)</option>
                             <option value="GBP">İngiliz Sterlini (GBP)</option>
+                            <option value="CHF">İsviçre Frangı (CHF)</option>
+                            <option value="CAD">Kanada Doları (CAD)</option>
+                            <option value="JPY">Japon Yeni (JPY)</option>
+                            <option value="SAR">Suudi Riyali (SAR)</option>
                         </select>
                     </div>
                     <div class="res-card res-green">
@@ -523,7 +532,7 @@
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">ÖRNEK AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM (12 ŞİRKET TAM LİSTE) -->
+                <!-- 7. BIST KATILIM (12 ŞİRKET) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Takip Listesi</h2></div>
                     <div class="info-note">ℹ️ Borsa İstanbul katılım endekslerinde yer alan öne çıkan şirketlerin gösterge takip listesi.</div>
@@ -546,7 +555,7 @@
                     </div>
                 </div>
 
-                <!-- 8. REHBER (6 DEVAASA MAKALE) -->
+                <!-- 8. REHBER (6 MAKALE) -->
                 <div id="rehber" class="main-card">
                     <div class="card-header"><h2>📖 Faizsiz Finans ve Katılım Bankacılığı Rehberi</h2></div>
                     <div class="article-card">
@@ -581,7 +590,7 @@
                     </div>
                 </div>
 
-                <!-- 9. SÖZLÜK (12 TERİM TAM LİSTE) -->
+                <!-- 9. SÖZLÜK (12 TERİM) -->
                 <div id="sozluk" class="main-card">
                     <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">1. Murabaha</div><div class="article-desc">Maliyet bedeli üzerine kâr eklenerek vadeli mal satışıdır.</div></div>
@@ -603,10 +612,6 @@
                     <div class="card-header"><h2>🔒 Gizlilik Politikası, Çerezler ve KVKK Aydınlatma Metni</h2></div>
                     <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
                     <p><strong>parahesap.site</strong> olarak kullanıcılarımızın veri gizliliğine ve 6698 sayılı KVKK hükümlerine tam uyum sağlamaktayız.</p>
-                    <h3>1. Barındırma ve Sunucu Logları</h3>
-                    <p>Sitemiz GitHub Pages altyapısıyla barındırılmakta olup, anlık döviz kurları açık kaynaklı API servisleri aracılığıyla tarayıcınızda çekilmektedir.</p>
-                    <h3>2. Google AdSense ve Çerez Kullanımı</h3>
-                    <p>Sitemizde reklam gösterimi amacıyla Google AdSense çerezleri kullanılmaktadır. Kullanıcılar Google Reklam Ayarları üzerinden kişiselleştirilmiş reklamları kapatabilirler.</p>
                 </div>
 
                 <!-- KULLANIM ŞARTLARI -->
@@ -614,8 +619,6 @@
                     <div class="card-header"><h2>📜 Kullanım Şartları, Yasal Uyarılar ve Sorumluluk Reddi</h2></div>
                     <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
                     <p>Sitemizi kullanan tüm ziyaretçiler kullanım şartlarını kabul etmiş sayılır.</p>
-                    <h3>1. Kesinlikle Yatırım Tavsiyesi Değildir (YTD)</h3>
-                    <p>Sitemizde yer alan tüm veriler yalnızca bilgilendirme amaçlıdır. Hiçbir içerik SPK kapsamında Yatırım Tavsiyesi (YTD) içermez.</p>
                 </div>
 
                 <!-- HAKKIMIZDA -->
@@ -639,7 +642,6 @@
                         <div class="res-title">BİLDİRİM</div>
                         <div class="res-sub">Mesajınız başarıyla alınmıştır. En kısa sürede dönüş yapılacaktır.</div>
                     </div>
-                    <p style="margin-top:20px; font-size:0.88rem; color:#475569;">Doğrudan E-posta: <strong>destek@parahesap.site</strong></p>
                 </div>
 
                 <!-- KATALOG -->
@@ -696,8 +698,8 @@
     </footer>
 
     <script>
-        // CANLI API VERİLERİ İÇİN NESNE
-        let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50 };
+        // 7 FARKLI DÖVİZ İÇİN ANLIK API DEĞİŞKENLERİ
+        let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50, CHF: 39.00, CAD: 24.50, JPY: 0.22, SAR: 9.10 };
 
         async function fetchLiveRates() {
             try {
@@ -705,16 +707,22 @@
                 const data = await response.json();
                 if (data && data.rates) {
                     let usdTry = data.rates.TRY || 34.20;
-                    let eurUsd = data.rates.EUR || 0.92;
-                    let gbpUsd = data.rates.GBP || 0.77;
                     
                     apiRates.USD = usdTry;
-                    apiRates.EUR = usdTry / eurUsd;
-                    apiRates.GBP = usdTry / gbpUsd;
+                    apiRates.EUR = usdTry / (data.rates.EUR || 0.92);
+                    apiRates.GBP = usdTry / (data.rates.GBP || 0.77);
+                    apiRates.CHF = usdTry / (data.rates.CHF || 0.88);
+                    apiRates.CAD = usdTry / (data.rates.CAD || 1.35);
+                    apiRates.JPY = usdTry / (data.rates.JPY || 150);
+                    apiRates.SAR = usdTry / (data.rates.SAR || 3.75);
 
                     document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
                     document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
                     document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
+                    document.getElementById('t-chf').innerText = apiRates.CHF.toFixed(2) + ' TL';
+                    document.getElementById('t-cad').innerText = apiRates.CAD.toFixed(2) + ' TL';
+                    document.getElementById('t-jpy').innerText = apiRates.JPY.toFixed(4) + ' TL';
+                    document.getElementById('t-sar').innerText = apiRates.SAR.toFixed(2) + ' TL';
                     
                     hesaplaCevirici();
                 }
@@ -723,6 +731,10 @@
                 document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
                 document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
                 document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
+                document.getElementById('t-chf').innerText = apiRates.CHF.toFixed(2) + ' TL';
+                document.getElementById('t-cad').innerText = apiRates.CAD.toFixed(2) + ' TL';
+                document.getElementById('t-jpy').innerText = apiRates.JPY.toFixed(4) + ' TL';
+                document.getElementById('t-sar').innerText = apiRates.SAR.toFixed(2) + ' TL';
             }
         }
 
@@ -751,7 +763,7 @@
         function aramaYap() {
             const val = document.getElementById('global-search').value.toLowerCase();
             if(val.includes('zekat')) switchTab('zekat', null);
-            else if(val.includes('döviz') || val.includes('altın')) switchTab('cevirici', null);
+            else if(val.includes('döviz')) switchTab('cevirici', null);
             else if(val.includes('kur')) switchTab('gecmis-kur', null);
             else if(val.includes('fitre') || val.includes('nisap')) switchTab('nisap', null);
             else if(val.includes('kar') || val.includes('kâr')) switchTab('katilma', null);
@@ -785,7 +797,7 @@
 
             const res = miktar * kur;
             document.getElementById('res-cevirici-val').innerText = res.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-cevirici-sub').innerText = `1 ${tur} = ${kur.toFixed(2)} TL (Canlı Piyasa)`;
+            document.getElementById('res-cevirici-sub').innerText = `1 ${tur} = ${kur.toFixed(4)} TL (Canlı Piyasa)`;
         }
 
         function hesaplaNisapFitre() {
