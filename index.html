@@ -37,11 +37,13 @@
 
     <div class="container">
 
-        <!-- CANLI BANT -->
+        <!-- ZENGİN VE CANLI AKAN BANT -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
-                <span class="ticker-span">🏆 Gram Altın (Canlı Hesap): <strong id="t-gold">Yükleniyor...</strong></span>
-                <span class="ticker-span">🟡 Çeyrek Altın (Canlı Hesap): <strong id="t-ceyrek">Yükleniyor...</strong></span>
+                <span class="ticker-span">🏆 Gram Altın: <strong id="t-gold">Yükleniyor...</strong></span>
+                <span class="ticker-span">🟡 Çeyrek Altın: <strong id="t-ceyrek">Yükleniyor...</strong></span>
+                <span class="ticker-span">₿ Bitcoin: <strong id="t-btc">3,045,000 TL</strong></span>
+                <span class="ticker-span">📈 BIST 100 Katılım: <strong id="t-bist">10,850 Puan</strong></span>
                 <span class="ticker-span">💵 USD/TRY: <strong id="t-usd">Yükleniyor...</strong></span>
                 <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">Yükleniyor...</strong></span>
                 <span class="ticker-span">💷 GBP/TRY: <strong id="t-gbp">Yükleniyor...</strong></span>
@@ -68,7 +70,7 @@
                 <!-- 1. CANLI ÇEVİRİCİ -->
                 <div id="cevirici" class="main-card active">
                     <div class="card-header"><h2>⇄ Anlık Canlı Döviz & Altın Dönüştürücü</h2></div>
-                    <div class="info-note">📌 <strong>Açıklama:</strong> Döviz kurları ve altın değerleri anlık kur oranlarıyla otomatik olarak hesaplanmaktadır.</div>
+                    <div class="info-note">📌 <strong>Açıklama:</strong> Döviz kurları ve altın değerleri anlık piyasa oranlarıyla otomatik olarak hesaplanmaktadır.</div>
                     <div class="form-group"><label>Miktar</label><input type="number" id="cev-miktar" value="1" oninput="hesaplaCevirici()"></div>
                     <div class="form-group">
                         <label>Kaynak Varlık / Para Birimi</label>
@@ -151,7 +153,7 @@
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">ÖRNEK AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM (12 ŞİRKET) -->
+                <!-- 7. BIST KATILIM (12 ŞİRKET TAM LİSTE) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Takip Listesi</h2></div>
                     <div class="info-note">ℹ️ Borsa İstanbul katılım endekslerinde yer alan öne çıkan şirketlerin gösterge takip listesi.</div>
@@ -287,6 +289,8 @@
                     <a href="#" class="side-link" onclick="switchTab('nisap', null)">🔹 Fitre & Nisap Eşiği</a>
                     <a href="#" class="side-link" onclick="switchTab('katilma', null)">🔹 Katılma Hesabı Kâr Payı</a>
                     <a href="#" class="side-link" onclick="switchTab('katilim-endeks', null)">🔹 BIST Katılım Endeksi</a>
+                    <a href="#" class="side-link" onclick="switchTab('rehber', null)">🔹 Finans Rehberi</a>
+                    <a href="#" class="side-link" onclick="switchTab('sozluk', null)">🔹 Terimler Sözlüğü</a>
                 </div>
 
                 <div class="sidebar-card">
