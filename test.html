@@ -318,36 +318,42 @@
         }
         .side-link:hover { color: var(--primary); font-weight: bold; }
 
+        /* BIST LİSTESİ DÜZENİ */
+        .bist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
         .bist-card-item {
             border: 1px solid var(--border-color);
             background: var(--input-bg);
             border-radius: 10px;
             padding: 14px;
-            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .bist-code { font-weight: 800; color: var(--primary); font-size: 0.9rem; }
-        .bist-name { font-size: 0.9rem; font-weight: 700; }
+        .bist-code { font-weight: 800; color: var(--primary); font-size: 0.95rem; }
+        .bist-name { font-size: 0.88rem; font-weight: 700; }
         .bist-price { font-size: 0.8rem; color: #64748b; }
-        .bist-tag { background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+        .bist-tag { background: #dcfce7; color: #15803d; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
 
+        /* REHBER & SÖZLÜK DÜZENİ */
         .article-card {
             border: 1px solid var(--border-color);
             background: var(--input-bg);
             border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 14px;
+            padding: 18px;
+            margin-bottom: 16px;
         }
         .article-tag { font-size: 0.72rem; font-weight: 800; color: var(--primary); text-transform: uppercase; }
-        .article-title { font-size: 1.05rem; font-weight: 800; margin: 6px 0; }
-        .article-desc { font-size: 0.88rem; color: #475569; line-height: 1.6; }
+        .article-title { font-size: 1.1rem; font-weight: 800; margin: 6px 0; }
+        .article-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; }
         body.dark-mode .article-desc { color: #cbd5e1; }
 
-        /* ADSENSE İÇİN ÇOK DETAYLI KURUMSAL METİNLER */
         .policy-text h3 { color: var(--primary); margin: 18px 0 8px 0; font-size: 1.1rem; }
-        .policy-text h4 { color: var(--text-color); margin: 12px 0 6px 0; font-size: 0.98rem; }
         .policy-text p, .policy-text li { font-size: 0.9rem; margin-bottom: 10px; color: #475569; line-height: 1.7; }
         body.dark-mode .policy-text p, body.dark-mode .policy-text li { color: #cbd5e1; }
         .policy-text ul { margin-left: 20px; margin-bottom: 12px; }
@@ -530,102 +536,135 @@
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM -->
+                <!-- 7. BIST KATILIM (15 ADET EN POPÜLER KATILIM HİSSESİ İLE DOLDURULDU) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Filtresi</h2></div>
-                    <div class="bist-card-item"><div><div class="bist-code">THYAO</div><div class="bist-name">Türk Hava Yolları</div><div class="bist-price">312.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span></div></div>
-                    <div class="bist-card-item"><div><div class="bist-code">ASELS</div><div class="bist-name">Aselsan Elektronik</div><div class="bist-price">74.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span></div></div>
-                </div>
+                    <p style="font-size:0.82rem; color:#64748b; margin-bottom:12px;">Faizsiz Yatırım Prensiplerine (Danışma Kurulu Kriterleri) uygunluğu onaylanmış Borsa İstanbul şirketleri.</p>
+                    
+                    <div class="form-group">
+                        <input type="text" id="bist-input-filter" placeholder="Hisse Kodu veya Şirket Adı Ara (Örn: THYAO, ASELS)..." oninput="filtreleBistSirketler()">
+                    </div>
 
-                <!-- 8. REHBER -->
-                <div id="rehber" class="main-card">
-                    <div class="card-header"><h2>📖 Faizsiz Finans ve Katılım Bankacılığı Rehberi</h2></div>
-                    <div class="article-card">
-                        <div class="article-tag">ZEKAT FIKHI</div>
-                        <div class="article-title">Ziynet Altınlarının Zekatı Nasıl Verilir?</div>
-                        <div class="article-desc">Kadınların kullanımında olan ziynet altınlarının zekata tabi olup olmadığı mezhepler arasında farklılık gösterir. Hanefi mezhebine göre nisap miktarını aşan tüm takılar zekata tabidir.</div>
+                    <div class="bist-grid" id="bist-sirket-container">
+                        <div class="bist-card-item"><div><div class="bist-code">THYAO</div><div class="bist-name">Türk Hava Yolları</div><div class="bist-price">312.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.8%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ASELS</div><div class="bist-name">Aselsan Elektronik</div><div class="bist-price">74.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+3.2%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">EREGL</div><div class="bist-name">Ereğli Demir Çelik</div><div class="bist-price">48.90 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-0.5%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">BIMAS</div><div class="bist-name">BİM Birleşik Mağazalar</div><div class="bist-price">520.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.9%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">SISE</div><div class="bist-name">Şişecam Cam Fabrikaları</div><div class="bist-price">51.10 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.1%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">KONTR</div><div class="bist-name">Kontrolmatik Teknoloji</div><div class="bist-price">64.30 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-2.1%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">TUPRS</div><div class="bist-name">TÜPRAŞ Petrol Rafinerileri</div><div class="bist-price">168.40 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+2.4%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">KCHOL</div><div class="bist-name">Koç Holding</div><div class="bist-price">214.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.5%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">EKGYO</div><div class="bist-name">Emlak Konut GYO</div><div class="bist-price">11.80 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.4%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ASTOR</div><div class="bist-name">Astor Enerji</div><div class="bist-price">98.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+4.1%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">SASA</div><div class="bist-name">SASA Polyester</div><div class="bist-price">4.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-1.2%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ALARK</div><div class="bist-name">Alarko Holding</div><div class="bist-price">108.60 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.8%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">PETKM</div><div class="bist-name">Petkim Petrokimya</div><div class="bist-price">20.40 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.2%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ENJSA</div><div class="bist-name">Enerjisa Enerji</div><div class="bist-price">62.80 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.9%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">HEKTS</div><div class="bist-name">Hektaş Ticaret</div><div class="bist-price">3.95 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılıma Uygun</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-0.8%</div></div></div>
                     </div>
                 </div>
 
-                <!-- 9. SÖZLÜK -->
-                <div id="sozluk" class="main-card">
-                    <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">Murabaha</div><div class="article-desc">Maliyet üzerine kâr eklenerek vadeli mal satışıdır.</div></div>
-                    <div class="article-card"><div class="article-title" style="color:var(--primary);">Mudaraba</div><div class="article-desc">Sermaye ve emek ortaklığı modelidir.</div></div>
+                <!-- 8. REHBER (6 TANE DETAYLI VE DOLGUN MAKALEYLE DOLDURULDU) -->
+                <div id="rehber" class="main-card">
+                    <div class="card-header"><h2>📖 Faizsiz Finans ve Katılım Bankacılığı Rehberi</h2></div>
+                    
+                    <div class="article-card">
+                        <div class="article-tag">ZEKAT FIKHI</div>
+                        <div class="article-title">Ziynet Altınlarının Zekatı Nasıl Hesaplanır?</div>
+                        <div class="article-desc">Kadınların günlük hayatlarında taktıkları altın ve gümüş takıların zekata tabi olup olmadığı İslam hukukunda mezheplere göre farklılık gösterir. Hanefi mezhebine göre kullanım amacı ne olursa olsun 80.18 gramı aşan tüm altın ziynetler zekata tabidir. Şafi mezhebine göre ise örfe uygun süs takıları zekattan muaf tutulmaktadır.</div>
+                    </div>
+
+                    <div class="article-card">
+                        <div class="article-tag">KATILIM BANKACILIĞI</div>
+                        <div class="article-title">Katılma Hesapları ile Mevduat Hesabı Arasındaki Temel Farklar</div>
+                        <div class="article-desc">Geleneksel konvansiyonel bankacılıkta faiz oranı önceden sabit olarak taahhüt edilir. Katılım bankacılığında ise faizsizlik prensibi esastır. Yatırılan paralar reel ticari projelerde, emtia alım-satımında ve üretimde kullanılır. Elde edilen kâr veya zarar, önceden belirlenen paylaşım oranlarına göre mudiye yansıtılır.</div>
+                    </div>
+
+                    <div class="article-card">
+                        <div class="article-tag">ENFLASYON & YATIRIM</div>
+                        <div class="article-title">Enflasyonist Ortamda Paranın Değerini Koruma Yolları</div>
+                        <div class="article-desc">Yüksek enflasyon dönemlerinde Türk Lirası birikimlerin satın alma gücünü korumak için faizsiz yatırım enstrümanları hayati öneme sahiptir. Fiziki altın, gümüş, gayrimenkul katılım fonları ve BIST Katılım Endeksine kote olan temettü verimi yüksek şirketler paranın değer kaybını engellemede etkin rol oynar.</div>
+                    </div>
+
+                    <div class="article-card">
+                        <div class="article-tag">TİCARET FIKHI</div>
+                        <div class="article-title">Murabaha Finansmanı Nedir ve Nasıl İşler?</div>
+                        <div class="article-desc">Murabaha, katılım bankasının müşterinin ihtiyaç duyduğu bir malı (araba, konut, hammadde vb.) peşin satın alıp, üzerine belirli bir kâr marjı ekleyerek müşteriye taksitle satması işlemidir. Bu işlem bir para satışı değil, doğrudan mal ticaretidir.</div>
+                    </div>
+
+                    <div class="article-card">
+                        <div class="article-tag">YATIRIM ENSTRÜMANLARI</div>
+                        <div class="article-title">Sukuk (Kira Sertifikası) Nedir? Bono ve Tahvilden Farkı</div>
+                        <div class="article-desc">Sukuk, bir varlığa veya mülkiyete dayalı faizsiz sertifikadır. Devletler veya kurumsal şirketler tarafından ihraç edilir. Geleneksel tahviller borç ilişkisine dayanırken, sukuk gerçek bir varlığın mülkiyetine veya kira gelirine ortaklık sağlar.</div>
+                    </div>
+
+                    <div class="article-card">
+                        <div class="article-tag">ORTAKLIK MODELLERİ</div>
+                        <div class="article-title">Mudaraba ve Müşareke Ortaklık Modelinin Detayları</div>
+                        <div class="article-desc">Mudaraba; bir tarafın sermaye, diğer tarafın emek koyduğu sermaye-emek ortaklığıdır. Müşareke ise tüm tarafların hem sermaye koyduğu hem de kâr ve zarara ortak olduğu tam ortaklık modelidir. Katılım finansının temel yapısını bu iki model oluşturur.</div>
+                    </div>
                 </div>
 
-                <!-- GİZLİLİK POLİTİKASI - ADSENSE İÇİN ÇOK DETAYLI VE UZUN METİN -->
+                <!-- 9. SÖZLÜK (12 TANE İSLAMİ FİNANS TERİMİ İLE DOLDURULDU) -->
+                <div id="sozluk" class="main-card">
+                    <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
+                    
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">1. Murabaha</div><div class="article-desc">Bir malın maliyet bedeli üzerine belirli bir kâr eklenerek peşin veya vadeli olarak müşteriye satılması işlemidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">2. Mudaraba</div><div class="article-desc">Bir tarafın sadece sermaye (rabbü'l-mal), diğer tarafın ise sadece emek (amıl) koyarak kurduğu sermaye-emek ortaklığıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">3. Müşareke</div><div class="article-desc">Tarafların hem sermaye koyduğu hem de yönetime katılarak kâr ve zarara ortak olduğu finansal iş birliği modelidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">4. Sukuk</div><div class="article-desc">Bir varlığın veya hizmetin mülkiyetini, yararlanma hakkını temsil eden faizsiz sertifika ve kira sertifikalarıdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">5. İcare</div><div class="article-desc">Bir varlığın kullanım hakkının belirli bir süre ve bedel karşılığında kiralanması işlemidir (Finansal Kiralama / Leasing).</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">6. Teverruk</div><div class="article-desc">Nakit ihtiyacını karşılamak amacıyla bir malı vadeli satın alıp, üçüncü bir şahsa peşin fiyata satma işlemidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">7. Tekafül</div><div class="article-desc">Karşılıklı yardımlaşma, dayanışma ve bağış (teberru) esasına dayanan faizsiz İslami sigortacılık modelidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">8. Selem</div><div class="article-desc">Bedeli peşin ödenerek, standart nitelikteki bir malın ilerideki bir tarihte teslim alınması esasına dayanan satış akdidir.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">9. Karz-ı Hasen</div><div class="article-desc">Hiçbir kâr, faiz veya ek menfaat gözetilmeksizin tamamen Allah rızası için verilen güzel borçtur.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">10. Nisap</div><div class="article-desc">Dinen zenginlik ölçüsü kabul edilen miktar olup, temel ihtiyaçlar dışında 80.18 gram altın veya dengi meblağdır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">11. Riba (Faiz)</div><div class="article-desc">Borç verme işlemlerinde veya bazı malların mübadelesinde karşılıksız olarak alınan her türlü fazlalıktır.</div></div>
+                    <div class="article-card"><div class="article-title" style="color:var(--primary);">12. İstısna</div><div class="article-desc">Eser veya imalat sözleşmesi olup, henüz var olmayan bir malın üretilerek teslim edilmesi üzerine yapılan anlaşmadır.</div></div>
+                </div>
+
+                <!-- GİZLİLİK POLİTİKASI -->
                 <div id="gizlilik" class="main-card policy-text">
                     <div class="card-header"><h2>🔒 Gizlilik Politikası ve KVKK Aydınlatma Metni</h2></div>
                     <p>Son Güncelleme Tarihi: 2026</p>
-                    
                     <p><strong>parahesap.site</strong> olarak kişisel verilerinizin güvenliğine ve gizliliğine en üst düzeyde önem veriyoruz. İşbu Gizlilik Politikası; sitemizi ziyaret ettiğinizde, hesaplama araçlarını kullandığınızda ve sunduğumuz hizmetlerden faydalandığınızda verilerinizin nasıl toplandığını, işlendiğini ve korunduğunu açıklamaktadır.</p>
-
                     <h3>1. Toplanan Bilgiler ve Veri İşleme Yöntemleri</h3>
                     <p>Sitemizde yer alan Zekat, Fitre, Kâr Payı, Döviz ve Altın dönüştürücü araçlar tamamen istemci tarafında (tarayıcınızda) çalışmaktadır. Hesaplama yaparken girdiğiniz anlık finansal varlık tutarları, borç miktarları ve kişisel rakamlar kesinlikle sunucularımıza gönderilmez, depolanmaz veya üçüncü şahıslarla paylaşılmaz.</p>
-
                     <h3>2. Google AdSense ve Çerez (Cookie) Politikası</h3>
                     <p>Sitemiz, gelir elde etmek ve siteyi çalışır kılmak amacıyla Google AdSense reklam ağı ile çalışmaktadır. Google dahil üçüncü taraf tedarikçiler, kullanıcıların web sitemize veya internetteki diğer sitelere yaptıkları önceki ziyaretlere dayanarak reklam sunmak için çerezleri kullanmaktadır.</p>
                     <ul>
                         <li><strong>Google Reklam Çerezleri:</strong> Google ve iş ortakları, kullanıcılarımıza sitemize yaptıkları ziyaretlere dayalı reklamlar sunmak amacıyla çerezler (DoubleClick çerezi dahil) kullanır.</li>
-                        <li><strong>Kişiselleştirilmiş Reklamları Devre Dışı Bırakma:</strong> Kullanıcılar, <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--primary);">Google Reklam Ayarları</a> sayfasını ziyaret ederek kişiselleştirilmiş reklamcılığı devre dışı bırakabilirler. Alternatif olarak, <a href="https://www.aboutads.info" target="_blank" style="color:var(--primary);">www.aboutads.info</a> adresini ziyaret ederek üçüncü taraf satıcıların çerez kullanımını yönetebilirsiniz.</li>
+                        <li><strong>Kişiselleştirilmiş Reklamları Devre Dışı Bırakma:</strong> Kullanıcılar, <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--primary);">Google Reklam Ayarları</a> sayfasını ziyaret ederek kişiselleştirilmiş reklamcılığı devre dışı bırakabilirler.</li>
                     </ul>
-
-                    <h3>3. Log Kayıtları ve Güvenlik</h3>
-                    <p>Her standart web sitesinde olduğu gibi parahesap.site de sunucu güvenliğini sağlamak, istatistiksel analiz yapmak ve site performansını artırmak amacıyla IP adresi, tarayıcı türü, işletim sistemi, ziyaret edilen sayfalar ve erişim saatleri gibi standart log verilerini anonim olarak toplayabilir.</p>
-
-                    <h3>4. Çocukların Gizliliği</h3>
-                    <p>Hizmetlerimiz 18 yaş altındaki bireyleri hedeflememektedir. Bilerek 18 yaş altı kişilerden kişisel veri toplama amacımız bulunmamaktadır.</p>
-
-                    <h3>5. Gizlilik Politikasındaki Değişiklikler</h3>
-                    <p>Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Yapılan değişiklikler bu sayfada yayımlandığı andan itibaren geçerlilik kazanır.</p>
                 </div>
 
-                <!-- KULLANIM ŞARTLARI - ADSENSE İÇİN DETAYLI VE UZUN METİN -->
+                <!-- KULLANIM ŞARTLARI -->
                 <div id="kullanim" class="main-card policy-text">
                     <div class="card-header"><h2>📜 Kullanım Şartları ve Sorumluluk Reddi</h2></div>
                     <p>Son Güncelleme Tarihi: 2026</p>
-
                     <p>İşbu Kullanım Şartları, <strong>parahesap.site</strong> web sitesinin kullanımına ilişkin kuralları, yasal sorumlulukları ve yasal uyarıları düzenlemektedir. Sitemizi ziyaret eden veya kullanan tüm kullanıcılar aşağıdaki şartları peşinen kabul etmiş sayılır.</p>
-
                     <h3>1. Bilgilendirme ve Yatırım Tavsiyesi Niteliği Taşımama</h3>
-                    <p>Sitemizde yer alan tüm hesaplama araçları (Zekat, Fitre, Kâr Payı, Döviz, Finansman ve Borsa verileri) yalnızca genel bilgilendirme, simülasyon ve rehberlik amacıyla sunulmaktadır. Sitemizde sunulan hiçbir veri, analiz veya hesaplama sonucu kesinlikle <strong>Yatırım Tavsiyesi (YTD)</strong> niteliği taşımaz; Sermaye Piyasası Kurulu (SPK) mevzuatı çerçevesinde yatırım danışmanlığı kapsamında değerlendirilemez.</p>
-                    <p>Kullanıcılar, sitemizdeki verilere dayanarak alacakları ticari, finansal veya yatırım kararlarından tamamen kendileri sorumludur. Doğabilecek maddi veya manevi zararlardan site yönetimi hiçbir suretle sorumlu tutulamaz.</p>
-
-                    <h3>2. Dini ve Fıkhi Hesaplamalar</h3>
-                    <p>Zekat, nisap, sadaka-i fitir ve oruç fidyesi hesaplamalarında genel kabul görmüş fıkhi ölçütler ve Diyanet İşleri Başkanlığı'nın güncel verileri esas alınmaktadır. Ancak mükelleflerin bireysel borç ve varlık durumlarındaki karmaşıklıklar nedeniyle, kesin dini hükümler için yetkili din müftülüklerine veya ilim erbabına danışmaları tavsiye edilir.</p>
-
-                    <h3>3. Fikri Mülkiyet Hakları</h3>
-                    <p>parahesap.site üzerindeki tüm yazılı içerikler, tasarım öğeleri, arayüz kodları ve logolar telif hakları yasalarıyla korunmaktadır. İçerikler izinsiz kopyalanamaz, çoğaltılamaz ve ticari amaçlarla başka platformlarda yayımlanamaz.</p>
-
-                    <h3>4. Üçüncü Taraf Bağlantıları</h3>
-                    <p>Sitemiz, kullanıcıya kolaylık sağlamak amacıyla üçüncü taraf web sitelerine bağlantılar (linkler) içerebilir. Bu dış sitelerin gizlilik uygulamalarından veya içeriklerinden parahesap.site sorumlu değildir.</p>
+                    <p>Sitemizde yer alan tüm hesaplama araçları yalnızca genel bilgilendirme, simülasyon ve rehberlik amacıyla sunulmaktadır. Sitemizde sunulan hiçbir veri kesinlikle <strong>Yatırım Tavsiyesi (YTD)</strong> niteliği taşımaz. Doğabilecek maddi veya manevi zararlardan site yönetimi hiçbir suretle sorumlu tutulamaz.</p>
                 </div>
 
                 <!-- HAKKIMIZDA -->
                 <div id="hakkimizda" class="main-card policy-text">
                     <div class="card-header"><h2>🏢 Hakkımızda - Kurumsal Kimlik ve Yayın İlkeleri</h2></div>
                     <p><strong>parahesap.site</strong>; faizsiz finans, İslami iktisat, zekat hesaplamaları ve katılım bankacılığı alanlarında bireylere rehberlik etmek amacıyla kurulan bağımsız bir dijital hesaplama ve bilgi portalıdır.</p>
-                    
                     <h3>Misyonumuz ve Vizyonumuz</h3>
                     <p>Günümüz finans dünyasında bireylerin dini hassasiyetlerine uygun kararlar alabilmesini kolaylaştırmak, karmaşık hesaplama süreçlerini sadeleştirmek ve güvenilir verileri tek çatı altında sunmak temel misyonumuzdur. Şeffaflık, doğruluk ve tarafsızlık en temel çalışma ilkelerimizdir.</p>
-
-                    <h3>Editoryal Bağımsızlık ve Doğruluk Politikası</h3>
-                    <p>Portalımızda yayımlanan tüm makaleler, rehberler ve hesaplama algoritmaları alanında uzman kaynaklar ve Diyanet İşleri Başkanlığı fıkhi ölçütleri dikkate alınarak titizlikle hazırlanmaktadır. Verilerimiz düzenli olarak güncellenmekte olup kullanıcılara en doğru bilgi sunulmaktadır.</p>
                 </div>
 
                 <!-- İLETİŞİM -->
                 <div id="iletisim" class="main-card policy-text">
                     <div class="card-header"><h2>✉️ İletişim Formu ve Destek Merkezi</h2></div>
                     <p>Sorularınız, reklam teklifleri veya geri bildirimleriniz için aşağıdaki formu doldurarak doğrudan ekibimize ulaşabilirsiniz.</p>
-                    
                     <form action="https://formspree.io/f/ornekmail" method="POST">
                         <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" name="name" required placeholder="Örn: Ahmet Yılmaz"></div>
                         <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" name="email" required placeholder="Örn: ahmet@example.com"></div>
                         <div class="form-group"><label>Mesajınız:</label><textarea name="message" rows="4" required placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea></div>
                         <button type="submit" class="btn-action">Mesajı Gönder</button>
                     </form>
-
                     <p style="margin-top:20px; font-size:0.88rem; color:#475569;">Doğrudan E-posta Destek Hattı: <strong>destek@parahesap.site</strong></p>
                 </div>
 
@@ -714,9 +753,21 @@
             else if(val.includes('kur')) switchTab('gecmis-kur', null);
             else if(val.includes('fitre') || val.includes('nisap')) switchTab('nisap', null);
             else if(val.includes('kar') || val.includes('kâr')) switchTab('katilma', null);
+            else if(val.includes('bist') || val.includes('hisse')) switchTab('katilim-endeks', null);
+            else if(val.includes('rehber')) switchTab('rehber', null);
+            else if(val.includes('sözlük')) switchTab('sozluk', null);
             else if(val.includes('gizlilik')) switchTab('gizlilik', null);
             else if(val.includes('iletişim')) switchTab('iletisim', null);
             else if(val.includes('hakkımızda')) switchTab('hakkimizda', null);
+        }
+
+        function filtreleBistSirketler() {
+            const input = document.getElementById('bist-input-filter').value.toLowerCase();
+            const items = document.querySelectorAll('#bist-sirket-container .bist-card-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(input) ? 'flex' : 'none';
+            });
         }
 
         function hesaplaCevirici() {
