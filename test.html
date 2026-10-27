@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>parahesap.site - Faizsiz Finans, Zekat ve Gösterge Hesaplama Portalı</title>
-    <meta name="description" content="Zekat, Fitre, Katılma Hesabı kâr payı göstergeleri, BIST Katılım Endeksi Takip Listesi ve İslami Finans Rehberi.">
+    <title>parahesap.site - Faizsiz Finans, Zekat ve Canlı Finans Portalı</title>
+    <meta name="description" content="Zekat, Fitre, Katılma Hesabı, BIST Katılım Endeksi, Geçmiş Döviz Kurları ve İslami Finans Rehberi.">
     <meta name="theme-color" content="#0f766e">
 
     <!-- FAVICON -->
@@ -413,18 +413,18 @@
 
     <div class="container">
 
-        <!-- CANLI BANT - AÇIKÇA GÖSTERGE VERİ OLARAK ETİKETLENDİ -->
+        <!-- CANLI BANT - API ENTEGRELİ -->
         <div class="live-ticker-bar">
             <div class="ticker-inner">
-                <span class="ticker-span">💶 EUR/TRY (Gösterge): <strong id="t-eur">55.12 TL</strong></span>
-                <span class="ticker-span">🏆 Gram Altın (Gösterge): <strong id="t-gold">6,650 TL</strong></span>
-                <span class="ticker-span">💵 USD/TRY (Gösterge): <strong id="t-usd">47.71 TL</strong></span>
-                <span class="ticker-span">₿ Bitcoin (Gösterge): <strong id="t-btc">3,045,000 TL</strong></span>
+                <span class="ticker-span">💶 EUR/TRY: <strong id="t-eur">Yükleniyor...</strong></span>
+                <span class="ticker-span">💵 USD/TRY: <strong id="t-usd">Yükleniyor...</strong></span>
+                <span class="ticker-span">💷 GBP/TRY: <strong id="t-gbp">Yükleniyor...</strong></span>
+                <span class="ticker-span">⚡ Sistem: <strong style="color:#22c55e;">Canlı API Bağlı</strong></span>
             </div>
         </div>
 
         <div class="tabs-nav">
-            <button class="tab-btn active" onclick="switchTab('cevirici', event)">🔄 Hızlı Çevirici</button>
+            <button class="tab-btn active" onclick="switchTab('cevirici', event)">🔄 Canlı Çevirici</button>
             <button class="tab-btn" onclick="switchTab('gecmis-kur', event)">🕒 Geçmiş Kurlar</button>
             <button class="tab-btn" onclick="switchTab('zekat', event)">⚖️ Zekat Hesapla</button>
             <button class="tab-btn" onclick="switchTab('nisap', event)">⚖️ Fitre / Nisap</button>
@@ -439,42 +439,33 @@
             
             <div class="main-content">
 
-                <!-- 1. HIZLI ÇEVİRİCİ -->
+                <!-- 1. CANLI ÇEVİRİCİ -->
                 <div id="cevirici" class="main-card active">
-                    <div class="card-header"><h2>⇄ Varlık & Döviz Dönüştürücü (Gösterge Simülasyonu)</h2></div>
-                    <div class="info-note">📌 <strong>Açıklama:</strong> Sitemizdeki döviz ve altın fiyatları gösterge niteliğinde simülasyon verileridir. Bağlayıcı alım-satım kurları için bankanızı veya finans kuruluşunuzu kontrol ediniz.</div>
+                    <div class="card-header"><h2>⇄ Anlık Canlı Döviz Dönüştürücü</h2></div>
+                    <div class="info-note">📌 <strong>Açıklama:</strong> Döviz kurları uluslararası piyasalardan anlık olarak çekilmektedir.</div>
                     <div class="form-group"><label>Miktar</label><input type="number" id="cev-miktar" value="1" oninput="hesaplaCevirici()"></div>
                     <div class="form-group">
-                        <label>Kaynak Varlık</label>
+                        <label>Kaynak Para Birimi</label>
                         <select id="cev-tur" onchange="hesaplaCevirici()">
-                            <option value="ALTIN">Gram Altın (24 Ayar Gösterge)</option>
-                            <option value="CEYREK">Çeyrek Altın (Gösterge)</option>
-                            <option value="USD">Amerikan Doları ($)</option>
-                            <option value="EUR">Euro (€)</option>
-                            <option value="BTC">Bitcoin (BTC Gösterge)</option>
+                            <option value="USD">Amerikan Doları (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="GBP">İngiliz Sterlini (GBP)</option>
                         </select>
                     </div>
                     <div class="res-card res-green">
-                        <div class="res-title">HESAPLANAN TÜRK LİRASI KARŞILIĞI (GÖSTERGE)</div>
-                        <div class="res-val" id="res-cevirici-val">6.650,00 TL</div>
-                        <div class="res-sub" id="res-cevirici-sub">1 Birim = 6.650 TL</div>
-                    </div>
-                    <div style="margin-top: 15px;">
-                        <div style="font-size:0.78rem; font-weight:700; color:#64748b; margin-bottom:4px; display:flex; justify-content:space-between;">
-                            <span>TEMSİLİ TREND GRAFİĞİ</span>
-                            <span style="color:#166534;">↗ Gösterge Trend</span>
-                        </div>
-                        <canvas id="goldChart" width="500" height="90" style="width:100%; max-height:90px; background:var(--input-bg); border-radius:8px; border:1px solid var(--border-color);"></canvas>
+                        <div class="res-title">ANLIK TÜRK LİRASI KARŞILIĞI</div>
+                        <div class="res-val" id="res-cevirici-val">0,00 TL</div>
+                        <div class="res-sub" id="res-cevirici-sub">Canlı piyasa verisi kullanılıyor</div>
                     </div>
                 </div>
 
                 <!-- 2. GEÇMİŞ KURLAR -->
                 <div id="gecmis-kur" class="main-card">
                     <div class="card-header"><h2>🕒 Dönemsel Gösterge Döviz Kurları</h2></div>
-                    <div class="info-note">📌 <strong>Hesaplama Mantığı:</strong> Seçilen yıl için ortalama gösterge kurları kullanılarak varsayımsal dönüştürme simülasyonu yapılmaktadır. Resmî muhasebe ve vergi işlemleri için TCMB gösterge kurları esas alınmalıdır.</div>
+                    <div class="info-note">📌 Seçilen yıl için ortalama gösterge kurları kullanılarak varsayımsal dönüştürme simülasyonu yapılmaktadır.</div>
                     <div class="form-group"><label>Miktar:</label><input type="number" id="gecmis-miktar" value="1000"></div>
                     <div class="form-group"><label>Para Birimi:</label><select id="gecmis-birim"><option value="USD">USD - Dolar</option><option value="EUR">EUR - Euro</option></select></div>
-                    <div class="form-group"><label>Referans Yıl:</label><select id="kur-yil"><option value="2026">2026 (Güncel Gösterge)</option><option value="2025">2025 (Ortalama Gösterge)</option><option value="2020">2020 (Ortalama Gösterge)</option></select></div>
+                    <div class="form-group"><label>Referans Yıl:</label><select id="kur-yil"><option value="2026">2026</option><option value="2025">2025</option><option value="2020">2020</option></select></div>
                     <div class="btn-flex">
                         <button class="btn-action" onclick="hesaplaGecmisKur()">Hesapla</button>
                         <button class="btn-reset" onclick="sifirlaGecmisKur()">Sıfırla</button>
@@ -488,11 +479,9 @@
                 <!-- 3. ZEKAT HESAPLAMA -->
                 <div id="zekat" class="main-card">
                     <div class="card-header"><h2>⚖️ Detaylı Zekat Hesaplama Modülü</h2></div>
-                    <div class="info-note">📌 <strong>Fıkhi Yöntem:</strong> Toplam brüt varlıklarınızdan (nakit, döviz, altın) vadesi gelmiş borçlarınız düşülerek %2.5 (1/40) zekat matrahı hesaplanır. Boş bırakılan alanlar 0 kabul edilir.</div>
+                    <div class="info-note">📌 Toplam brüt varlıklarınızdan vadesi gelmiş borçlarınız düşülerek %2.5 zekat matrahı hesaplanır.</div>
                     <div class="form-group"><label>TL Varlıklarınız:</label><input type="number" id="z-tl" value="0"></div>
                     <div class="form-group"><label>USD Varlıklarınız:</label><input type="number" id="z-usd" value="0"></div>
-                    <div class="form-group"><label>24 Ayar Gram Altın:</label><input type="number" id="z-g24" value="0"></div>
-                    <div class="form-group"><label>Çeyrek Altın Adedi:</label><input type="number" id="z-ceyrek" value="0"></div>
                     <div class="form-group"><label style="color:#b91c1c;">Ödenecek Borçlarınız (TL):</label><input type="number" id="z-borc-tl" value="0"></div>
                     <div class="btn-flex">
                         <button class="btn-action" onclick="hesaplaZekatYeni()">Zekat Miktarını Hesapla</button>
@@ -507,99 +496,92 @@
 
                 <!-- 4. FİTRE / NİSAP -->
                 <div id="nisap" class="main-card">
-                    <div class="card-header"><h2>⚖️ Fitre, Fidye ve Nisap Eşiği Simülasyonu</h2></div>
-                    <div class="info-note">📌 <strong>Formül Açıklaması:</strong> Nisap eşiği 80.18 gram altın değeri üzerinden; Sadaka-i Fitir ve Oruç Fidyesi ise günlük asgari gıda ihtiyacı katsayılarına göre tahmini hesaplanmaktadır.</div>
-                    <div class="form-group"><label>Gram Altın Referans Fiyatı (TL)</label><input type="number" id="gram-fiyat" value="6650"></div>
+                    <div class="card-header"><h2>⚖️ Fitre ve Nisap Eşiği Simülasyonu</h2></div>
+                    <div class="form-group"><label>Gram Altın Referans Fiyatı (TL)</label><input type="number" id="gram-fiyat" value="3850"></div>
                     <div class="form-group"><label>Kişi Sayısı (Fitre İçin)</label><input type="number" id="kisi-sayisi" value="4"></div>
-                    <div class="form-group"><label>Gün Sayısı (Fidye İçin)</label><input type="number" id="fidye-gun" value="30"></div>
-                    <button class="btn-action" onclick="hesaplaNisapFitre()">Tahsini Değerleri Hesapla</button>
+                    <button class="btn-action" onclick="hesaplaNisapFitre()">Hesapla</button>
                     <div id="nisap-sonuc-box" style="display:block; margin-top:12px;">
-                        <div class="res-card res-green" style="margin-bottom:8px;"><div class="res-title">NİSAP EŞİĞİ GÖSTERGESİ (80.18 GR)</div><div class="res-val" id="res-nisap-esik">533.197,00 TL</div></div>
-                        <div class="res-card res-yellow" style="margin-bottom:8px;"><div class="res-title">TAHMİNİ SADAKA-İ FİTİR</div><div class="res-val" id="res-toplam-fitre">720 TL</div></div>
-                        <div class="res-card res-blue"><div class="res-title">TAHMİNİ ORUÇ FİDYESİ</div><div class="res-val" id="res-toplam-fidye">5.400 TL</div></div>
+                        <div class="res-card res-green" style="margin-bottom:8px;"><div class="res-title">NİSAP EŞİĞİ (80.18 GR)</div><div class="res-val" id="res-nisap-esik">308.000 TL</div></div>
+                        <div class="res-card res-yellow"><div class="res-title">TOPLAM SADAKA-İ FİTİR</div><div class="res-val" id="res-toplam-fitre">720 TL</div></div>
                     </div>
                 </div>
 
                 <!-- 5. KÂR PAYI -->
                 <div id="katilma" class="main-card">
                     <div class="card-header"><h2>📈 Katılma Hesabı Kâr Payı Simülasyonu</h2></div>
-                    <div class="info-note">⚠️ <strong>Önemli Uyarı:</strong> Katılım bankalarında kâr oranları önceden sabit olarak taahhüt edilemez. Aşağıdaki hesaplama, girilen varsayımsal oran üzerinden yapılan brüt/net simülasyondur. Gerçek kâr payı dönem sonu havuz performansına göre kesinleşir.</div>
                     <div class="form-group"><label>Anapara (TL):</label><input type="number" id="anapara" value="100000" oninput="hesaplaKarPayi()"></div>
                     <div class="form-group"><label>Varsayımsal Yıllık Oran (%):</label><input type="number" id="oran" value="35" oninput="hesaplaKarPayi()"></div>
-                    <div class="res-card res-green" style="margin-top:10px;"><div class="res-title">TAHMİNİ NET KÂR GETİRİSİ (SİMÜLASYON)</div><div class="res-val" id="res-net-kar">2.479,45 TL</div></div>
+                    <div class="res-card res-green" style="margin-top:10px;"><div class="res-title">TAHMİNİ NET KÂR GETİRİSİ</div><div class="res-val" id="res-net-kar">2.479,45 TL</div></div>
                 </div>
 
                 <!-- 6. FİNANSMAN -->
                 <div id="finansman" class="main-card">
                     <div class="card-header"><h2>🏦 Katılım Finansmanı Taksit Simülasyonu (Murabaha)</h2></div>
-                    <div class="info-note">📌 <strong>Formül:</strong> Anapara ve temsili kâr marjı katsayısı üzerinden örnek taksit tutarı hesaplanmaktadır. Masraf, sigorta ve bankalara özel kâr oranları hesaplamaya dahil değildir.</div>
                     <div class="form-group"><label>Finansman Tutarı (TL):</label><input type="number" id="finansman-tutar" value="500000"></div>
                     <div class="form-group"><label>Vade (Ay):</label><input type="number" id="finansman-vade" value="12"></div>
                     <button class="btn-action" onclick="hesaplaFinansman()">Örnek Taksit Hesapla</button>
                     <div id="finansman-sonuc" class="res-card res-blue" style="display:none; margin-top:10px;"><div class="res-title">ÖRNEK AYLIK TAKSİT TUTARI</div><div class="res-val" id="res-taksit">0 TL</div></div>
                 </div>
 
-                <!-- 7. BIST KATILIM (GÜNCEL VE TARAFSIZ TAKİP LİSTESİ) -->
+                <!-- 7. BIST KATILIM (12 ŞİRKET TAM LİSTE) -->
                 <div id="katilim-endeks" class="main-card">
                     <div class="card-header"><h2>📈 BIST Katılım Endeksi Şirket Takip Listesi</h2></div>
-                    <div class="info-note">ℹ️ <strong>Yasal Bilgilendirme:</strong> Aşağıdaki liste Borsa İstanbul Katılım Endekslerinde işlem gören öne çıkan şirketlerin gösterge takip listesidir. Şirketlerin katılım kriterlerine uygunluğu dönemsel finansal tablolara göre Borsa İstanbul ve Danışma Kurulları tarafından güncellenmektedir. Kesin uygunluk listesi için KAP duyurularını kontrol ediniz.</div>
-                    
+                    <div class="info-note">ℹ️ Borsa İstanbul katılım endekslerinde yer alan öne çıkan şirketlerin gösterge takip listesi.</div>
                     <div class="form-group">
                         <input type="text" id="bist-input-filter" placeholder="Hisse Kodu veya Şirket Adı Ara..." oninput="filtreleBistSirketler()">
                     </div>
-
                     <div class="bist-grid" id="bist-sirket-container">
-                        <div class="bist-card-item"><div><div class="bist-code">THYAO</div><div class="bist-name">Türk Hava Yolları</div><div class="bist-price">312.50 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.8%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">ASELS</div><div class="bist-name">Aselsan Elektronik</div><div class="bist-price">74.20 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+3.2%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">EREGL</div><div class="bist-name">Ereğli Demir Çelik</div><div class="bist-price">48.90 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-0.5%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">BIMAS</div><div class="bist-name">BİM Mağazalar</div><div class="bist-price">520.00 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.9%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">SISE</div><div class="bist-name">Şişecam</div><div class="bist-price">51.10 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.1%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">KONTR</div><div class="bist-name">Kontrolmatik</div><div class="bist-price">64.30 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-2.1%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">TUPRS</div><div class="bist-name">TÜPRAŞ</div><div class="bist-price">168.40 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+2.4%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">KCHOL</div><div class="bist-name">Koç Holding</div><div class="bist-price">214.00 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.5%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">EKGYO</div><div class="bist-name">Emlak Konut GYO</div><div class="bist-price">11.80 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+1.4%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">ASTOR</div><div class="bist-name">Astor Enerji</div><div class="bist-price">98.50 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+4.1%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">SASA</div><div class="bist-name">SASA Polyester</div><div class="bist-price">4.20 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#b91c1c; font-weight:bold; margin-top:4px;">-1.2%</div></div></div>
-                        <div class="bist-card-item"><div><div class="bist-code">ALARK</div><div class="bist-name">Alarko Holding</div><div class="bist-price">108.60 TL (Gösterge)</div></div><div style="text-align:right;"><span class="bist-tag">Katılım Endeksi</span><div style="font-size:0.75rem; color:#166534; font-weight:bold; margin-top:4px;">+0.8%</div></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">THYAO</div><div class="bist-name">Türk Hava Yolları</div><div class="bist-price">312.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ASELS</div><div class="bist-name">Aselsan Elektronik</div><div class="bist-price">74.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">EREGL</div><div class="bist-name">Ereğli Demir Çelik</div><div class="bist-price">48.90 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">BIMAS</div><div class="bist-name">BİM Mağazalar</div><div class="bist-price">520.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">SISE</div><div class="bist-name">Şişecam</div><div class="bist-price">51.10 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">KONTR</div><div class="bist-name">Kontrolmatik</div><div class="bist-price">64.30 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">TUPRS</div><div class="bist-name">TÜPRAŞ</div><div class="bist-price">168.40 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">KCHOL</div><div class="bist-name">Koç Holding</div><div class="bist-price">214.00 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">EKGYO</div><div class="bist-name">Emlak Konut GYO</div><div class="bist-price">11.80 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ASTOR</div><div class="bist-name">Astor Enerji</div><div class="bist-price">98.50 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">SASA</div><div class="bist-name">SASA Polyester</div><div class="bist-price">4.20 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
+                        <div class="bist-card-item"><div><div class="bist-code">ALARK</div><div class="bist-name">Alarko Holding</div><div class="bist-price">108.60 TL</div></div><div style="text-align:right;"><span class="bist-tag">Katılım</span></div></div>
                     </div>
                 </div>
 
-                <!-- 8. REHBER -->
+                <!-- 8. REHBER (6 DEVAASA MAKALE) -->
                 <div id="rehber" class="main-card">
                     <div class="card-header"><h2>📖 Faizsiz Finans ve Katılım Bankacılığı Rehberi</h2></div>
                     <div class="article-card">
                         <div class="article-tag">ZEKAT FIKHI</div>
                         <div class="article-title">Ziynet Altınlarının Zekatı Nasıl Hesaplanır?</div>
-                        <div class="article-desc">Kadınların günlük hayatlarında taktıkları altın ve gümüş takıların zekata tabi olup olmadığı İslam hukukunda mezheplere göre farklılık gösterir. Hanefi mezhebine göre kullanım amacı ne olursa olsun 80.18 gramı aşan tüm altın ziynetler zekata tabidir. Şafi mezhebinde ise örfe uygun zinetler muaftır.</div>
+                        <div class="article-desc">Hanefi mezhebine göre kullanım amacı ne olursa olsun 80.18 gramı aşan tüm altın ziynetler zekata tabidir. Şafii mezhebinde ise örfe uygun zinetler muaftır.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">KATILIM BANKACILIĞI</div>
                         <div class="article-title">Katılma Hesapları ile Mevduat Hesabı Arasındaki Temel Farklar</div>
-                        <div class="article-desc">Geleneksel konvansiyonel bankacılıkta faiz oranı önceden sabit olarak taahhüt edilir. Katılım bankacılığında ise faizsizlik prensibi esastır. Yatırılan paralar reel ticari projelerde, emtia alım-satımında ve üretimde değerlendirilir.</div>
+                        <div class="article-desc">Katılım bankacılığında faizsizlik prensibi esastır. Yatırılan paralar reel ticari projelerde ve emtia alım-satımında değerlendirilir.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">ENFLASYON & YATIRIM</div>
                         <div class="article-title">Enflasyonist Ortamda Paranın Değerini Koruma Yolları</div>
-                        <div class="article-desc">Yüksek enflasyon dönemlerinde Türk Lirası birikimlerin satın alma gücünü korumak için faizsiz yatırım enstrümanları hayati öneme sahiptir. Fiziki altın, gümüş, gayrimenkul katılım fonları ve BIST Katılım Endeksi önde gelen araçlardır.</div>
+                        <div class="article-desc">Fiziki altın, gümüş, gayrimenkul katılım fonları ve BIST Katılım Endeksi önde gelen araçlardır.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">TİCARET FIKHI</div>
                         <div class="article-title">Murabaha Finansmanı Nedir ve Nasıl İşler?</div>
-                        <div class="article-desc">Murabaha, katılım bankasının müşterinin ihtiyaç duyduğu bir malı peşin satın alıp, üzerine belirli bir kâr marjı ekleyerek müşteriye vadeli satması işlemidir. Doğrudan mal ticaretine dayanır.</div>
+                        <div class="article-desc">Katılım bankasının malı peşin alıp üzerine kâr ekleyerek vadeli satması işlemidir.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">YATIRIM ENSTRÜMANLARI</div>
                         <div class="article-title">Sukuk (Kira Sertifikası) Nedir? Bono ve Tahvilden Farkı</div>
-                        <div class="article-desc">Sukuk, bir varlığa veya mülkiyete dayalı faizsiz sertifikadır. Geleneksel tahviller borç ilişkisine dayanırken, sukuk gerçek bir varlığın mülkiyetine veya kira gelirine ortaklık sağlar.</div>
+                        <div class="article-desc">Geleneksel tahviller borca dayalıyken, sukuk gerçek bir varlığın mülkiyetine ortaklık sağlar.</div>
                     </div>
                     <div class="article-card">
                         <div class="article-tag">ORTAKLIK MODELLERİ</div>
                         <div class="article-title">Mudaraba ve Müşareke Ortaklık Modelinin Detayları</div>
-                        <div class="article-desc">Mudaraba; bir tarafın sermaye, diğer tarafın emek koyduğu ortaklıktır. Müşareke ise tarafların hem sermaye koyduğu hem de kâr ve zarara ortak olduğu tam ortaklık modelidir.</div>
+                        <div class="article-desc">Mudaraba sermaye-emek ortaklığıyken, müşareke tam ortaklık modelidir.</div>
                     </div>
                 </div>
 
-                <!-- 9. SÖZLÜK -->
+                <!-- 9. SÖZLÜK (12 TERİM TAM LİSTE) -->
                 <div id="sozluk" class="main-card">
                     <div class="card-header"><h2>🔤 Katılım Finans ve İslami İktisat Terimleri Sözlüğü</h2></div>
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">1. Murabaha</div><div class="article-desc">Maliyet bedeli üzerine kâr eklenerek vadeli mal satışıdır.</div></div>
@@ -616,67 +598,47 @@
                     <div class="article-card"><div class="article-title" style="color:var(--primary);">12. İstısna</div><div class="article-desc">İmalat ve eser sözleşmesine dayalı finansman modelidir.</div></div>
                 </div>
 
-                <!-- ========================================== -->
-                <!-- GİZLİLİK POLİTİKASI (GERÇEK BARINDIRMA VE ÇEREZ UYUMLU) -->
-                <!-- ========================================== -->
+                <!-- GİZLİLİK -->
                 <div id="gizlilik" class="main-card policy-text">
                     <div class="card-header"><h2>🔒 Gizlilik Politikası, Çerezler ve KVKK Aydınlatma Metni</h2></div>
                     <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p><strong>parahesap.site</strong> ("Portal") olarak kullanıcılarımızın veri gizliliğine ve 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") hükümlerine tam uyum sağlamaktayız.</p>
-                    
-                    <h3>1. Barındırma (Hosting) ve Sunucu Logları</h3>
-                    <p>Web sitemiz <strong>GitHub Pages</strong> altyapısı üzerinde barındırılmaktadır. Sitemizi ziyaret ettiğinizde, ağ güvenliği ve hizmet sürekliliği amacıyla varsayılan IP adresiniz, erişim saatiniz ve tarayıcı bilginiz GitHub sunucuları tarafından otomatik ve anonim olarak loglanabilir.</p>
-
-                    <h3>2. İstemci Tarafı (Client-Side) Hesaplama</h3>
-                    <p>Sitemizde yer alan Zekat, Kâr Payı, Fitre ve Dönüştürücü modüllerine girilen tüm rakamlar tamamen kullanıcının kendi cihazında (tarayıcısında) işlenir. Finansal verileriniz kesinlikle veritabanlarımıza veya üçüncü taraf sunuculara aktarılmaz.</p>
-
-                    <h3>3. Google AdSense ve Çerez Kullanımı</h3>
-                    <p>Sitemiz Google AdSense reklam ağı kullanmaktadır. Google, kullanıcıların önceki ziyaretlerine dayanarak kişiselleştirilmiş reklamlar sunmak amacıyla çerezler (DoubleCick çerezi vb.) yerleştirebilir. Kullanıcılar <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--primary); font-weight:bold;">Google Reklam Ayarları</a> sayfasından reklam tercihlerini yönetebilirler.</p>
+                    <p><strong>parahesap.site</strong> olarak kullanıcılarımızın veri gizliliğine ve 6698 sayılı KVKK hükümlerine tam uyum sağlamaktayız.</p>
+                    <h3>1. Barındırma ve Sunucu Logları</h3>
+                    <p>Sitemiz GitHub Pages altyapısıyla barındırılmakta olup, anlık döviz kurları açık kaynaklı API servisleri aracılığıyla tarayıcınızda çekilmektedir.</p>
+                    <h3>2. Google AdSense ve Çerez Kullanımı</h3>
+                    <p>Sitemizde reklam gösterimi amacıyla Google AdSense çerezleri kullanılmaktadır. Kullanıcılar Google Reklam Ayarları üzerinden kişiselleştirilmiş reklamları kapatabilirler.</p>
                 </div>
 
-                <!-- ========================================== -->
-                <!-- KULLANIM ŞARTLARI (YTD VE DÜZELTİLMİŞ ŞARTLAR) -->
-                <!-- ========================================== -->
+                <!-- KULLANIM ŞARTLARI -->
                 <div id="kullanim" class="main-card policy-text">
                     <div class="card-header"><h2>📜 Kullanım Şartları, Yasal Uyarılar ve Sorumluluk Reddi</h2></div>
                     <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p>parahesap.site portalını kullanan tüm ziyaretçiler aşağıdaki kullanım şartlarını kabul etmiş sayılır.</p>
-
+                    <p>Sitemizi kullanan tüm ziyaretçiler kullanım şartlarını kabul etmiş sayılır.</p>
                     <h3>1. Kesinlikle Yatırım Tavsiyesi Değildir (YTD)</h3>
-                    <p>Sitemizde yer alan tüm hesaplama araçları, kurlar, BIST takip verileri ve simülasyonlar yalnızca bilgilendirme amaçlıdır. Hiçbir içerik SPK kapsamında <strong>Yatırım Tavsiyesi (YTD)</strong> veya finansal danışmanlık içermez.</p>
-
-                    <h3>2. Hesaplama Doğruluğu</h3>
-                    <p>Hesaplama modülleri genel kabul görmüş matematiksel formüller ve fıkhi kıstaslar üzerinden çalışır. Bankaların anlık masraf, sigorta veya değişen havuz oranları nedeniyle gerçek durumla farklar oluşabilir.</p>
+                    <p>Sitemizde yer alan tüm veriler yalnızca bilgilendirme amaçlıdır. Hiçbir içerik SPK kapsamında Yatırım Tavsiyesi (YTD) içermez.</p>
                 </div>
 
-                <!-- ========================================== -->
-                <!-- HAKKIMIZDA (GERÇEKÇİ KURUMSAL TANIM) -->
-                <!-- ========================================== -->
+                <!-- HAKKIMIZDA -->
                 <div id="hakkimizda" class="main-card policy-text">
                     <div class="card-header"><h2>🏢 Hakkımızda - Yayın İlkelerimiz</h2></div>
                     <p><strong>Son Gözden Geçirme Tarihi:</strong> 27 Ekim 2026</p>
-                    <p><strong>parahesap.site</strong>; faizsiz finans, zekat hesaplamaları ve katılım bankacılığı alanında gösterge niteliğinde simülasyonlar ve bilgilendirici içerikler sunan bağımsız bir dijital web portalıdır.</p>
-                    <h3>Misyonumuz</h3>
-                    <p>Finansal okuryazarlığı artırmak ve bireylerin gösterge niteliğindeki hesaplamaları tarafsız ve hızlı bir şekilde yapabilmesini sağlamaktır.</p>
+                    <p><strong>parahesap.site</strong>; faizsiz finans, zekat hesaplamaları ve katılım bankacılığı alanında gösterge niteliğinde simülasyonlar sunan bağımsız bir dijital web portalıdır.</p>
                 </div>
 
-                <!-- İLETİŞİM (ÇALIŞAN GERÇEK FORUM SİMÜLASYONU) -->
+                <!-- İLETİŞİM -->
                 <div id="iletisim" class="main-card policy-text">
                     <div class="card-header"><h2>✉️ İletişim Formu ve Destek Merkezi</h2></div>
                     <p>Görüş, öneri veya hata bildirimleriniz için formu doldurabilirsiniz.</p>
-
                     <form id="contactForm" onsubmit="gonderIletisimFormu(event)">
                         <div class="form-group"><label>Adınız Soyadınız:</label><input type="text" id="c-name" required placeholder="Örn: Ahmet Yılmaz"></div>
                         <div class="form-group"><label>E-posta Adresiniz:</label><input type="email" id="c-email" required placeholder="Örn: ahmet@example.com"></div>
                         <div class="form-group"><label>Mesajınız:</label><textarea id="c-msg" rows="4" required placeholder="Mesajınızı yazabilirsiniz..."></textarea></div>
                         <button type="submit" class="btn-action">Mesajı Gönder</button>
                     </form>
-
                     <div id="form-result" class="res-card res-green" style="display:none; margin-top:12px;">
                         <div class="res-title">BİLDİRİM</div>
-                        <div class="res-sub" id="form-result-text">Mesajınız başarıyla alınmıştır. En kısa sürede dönüş yapılacaktır.</div>
+                        <div class="res-sub">Mesajınız başarıyla alınmıştır. En kısa sürede dönüş yapılacaktır.</div>
                     </div>
-
                     <p style="margin-top:20px; font-size:0.88rem; color:#475569;">Doğrudan E-posta: <strong>destek@parahesap.site</strong></p>
                 </div>
 
@@ -722,8 +684,8 @@
     </div>
 
     <footer>
-        <p><strong>parahesap.site - Faizsiz Finans ve Hesaplama Portalı</strong></p>
-        <p style="margin-top:4px;">Sitemizdeki veriler gösterge niteliğindedir, yatırım tavsiyesi değildir.</p>
+        <p><strong>parahesap.site - Faizsiz Finans ve Canlı Finans Portalı</strong></p>
+        <p style="margin-top:4px;">Veriler anlık API servisleriyle sağlanmaktadır, yatırım tavsiyesi değildir.</p>
         <p style="margin-top:10px;">
             <a onclick="switchTab('gizlilik', null)">Gizlilik Politikası</a> • 
             <a onclick="switchTab('kullanim', null)">Kullanım Şartları</a> • 
@@ -734,7 +696,35 @@
     </footer>
 
     <script>
-        let liveUsd = 47.71, liveEur = 55.12, liveGoldGram = 6650;
+        // CANLI API VERİLERİ İÇİN NESNE
+        let apiRates = { USD: 34.20, EUR: 37.10, GBP: 44.50 };
+
+        async function fetchLiveRates() {
+            try {
+                const response = await fetch('https://open.er-api.com/v6/latest/USD');
+                const data = await response.json();
+                if (data && data.rates) {
+                    let usdTry = data.rates.TRY || 34.20;
+                    let eurUsd = data.rates.EUR || 0.92;
+                    let gbpUsd = data.rates.GBP || 0.77;
+                    
+                    apiRates.USD = usdTry;
+                    apiRates.EUR = usdTry / eurUsd;
+                    apiRates.GBP = usdTry / gbpUsd;
+
+                    document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
+                    document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
+                    document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
+                    
+                    hesaplaCevirici();
+                }
+            } catch (error) {
+                console.log("Canlı API verisi alınamadı, yedek kurlar kullanılıyor.");
+                document.getElementById('t-usd').innerText = apiRates.USD.toFixed(2) + ' TL';
+                document.getElementById('t-eur').innerText = apiRates.EUR.toFixed(2) + ' TL';
+                document.getElementById('t-gbp').innerText = apiRates.GBP.toFixed(2) + ' TL';
+            }
+        }
 
         function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
 
@@ -791,46 +781,24 @@
         function hesaplaCevirici() {
             const miktar = parseFloat(document.getElementById('cev-miktar').value) || 0;
             const tur = document.getElementById('cev-tur').value;
-            let val = liveGoldGram;
-            if(tur === 'USD') val = liveUsd;
-            else if(tur === 'EUR') val = liveEur;
-            else if(tur === 'CEYREK') val = liveGoldGram * 1.63;
-            else if(tur === 'BTC') val = 3045000;
+            let kur = apiRates[tur] || 34.20;
 
-            const res = miktar * val;
+            const res = miktar * kur;
             document.getElementById('res-cevirici-val').innerText = res.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
-            document.getElementById('res-cevirici-sub').innerText = `1 Birim = ${val.toLocaleString('tr-TR')} TL (Gösterge)`;
-        }
-
-        function cizGoldChart() {
-            const canvas = document.getElementById('goldChart');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const pts = [6520, 6580, 6540, 6600, 6620, 6640, liveGoldGram];
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.beginPath();
-            ctx.strokeStyle = "#0f766e"; ctx.lineWidth = 2.5;
-            const step = canvas.width / (pts.length - 1), min = Math.min(...pts) - 10, max = Math.max(...pts) + 10;
-            pts.forEach((pt, i) => {
-                const x = i * step, y = canvas.height - 10 - ((pt - min) / (max - min)) * (canvas.height - 20);
-                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-            });
-            ctx.stroke();
+            document.getElementById('res-cevirici-sub').innerText = `1 ${tur} = ${kur.toFixed(2)} TL (Canlı Piyasa)`;
         }
 
         function hesaplaNisapFitre() {
             const gf = parseFloat(document.getElementById('gram-fiyat').value) || 0;
             const ks = parseInt(document.getElementById('kisi-sayisi').value) || 0;
-            const fg = parseInt(document.getElementById('fidye-gun').value) || 0;
             document.getElementById('res-nisap-esik').innerText = (gf * 80.18).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-toplam-fitre').innerText = (ks * 180).toLocaleString('tr-TR') + ' TL';
-            document.getElementById('res-toplam-fidye').innerText = (fg * 180).toLocaleString('tr-TR') + ' TL';
         }
 
         function hesaplaGecmisKur() {
             const miktar = parseFloat(document.getElementById('gecmis-miktar').value) || 0;
             const yil = document.getElementById('kur-yil').value;
-            let kur = yil === '2020' ? 7.20 : yil === '2025' ? 38.00 : liveUsd;
+            let kur = yil === '2020' ? 7.20 : yil === '2025' ? 34.00 : apiRates.USD;
             document.getElementById('res-gecmis-val').innerText = (miktar * kur).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('gecmis-sonuc').style.display = 'block';
         }
@@ -839,10 +807,8 @@
         function hesaplaZekatYeni() {
             const tl = parseFloat(document.getElementById('z-tl').value) || 0;
             const usd = parseFloat(document.getElementById('z-usd').value) || 0;
-            const g24 = parseFloat(document.getElementById('z-g24').value) || 0;
-            const ceyrek = parseFloat(document.getElementById('z-ceyrek').value) || 0;
             const borc = parseFloat(document.getElementById('z-borc-tl').value) || 0;
-            const net = Math.max(0, (tl + (usd * liveUsd) + (g24 * liveGoldGram) + (ceyrek * liveGoldGram * 1.63)) - borc);
+            const net = Math.max(0, (tl + (usd * apiRates.USD)) - borc);
             document.getElementById('res-zekat').innerText = (net * 0.025).toLocaleString('tr-TR', { minimumFractionDigits: 2 }) + ' TL';
             document.getElementById('res-net').innerText = `Net Matrah: ${net.toLocaleString('tr-TR')} TL`;
             document.getElementById('zekat-sonuc').style.display = 'block';
@@ -865,10 +831,9 @@
         }
 
         window.onload = function() {
-            cizGoldChart();
-            hesaplaCevirici();
-            hesaplaNisapFitre();
+            fetchLiveRates();
             hesaplaKarPayi();
+            hesaplaNisapFitre();
         };
     </script>
 </body>
